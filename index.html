@@ -53,6 +53,28 @@ var ZH = {
   "settled up":"已结清",
   "Everyone's square.":"大家都结清了。",
   "Each currency is settled separately — no exchange rate is applied.":"每种货币分开结算 — 不换算汇率。",
+  "Tabung (pool)":"Tabung 公款",
+  "Who owes who":"谁欠谁",
+  "Who is in the tabung":"谁有份",
+  "Who paid in?":"谁存的钱？",
+  "Pick who paid in, and an amount.":"请选择存钱的人并填金额。",
+  "Say what it was spent on, and how much.":"请填花在哪里和金额。",
+  "Clear the whole tabung saved on this device?":"清空这台设备上保存的整个 Tabung？",
+  " has already paid into the pool. Remove anyway? Their contributions stay in the log.":" 已经往公款里存过钱。还是要删除吗？他的存款记录会保留。",
+  "Couldn’t calculate the pool:":"无法计算公款：",
+  "Nothing in the pool yet.":"公款还没有任何记录。",
+  "Add contributions and spending to see the pool.":"记录存入和支出后，这里就会显示公款状况。",
+  "paid in":"存入",
+  "spent":"支出",
+  "left in the pool":"公款余额",
+  "IN":"存入",
+  "OUT":"支出",
+  "Paid in by person":"每人存了多少",
+  "even":"刚好",
+  "each":"每人",
+  "Compared with an even share of what the pool has spent so far":"跟目前公款已花掉的金额平均分摊相比",
+  "Spending is more than the pool holds — someone has covered the gap out of pocket.":"支出已经超过公款余额 — 有人先自己垫了。",
+  "Each currency is pooled separately — no exchange rate is applied.":"每种货币分开算 — 不换算汇率。",
   "In Singapore dollars":"新币账",
 
   /* pack section */
@@ -135,6 +157,8 @@ var ZH = {
   "paste links, comma separated":"贴链接，用逗号分开",
   "Quantity":"数量",
   "-1 = as many as possible":"-1 = 能买多少买多少",
+  "Price":"价格",
+  "e.g. \u00a51,200 / box":"例如 \u00a51,200／盒",
   "Photo URL":"图片链接",
   "Remark":"备注",
   "Add an item":"加一样东西",
@@ -184,7 +208,7 @@ function applyLang(){
   document.title = LANG === "zh"
     ? "日本东北 + 东京 — 每日行程指南 · 2026年10月4–11日"
     : "Japan Tohoku + Tokyo — Day-by-Day Guide · 4–11 Oct 2026";
-  ["spRenderAll","pkRenderAll","plRenderAll","rlRenderAll","rcRenderAll","slRenderAll"].forEach(function(fn){
+  ["spRenderAll","pkRenderAll","plRenderAll","rlRenderAll","rcRenderAll","slRenderAll","tbRenderAll"].forEach(function(fn){
     if(typeof window[fn] === "function") { try{ window[fn](); }catch(e){} }
   });
 }
@@ -887,6 +911,10 @@ summary.sec{margin:38px 0 12px;letter-spacing:-.01em}
 .sl-card.is-done .sl-name{text-decoration:line-through;color:var(--mute)}
 .sl-qty-chip{flex:0 0 auto;font-size:10px;font-weight:900;background:var(--goldbg);border:1px solid #e6cf9a;
   color:#8a6412;border-radius:20px;padding:1px 8px;white-space:nowrap}
+/* price sits beside the quantity chip but in the konbini green, so a number you
+   typed yourself never reads as the authored quantity */
+.sl-price-chip{flex:0 0 auto;font-size:10px;font-weight:900;background:var(--kon);border:1px solid var(--konline);
+  color:#14512c;border-radius:20px;padding:1px 8px;white-space:nowrap;font-variant-numeric:tabular-nums}
 .sl-chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
 .sl-chip{font-size:10.5px;font-weight:700;background:var(--kon);border:1px solid var(--konline);
   color:#14512c;border-radius:6px;padding:1px 7px;text-decoration:none}
@@ -983,6 +1011,49 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 .hsteps li b{color:#7a5a12}
 .hcap{font-size:11px;font-weight:900;letter-spacing:.1em;color:#8a6412;margin:12px 0 6px}
 
+/* ===== Trip Split mode tabs + Tabung ===== */
+.sp-tabs{display:flex;gap:3px;padding:3px;border:1px solid var(--line);border-radius:11px;
+  background:var(--paper);margin-bottom:13px}
+.sp-tabs button{flex:1;border:none;border-radius:8px;background:transparent;padding:8px 6px;
+  font-family:inherit;font-size:12.5px;font-weight:700;color:var(--mute);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:6px}
+.sp-tabs button:hover{background:#eceada;color:var(--ink)}
+.sp-tabs button.on{background:var(--night);color:#fff;font-weight:900}
+.sp-tabs .n{font-size:10px;font-weight:700;background:#e8e5dc;color:var(--mute);border-radius:20px;padding:1px 7px}
+.sp-tabs button.on .n{background:rgba(255,255,255,.18);color:#fff}
+.tb-row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;
+  padding:8px 0;border-bottom:1px dashed #eceada;font-size:12.5px}
+.tb-l{display:flex;gap:8px;align-items:flex-start;min-width:0}
+.tb-r{display:flex;align-items:center;gap:6px;flex:0 0 auto}
+.tb-tag{flex:0 0 auto;font-size:9.5px;font-weight:900;letter-spacing:.04em;border-radius:5px;padding:2px 7px;margin-top:1px}
+.tb-tag.in{background:#e9f3ec;border:1px solid var(--konline);color:#14512c}
+.tb-tag.out{background:#fdf1ef;border:1px solid #f0c9c4;color:#a8291f}
+.tb-amt{font-weight:900;font-variant-numeric:tabular-nums}
+.tb-amt.in{color:var(--matcha)} .tb-amt.out{color:var(--red)}
+.tb-rem{font-size:11.5px;font-style:italic;color:#8a6412;margin-top:2px}
+.tb-x{cursor:pointer;color:#cdd2da;font-weight:900;font-size:15px;padding:0 2px;line-height:1}
+.tb-x:hover{color:var(--red)}
+.tb-card{border:1px solid var(--line);border-radius:11px;padding:11px 12px;margin-bottom:10px;background:var(--card)}
+.tb-cur{display:inline-block;font-size:9.5px;font-weight:900;letter-spacing:.03em;background:var(--night);
+  color:#fff;border-radius:4px;padding:1px 6px;margin-bottom:7px}
+.tb-big{font-size:22px;font-weight:900;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--matcha)}
+.tb-big.neg{color:var(--red)}
+.tb-big span{display:block;font-size:11px;font-weight:700;color:var(--mute);letter-spacing:0;margin-top:2px}
+.tb-sub{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:3px 0}
+.tb-h{font-size:10.5px;font-weight:900;letter-spacing:.08em;color:var(--mute);
+  margin:10px 0 4px;border-top:1px dashed var(--line);padding-top:8px}
+.tb-up{font-size:11px;font-weight:900;color:var(--matcha)}
+.tb-down{font-size:11px;font-weight:900;color:var(--red)}
+.tb-even{font-size:11px;font-weight:700;color:var(--mute)}
+.tb-note{font-size:11px;color:var(--mute);line-height:1.45;margin-top:7px}
+.tb-warn{background:#fdf1ef;border:1px solid #f0c9c4;color:#a8291f;border-radius:8px;
+  padding:7px 9px;font-size:11.5px;line-height:1.45;margin-top:8px}
+.tb-form{display:grid;grid-template-columns:1fr;gap:8px}
+.tb-form input,.tb-form select{padding:7px 10px;border:1px solid var(--line);border-radius:8px;
+  font-family:inherit;font-size:13px;min-width:0;color:var(--ink)}
+.tb-go{border:none;border-radius:8px;padding:9px;font-family:inherit;font-weight:900;font-size:13px;cursor:pointer;color:#fff}
+.tb-go.in{background:var(--matcha)} .tb-go.out{background:var(--red)}
+
 </style>
 </head>
 <body>
@@ -991,7 +1062,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <div class="hd">
     <div class="kanjirow">
       <div class="kanji">東北・東京　八日間</div>
-      <span class="verchip" id="verChip" data-zh="v54 <span class=&quot;vd&quot;>更新于 2026年9月11日</span>">v54 <span class="vd">updated 11 Sep 2026</span></span>
+      <span class="verchip" id="verChip" data-zh="v57 <span class=&quot;vd&quot;>更新于 2026年9月11日</span>">v57 <span class="vd">updated 11 Sep 2026</span></span>
     </div>
     <h1 data-zh="日本东北 + 东京 <span class=&quot;jp&quot;>每日行程指南</span>">Japan Tohoku + Tokyo <span class="jp">Day-by-Day Guide</span></h1>
     <p data-zh="2026年10月4–11日 · 槟城出发跟团游 · 每天一条时间线：团队行程 + 购物任务 + 便利店打卡，全部标好时间和距离">4 – 11 Oct 2026 · Group tour from Penang · one timeline per day: tour plan + shopping missions + konbini runs, all with times &amp; distances</p>
@@ -1132,7 +1203,8 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <div class="donkibar" data-zh="🔴 <b>今天的 Donki：</b>没有 — 你在温泉乡深处。下个机会：<a href=&quot;#d5&quot;>第5天 筑波（打车）</a>。">🔴 <b>Donki today:</b> none — you're deep in onsen country. Next chance: <a href="#d5">Day 5 Tsukuba (taxi)</a>.</div>
   <div class="tl">
     <div class="row"><div class="t">7:30</div><div class="d" data-zh="Hotel Kameya 早餐 · <b>8:30</b> 出发（约 56 分钟，44 公里）">Breakfast @ Hotel Kameya · <b>8:30</b> depart (~56 min, 44km)</div></div>
-    <div class="row"><div class="t">9:30</div><div class="d" data-zh="<b>银山温泉老街</b>（2小时）— 大正时代木造旅馆街，「千与千寻」既视感<ul class=&quot;pts&quot;><li class=&quot;grp eat&quot;><span>🍴 要吃的</span></li><li><b>Haikara-san 现炸咖喱面包</b> — 约 ¥250</li><li class=&quot;grp buy&quot;><span>🛍 要买的</span></li><li>温泉馒头</li><li>小芥子木偶</li><li>山形水果甜点 — 晴王麝香葡萄和 La France 洋梨，<b>十月正当季</b></li></ul>"><b>Ginzan Onsen Street</b> (2h) — Taisho-era wooden ryokan street, the “Spirited Away” look<ul class="pts"><li class="grp eat"><span>🍴 TO EAT</span></li><li><b>Haikara-san curry bread</b> — fried fresh, ~¥250</li><li class="grp buy"><span>🛍 TO BUY</span></li><li>Onsen manju</li><li>Kokeshi dolls</li><li>Yamagata fruit sweets — shine muscat &amp; La France pear, <b>October is peak season</b></li></ul></div></div>
+    <div class="row"><div class="t">9:30</div><div class="d" data-zh="<b>银山温泉老街</b>（2小时）— 大正时代木造旅馆街，「千与千寻」既视感<ul class=&quot;pts&quot;><li class=&quot;grp eat&quot;><span>🍴 要吃的</span></li><li><b>はいからさん 咖喱面包</b> 约 ¥250 — 但在往瀑布的步道上，走过去 12 分钟，而且不一定是现炸的。看 <b>10:15</b></li><li class=&quot;grp buy&quot;><span>🛍 要买的</span></li><li>温泉馒头</li><li>小芥子木偶</li><li>山形水果甜点 — 晴王麝香葡萄和 La France 洋梨，<b>十月正当季</b></li></ul>"><b>Ginzan Onsen Street</b> (2h) — Taisho-era wooden ryokan street, the “Spirited Away” look<ul class="pts"><li class="grp eat"><span>🍴 TO EAT</span></li><li><b>Haikara-san curry bread</b> ~¥250 — but it’s 12 min out on the falls promenade, and often pre-made rather than fresh. See <b>10:15</b></li><li class="grp buy"><span>🛍 TO BUY</span></li><li>Onsen manju</li><li>Kokeshi dolls</li><li>Yamagata fruit sweets — shine muscat &amp; La France pear, <b>October is peak season</b></li></ul></div></div>
+    <div class="row add"><div class="t">10:15</div><div class="d" data-zh="<span class=&quot;badge add&quot;>加点</span><b>はいからさん 咖喱面包（名勇 银山店）</b><span class=&quot;dist&quot;>银山新畑 451 · 从下车点走 12 分钟 · 煤气灯街再往里 5 分钟</span><span class=&quot;geo&quot;><span class=&quot;pin&quot;>📍</span><b>不在主街上</b> — 在往<b>白银瀑布</b>方向的「はいからさん通り」步道上，从煤气灯街再走 5 分钟，从停车场算共 12 分钟。</span><span class=&quot;verdict tight&quot;>你有 2 小时，来回走路就要 24 分钟 — 想吃就早点去。</span><ul class=&quot;pts&quot;><li class=&quot;grp eat&quot;><span>🍴 要吃的</span></li><li>招牌咖喱面包，约 ¥250。包装纸上是撑伞的女子配煤气灯，很好拍</li><li><b>炸馒头（あげまんじゅう）</b>也值得 — 有评论说比咖喱面包还好吃</li><li class=&quot;grp info&quot;><span>ℹ 要注意的</span></li><li class=&quot;warn&quot;><b>不一定是现炸的。</b>评价只有 3.1 分，主要就是因为常常是<span class=&quot;k&quot;>预先做好、放凉了</span>的。买之前问一句「<i>あげたてですか？</i>」（是刚炸的吗），凉的就等下一锅</li><li class=&quot;warn&quot;>会排队 — 这是银山最有人气的小吃</li><li class=&quot;tip&quot;>天冷的时候特别好吃 — 十月的银山早上很凉</li></ul><span class=&quot;back&quot;>↩ 往回走 5 分钟回煤气灯街，12 分钟回停车场 · <a href=&quot;https://www.google.com/maps/search/?api=1&amp;query=Meiyuu+Ginzan+Haikara-san+street&quot;>地图</a></span>"><span class="badge add">ADD-ON</span><b>Haikara-san curry bread (Meiyuu Ginzan)</b><span class="dist">Ginzanshinhata 451 · 12 min from the drop-off · 5 min past the gas-lamp street</span><span class="geo"><span class="pin">📍</span><b>Not on the main street</b> — it’s on the Haikara-san promenade heading towards <b>Shirogane Falls</b>, 5 min beyond the gas-lamp street, or 12 min from the coach parking.</span><span class="verdict tight">You have 2 hours and the walk is 24 min return — go early if you want it.</span><ul class="pts"><li class="grp eat"><span>🍴 TO EAT</span></li><li>The signature curry bread, ~¥250. The wrapper art — a woman with an umbrella under a gas lamp — photographs well</li><li>The <b>fried manju (agemanju)</b> is worth it too — several reviewers rate it above the curry bread</li><li class="grp info"><span>ℹ GOOD TO KNOW</span></li><li class="warn"><b>It isn’t always fresh.</b> It sits at 3.1 stars mostly because it is often <span class="k">pre-made and cold</span>. Ask “<i>agetate desu ka?</i>” (is it just fried?) and wait for the next batch if not</li><li class="warn">Expect a queue — it’s the most popular snack in Ginzan</li><li class="tip">Much better in the cold, and an October morning in Ginzan is cold</li></ul><span class="back">↩ 5 min back to the gas-lamp street, 12 min to the parking · <a href="https://www.google.com/maps/search/?api=1&query=Meiyuu+Ginzan+Haikara-san+street">Map</a></span></div></div>
     <div class="row"><div class="t">12:00</div><div class="d" data-zh="<span class=&quot;fd&quot;>午餐：</span>天妇罗荞麦面套餐<button class=&quot;mealpic&quot; onclick=&quot;showMeal('d3l')&quot;>📷 看餐点</button> · <b>13:00</b> 出发去藏王（约 2小时10分，130公里）"><span class="fd">Lunch:</span> Tempura soba set<button class="mealpic" onclick="showMeal('d3l')">📷 see meal</button> · <b>13:00</b> depart to Zao (~2h10m, 130km)</div></div>
     <div class="row kon vital"><div class="t">13:40</div><div class="d" data-zh="<span class=&quot;badge stock&quot;>先囤货</span><span class=&quot;badge kon&quot;>便利店打卡</span><b>2 小时车程中的高速休息站（SA/PA）</b><span class=&quot;dist&quot;>0 分钟 · 巴士本来就会停</span><span class=&quot;geo&quot;><span class=&quot;pin&quot;>📍</span>完全不用绕路 — 超过 2 小时的车程，团车一定会停一次。</span><span class=&quot;verdict tight&quot;>今天主要的囤货点。今晚的旅馆走不到任何便利店。</span><ul class=&quot;pts&quot;><li class=&quot;grp buy&quot;><span>🛍 要买的</span></li><li>休息站有便利店区，还有<b>只在当地卖的零食</b>，之后见不到了</li><li>饮料在这里买好</li><li class=&quot;grp info&quot;><span>ℹ 要注意的</span></li><li class=&quot;warn&quot;>今晚旅馆步行范围内<span class=&quot;k&quot;>没有便利店</span></li></ul>"><span class="badge stock">STOCK UP</span><span class="badge kon">KONBINI RUN</span><b>Highway rest stop (SA/PA) on the 2h drive</b><span class="dist">0 min · the bus stops anyway</span><span class="geo"><span class="pin">📍</span>No detour — tour buses always break on a 2h+ leg.</span><span class="verdict tight">Your main stock-up today. Nothing is walkable at tonight’s ryokan.</span><ul class="pts"><li class="grp buy"><span>🛍 TO BUY</span></li><li>Rest stops have konbini corners plus <b>regional-only snacks</b> you won’t see again</li><li>Get your drinks here</li><li class="grp info"><span>ℹ GOOD TO KNOW</span></li><li class="warn">There is <span class="k">no konbini</span> within walking distance of tonight’s ryokan</li></ul></div></div>
     <div class="row"><div class="t">15:10</div><div class="d" data-zh="<b>藏王狐狸村</b>（1小时30分）— 100 多只自由放养的狐狸 🦊<ul class=&quot;pts&quot;><li class=&quot;grp buy&quot;><span>🛍 要买的</span></li><li>狐狸玩偶和周边 — 别处买不到</li><li class=&quot;grp info&quot;><span>ℹ 要注意的</span></li><li class=&quot;warn&quot;>背带、袋子都要拉好拉链 — 狐狸真的会来试探你</li></ul>"><b>Zao Fox Village</b> (1h30m) — 100+ free-roaming foxes 🦊
@@ -1453,7 +1525,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <div class="icard full">
     <p style="font-size:12.5px;color:var(--mute);margin-bottom:10px" data-zh="只保存在<b>这台手机／浏览器</b>（localStorage）— 不会同步到别人的设备。适合由一个人记录全团开销。先把团里每个人加一次，之后每笔支出随手记。">Saved on <b>this phone/browser only</b> (localStorage) — it won't sync to anyone else's device. Good for one person tracking the group's spending. Add everyone on the trip once, then log each expense as it happens.</p>
 
-    <div id="spMembersRow" style="margin-bottom:10px">
+    <div class="sp-tabs"><button id="spTabSplit" class="on" data-spmode="split" data-zh="💸 谁欠谁">💸 Who owes who</button><button id="spTabTabung" data-spmode="tabung" data-zh="🏦 Tabung 公款">🏦 Tabung (pool)</button></div><div id="tbPane" style="display:none"><p style="font-size:12.5px;color:var(--mute);margin-bottom:10px" data-zh="共同的钱箱：大家先把钱<b>放进去</b>，团体开销再从里面<b>拿出来</b>。适合你们有一笔共同基金，而不是各付各的再算谁欠谁。">A shared kitty: everyone pays money <b>in</b>, and group costs come <b>out</b> of it. Use this when you hold one common fund rather than tracking who owes whom.</p><div style="margin-bottom:10px"><div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="谁有份">Who is in the tabung</div><div id="tbMemberChips" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px"></div><div style="display:flex;gap:6px"><input id="tbNewMember" placeholder="Add name…" data-zh-ph="加名字…" style="flex:1;padding:7px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px"><button onclick="tbAddMember()" class="cpchip" style="cursor:pointer" data-zh="+ 新增">+ Add</button></div></div><div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap"><span style="font-size:11.5px;color:var(--mute)" data-zh="货币">Currency</span><select id="tbCur" style="padding:7px 8px;border:1px solid var(--line);border-radius:8px;font-size:13px;font-weight:700"><option value="JPY">¥ JPY</option><option value="MYR">RM MYR</option><option value="SGD">S$ SGD</option></select><span style="font-size:11px;color:var(--mute)" data-zh="用在下一笔">applies to the next entry</span></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px;color:var(--matcha)" data-zh="⬇ 存钱 — 有人出资">⬇ Money in — someone contributes</div><div class="tb-form"><select id="tbWho"></select><input id="tbInAmt" placeholder="Amount paid in" data-zh-ph="存入金额" type="number" step="0.01"><input id="tbInRemark" placeholder="Remark (optional)" data-zh-ph="备注（选填）"><button class="tb-go in" onclick="tbAddIn()" data-zh="记一笔存入">Add contribution</button></div></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px;color:var(--red)" data-zh="⬆ 花钱 — 从公款支出">⬆ Money out — paid from the pool</div><div class="tb-form"><input id="tbOutDesc" placeholder="What was it for? (e.g. Day 3 taxi)" data-zh-ph="花在哪？（例：第3天打车）"><input id="tbOutAmt" placeholder="Amount spent" data-zh-ph="支出金额" type="number" step="0.01"><input id="tbOutRemark" placeholder="Remark (optional)" data-zh-ph="备注（选填）"><button class="tb-go out" onclick="tbAddOut()" data-zh="记一笔支出">Add spending</button></div></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="公款状况">The pool</div><div id="tbBalance"></div></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="公款记录">Tabung log</div><div id="tbLog" style="font-size:12.5px"></div></div><div style="margin-top:12px"><button onclick="tbReset()" style="background:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--mute);cursor:pointer" data-zh="清空 Tabung">Clear the tabung</button></div></div><div id="spPane"><div id="spMembersRow" style="margin-bottom:10px">
       <div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="团队成员">Group members</div>
       <div id="spMemberChips" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px"></div>
       <div style="display:flex;gap:6px">
@@ -1501,7 +1573,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
       <div id="spSettle" style="font-size:13px"></div>
     </div>
 
-    <div style="margin-top:12px">
+    </div><div style="margin-top:12px">
       <button onclick="spReset()" style="background:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--mute);cursor:pointer" data-zh="清除所有分摊数据">Clear all split data</button>
     </div>
   </div>
@@ -1541,14 +1613,14 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 <details class="ref"><summary class="sec" id="shop"><span class="g">🛍</span><span data-zh="要买的清单 — 我自己的">Shopping list — what I’m hunting for</span><span class="ipill" id="shopHelpBtn" role="button" tabindex="0" title="How this works">i</span></summary>
 <div class="info">
   <div class="icard full">
-    <p class="pk-intro" data-zh="每个人的清单都不一样，所以这里只放了一个样本让你看格式。每一栏都能改，也能自己加。数量填 <b>-1</b> 就会显示「能买多少买多少」。存在<b>这台手机</b>里。">Everyone’s list is different, so there’s one sample here to show the shape of it. Every field is editable and you can add your own. Put <b>-1</b> in Quantity and it shows as “as many as possible”. Saved on <b>this phone only</b>.</p>
+    <p class="pk-intro" data-zh="每个人的清单都不一样，所以这里只放了一个样本让你看格式。每一栏都能改，也能自己加。数量填 <b>-1</b> 就会显示「能买多少买多少」。<b>价格</b>是自由文字 — 看到多少就写多少。存在<b>这台手机</b>里。">Everyone’s list is different, so there’s one sample here to show the shape of it. Every field is editable and you can add your own. Put <b>-1</b> in Quantity and it shows as “as many as possible”. <b>Price</b> is free text — write it the way you saw it on the shelf. Saved on <b>this phone only</b>.</p>
     <div class="sytabs" id="slTabs" style="margin-bottom:9px"></div>
     <div class="slfil" id="slFilters"></div>
     <div class="pk-top">
       <div class="pk-topline"><div class="pk-count" id="slProgress"></div></div>
       <div class="pk-track"><div class="pk-fill" id="slFill" style="width:0%"></div></div>
     </div>
-    <div id="shopHelpHost" data-zh="<div class=&quot;helpp&quot; id=&quot;shopHelp&quot;><div class=&quot;hh&quot;><span>购物清单怎么用</span><button id=&quot;shopHelpClose&quot;>知道了</button></div><div class=&quot;hb&quot;><div class=&quot;brief&quot;><div><span class=&quot;e&quot;>✅</span><div><b>买到就打勾。</b> 上面的进度条会往前走。</div></div><div><span class=&quot;e&quot;>✎</span><div><b>「编辑」才展开细节</b> — 哪里买、链接、数量、图片、备注。平时收起来，清单才不会太长。</div></div><div><span class=&quot;e&quot;>∞</span><div><b>数量填 −1</b> 就是「能买多少买多少」。</div></div><div><span class=&quot;e&quot;>📱</span><div><b>只存在这台设备。</b> 要搬到手机就用同步功能。</div></div></div><div class=&quot;hcap&quot;>一步一步</div><ol class=&quot;hsteps&quot;><li><b>新增</b> — 在最下面的框输入名字，按「新增」。它的编辑区会自动打开。</li><li><b>知道多少填多少。</b>每一栏都可以留空。<b>哪里买</b>和<b>参考链接</b>可以用逗号分开填几个，会变成可点的小标签。</li><li><b>贴图片链接</b>就会显示在旁边。如果显示「图片载入失败」，就是链接过期了 — 换一个。</li><li><b>买到就打勾。</b>卡片会变淡，计数往前走。</li><li><b>要删除</b>：先按「编辑」，再用最下面那个红色按钮 — 故意放远，避免误触。</li><li><b>要搬到手机？</b>打开下面的 <i>{ } 同步／备份</i>，按「复制」，再在手机上同一个面板里贴上、按「载入」。</li></ol><div class=&quot;syhint&quot; style=&quot;margin-top:11px;background:#fff;border:1px solid #e6cf9a;border-radius:8px;padding:8px 10px&quot;><b>一个提醒：</b>清单存在这个浏览器里。清除浏览数据就会消失，而且不会自己同步 — 那就是同步面板的用途。</div></div></div>"><div class="helpp" id="shopHelp"><div class="hh"><span>How the shopping list works</span><button id="shopHelpClose">got it</button></div><div class="hb"><div class="brief"><div><span class="e">✅</span><div><b>Tick as you buy.</b> The bar at the top counts down.</div></div><div><span class="e">✎</span><div><b>Edit opens the details</b> — where to buy, links, quantity, photo, remark. Kept closed so the list stays short.</div></div><div><span class="e">∞</span><div><b>Quantity −1</b> means “as many as possible”.</div></div><div><span class="e">📱</span><div><b>Saved on this device only.</b> Use sync to move it to your phone.</div></div></div><div class="hcap">STEP BY STEP</div><ol class="hsteps"><li><b>Add an item</b> — type a name in the box at the bottom and press Add. Its editor opens automatically.</li><li><b>Fill in what you know.</b> Every field is optional. <b>Where to buy</b> and <b>Reference links</b> take several values separated by commas, and become tappable chips.</li><li><b>Paste a photo URL</b> to see it beside the item. If it shows “Photo didn’t load”, the link has expired — replace it.</li><li><b>Tick it</b> once bought. The card fades and the counter moves.</li><li><b>To delete</b>, open Edit and use the red button at the very bottom — placed away from everything else on purpose.</li><li><b>Moving to your phone?</b> Open <i>{ } sync / backup</i> below, press Copy, then paste it into the same panel on the phone and press Load.</li></ol><div class="syhint" style="margin-top:11px;background:#fff;border:1px solid #e6cf9a;border-radius:8px;padding:8px 10px"><b>One caution:</b> the list lives in this browser. Clearing browsing data wipes it, and it does not sync by itself — that is what the sync panel is for.</div></div></div></div>
+    <div id="shopHelpHost" data-zh="<div class=&quot;helpp&quot; id=&quot;shopHelp&quot;><div class=&quot;hh&quot;><span>购物清单怎么用</span><button id=&quot;shopHelpClose&quot;>知道了</button></div><div class=&quot;hb&quot;><div class=&quot;brief&quot;><div><span class=&quot;e&quot;>✅</span><div><b>买到就打勾。</b> 上面的进度条会往前走。</div></div><div><span class=&quot;e&quot;>✎</span><div><b>「编辑」才展开细节</b> — 哪里买、链接、数量、价格、图片、备注。平时收起来，清单才不会太长。</div></div><div><span class=&quot;e&quot;>∞</span><div><b>数量填 −1</b> 就是「能买多少买多少」。</div></div><div><span class=&quot;e&quot;>📱</span><div><b>只存在这台设备。</b> 要搬到手机就用同步功能。</div></div></div><div class=&quot;hcap&quot;>一步一步</div><ol class=&quot;hsteps&quot;><li><b>新增</b> — 在最下面的框输入名字，按「新增」。它的编辑区会自动打开。</li><li><b>知道多少填多少。</b>每一栏都可以留空。<b>哪里买</b>和<b>参考链接</b>可以用逗号分开填几个，会变成可点的小标签。</li><li><b>贴图片链接</b>就会显示在旁边。如果显示「图片载入失败」，就是链接过期了 — 换一个。</li><li><b>买到就打勾。</b>卡片会变淡，计数往前走。</li><li><b>要删除</b>：先按「编辑」，再用最下面那个红色按钮 — 故意放远，避免误触。</li><li><b>要搬到手机？</b>打开下面的 <i>{ } 同步／备份</i>，按「复制」，再在手机上同一个面板里贴上、按「载入」。</li></ol><div class=&quot;syhint&quot; style=&quot;margin-top:11px;background:#fff;border:1px solid #e6cf9a;border-radius:8px;padding:8px 10px&quot;><b>一个提醒：</b>清单存在这个浏览器里。清除浏览数据就会消失，而且不会自己同步 — 那就是同步面板的用途。</div></div></div>"><div class="helpp" id="shopHelp"><div class="hh"><span>How the shopping list works</span><button id="shopHelpClose">got it</button></div><div class="hb"><div class="brief"><div><span class="e">✅</span><div><b>Tick as you buy.</b> The bar at the top counts down.</div></div><div><span class="e">✎</span><div><b>Edit opens the details</b> — where to buy, links, quantity, price, photo, remark. Kept closed so the list stays short.</div></div><div><span class="e">∞</span><div><b>Quantity −1</b> means “as many as possible”.</div></div><div><span class="e">📱</span><div><b>Saved on this device only.</b> Use sync to move it to your phone.</div></div></div><div class="hcap">STEP BY STEP</div><ol class="hsteps"><li><b>Add an item</b> — type a name in the box at the bottom and press Add. Its editor opens automatically.</li><li><b>Fill in what you know.</b> Every field is optional. <b>Where to buy</b> and <b>Reference links</b> take several values separated by commas, and become tappable chips.</li><li><b>Paste a photo URL</b> to see it beside the item. If it shows “Photo didn’t load”, the link has expired — replace it.</li><li><b>Tick it</b> once bought. The card fades and the counter moves.</li><li><b>To delete</b>, open Edit and use the red button at the very bottom — placed away from everything else on purpose.</li><li><b>Moving to your phone?</b> Open <i>{ } sync / backup</i> below, press Copy, then paste it into the same panel on the phone and press Load.</li></ol><div class="syhint" style="margin-top:11px;background:#fff;border:1px solid #e6cf9a;border-radius:8px;padding:8px 10px"><b>One caution:</b> the list lives in this browser. Clearing browsing data wipes it, and it does not sync by itself — that is what the sync panel is for.</div></div></div></div>
     <div id="slBody"></div>
     <div id="syncHost" data-zh="<div class=&quot;advrow&quot;><button class=&quot;advlink&quot; id=&quot;syncBtn&quot;>{ } 同步／备份</button></div><div class=&quot;syncp&quot; id=&quot;syncPanel&quot;><div class=&quot;ph&quot;><span>{ } 同步 &amp;amp; 备份</span><button id=&quot;syncClose&quot;>关闭</button></div><div class=&quot;pb&quot;><div class=&quot;sytabs&quot;><button id=&quot;syTabA&quot; class=&quot;on&quot;>🎁 手信</button><button id=&quot;syTabB&quot;>🍜 想试</button><button id=&quot;syTabC&quot;>全部</button></div><div id=&quot;syPaneA&quot;><div class=&quot;syhint&quot;>只有手信清单。在这里复制，到另一台设备的同一个页签贴上 — 想试清单不会被动。</div><textarea id=&quot;syJsonA&quot; spellcheck=&quot;false&quot;></textarea><div class=&quot;sybtns&quot;><button class=&quot;primary&quot; data-sycopy=&quot;A&quot;>复制</button><button data-syload=&quot;A&quot;>载入贴上的内容</button><button data-syread=&quot;A&quot;>重新读取本机</button></div><div class=&quot;systat&quot; id=&quot;syStatA&quot;></div></div><div id=&quot;syPaneB&quot; style=&quot;display:none&quot;><div class=&quot;syhint&quot;>只有想试清单。同理 — 在这里载入只会覆盖这一份，不影响手信清单。</div><textarea id=&quot;syJsonB&quot; spellcheck=&quot;false&quot;></textarea><div class=&quot;sybtns&quot;><button class=&quot;primary&quot; data-sycopy=&quot;B&quot;>复制</button><button data-syload=&quot;B&quot;>载入贴上的内容</button><button data-syread=&quot;B&quot;>重新读取本机</button></div><div class=&quot;systat&quot; id=&quot;syStatB&quot;></div></div><div id=&quot;syPaneC&quot; style=&quot;display:none&quot;><div class=&quot;syhint&quot;>一次搬全部 — 两份购物清单、行李清单、旅费分摊、拍摄清单，还有语言设定。换新手机时用这个。</div><textarea id=&quot;syJsonC&quot; spellcheck=&quot;false&quot;></textarea><div class=&quot;sybtns&quot;><button class=&quot;primary&quot; data-sycopy=&quot;C&quot;>复制全部</button><button class=&quot;danger&quot; data-syload=&quot;C&quot;>覆盖全部</button><button data-syread=&quot;C&quot;>重新读取本机</button></div><div class=&quot;systat&quot; id=&quot;syStatC&quot;></div><div class=&quot;syhint&quot; style=&quot;color:#a8291f&quot;><b>⚠ 这里面包含行李清单的勾选。</b>贴上旧备份会把那些也退回去。</div></div><div class=&quot;syhint&quot; style=&quot;margin-top:10px;border-top:1px dashed var(--line);padding-top:8px&quot;>载入前会先检查内容，告诉你读到了什么，并且覆盖前会先问你。从来没动过的区块本来就没保存，不会出现在复制内容里 — 这是正常的。</div></div></div>"><div class="advrow"><button class="advlink" id="syncBtn">{ } sync / backup</button></div><div class="syncp" id="syncPanel"><div class="ph"><span>{ } Sync &amp; backup</span><button id="syncClose">close</button></div><div class="pb"><div class="sytabs"><button id="syTabA" class="on">🎁 Souvenirs</button><button id="syTabB">🍜 To try</button><button id="syTabC">Everything</button></div><div id="syPaneA"><div class="syhint">Just the souvenir list. Copy here, paste into this same tab on the other device — your To-try list is left untouched.</div><textarea id="syJsonA" spellcheck="false"></textarea><div class="sybtns"><button class="primary" data-sycopy="A">Copy</button><button data-syload="A">Load from pasted text</button><button data-syread="A">Re-read this device</button></div><div class="systat" id="syStatA"></div></div><div id="syPaneB" style="display:none"><div class="syhint">Just the To-try list. Same idea — loading here replaces only this list, not your souvenirs.</div><textarea id="syJsonB" spellcheck="false"></textarea><div class="sybtns"><button class="primary" data-sycopy="B">Copy</button><button data-syload="B">Load from pasted text</button><button data-syread="B">Re-read this device</button></div><div class="systat" id="syStatB"></div></div><div id="syPaneC" style="display:none"><div class="syhint">Everything at once — both shopping lists, packing list, expense split, reels and your language choice. For moving to a new phone.</div><textarea id="syJsonC" spellcheck="false"></textarea><div class="sybtns"><button class="primary" data-sycopy="C">Copy all</button><button class="danger" data-syload="C">Replace everything</button><button data-syread="C">Re-read this device</button></div><div class="systat" id="syStatC"></div><div class="syhint" style="color:#a8291f"><b>⚠ This includes your packing ticks.</b> Pasting an older backup will roll those back too.</div></div><div class="syhint" style="margin-top:10px;border-top:1px dashed var(--line);padding-top:8px">Loading checks the text first, tells you what it found, and asks before replacing anything. A section you have never touched has nothing saved yet, so it will not appear in the copy — that is normal.</div></div></div></div>
   </div>
@@ -1639,7 +1711,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 </div>
 </details>
 
-<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v54</b> · 更新于 2026年9月11日</span>">Built for your 4–11 Oct 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v54</b> · updated 11 Sep 2026</span></footer>
+<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v57</b> · 更新于 2026年9月11日</span>">Built for your 4–11 Oct 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v57</b> · updated 11 Sep 2026</span></footer>
 
 <script>
 // ===== Trip Split (localStorage-backed, this device only) =====
@@ -2511,6 +2583,9 @@ var RC_LOCS=[
  ["Shinjuku (D6 hotel area)","hands","HANDS Shinjuku (Times Sq)",35.68708,139.70222,0,"HANDS 新宿店（Times Sq）"],
  ["Shinjuku (D6 hotel area)","keio","Keio Department Store",35.69013,139.69919,0,"京王百货"],
  ["Shinjuku (D6 hotel area)","ospharm","O.S. Pharmacy (west basement)",35.69092,139.69674,0,"O.S. Pharmacy（西口地下）"],
+ ["Ginzan Onsen (D3)","ginzan_park","Ginzan Onsen bus parking (drop-off)",38.57308,140.52522,0,"银山温泉 停车场（下车点）"],
+ ["Ginzan Onsen (D3)","ginzan_st","Ginzan gas-lamp street",38.57055,140.52930,0,"银山温泉 煤气灯街"],
+ ["Ginzan Onsen (D3)","haikara","Haikara-san curry bread (Meiyuu)",38.56919,140.53210,0,"はいからさん 咖喱面包（名勇）"],
  ["Shibuya (D6 free hour)","crossing","Shibuya Crossing (tour drop-off)",35.65950,139.70050,0,"涩谷十字路口（旅行团下车点）"],
  ["Shibuya (D6 free hour)","nanaya","Nanaya Aoyama (matcha)",35.66034,139.70756,0,"Nanaya 青山店（抹茶）"],
  ["Shibuya (D6 free hour)","megadonki","MEGA Donki Shibuya",35.66039,139.69782,0,"MEGA Donki 涩谷店"],
@@ -3016,7 +3091,7 @@ document.addEventListener("DOMContentLoaded", function(){ rlRenderAll(); });
 <script>
 // ===== Shopping list (localStorage-backed, this device only) =====
 var SL_KEY = "japanTripShop_v2";
-var SL_SEED = "2026-09-11c";   /* bump this whenever the seeded items below change */
+var SL_SEED = "2026-09-11e";   /* bump this whenever the seeded items below change */
 var SL_MODES = ["souv","daily"];
 /* Two lists live in one array, told apart by item.list:
      souv  = carry it home      daily = eat / use / do it there           */
@@ -3024,6 +3099,8 @@ function slModeOf(v){ return SL_MODES.indexOf(v) > -1 ? v : "souv"; }
 
 function slDefaults(){
   return {seed: SL_SEED, mode:"souv", items:[
+
+    /* ---------- \ud83c\udf81 SOUVENIRS \u2014 carry it home ---------- */
     {id:"sl1", done:false, list:"souv",
      name:"Seika ZEN Shampoo",
      photo:"https://images.openai.com/thumbnails/url/oRwjOXicDcnbCoIwAADQL_J-KyFCGURKFmqlexGd5jSdS4faPqe_6m_qvJ7vBzNGJ1uSKoLGN2VVKbCCKGI9sZw1SERDL014oLQh9f61-5_tBOX2gOJhBB7lHq-n_uKXJIJVm1pr4sK6gpQtudBha5HTLHQw0sxTFBc6yGZexJCtPDVA8giUq4uFY5e7qnlrwvty1tUcyE--3jXSbrRxNvxRBj-sCDpl",
@@ -3031,28 +3108,31 @@ function slDefaults(){
      where:"Donki, OS Drug, HANDS Shibuya",
      links:"http://xhslink.com/o/9pwCD8Zo1TP, http://xhslink.com/o/9RB8L25ucbN",
      qty:"-1",
-     remark:"Buy as much as possible",
-     edited:["desc"]},
+     price:"",
+     remark:"",
+     edited:["desc","remark"]},
 
     {id:"sl2", done:false, list:"souv",
      name:"Nanaya Premium Matcha — 7 Levels Sticks",
      photo:"https://yusentea.co.uk/cdn/shop/files/MorihanMatchaChocolate_withbrownricecrunch.webp?v=1775547796&width=600",
-     desc:"8 种 × 每种 2 支，共 16 支：抹茶浓度 1（清淡）→ 7（全世界最浓），再加 1 种焾茶。（14 支抹茶 63g + 2 支焾茶 9g）",
+     desc:"8 种 × 每种 2 支，共 16 支：抹茶浓度 1（清淡）→ 7（全世界最浓），再加 1 种焾茶。\n¥3,024, Limited one to each person",
      where:"Nanaya Aoyama · D6 15:40 · EAST lane",
      links:"http://xhslink.com/o/9zMQH3kYYS9, https://yusentea.co.uk/products/nanaya-premium-matcha-7-levels-stick-chocolates-1",
      qty:"1",
-     remark:"¥3,024, Limited one to each person",
-     edited:["remark", "desc"]},
+     price:"¥3,024",
+     remark:"",
+     edited:["remark","desc"]},
 
     {id:"sl3", done:false, list:"souv",
      name:"Pocky 宇治抹茶 Stick",
      photo:"data:image/jpeg;base64,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",
-     desc:"比普通 Pocky 粗1.5 倍大",
+     desc:"比普通 Pocky 粗1.5 倍大, ¥800",
      where:"Donki",
      links:"https://cp.pocky.jp/jimoto-pocky/product/",
      qty:"1",
-     remark:"官方定价约 ¥800，1500 可能是两盒或观光加价",
-     edited:["desc", "remark"]},
+     price:"¥800",
+     remark:"",
+     edited:["desc","remark"]},
 
     {id:"sl4", done:false, list:"souv",
      name:"龍角散 Ryukakusan",
@@ -3061,6 +3141,7 @@ function slDefaults(){
      where:"Donki",
      links:"",
      qty:"1",
+     price:"",
      remark:"",
      edited:["desc"]},
 
@@ -3071,8 +3152,9 @@ function slDefaults(){
      where:"Shibuya Loft, Ginza Loft",
      links:"",
      qty:"",
+     price:"",
      remark:"",
-     edited:["name", "remark", "photo", "where"]},
+     edited:["name","remark","photo","where"]},
 
     {id:"SteamEyeMask2", done:false, list:"souv",
      name:"めぐりズム Steam Eye Mask (Kao MegRhythm)",
@@ -3081,8 +3163,9 @@ function slDefaults(){
      where:"Donki, OS Drug, HANDS",
      links:"",
      qty:"1",
+     price:"¥900–1,100 / 12片",
      remark:"约 ¥900–1,100／12片（Donki 更便宜，还有 Donki 限定包装）· 无香料最保险",
-     edited:["name", "photo", "desc", "where", "links", "qty", "remark"]},
+     edited:["name","photo","desc","where","links","qty","remark"]},
 
     {id:"lamian", done:false, list:"souv",
      name:"一蘭拉面 Ichiran take-home box",
@@ -3091,18 +3174,9 @@ function slDefaults(){
      where:"Ichiran Kabukicho · D6 20:30",
      links:"",
      qty:"1",
+     price:"¥2,000 / 5份",
      remark:"约 ¥2,000／5份 · 店里就能买，不必去机场",
-     edited:["name", "photo", "desc", "where", "links", "qty", "remark"]},
-
-    {id:"photo", done:false, list:"souv",
-     name:"日本胶片机 Film camera",
-     photo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyln6PLnXLCmJGWGs1_MHvIxwzLNoByp2PiQgc2EELdg&s=10",
-     desc:"Bic Camera 新宿东口有胶卷、一次性相机（QuickSnap）、拍立得和二手机身镜头，一栋楼买齐。",
-     where:"Bic Camera Shinjuku East · D6 21:15",
-     links:"",
-     qty:"1",
-     remark:"⚠ 二手机身价差很大 — 想认真买二手，新宿的 Map Camera 比 Donki 靠谱得多",
-     edited:["name", "photo", "desc", "where", "links", "qty", "remark"]},
+     edited:["name","photo","desc","where","links","qty","remark"]},
 
     {id:"handcream5", done:false, list:"souv",
      name:"Hand cream",
@@ -3111,8 +3185,9 @@ function slDefaults(){
      where:"Donki, OS Drug",
      links:"",
      qty:"1",
+     price:"¥300–700",
      remark:"约 ¥300–700 · 便宜就在 OS Drug 买（比 Donki 便宜约 ¥200）",
-     edited:["name", "photo", "desc", "where", "links", "qty", "remark"]},
+     edited:["name","photo","desc","where","links","qty","remark"]},
 
     {id:"xiuzhu6", done:false, list:"souv",
      name:"休足時間 Kyusoku Jikan foot patch",
@@ -3121,8 +3196,9 @@ function slDefaults(){
      where:"Donki, OS Drug",
      links:"",
      qty:"1",
+     price:"¥400–600 / 18片",
      remark:"约 ¥400–600／18片 · 蓝色：脚底（有颗粒）· 粉色：小腿",
-     edited:["name", "photo", "desc", "where", "links", "qty", "remark"]},
+     edited:["name","photo","desc","where","links","qty","remark"]},
 
     {id:"Ashimegu17", done:false, list:"souv",
      name:"めぐりズム じんわりスチーム 足パック (foot pack)",
@@ -3131,18 +3207,20 @@ function slDefaults(){
      where:"Donki, OS Drug",
      links:"",
      qty:"1",
+     price:"¥500–700 / 6片",
      remark:"约 ¥500–700／6片 · ⚠ 跟休足時間不一样：一个热、一个冰，两个都想要就都买",
-     edited:["name", "photo", "desc", "where", "links", "qty", "remark"]},
+     edited:["name","photo","desc","where","links","qty","remark"]},
 
     {id:"Royce7", done:false, list:"souv",
      name:"Royce’ Nama Chocolate",
      photo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkIP20U1AoGtkeSXW80Y8vqiNn3iU8pczqOlqeHCMsTA&s=10",
      desc:"北海道生巧克力，口感接近松露巧克力。需要冷藏，店家会附保冷袋。",
      where:"Narita airport · D8 8:30",
-     links:"",
+     links:"http://xhslink.com/o/7r2sT8CEwmF",
      qty:"1",
+     price:"¥800–900 / 盒",
      remark:"约 ¥800–900／盒 · ⚠ 最后才买，附保冷袋，常温放不久",
-     edited:["name", "photo", "desc", "where", "links", "qty", "remark"]},
+     edited:["name","photo","desc","where","links","qty","remark"]},
 
     {id:"NewYorkPerfectCheese8", done:false, list:"souv",
      name:"New York Perfect Cheese",
@@ -3151,8 +3229,9 @@ function slDefaults(){
      where:"Tokyo Station (D2 9:15–10:05) or Haneda T1 (D1 arrival)",
      links:"",
      qty:"1",
+     price:"",
      remark:"⚠ 成田机场没有！常设店只在东京站和羽田 T1 — 你从成田飞走，所以要在第 2 天早上东京站买，或第 1 天到羽田时买",
-     edited:["name", "photo", "desc", "where", "links", "qty", "remark"]},
+     edited:["name","photo","desc","where","links","qty","remark"]},
 
     {id:"IyemonPudding9", done:false, list:"souv",
      name:"伊右衛門 宇治抹茶布丁",
@@ -3161,8 +3240,9 @@ function slDefaults(){
      where:"Konbini / supermarket, Airport",
      links:"",
      qty:"1",
+     price:"",
      remark:"⚠ 冷藏品，带不回马来西亚 — 当成在日本要吃的，不是手信",
-     edited:["name", "photo", "desc", "where", "links", "qty", "remark"]},
+     edited:["name","photo","desc","where","links","qty","remark"]},
 
     {id:"TokyoBanana10", done:false, list:"souv",
      name:"Tokyo Banana",
@@ -3171,8 +3251,9 @@ function slDefaults(){
      where:"Narita airport (D8) · also Tokyo Tower gift shop (D7 9:00)",
      links:"",
      qty:"1",
+     price:"¥1,200 / 8个",
      remark:"约 ¥1,200／8个 · 第 7 天东京塔就能买，不用等机场",
-     edited:["name", "photo", "desc", "where", "links", "qty", "remark"]},
+     edited:["name","photo","desc","where","links","qty","remark"]},
 
     {id:"ShiroiKoibito11", done:false, list:"souv",
      name:"白色恋人 Shiroi Koibito",
@@ -3181,8 +3262,9 @@ function slDefaults(){
      where:"Narita airport duty-free · D8",
      links:"",
      qty:"1",
+     price:"¥800 / 12片",
      remark:"约 ¥800／12片 · 北海道产但全国机场都有",
-     edited:["name", "photo", "desc", "where", "links", "qty", "remark"]},
+     edited:["name","photo","desc","where","links","qty","remark"]},
 
     {id:"BioreCoolSheet12", done:false, list:"souv",
      name:"Biore 冷感湿纸巾 (さらさらパウダーシート)",
@@ -3191,8 +3273,9 @@ function slDefaults(){
      where:"Donki, OS Drug, konbini",
      links:"",
      qty:"1",
+     price:"¥300–450",
      remark:"约 ¥300–450 · 便利店有小包装，可以先试",
-     edited:["name", "photo", "desc", "where", "links", "qty", "remark"]},
+     edited:["name","photo","desc","where","links","qty","remark"]},
 
     {id:"PokemonCard13", done:false, list:"souv",
      name:"Pokémon Cards",
@@ -3201,8 +3284,9 @@ function slDefaults(){
      where:"Pokémon Center SHIBUYA · Shibuya PARCO 6F",
      links:"",
      qty:"1",
+     price:"",
      remark:"💡 就在 HUMAN MADE 楼上！同一栋 PARCO：1 楼 HUMAN MADE、6 楼宝可梦中心 — 西路一次上两站",
-     edited:["name", "photo", "desc", "where", "links", "qty", "remark"]},
+     edited:["name","photo","desc","where","links","qty","remark"]},
 
     {id:"MelonCake14", done:false, list:"souv",
      name:"Melon Cake",
@@ -3211,8 +3295,9 @@ function slDefaults(){
      where:"",
      links:"",
      qty:"1",
+     price:"",
      remark:"❓ 想确认是哪一款：夕张蜜瓜蛋糕（北海道限定，这趟买不到）？还是茨城蜜瓜甜点（第 6 天日立海滨公园有）？",
-     edited:["name", "photo", "desc", "where", "links", "qty", "remark"]},
+     edited:["name","photo","desc","where","links","qty","remark"]},
 
     {id:"QualityFirstMasks15", done:false, list:"souv",
      name:"Quality First 面膜",
@@ -3221,8 +3306,9 @@ function slDefaults(){
      where:"Donki, OS Drug, HANDS, LOFT",
      links:"",
      qty:"1",
+     price:"¥1,500 / 30片",
      remark:"约 ¥1,500／30片 · 大盒装比单片划算，OS Drug 通常最便宜",
-     edited:["name", "photo", "desc", "where", "links", "qty", "remark"]},
+     edited:["name","photo","desc","where","links","qty","remark"]},
 
     {id:"PockyMelon16", done:false, list:"souv",
      name:"地元ポッキー 夕張メロン (Yubari Melon Pocky)",
@@ -3231,9 +3317,55 @@ function slDefaults(){
      where:"Donki",
      links:"",
      qty:"1",
+     price:"",
      remark:"⚠ 买不到：这是北海道限定，销售地区只有北海道，而你走东北 + 东京。路线上买得到的：【佐藤錦】东北限定（第2–4天）、【東京あまざけ】东京圈限定（第6–8天）",
-     edited:["name", "photo", "desc", "where", "links", "qty", "remark"]},
+     edited:["name","photo","desc","where","links","qty","remark"]},
 
+    {id:"sl5", done:false, list:"souv",
+     name:"Brûlée Cream Tart ブリュレクリームタルト — BRULEE MERIZE",
+     photo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd4S5wRybK44u43Cb4TG9yl-90-hzIYbEtfvZOfgGcJw&s",
+     desc:"The brand's everyday boxed tart and the one that travels: crisp cocotte shell, Madagascar-vanilla and rum custard, torched top, bitter caramel underneath. Over 2 million sold, and it took the #1 spot in Tokyo Gift Palette's own half-year sales ranking.",
+     where:"Tokyo Gift Palette, Tokyo Station 1F (Yaesu North)",
+     links:"",
+     qty:"1",
+     price:"¥907 / 4 · ¥1,814 / 8 · ¥2,721 / 12",
+     remark:"¥907 for 4 · ¥1,814 for 8 · ¥2,721 for 12  · no queue ticket needed, unlike the Bruletta on the To-try list · same caveat though: Tokyo Station is only on the D7 ALT PLAN Route B path",
+     edited:["photo","remark","desc"]},
+
+    {id:"sd19", done:false, list:"souv",
+     name:"Kyushin 救心 — herbal heart tonic",
+     photo:"https://www.indochinaginseng.com/cdn/shop/files/kyuushin1.jpg?v=1715998670",
+     desc:"Tiny silver-coated pills, a very old Japanese OTC remedy sold for palpitations, breathlessness and dizziness. ",
+     where:"Drugstores, Donki",
+     links:"",
+     qty:"",
+     price:"¥3,000–15,000",
+     remark:" ~¥3,000–15,000 depending on pill count · ⚠ check two things first: it contains animal-derived ingredients including musk (ジャコウ), which is CITES-controlled and can be seized at customs — confirm Malaysian import rules before buying a large box.",
+     edited:["desc","remark"]},
+
+    {id:"slmtv9ohbo", done:false, list:"souv",
+     name:"Hokkaido Smoked Cheese Squid",
+     photo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJcN1YcpHoQEGGMqFVo6elbqt3KOZwXXa1IyyK4Kea0g&s=10",
+     desc:"仙贝 / 鱿鱼",
+     where:"",
+     links:"",
+     qty:"1",
+     price:"",
+     remark:"",
+     edited:["name","photo","desc","where","links","qty","remark"]},
+
+    {id:"slmtwah4jt", done:false, list:"souv",
+     name:"抹茶千岁 Matcha Chitose",
+     photo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_FbivlnjHiO0J_N8vd-o4BtYMmhuo1ismAWlbS2UypA&s",
+     desc:"",
+     where:"Airport",
+     links:"http://xhslink.com/o/7hmRGZCNmd6",
+     qty:"",
+     price:"",
+     remark:"",
+     edited:["name","photo","desc","where","links","qty","remark"]},
+
+    /* ---------- \ud83c\udf5c TO TRY THERE \u2014 eat / drink / use it there ---------- */
     {id:"sd1", done:false, list:"daily",
      name:"Zunda shake ずんだシェイク",
      photo:"https://s3-ap-northeast-1.amazonaws.com/thegate/2021/02/10/12/13/47/Zunda%20Saryo%20.jpg",
@@ -3241,7 +3373,9 @@ function slDefaults(){
      where:"Zunda Saryo — Sendai Station 3F (D2, 11:40)",
      links:"",
      qty:"",
-     remark:"~¥350 · set a phone alarm for the bus before you queue"},
+     price:"¥350",
+     remark:"~¥350 · set a phone alarm for the bus before you queue",
+     edited:[]},
 
     {id:"sd3", done:false, list:"daily",
      name:"Nanaya matcha gelato — level 7",
@@ -3250,7 +3384,9 @@ function slDefaults(){
      where:"Nanaya Aoyama (D6 15:40, EAST lane)",
      links:"",
      qty:"",
-     remark:"Same shop as the 7-levels chocolate box on the souvenir list"},
+     price:"",
+     remark:"Same shop as the 7-levels chocolate box on the souvenir list",
+     edited:[]},
 
     {id:"sd4", done:false, list:"daily",
      name:"Ichiran ramen — solo booth",
@@ -3259,7 +3395,9 @@ function slDefaults(){
      where:"Ichiran Kabukicho (D6 20:30, 24h)",
      links:"",
      qty:"",
-     remark:"~¥1,100–1,600 · after 9pm the queue shrinks"},
+     price:"¥1,100–1,600",
+     remark:"~¥1,100–1,600 · after 9pm the queue shrinks",
+     edited:[]},
 
     {id:"sd5", done:false, list:"daily",
      name:"Tamagoyaki on a stick, Tsukiji",
@@ -3268,7 +3406,9 @@ function slDefaults(){
      where:"Tsukiji outer market (D7 10:50)",
      links:"",
      qty:"",
-     remark:"Cash is quickest at the stalls"},
+     price:"",
+     remark:"Cash is quickest at the stalls",
+     edited:[]},
 
     {id:"sd6", done:false, list:"daily",
      name:"Matcha parfait — Nakamura Tokichi",
@@ -3277,7 +3417,9 @@ function slDefaults(){
      where:"GINZA SIX 4F (D7 ALT PLAN, 1:45pm)",
      links:"",
      qty:"",
-     remark:"Only reachable if you skip the Shisui outlets"},
+     price:"",
+     remark:"Only reachable if you skip the Shisui outlets",
+     edited:[]},
 
     {id:"sd10", done:false, list:"daily",
      name:"Ohayo milk pudding オハヨー ジャージー牛乳プリン",
@@ -3286,7 +3428,9 @@ function slDefaults(){
      where:"7-Eleven, FamilyMart, Lawson, supermarkets",
      links:"",
      qty:"",
-     remark:"~¥170 · chilled dessert shelf, near the yoghurt"},
+     price:"¥170",
+     remark:"~¥170 · chilled dessert shelf, near the yoghurt",
+     edited:[]},
 
     {id:"sd11", done:false, list:"daily",
      name:"Famichiki ファミチキ",
@@ -3295,7 +3439,9 @@ function slDefaults(){
      where:"FamilyMart only",
      links:"",
      qty:"",
-     remark:"¥248 tax-in — raised from ¥240 in March 2026 · often bundled with an onigiri for ¥100 off"},
+     price:"¥248 tax-in",
+     remark:"¥248 tax-in — raised from ¥240 in March 2026 · often bundled with an onigiri for ¥100 off",
+     edited:[]},
 
     {id:"sd12", done:false, list:"daily",
      name:"Karaage Kun からあげクン",
@@ -3304,7 +3450,9 @@ function slDefaults(){
      where:"Lawson only — hot case at the register",
      links:"",
      qty:"",
-     remark:"¥288 tax-in, 5 pieces — Lawson's own listed price, so treat the ¥260–280 you see quoted online as out of date · Red and Hokkaido Cheese are also ¥288, サクッと！からあげクン is ¥298 · not sold at Natural Lawson"},
+     price:"¥288 tax-in / 5 pcs",
+     remark:"¥288 tax-in, 5 pieces — Lawson's own listed price, so treat the ¥260–280 you see quoted online as out of date · Red and Hokkaido Cheese are also ¥288, サクッと！からあげクン is ¥298 · not sold at Natural Lawson",
+     edited:[]},
 
     {id:"sd13", done:false, list:"daily",
      name:"Kyusoku Jikan 休足時間 ツボ刺激ジェルシート — sole gel sheets",
@@ -3313,7 +3461,9 @@ function slDefaults(){
      where:"Donki, drugstores",
      links:"",
      qty:"",
-     remark:"~¥680–760 for 12 · JAN 4903301138471 · ⚠ this exact box is getting scarce — if you cannot find it, the everyday 休足時間 足すっきりシート (18 sheets, ~¥988) is the widely stocked one and goes on calves as well as soles · the bumps can leave dimple marks on your skin next morning, and it should not go on broken or irritated skin · buy on D5 at Tsukuba Donki so you have them for the D6 and D7 nights"},
+     price:"¥680–760 / 12",
+     remark:"~¥680–760 for 12 · JAN 4903301138471 · ⚠ this exact box is getting scarce — if you cannot find it, the everyday 休足時間 足すっきりシート (18 sheets, ~¥988) is the widely stocked one and goes on calves as well as soles · the bumps can leave dimple marks on your skin next morning, and it should not go on broken or irritated skin · buy on D5 at Tsukuba Donki so you have them for the D6 and D7 nights",
+     edited:[]},
 
     {id:"sd14", done:false, list:"daily",
      name:"Eki Cabe Kowa 液キャベコーワ — stomach shot",
@@ -3322,7 +3472,9 @@ function slDefaults(){
      where:"Donki, drugstores",
      links:"",
      qty:"",
-     remark:"¥470.80 tax-in (¥428 before tax) — the price on your own photo · 第2類医薬品, so it sits in the registered-medicine section, not on the snack shelf"},
+     price:"¥470.80 tax-in",
+     remark:"¥470.80 tax-in (¥428 before tax) — the price on your own photo · 第2類医薬品, so it sits in the registered-medicine section, not on the snack shelf",
+     edited:[]},
 
     {id:"sd15", done:false, list:"daily",
      name:"Moko Tanmen Nakamoto cup 蒙古タンメン中本",
@@ -3331,7 +3483,20 @@ function slDefaults(){
      where:"7-Eleven, other konbini",
      links:"",
      qty:"",
-     remark:"~¥250–290 · 7-Eleven has the tie-up, so look there first"},
+     price:"¥250–290",
+     remark:"~¥250–290 · 7-Eleven has the tie-up, so look there first",
+     edited:[]},
+
+    {id:"sd_haikara", done:false, list:"daily",
+     name:"Haikara-san curry bread カリーパン",
+     photo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9DSZ-zWTi4Vf1D68ab4ewH0ihbhjRjrUQQwceGpf6BQ&s=10",
+     desc:"Ginzan Onsen’s signature snack — a fried curry bun on the Haikara-san promenade toward Shirogane Falls. The fried manju beside it is arguably better. Only reachable on Day 3.",
+     where:"Meiyuu, Ginzan Onsen · D3 10:15",
+     links:"",
+     qty:"",
+     price:"¥250",
+     remark:"~¥250 · ask ‘agetate desu ka?’ — it is often pre-made and cold",
+     edited:["photo"]},
 
     {id:"sd16", done:false, list:"daily",
      name:"Nissin Cup Noodle Curry カップヌードル カレー",
@@ -3340,7 +3505,9 @@ function slDefaults(){
      where:"Every konbini and supermarket",
      links:"",
      qty:"",
-     remark:"~¥250–270 · a BIG size exists if you want it as a real meal"},
+     price:"¥250–270",
+     remark:"~¥250–270 · a BIG size exists if you want it as a real meal",
+     edited:[]},
 
     {id:"sd17", done:false, list:"daily",
      name:"Hokkaido Tokachi milk 北海道十勝牛乳",
@@ -3349,7 +3516,9 @@ function slDefaults(){
      where:"Konbini chillers, supermarkets",
      links:"",
      qty:"",
-     remark:"~¥200–250 per 500ml · the milk cannot come home — buy the Tokachi cheese or butter if you want the flavour to travel"},
+     price:"¥200–250 / 500ml",
+     remark:"~¥200–250 per 500ml · the milk cannot come home — buy the Tokachi cheese or butter if you want the flavour to travel",
+     edited:[]},
 
     {id:"sd20", done:false, list:"daily",
      name:"Crème brûlée ice cream クレームブリュレ",
@@ -3358,7 +3527,9 @@ function slDefaults(){
      where:"7-Eleven freezer case",
      links:"",
      qty:"",
-     remark:"~¥320 · sells out in the evening at busy branches, so catch it on an early konbini run"},
+     price:"¥320",
+     remark:"~¥320 · sells out in the evening at busy branches, so catch it on an early konbini run",
+     edited:[]},
 
     {id:"sd21", done:false, list:"daily",
      name:"Ajitama 味付たまご — seasoned soft-boiled egg",
@@ -3367,7 +3538,9 @@ function slDefaults(){
      where:"All konbini (chilled shelf near the salads)",
      links:"",
      qty:"",
-     remark:"~¥100–130 · 7-Eleven's is the one most often rated best"},
+     price:"¥100–130",
+     remark:"~¥100–130 · 7-Eleven's is the one most often rated best",
+     edited:[]},
 
     {id:"sd22", done:false, list:"daily",
      name:"Calbee potato chips カルビー ポテトチップス",
@@ -3376,7 +3549,9 @@ function slDefaults(){
      where:"Konbini, supermarkets, Donki",
      links:"",
      qty:"",
-     remark:"~¥150–200 · supermarkets and Donki are clearly cheaper than konbini for these"},
+     price:"¥150–200",
+     remark:"~¥150–200 · supermarkets and Donki are clearly cheaper than konbini for these",
+     edited:[]},
 
     {id:"sd23", done:false, list:"daily",
      name:"7-Eleven frozen smoothie セブン スムージー",
@@ -3385,7 +3560,9 @@ function slDefaults(){
      where:"7-Eleven — only branches with the smoothie machine",
      links:"",
      qty:"",
-     remark:"~¥300–400 · not every store has the machine, so spot it near the coffee counter before you pick a cup"},
+     price:"¥300–400",
+     remark:"~¥300–400 · not every store has the machine, so spot it near the coffee counter before you pick a cup",
+     edited:[]},
 
     {id:"sd24", done:false, list:"daily",
      name:"Prosciutto & cheese 生ハム&チーズ",
@@ -3394,7 +3571,9 @@ function slDefaults(){
      where:"Konbini chilled snack shelf",
      links:"",
      qty:"",
-     remark:"~¥250–300"},
+     price:"¥250–300",
+     remark:"~¥250–300",
+     edited:[]},
 
     {id:"sd25", done:false, list:"daily",
      name:"Cheese-in sausage チーズインソーセージ",
@@ -3403,7 +3582,9 @@ function slDefaults(){
      where:"Konbini otsumami shelf, supermarkets",
      links:"",
      qty:"",
-     remark:"~¥200 · the exact brand changes by chain, so go by the aisle rather than the name"},
+     price:"¥200",
+     remark:"~¥200 · the exact brand changes by chain, so go by the aisle rather than the name",
+     edited:[]},
 
     {id:"sd26", done:false, list:"daily",
      name:"Pizzaman ピザまん — steamed pizza bun",
@@ -3412,7 +3593,9 @@ function slDefaults(){
      where:"All konbini hot case",
      links:"",
      qty:"",
-     remark:"~¥180–200 · seasonal — the hot case comes back around September, so October is right in season"},
+     price:"¥180–200",
+     remark:"~¥180–200 · seasonal — the hot case comes back around September, so October is right in season",
+     edited:[]},
 
     {id:"sd27", done:false, list:"daily",
      name:"Ikura shoyu-zuke onigiri いくら醤油漬 — Lawson premium",
@@ -3421,7 +3604,9 @@ function slDefaults(){
      where:"Lawson — chilled onigiri shelf",
      links:"",
      qty:"",
-     remark:"~¥308 tax-in for the premium one, ~¥279 for the 金しゃり salmon+ikura version · Lawson cut every 手巻 onigiri by ¥10 on 29 Sep 2026, just before you arrive, but this premium line sits outside that · it is chilled raw roe, so eat it the same day and don't carry it round Tokyo in a warm bag · premium ones sell out first, so morning or lunchtime rather than late evening"},
+     price:"¥308 tax-in",
+     remark:"~¥308 tax-in for the premium one, ~¥279 for the 金しゃり salmon+ikura version · Lawson cut every 手巻 onigiri by ¥10 on 29 Sep 2026, just before you arrive, but this premium line sits outside that · it is chilled raw roe, so eat it the same day and don't carry it round Tokyo in a warm bag · premium ones sell out first, so morning or lunchtime rather than late evening",
+     edited:[]},
 
     {id:"sd28", done:false, list:"daily",
      name:"Matcha latte pancake 抹茶ラテパンケーキ — 7-Eleven",
@@ -3430,7 +3615,9 @@ function slDefaults(){
      where:"7-Eleven — chilled dessert shelf",
      links:"",
      qty:"",
-     remark:"¥159.84 tax-in for 2 · ⚠ launched March 2026 and konbini sweets rotate hard, so it may be gone by October — the standing matcha backups at 7-Eleven are 雲どら つぶあん＆抹茶ホイップ (~¥311, matcha whip and red bean in a soufflé dorayaki) and セブンプレミアム 抹茶スフレ 4個入 (~¥300) · not distributed in Hokkaido or Okinawa, but your Tohoku and Tokyo days are both inside the sales region"},
+     price:"¥159.84 tax-in / 2",
+     remark:"¥159.84 tax-in for 2 · ⚠ launched March 2026 and konbini sweets rotate hard, so it may be gone by October — the standing matcha backups at 7-Eleven are 雲どら つぶあん＆抹茶ホイップ (~¥311, matcha whip and red bean in a soufflé dorayaki) and セブンプレミアム 抹茶スフレ 4個入 (~¥300) · not distributed in Hokkaido or Okinawa, but your Tohoku and Tokyo days are both inside the sales region",
+     edited:[]},
 
     {id:"sd29", done:false, list:"daily",
      name:"Korokke 88コロッケ — 7-Eleven hot case",
@@ -3439,7 +3626,9 @@ function slDefaults(){
      where:"7-Eleven hot case — Tohoku only",
      links:"",
      qty:"",
-     remark:"¥88.56 tax-in (¥82 before tax) — the name is the price · ⚠ THIS IS A TOHOKU-EXCLUSIVE: sold only in Aomori, Iwate, Miyagi, Akita and Yamagata, so it has to be a D2–D4 buy around Sendai and Matsushima — you will not find it in Tokyo · in Tokyo the hot-case equivalents are 北海道産じゃがいもの牛肉コロッケ (~¥108) and とろっとあふれるチーズコロッケ (~¥180) · contains egg, milk, wheat, beef and soy"},
+     price:"¥88.56 tax-in",
+     remark:"¥88.56 tax-in (¥82 before tax) — the name is the price · ⚠ THIS IS A TOHOKU-EXCLUSIVE: sold only in Aomori, Iwate, Miyagi, Akita and Yamagata, so it has to be a D2–D4 buy around Sendai and Matsushima — you will not find it in Tokyo · in Tokyo the hot-case equivalents are 北海道産じゃがいもの牛肉コロッケ (~¥108) and とろっとあふれるチーズコロッケ (~¥180) · contains egg, milk, wheat, beef and soy",
+     edited:[]},
 
     {id:"sd30", done:false, list:"daily",
      name:"Matcha latte warabimochi cup まぜまぜスイーツ 抹茶ラテ",
@@ -3448,7 +3637,9 @@ function slDefaults(){
      where:"7-Eleven — chilled dessert shelf",
      links:"",
      qty:"",
-     remark:"¥429.84 tax-in (¥398 before tax) — read off your own photo · 要冷蔵, so it has to stay cold: this is a buy-and-eat-now item, not something to carry round Shibuya all afternoon · the wide straw comes tucked under the lid · different product from the 抹茶ラテパンケーキ also on this list, despite the shared name"},
+     price:"¥429.84 tax-in",
+     remark:"¥429.84 tax-in (¥398 before tax) — read off your own photo · 要冷蔵, so it has to stay cold: this is a buy-and-eat-now item, not something to carry round Shibuya all afternoon · the wide straw comes tucked under the lid · different product from the 抹茶ラテパンケーキ also on this list, despite the shared name",
+     edited:[]},
 
     {id:"sd31", done:false, list:"daily",
      name:"Fibe-Mini ファイブミニ",
@@ -3457,7 +3648,9 @@ function slDefaults(){
      where:"Konbini, drugstores, supermarkets",
      links:"",
      qty:"",
-     remark:"~¥150 for 100ml · the mark on your photo is 特定保健用食品 (Tokuho) with 消費者庁許可 — that is the stricter tier, individually reviewed and approved by the Consumer Affairs Agency · the approved claim is bowel regularity, which is genuinely useful on a trip of konbini food and long bus days"},
+     price:"¥150 / 100ml",
+     remark:"~¥150 for 100ml · the mark on your photo is 特定保健用食品 (Tokuho) with 消費者庁許可 — that is the stricter tier, individually reviewed and approved by the Consumer Affairs Agency · the approved claim is bowel regularity, which is genuinely useful on a trip of konbini food and long bus days",
+     edited:[]},
 
     {id:"sd32", done:false, list:"daily",
      name:"Chelate Lemon MUKUMI キレートレモン MUKUMI",
@@ -3466,7 +3659,9 @@ function slDefaults(){
      where:"Konbini, drugstores, supermarkets",
      links:"",
      qty:"",
-     remark:"~¥150–170 · 20% juice · 機能性表示食品 notification no. G948, which you can look up on the Consumer Affairs Agency site · one bottle a day is the stated serving · ⚠ read the claim narrowly: it is 機能性表示食品 for \"reducing temporarily perceived FACIAL puffiness\" — not swollen legs, and not oedema as a medical thing. Pokka's own site says that if the swelling is still there after a night's sleep, is somewhere other than the face, or comes with anything else off, see a doctor · 機能性表示食品 is only notified to the Consumer Affairs Agency, not individually approved like Fibe-Mini's Tokuho mark · check with a pharmacist first if anyone is on blood-pressure medication"},
+     price:"¥150–170",
+     remark:"~¥150–170 · 20% juice · 機能性表示食品 notification no. G948, which you can look up on the Consumer Affairs Agency site · one bottle a day is the stated serving · ⚠ read the claim narrowly: it is 機能性表示食品 for \"reducing temporarily perceived FACIAL puffiness\" — not swollen legs, and not oedema as a medical thing. Pokka's own site says that if the swelling is still there after a night's sleep, is somewhere other than the face, or comes with anything else off, see a doctor · 機能性表示食品 is only notified to the Consumer Affairs Agency, not individually approved like Fibe-Mini's Tokuho mark · check with a pharmacist first if anyone is on blood-pressure medication",
+     edited:[]},
 
     {id:"sd33", done:false, list:"daily",
      name:"Bruletta ブリュレッタ — BRULEE MERIZE, Tokyo Station",
@@ -3475,21 +3670,31 @@ function slDefaults(){
      where:"Tokyo Gift Palette, Tokyo Station 1F (Yaesu North)",
      links:"",
      qty:"",
-     remark:"¥1,728 for 3 · ⚠ THE HARD PART: Bruletta is limited-quantity and sold by 引換券 (exchange ticket) handed out only twice a day — morning from 9:30 on weekdays / 9:00 weekends, and evening from 17:00. You must be there at a distribution time · it also hands over frozen: ~2–3h it eats like an ice cake, 4h+ the custard goes properly runny · Tokyo-Station-exclusive, so no second chance elsewhere · ⚠ FIT CHECK: the only thing on this trip that reaches Tokyo Station is D7 ALT PLAN Route B, arriving ~16:00 — an hour early for the 17:00 tickets, and you have a 15:45 hard deadline to make the 18:00 dinner. Realistically this needs its own morning · no ticket needed for the regular ブリュレクリームタルト, which is on the shelf all day"},
+     price:"¥1,728 / 3",
+     remark:"¥1,728 for 3 · ⚠ THE HARD PART: Bruletta is limited-quantity and sold by 引換券 (exchange ticket) handed out only twice a day — morning from 9:30 on weekdays / 9:00 weekends, and evening from 17:00. You must be there at a distribution time · it also hands over frozen: ~2–3h it eats like an ice cake, 4h+ the custard goes properly runny · Tokyo-Station-exclusive, so no second chance elsewhere · ⚠ FIT CHECK: the only thing on this trip that reaches Tokyo Station is D7 ALT PLAN Route B, arriving ~16:00 — an hour early for the 17:00 tickets, and you have a 15:45 hard deadline to make the 18:00 dinner. Realistically this needs its own morning · no ticket needed for the regular ブリュレクリームタルト, which is on the shelf all day",
+     edited:[]},
 
     {id:"sd34", done:false, list:"daily",
      name:"Melon pan 大きなメロンパン — Yamazaki",
      photo:"data:image/jpeg;base64,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",
      desc:"The everyday supermarket version of Japan's most famous bread, and the big one. Soft bun under a crackled cookie crust, scored into the diamond pattern that gives it the name — there is no melon in it at all, the look is the whole reference. This one is sold on バターの豊かな味わい, a richer butter crust. Best eaten the day you buy it, while the top still cracks.",
      where:"Konbini, supermarkets",
-     links:"", qty:"", remark:"~¥140–160 · ⚠ the red 0.5 sticker on your photo is a 春のパンまつり (Spring Bread Festival) point token — Yamazaki runs that campaign roughly January to April, collecting points for a free white dish, so it will NOT be running in October · konbini also do their own melon pan, and bakery ones are better again if you pass a Yamazaki shop"},
+     links:"",
+     qty:"",
+     price:"¥140–160",
+     remark:"~¥140–160 · ⚠ the red 0.5 sticker on your photo is a 春のパンまつり (Spring Bread Festival) point token — Yamazaki runs that campaign roughly January to April, collecting points for a free white dish, so it will NOT be running in October · konbini also do their own melon pan, and bakery ones are better again if you pass a Yamazaki shop",
+     edited:[]},
 
     {id:"sd35", done:false, list:"daily",
      name:"Chelate Lemon Citric Acid 2700 キレートレモン クエン酸2700",
      photo:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgFBgcGBQgHBgcJCAgJDBMMDAsLDBgREg4THBgdHRsYGxofIywlHyEqIRobJjQnKi4vMTIxHiU2OjYwOiwwMTD/2wBDAQgJCQwKDBcMDBcwIBsgMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDD/wAARCAEsASwDASIAAhEBAxEB/8QAHAABAAIDAQEBAAAAAAAAAAAAAAMEBQYHAggB/8QAShAAAQMDAgMFBQMIBgcJAAAAAQACAwQFERIhBhMxByJBUWFScYGRsRQy0RUjMzRCcoKhYnOTwdLhCBYXJDWDkjZFVXSisrPw8f/EABsBAQACAwEBAAAAAAAAAAAAAAADBAECBQYH/8QAMBEBAAICAQMCBAUEAgMAAAAAAAECAxEEEiExBUETFFGhImGRsdEGM4HwMlJCwfH/2gAMAwEAAhEDEQA/AO6oiLVkREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQe+U70TlO9FOizphByneicp3op0TQg5TvROU70U6JoQcp3onKd6KdE0IOU70TlO9FOiaEHKd6JyneinRNCDlO9E5TvRTomhByneicp3p81Oq9fMaejmmGMxsLhnpsFre0UrNp9mY7qk9fSwSGOSZutvVrQSR8lGbrSeDnn+ArWWPzqe6QOe5xcSf2s+KkMkbcl0rMeGDuvA5f6m5M2n4VY1+e/5dGvFpr8UtiF1pj0Lz/CvBvNGOrnj+Ba4a2JjcucHHyAIwq8lbGB1Lj6MxhaR/UfNn2r+k/yz8tjbX+WqDxlcPewq/TvZUxNlge2Rjujmlc/NSHjSw5cfEsIC2Dgmrc+appmuDoQOYP6Jzj+f9y7HpfrObk5oxZqx3+ivlw1rG6y2TlO9E5TvRTovV6VEHKd6JyneinRNCDlO9E5TvRTomhByneicp3op0TQg5TvROU70U6JoQcp3onKd6KdE0IOU70TlO9FOiaEHKd6JyneinRNAiIsgiIgIiICIiAiIgIiICIiAoK0gUk2qPmjQ7ue1t0U6xXFIk/IVVyZHRuDR3h5ZGfhhQ57dOK1vpEsx5ahRNbyhmPJO4GVLU/aBgU8bBsOrwAD67KjFUMiyZKhmXNaGtOnDfivclTCC5zKyA/nGuBBaMjHid18njDbrmf/AE6Vsm66egLs12lggOQMOcR18dvFQVD7wImvDqFpLdw7J73lkFfktdCZoSy4ZDXO1OEo222wMKk6qa+j0PrHNc2QEBsoJIDs9cYVmuO9ojdY/RWtMVmY3P6shGa0QN5z4HSdHFgOMrP8CD8/WGV+JsNGgDYt9r5khabU10L2uJuAa1pbpD9J1b7nYbLL8CuqZuIIJI53ugEUnMaANOP2ckeq6vpWK2PlUvMefyZyZN16YdJRAi+gKgiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiIC8uAIwRkFHvaxhc9wa1oySTgALl3GXaLU1z32vg2LnyHuyVZHdA6HT/iPwWtrRWO6HLmpijdmmceXCir+Np4KFtPO10pY1sTQHEjukeu4OFu1p4Ko6i2RxTiaFzm94NeBg/ALH8D2Koo2umraenFQ85L2Ny4+8/gt8p2EAZVCsRM70p4eq8ze3u02o7HrFI8vdV14J37swx/7V+Dsus8EehtXcCP64f4Vv4G2wKhkaSMKaYjSe2Kk+zjPHVjpuH6aMxsMkHTVIckH12wun9jtTbpuCaaG2zMl+zuc2XSNOHk6sY+K9XKjM8T2gA5GBkZHxWjWRl/4Ou9RV09PBPT1DszRQDSCB/RO/nuPko6WilvxIfiThvue8O2IsPwxxJQcR0ZmonkSMOmWF+z4z5Ef3rMK9ExMbhfraLR1V8CIiy2EREBERAREQEREBERAREQEREBERAREQEREBERAREQF+Er9Wn9qvEbuHuF5Psz9NbWu+zwEdWkjvO+A/mQsTOml7xSs2n2aZ2p8Z3C5STWfhylfVUcLtFVNEf0jh1YP6I8fMrVrFxCbUAyayVTD1cXRu3PyWa4XohTW+IY3IyT5rZIIzt1XJvm67TuHF/Fnn4k+WMt3aHSFwY6hmafVrvwW1UHFNNNHq+zvb8/wVWFhYc9Vlaa4ctoa6Nb0vP10t44yR5t9lSr4zoKYEvjcPesVN2kWkEjRIT6A/gs9UVDZj+jHyVUxtJ+6PktrXt9W1viz4t9muT9pluBOmmld8D+Cx9Z2hU04IjtdQ8nyY4/3LcHRDwaPkoZIj7lHN590U0yz5t9nNIeIr5T3yK6WGzVMMjTiQSNIZK3ycu68KX+n4js8VdA0xv+5NCTl0Mg6tP4+IwVotXCSDndYfhK7P4a47ihe7FDdSIZQejZP2HfPb3FS8fN+Lo0xhvOC8VnxLtKIEXRdYREQEREBERAREQEREBERAREQEREBERAREQEREBERAXHu3eUvvlkpye42N78epcB/cuwrV+JbNbbpfqV9xoYap0cJDDIM6e8tbRuNQr8nFObHNIny0q0sAgZ6BbDQU7X4WxwWW2RtAZQwtHo1fteLXZ6CWtqYY4oYRlxDcn0AHmSqFeLNe8yipg+HX8U+GMdSNa3IUDowPBQU/GtFVxOlp7HVyxMJBcNHgM+a8u4voe4Tw9VnX937u+2fPyW80rPiUfzGCY3Fv3WQxfoYqreLaNz3sbw7WamAOcO5sDv5qA8a29waWWOqOo4AboJPwyteiPqx8xh/wC37skWLwYweqxsvGFKyV0RstW14xsSwdemDndftk4ptt6q30sEMlPUNBcGSgd4Drgg+CzGOJnUS2rmxWtFYt3lNWwNDSVzvjgcqWnlacOjkDgR4EHK6jLGx+Q5oKwHElqt89K501HE8gbEjokca0Wi2zPxbZI1WXTYH8yFj/aaD/Je1FSDFNEB00N+ilV90IEREBERAREQEREBERAREQEREBERAREQEREBERAREQFhLq4NvMTnENa2Akk7ADKza0btO5Ip9U8lSzRCXMNOwuJcA7Y4/ZxnJOyxM6jbTJborNvozknEVmp3wMludKHTv5bNModvjO+OnTqdl4vUVu4js1VQR18LstDy+F4kMZByHEA9NlzFzJ54RQU0Duaz7MyKOno4TqAjY9+XHvF2CTjx8Vsthpq+4WK+y22d0Tw8Q0z46SOCbuEOeMswCTu3rhR9XV2lQjkTl3S1dxKlZrTU08NJTUV3tsrLjzH07sSASYGHAEDr6HfZWWWKvrTUthuVs/3B/KncHSNDCG7gnGOhVMU7orzTW+jtvEDBEx9TJD9qbzGEnAe3DsDJJyepXtsAgs3EQoRcYaaOB1LJQ1TuY41MhB1jBI6EZUcVr4VK46RHTrtH5z9Hqe2zUUM9Sb3ZWtbGC/TO5x0tHkNzkeHmqNHbhUSOZDfbU77EBM8OkkbgbEOyR06ZPqcr8qaJtvrY4blbpWsfK+PlMg7z42tI1s2w7fGw33Xq1CvpbRdaOW2TR3FlHs5lMG8hrQ0NwQDqc/JJwfBY6Y34R/DpNoiY+8vPLZIZphfLIeUOW/EkgIDT1AAyRl3UbL94Rt1tgvr6v8s0dVUBkj44afVhox3nHUB0BVOxVUtBX1lQyMSU7XVLZRUPkZFvoA1OczbqfU+IGytcHSF9ylhhuNLVz8h9PBLqJfTNbvhjD99hJHeyCcbrNaxuJb4aUm9ba77bdS11LX07aijqI54XdHsdt7lhb3daJz5KMVA+0Bxj0YP3tOrGcY6HK1q78uuu0WRTVkr4GR6qeEaHSGV4cQ1xGPunJVG2xQyXUClpGAGNlYZXRgFsZiAAGDgEuP1U3V3dCOTabRWId/pv1eP90fRSKOm/V4/3R9FIt14REQEREBERAREQEREBERAREQEREBERAREQEREBERAWr8X278rVDaEzvgjmiAlLBkuZry5vpkbZW0LQe0DjOi4X4ho4qymqJjLTF4MWnYaiPErE/mjyTWKz1+Ev+orahhiq7nK+nfOamRscTWPdJ0BD9y0BuBgeSylvsddarVNQ0t5LYGRhtM40rNUAByemztvMeq1iHtds7gMW6v8A/R+Kn/2qWqWNzfyfWjUCOrPxUc2pVQ+Pw6TuLan/ACzcNup7TBLDQXIxXWqLZJaurj5z5PIEbAegGMKK22uMWi40wvLzV3SocZauKHRhxAGloPTZuOqwj+0W1umEr6SuyBloaIwA7GNXqfLOcKFvaLQRwuiay66XOLjh0QO5JO4GRklY66fVH85xd9rR92QqrVTU9xlhor6yFpMQjjlpeeYXNZoaWPJ2O2cjxVqK12emfUOkuE8zH0zYatj3O01Dm4xKSNy/oMtK1mo4ttMsgrmWy6RwRuaBoDNAIxgE/BRz8e2V8DonUNxLCNg50Z0nYZ+QAHkFjcNI5OGJmdx+XlmKK02mip6msttybTTPqXPjqNBeYmOA/N6HEg7eJGV6o7FV00dVHFfZXx1RklfimY065B99rvDffHotZj45stPTuhbQ17wTnL+U7bBGCPHqpj2pWyPOLbWYwGgAxjp8fVbV17pMWbBOtzH+NsuzhGiihqIi7mB8cccOtuRBoaQ0jBGd3Fx96xU/Csdp5U1FXVDWtj0ztcc8/GdOfZAz0HhhVpO1a2/+GVn/AFsWOunahb54HMbbawZ83sW+oWK340zGneqf9BH+6PopFFSO1U0ThtljT/JSrZeEREBERAREQEREBERAREQEREBERAREQEREBERAREQFxjtrhpZ+Nba2tJEYoHHY4OeYf812dcY7bJJIuMre+EZcLe4YAJJBkIOACPNYnwq8v+1LSJKelit1NJC4md574LsjGOuFmOFqSlqXVJrWsMcbGkuc/SGAuwTnPXHRYycONoo3OJ2OMHOwI/yPyXiBUsk6nbyOW0Y8kWmNtuZRWQsZrfCDycszN992G4Lt9skuB9Ao47fZXTwZkp+VyQZszd7X3c43GMAk+PjtssVV0EsUcGGM70bHFwd115Lc59NlUbRyy00k8YDmxuDXAEZGQT0+CjjLXW285Ji3T8KNsn9sp6u3SURkEUTImujL3EMaWg5yAR3idwcH3eKnqbZZhBUPZyXCOMBz2y7NcQ/Bb3judLdt+qoUnCt4rGB7KQxMPR0x0fy6qWXgi8tZlogePIS/iFDPqPGpOrXj9V7Fh5N46pwzP+C422ywz1MbhDG+NpBZzz3ANeHDfd2zNvXosTV01oNNXGMQh0ILWOExycRgtIGdyXEg+7wV1/BN5dE6QtgyN9Jl3P8AJa/U2uopqh0VwYaXSNbtWCdPmB4qxh5mDNv4donX0S5KZcXfJi6dsTIshUWuj/JYmLniTlB/deCM4z9PwWPlxnbpnbKyVQxzLW1xqpmh0LfzenLdOknGcY6g/RXIOPHd9U0P6nB/Vt+gUygof1KD+rb9Ap1I9FAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAuM9tUENRxrbGzvcxraEuDgR15hwuzLj3bFO+n42t8sena3uByCeshx0WJ8KvK/tS0AzRSUcTGMLXtflxIAztjb4hXbNg1QjMLZjK10TWu8HOBAPwO6jq43ttNE5zmluo4DSTjx8lPZpWwScx8z4y1zHBgG0mHbjPhjqFzuRuKzp5SYj49erw2e/WR5qGkxSzPnEMMIYB3TpOcendHwJWycLcIQ2yJs9TplqzuXEZDPRv49Vm7fURT09PghzWMbv5nH/35r1c7pTUkAdUuDQTpDsdT8F5q+f4lOi09o9vq9pTgYMWWeRrv+z8fhju6P5qrM8AdFznje5xVlzD6Goc6NsQYS0lu+T+Kz9DxPa309JSiqJqCxkenQ7d2AOuPNcjk+n5oxVy1idT7a8JeL6nhzZ74ZmI14nflfr6otBwtKv7aYztEzWn7WHNeD1IAGCPLBK2etlyXZ3yCtC42qDFdqJgZn/dy/Vn7vfd9cfyVv0Wm88RE/Ve9YrFeFadd+zVJRpJB6g4Wbq6PVaYpDO4ZgBfGGgtzgYyMDfGnfcrCSnJJ81kKg3J9qBLY+UWtwNt2afHfrhoXv4eM4+tvqui/VIf6tv0CmUVH+qxfuN+ilUj0MCIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiIC4t24NJ4ztmlmpwoiQP+bv/ACXaVxPt1BPGFsI2LaFx1YyW/nDuBjcrE+FXl/2paW6Msoad3Ne/Wd2uH3cZxjy9yv2sRsZLLUMc5gbpaWuGQ73eIxn8VUlnfJbKaN0MkbYyNLnEnWMHB8lNbXMZLzHTSQuYMsdG3Jz5dRj3rn543DyWSYrkiXZ6Exup4pY2iMOY0jA2Ax0x5fgqN+oRcYRA6UxAO1amgHOy/LLIXWCgkeSXclpyevTGfkrhmini/OAawAM53x4FeCvab31E6tSX0qlK5sMdUbraIco4qtzLTXCCOZ0wMYfqcMHcn8Fk6DheCMUleKuQuGibRpGM9cLaLlaaKqn11UMcjtOA6RmT7lFNTuhYxrG4hGAC0bD0XRy+o5rYK44nvHme3dR4foODFyLZLxE1/wDGO/ZSnDzK1pG5wd1ol+YLjeLxPG5rhSU0ccWPFrXEyEfEraL9cWUUT4IpMTnAkkaM/Z2n9o+vkOq0OZ4pjFLSygPw4amuOrGcbg+Y94IV/wBF4tq7zW7b8I/XefW2uPTvEeWNk6q/NcWttIpSwE6Wu5uBkDduMZ6ZOPP6KhIrk4q2UxjjMml0TBu5u5yCR6bEAA7kL1TznH8vrCk/VYv3G/RSqKl/Vov3B9FKpHohERAREQEREBERAREQEREBERAREQEREBERAREQEREBcY7a49fGltw5jS23ucC/OP0h8l2dcO7fZHRcX2mRhw5tGSP7QrFvCpzJ1ilrdW/VZqHBbjDQA3G2Aeu+fHyCgg8FCapk1HTRCMNfFkOcB974qaBUcrx3KmJt2bjRcWMgoYIZIZNULAzu4IdjZXY+JrXM1jnSSQOfsYyC7HvI6Kjb6Pm8IVhNuZI4PikDzVBpds4auvdxtt4qhe6KOWvjL5WUsEdFSl8hjLgC6MeDdyTufgVybej8e34td5egxes8/DjrqYmNR21/v0bC/iOgo2kyVwkb00BhcckZ2CoTcdQ8otpISx5OBJIdLR1zkDKxdTb6R/DEbILhS5FbIGzSMdGH/mm93JGRj12VfiWmDLs+dj200UEFIS8M1AOdE3cAdTsT64UuH0rFi77mU2f1nmZY32iO3hWu1+M007pIKGORhDSGRNc5+T3nCQDH/wCrBXWp1NMVPKX0znmVoexoeD0OSB6dOi2njisdR3wGjrI3OjYzEQpWtEYdE3J3GDnOfTK1S8QNpvsrA3S800ckg/pOy7f4Fq6tMUU8OdkyXtMxad6YqRXauSJkUIHOEZ0TAmLdzgRkk53znHoMbKlIpXVcb6YQ1OSR0w3HTAHTqfU+QU6Tjz3fXNP+gj/dH0Uijpv1ePPsj6KRSPRwIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgLhn+kF/2rtf/AJI//IV3NcX7aqb7Zx9Y4XENYabVI49GMEhLifcAVHkt00m0+yry46sUw55Cx0Z0yNcxw6hwwR8Fegc32h81mZa6lvdDfLg+3U0Mkbo3RTtDtZLpMDOTjOkeSvW251MvDdxqXmF00M0LWP8As8fdDs5/ZXEycu/Tuad9xE9/edfy8xl4tJtrq7amfH03/DEw1pgt9XShrC2rDA4nq3S7IIUtzulVd2U1MIGNETGMayFpLpS1ukOd4k4GPReWXKqidI9jo9Up1OzCw5PpkbfBe7RbhWSRyTvcyJ1QyAadi8uySAfDAGfiFNbNOOk2v2hTxdWTWOkz3/ZBUMuH5Khtr6CZjTUmRjnRuBc9zQ3SMj0UV/vFTdGxRzxRwMhY1mmNuNZa0M1OPicDHot3ukdNJV0VZM2UCnfhzhNgMaQ8l/TqMbepC1mtqaKi/JcsFtD6WDTPqdLqc9zhux2fJwB6eHqqvH9Qvk/D093Vy8T4UTHX27MVU3R77hT1dda4qidsbWFswfon0tDWuLfE7DpscLD3Z9ZV1M1ZWxycyV2p7jGWj6YA6DC2W3181NaH3OuL6gxV8T6cSPOXPGTJgnoMYz8F4tEj5qAurJJJG3S4RUzWPeXDlh2t/X3tCtTzMlYmZr2idf59/wBISY8MX1HV57//AFpk0b2Na57HNa/dpc0gO93mqs8b2GNz2Oa15BaXNIDhnqPNblRF1zrL1T1r3SxCRj2tcchpE4bt5d0kbeCxl3kkqRfBM9zxBWRmME7M/OluAPAadtvIKevKmbdMx9Pvr+VmnHiNWif9h9TwbQs/dH0XteIf0TP3R9F7XSduBERAREQEREBERAREQEREBERAREQEREBERAREQEREBcP7e4pZ+MbTDAxz5JKQsa1vVxMh2XcFxvtypY5uKrMZgdL6Z7ctODs8fitMk6rMqfNmIwzMtRqzHbrXFZYZY5Kh8onrHscCxrwMMjDuh05JJ6ZPos3bqDk8PV9G+tt/OnliewCrYQQ3Od8+qoU/DFM4Dl1MrfeAVkaXg/mHu1wH70f+a4N8UZKxWtvfc9vMuDNck2m0U321Hf2VqGzwzGZ1dcqWlhgcA9wdrL8jPcx1U1NWw1XEVqpqCN0VDTztbEx33nEnvPd6lXZeCZmty2vhP8BVN3ClZE8OjrIQ5pyHDUCCl+PN5mb2327fSOyCmLNi1Fceu/fv3lYp5o30rHVMNxmYy5McI3tBJdhx2AA7udyPTwVa+WeqqKqgtjmxy188skstUyINZpJ23AGcAFx8icL0+wXl43uuR6yyKD/VK5csRi4RBgOQ0OfgHzwoKcS1LdUWiF6b3tXptSWH4pdI+VscFLPFbqJvJg1xluRnd5yOrjv8l6r5mW26WKjlOllvEUkx8nvcHuPwBHyWSfwXXyDElyjI8jrK8Hs/mkOZLnHv4iIn6lXq4qdNaWt2jf39/wBysZYtNor519vZi6QOtVXeamtY6KJ0jGMcRs8mcO7vn3QTt4LG3eKSmF6dOwsbU1kfJcekg5hflp8RpwcjzC2aXs/iDWia6yvDegEYwPdknCw194co6AU7Y5Kid5kaxoe7YZcNgAtqUrF/+XedfbX8LPxeiIiY/wBl9Nxfo2+4fRel5YMNA8hhel2HagREQEREBERAREQEREBERAREQEREBERAREQEREBERAXNO3WlDbXa7mAM0tVynH+i8fi0Lpa0Tt0p/tHZldSGlxh5Uox4Ykbv8srW0biYQ58cZMc0n3aVbphJCxzTnI8FlIJ3M6FcJtVwrGycsVUrWjoA4hbHSzzSEapnn3uK5Xyk177cLJe3H7T3dcFY8jcj5ryahpO72/NcyfqazIe8n+sKx9TXyxHbUf8AmFIw2t4lHXmzfxDr7ZWe235pz4x+235hcY/Ksvsu/tCgukxPR3/WVt8rb6pfmMn/AF+7s5nZ4Pb81G6ceDx81x/8ozu8SP4ipI5ZH7ukI+KfLW95azyrR5h1WaY75csFSRtu/Htktww5v2gTPGf2Wd4/RaBXzughcWzvBx7ZWyf6PFPPW9orqp5dI2lpJHOcTnBdho+pUmLjdN4tMp8FZ5FotPiJfSwREXRd0REQEREBERAREQEREBERB55jfaCcxvtBV0WNsrHMb7QTmN9oKuibFjmN9oJzG+0FXRNixzG+0E5jfaCromxY5jfaCcxvtBV0TYscxvtBOY32gq6JsWOY32goqqKnq6aSnqWMlhlaWPjeMtc07EELwibY05JxB2D22or/ALRYbm+gjcSTBI3WG+Wk9cehWCq+xfiSD9UuFDUAeZLCu8ItJqgvx6X8vnOfss43jJDaKCUDxZUN/vKru7MuNs4dZs9ekzPD+JfSiJ0ovksfs+aP9mXGgO1kd/at/wAS9N7MuND/ANyke+Vn+JfSqYTTHyVPq+co+yvjV5/4dAz96oZ+Ku0vY7xdKfz8tvpx6yaj/JfQCJ0s/JY3E4OwesqZI/ynxBEyLPfbBDk49MrqXBPB1l4MoH01njOqXBmnkOqSUjpk+XoNlmkWYjSxTFWkaqscxvtBOY32gq6LbaVY5jfaCcxvtBV0TYscxvtBOY32gq6JsWOY32gnMb7QVdE2LHMb7QTmN9oKuibFjmN9oJzG+0FXRNixzG+0E5jfaCromwREWAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQf/Z",
      desc:"The green-labelled fatigue one, next to the MUKUMI bottle on the same shelf. 155ml, lightly carbonated, 20% juice — one lemon's worth — with 2700mg of citric acid as the active ingredient plus 1350mg of vitamin C. 35kcal. Sharper and less sweet than it looks.",
      where:"Konbini, drugstores, supermarkets",
-     links:"", qty:"", remark:"~¥165–185 · ⚠ read this claim carefully: it is 機能性表示食品 for reducing fatigue “with CONTINUOUS drinking” (継続的な飲用) — one bottle after a heavy walking day is not what the evidence covers · the 525ml and 900ml bottles carry the different, weaker wording about temporary fatigue · same range as MUKUMI but a different bottle: green label, クエン酸2700 on the front · notified, not individually approved like Fibe-Mini's Tokuho mark"}
+     links:"",
+     qty:"",
+     price:"¥165–185",
+     remark:"~¥165–185 · ⚠ read this claim carefully: it is 機能性表示食品 for reducing fatigue “with CONTINUOUS drinking” (継続的な飲用) — one bottle after a heavy walking day is not what the evidence covers · the 525ml and 900ml bottles carry the different, weaker wording about temporary fatigue · same range as MUKUMI but a different bottle: green label, クエン酸2700 on the front · notified, not individually approved like Fibe-Mini's Tokuho mark",
+     edited:[]}
   ]};
 }
 function slNormalise(d){
@@ -3508,6 +3713,8 @@ function slNormalise(d){
         where: i.where || "",
         links: i.links || "",
         qty: i.qty === undefined ? "" : String(i.qty),
+        /* free text, not a number — "¥900–1,100 / 12片" has to survive a reload */
+        price: i.price === undefined ? "" : String(i.price),
         remark: i.remark || "",
         edited: Object.prototype.toString.call(i.edited) === "[object Array]" ? i.edited.slice() : []
       });
@@ -3696,8 +3903,8 @@ function slAdd(){
   if(!name) return;
   var nid = "sl" + Date.now().toString(36);
   slData.items.push({id:nid, done:false, name:name, list:slMode(),
-                     photo:"", desc:"", where:"", links:"", qty:"", remark:"",
-                     edited:["name","photo","desc","where","links","qty","remark"]});
+                     photo:"", desc:"", where:"", links:"", qty:"", price:"", remark:"",
+                     edited:["name","photo","desc","where","links","qty","price","remark"]});
   slOpen = nid;   /* a new item has nothing filled in, so open it straight away */
   inp.value = "";
   slSave(); slRenderAll();
@@ -3818,6 +4025,8 @@ function slRenderAll(){
           + '<input class="sl-name" type="text" value="' + slEsc(it.name) + '" data-sl="' + it.id + '" data-f="name" placeholder="' + T("Item name") + '">'
           + (unlimited ? '<span class="sl-qty-chip">\u221e ' + T("as many as possible") + '</span>'
                        : (String(it.qty).trim() ? '<span class="sl-qty-chip">\u00d7 ' + slEsc(it.qty) + '</span>' : ''))
+          + (String(it.price == null ? "" : it.price).trim()
+               ? '<span class="sl-price-chip">' + slEsc(it.price) + '</span>' : '')
         + '</div>'
         + slChips(it.where, false)
         + slChips(it.links, true)
@@ -3835,6 +4044,7 @@ function slRenderAll(){
           + slField(it.id, "where", it.where, slWord("where"), slWord("wherep"))
           + slField(it.id, "links", it.links, T("Reference links"), T("paste links, comma separated"))
           + slField(it.id, "qty", it.qty, T("Quantity"), T("-1 = as many as possible"))
+          + slField(it.id, "price", it.price, T("Price"), T("e.g. \u00a51,200 / box"))
           + slField(it.id, "photo", it.photo, T("Photo URL"), "https://...")
           + '<label class="sl-f wide"><span>' + T("Remark") + '</span>'
             + '<input type="text" value="' + slEsc(it.remark) + '" data-sl="' + it.id + '" data-f="remark" placeholder="' + T("note") + '"></label>'
@@ -3897,7 +4107,7 @@ document.addEventListener("DOMContentLoaded", slRenderAll);
 /* Single source of truth for the version shown on the page. Bump these two and
    both the header chip and the footer line follow. The values are also written
    into the HTML above, so the version still shows if scripts don't run. */
-var GUIDE_VERSION = "v54";
+var GUIDE_VERSION = "v57";
 var GUIDE_UPDATED = {en: "11 Sep 2026", zh: "2026年9月11日"};
 (function(){
   function paint(){
@@ -3919,12 +4129,13 @@ var GUIDE_UPDATED = {en: "11 Sep 2026", zh: "2026年9月11日"};
 (function(){
   /* Every key this guide writes. Kept in one place so "Everything" can never
      silently miss a section that was added later. */
-  var ALL_KEYS = ["japanTripShop_v2","japanTripPack_v3","japanTripSplit_v2",
+  var ALL_KEYS = ["japanTripShop_v2","japanTripPack_v3","japanTripSplit_v2","japanTripTabung_v1",
                   "japanTripReels_v2","japanTripPlaces_v1","japanTripLang"];
   var LABEL = {
     japanTripShop_v2:  ["shopping list","购物清单"],
     japanTripPack_v3:  ["packing list","行李清单"],
     japanTripSplit_v2: ["expense split","旅费分摊"],
+    japanTripTabung_v1:["tabung","Tabung 公款"],
     japanTripReels_v2: ["reels","拍摄清单"],
     japanTripPlaces_v1:["places","地点"],
     japanTripLang:     ["language","语言"]
@@ -4104,6 +4315,244 @@ var GUIDE_UPDATED = {en: "11 Sep 2026", zh: "2026年9月11日"};
   document.addEventListener("keydown", function(e){
     if(e.key === "Enter" || e.key === " ") toggleHelp(e);
   }, true);
+})();
+</script>
+<script>
+// ===== Tabung (shared money pool) =====
+var TB_KEY = "japanTripTabung_v1";
+
+function tbDefaults(){ return {members: [], moves: []}; }
+
+function tbNormalise(d){
+  var out = tbDefaults();
+  if(d && Object.prototype.toString.call(d.members) === "[object Array]"){
+    d.members.forEach(function(m){ if(typeof m === "string" && m.trim()) out.members.push(m.trim()); });
+  }
+  if(d && Object.prototype.toString.call(d.moves) === "[object Array]"){
+    d.moves.forEach(function(m){
+      if(!m || typeof m !== "object") return;
+      var amt = parseFloat(m.amount);
+      if(!amt || amt <= 0) return;
+      var kind = (m.kind === "out") ? "out" : "in";
+      out.moves.push({
+        id: m.id || (Date.now() + Math.floor(Math.random()*10000)),
+        kind: kind,
+        who: kind === "in" ? (m.who || "") : "",
+        desc: kind === "out" ? (m.desc || "") : "",
+        amount: amt,
+        cur: SP_CURS.indexOf(m.cur) > -1 ? m.cur : "JPY",
+        remark: m.remark || ""
+      });
+    });
+  }
+  out.moves.forEach(function(m){
+    if(m.kind === "in" && m.who && out.members.indexOf(m.who) === -1) out.members.push(m.who);
+  });
+  return out;
+}
+function tbLoad(){
+  try{
+    var raw = localStorage.getItem(TB_KEY);
+    if(!raw) return tbDefaults();
+    return tbNormalise(JSON.parse(raw));
+  }catch(e){ return tbDefaults(); }
+}
+function tbSave(){ try{ localStorage.setItem(TB_KEY, JSON.stringify(tbData)); }catch(e){} }
+var tbData = tbLoad();
+
+function tbEsc(s){
+  return String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+function tbCur(){
+  var el = document.getElementById("tbCur");
+  return el && SP_CURS.indexOf(el.value) > -1 ? el.value : "JPY";
+}
+
+function tbAddMember(){
+  var inp = document.getElementById("tbNewMember");
+  if(!inp) return;
+  var n = (inp.value || "").trim();
+  if(!n) return;
+  if(tbData.members.indexOf(n) === -1){ tbData.members.push(n); tbSave(); }
+  inp.value = "";
+  tbRenderAll();
+}
+function tbRemoveMember(name){
+  var used = tbData.moves.some(function(m){ return m.kind === "in" && m.who === name; });
+  if(used && !confirm(name + T(" has already paid into the pool. Remove anyway? Their contributions stay in the log."))) return;
+  tbData.members = tbData.members.filter(function(m){ return m !== name; });
+  tbSave(); tbRenderAll();
+}
+function tbAddIn(){
+  var who = document.getElementById("tbWho").value;
+  var amt = parseFloat(document.getElementById("tbInAmt").value);
+  if(!who || !amt || amt <= 0){ alert(T("Pick who paid in, and an amount.")); return; }
+  tbData.moves.push({id: Date.now(), kind: "in", who: who, desc: "", amount: amt,
+                     cur: tbCur(), remark: (document.getElementById("tbInRemark").value || "").trim()});
+  document.getElementById("tbInAmt").value = "";
+  document.getElementById("tbInRemark").value = "";
+  tbSave(); tbRenderAll();
+}
+function tbAddOut(){
+  var desc = (document.getElementById("tbOutDesc").value || "").trim();
+  var amt = parseFloat(document.getElementById("tbOutAmt").value);
+  if(!desc || !amt || amt <= 0){ alert(T("Say what it was spent on, and how much.")); return; }
+  tbData.moves.push({id: Date.now(), kind: "out", who: "", desc: desc, amount: amt,
+                     cur: tbCur(), remark: (document.getElementById("tbOutRemark").value || "").trim()});
+  document.getElementById("tbOutDesc").value = "";
+  document.getElementById("tbOutAmt").value = "";
+  document.getElementById("tbOutRemark").value = "";
+  tbSave(); tbRenderAll();
+}
+function tbDelete(id){
+  tbData.moves = tbData.moves.filter(function(m){ return String(m.id) !== String(id); });
+  tbSave(); tbRenderAll();
+}
+function tbReset(){
+  if(!confirm(T("Clear the whole tabung saved on this device?"))) return;
+  tbData = tbDefaults(); tbSave(); tbRenderAll();
+}
+
+function tbRenderAll(){
+  try{ tbRenderInner(); }
+  catch(err){
+    var b = document.getElementById("tbBalance");
+    if(b) b.innerHTML = '<div style="color:var(--red)">' + T("Couldn\u2019t calculate the pool:") + ' ' + tbEsc(err.message) + '</div>';
+  }
+}
+
+function tbRenderInner(){
+  /* members */
+  var chips = document.getElementById("tbMemberChips");
+  chips.innerHTML = "";
+  if(!tbData.members.length) chips.innerHTML = '<span style="color:var(--mute);font-size:12.5px">' + T("No one added yet.") + '</span>';
+  tbData.members.forEach(function(m){
+    var c = document.createElement("span");
+    c.className = "sp-chip";
+    c.innerHTML = tbEsc(m) + ' <span data-tbrm="' + tbEsc(m) + '">\u00d7</span>';
+    chips.appendChild(c);
+  });
+  chips.querySelectorAll("[data-tbrm]").forEach(function(x){
+    x.addEventListener("click", function(){ tbRemoveMember(this.getAttribute("data-tbrm")); });
+  });
+
+  var sel = document.getElementById("tbWho");
+  var prev = sel.value;
+  sel.innerHTML = '<option value="">' + T("Who paid in?") + '</option>';
+  tbData.members.forEach(function(m){
+    var o = document.createElement("option"); o.value = m; o.textContent = m; sel.appendChild(o);
+  });
+  if(tbData.members.indexOf(prev) > -1) sel.value = prev;
+
+  /* totals, kept per currency */
+  var inBy = {}, totIn = {}, totOut = {};
+  SP_CURS.forEach(function(c){ totIn[c] = 0; totOut[c] = 0; inBy[c] = {}; });
+  tbData.moves.forEach(function(m){
+    if(m.kind === "in"){
+      totIn[m.cur] += m.amount;
+      if(!inBy[m.cur][m.who]) inBy[m.cur][m.who] = 0;
+      inBy[m.cur][m.who] += m.amount;
+    } else {
+      totOut[m.cur] += m.amount;
+    }
+  });
+  var used = SP_CURS.filter(function(c){ return totIn[c] > 0 || totOut[c] > 0; });
+
+  /* log, newest first */
+  var log = document.getElementById("tbLog");
+  log.innerHTML = "";
+  if(!tbData.moves.length){
+    log.innerHTML = '<div style="color:var(--mute)">' + T("Nothing in the pool yet.") + '</div>';
+  } else {
+    tbData.moves.slice().reverse().forEach(function(m){
+      var row = document.createElement("div");
+      row.className = "tb-row " + m.kind;
+      var head = (m.kind === "in")
+        ? ('<b>' + tbEsc(m.who) + '</b> ' + T("paid in"))
+        : ('<b>' + tbEsc(m.desc) + '</b>');
+      row.innerHTML =
+        '<div class="tb-l"><span class="tb-tag ' + m.kind + '">' + (m.kind === "in" ? T("IN") : T("OUT")) + '</span>'
+        + '<div><div>' + head + '</div>'
+        + (m.remark ? '<div class="tb-rem">\ud83d\udcac ' + tbEsc(m.remark) + '</div>' : '') + '</div></div>'
+        + '<div class="tb-r"><span class="tb-amt ' + m.kind + '">' + (m.kind === "in" ? "+" : "\u2212") + spFmt(m.amount, m.cur) + '</span>'
+        + '<span class="sp-cur">' + m.cur + '</span>'
+        + '<span class="tb-x" data-tbdel="' + m.id + '">\u00d7</span></div>';
+      log.appendChild(row);
+    });
+    log.querySelectorAll("[data-tbdel]").forEach(function(x){
+      x.addEventListener("click", function(){ tbDelete(this.getAttribute("data-tbdel")); });
+    });
+  }
+
+  /* balance + fair share */
+  var bal = document.getElementById("tbBalance");
+  bal.innerHTML = "";
+  if(!used.length){
+    bal.innerHTML = '<div style="color:var(--mute)">' + T("Add contributions and spending to see the pool.") + '</div>';
+    return;
+  }
+  used.forEach(function(c){
+    var left = totIn[c] - totOut[c];
+    var card = document.createElement("div");
+    card.className = "tb-card";
+    var shown = (left < 0 ? "\u2212" + spFmt(-left, c) : spFmt(left, c));
+    var rows = '<div class="tb-big ' + (left < 0 ? "neg" : "") + '">' + shown
+      + '<span>' + T("left in the pool") + '</span></div>'
+      + '<div class="tb-sub"><span>' + T("paid in") + '</span><span>' + spFmt(totIn[c], c) + '</span></div>'
+      + '<div class="tb-sub"><span>' + T("spent") + '</span><span>\u2212' + spFmt(totOut[c], c) + '</span></div>';
+    if(left < 0){
+      rows += '<div class="tb-warn">\u26a0 ' + T("Spending is more than the pool holds \u2014 someone has covered the gap out of pocket.") + '</div>';
+    }
+    /* who has put in what, and what an even share would have been */
+    var names = tbData.members.slice();
+    Object.keys(inBy[c]).forEach(function(n){ if(names.indexOf(n) === -1) names.push(n); });
+    if(names.length){
+      var share = totOut[c] / names.length;   /* even share of what the pool has actually spent */
+      rows += '<div class="tb-h">' + T("Paid in by person") + '</div>';
+      names.forEach(function(n){
+        var paid = inBy[c][n] || 0;
+        var diff = paid - share;
+        var tag = Math.abs(diff) < 0.01 ? '<span class="tb-even">' + T("even") + '</span>'
+          : (diff > 0 ? '<span class="tb-up">+' + spFmt(diff, c) + '</span>'
+                      : '<span class="tb-down">\u2212' + spFmt(-diff, c) + '</span>');
+        rows += '<div class="tb-sub"><span>' + tbEsc(n) + '</span><span>' + spFmt(paid, c) + ' ' + tag + '</span></div>';
+      });
+      rows += '<div class="tb-note">' + T("Compared with an even share of what the pool has spent so far") + ' (' + spFmt(share, c) + ' ' + T("each") + ').</div>';
+    }
+    card.innerHTML = '<div class="tb-cur">' + c + '</div>' + rows;
+    bal.appendChild(card);
+  });
+  if(used.length > 1){
+    var n = document.createElement("div");
+    n.className = "sp-note";
+    n.textContent = T("Each currency is pooled separately \u2014 no exchange rate is applied.");
+    bal.appendChild(n);
+  }
+}
+document.addEventListener("DOMContentLoaded", tbRenderAll);
+</script>
+<script>
+/* Trip Split has two independent tools now; this only swaps which pane shows. */
+(function(){
+  function show(mode){
+    var sp = document.getElementById("spPane"), tb = document.getElementById("tbPane");
+    var a = document.getElementById("spTabSplit"), b = document.getElementById("spTabTabung");
+    if(!sp || !tb || !a || !b) return;
+    var t = (mode === "tabung");
+    sp.style.display = t ? "none" : "";
+    tb.style.display = t ? "" : "none";
+    a.classList.toggle("on", !t);
+    b.classList.toggle("on", t);
+    if(t && typeof tbRenderAll === "function") tbRenderAll();
+  }
+  document.addEventListener("click", function(e){
+    var t = e.target && e.target.closest ? e.target.closest("[data-spmode]") : null;
+    if(!t) return;
+    show(t.getAttribute("data-spmode"));
+  });
+  document.addEventListener("DOMContentLoaded", function(){ show("split"); });
+  var prev = window.applyLang;
+  if(typeof prev === "function"){ window.applyLang = function(){ prev.apply(this, arguments); show("split"); }; }
 })();
 </script>
 </body>
