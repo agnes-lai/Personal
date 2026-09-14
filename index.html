@@ -69,6 +69,21 @@ var ZH = {
   "left in the pool":"公款余额",
   "IN":"存入",
   "OUT":"支出",
+  "Who shared this?":"谁一起分摊这笔？",
+  "Everyone":"全部人",
+  "shared by everyone":"全部人一起分摊",
+  "shared by":"分摊的人：",
+  "Settle up":"最后怎么算",
+  "Person":"人",
+  "Paid in":"存入",
+  "Used":"实际用掉",
+  "Gets back":"该拿回",
+  "Give back to":"要退给",
+  "still owes the tabung":"还欠公款",
+  "Refunds add up to":"退款合计",
+  "and the pool holds the same \u2014 balanced.":"，跟公款余额一致 — 对得上。",
+  "but the pool holds":"但公款余额是",
+  "Each spend is divided evenly between the people who shared it.":"每笔支出，由一起分摊的人平均分。",
   "Paid in by person":"每人存了多少",
   "even":"刚好",
   "each":"每人",
@@ -1109,6 +1124,24 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 .tb-go.in{background:var(--matcha)} .tb-go.out{background:var(--red)}
 
 
+/* ===== tabung: who shared a spend ===== */
+.tb-sharelab{display:block;font-size:10.5px;font-weight:900;letter-spacing:.07em;color:var(--mute);margin-bottom:-2px}
+.tb-whorow{display:flex;flex-wrap:wrap;gap:6px}
+.tb-who{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:5px 12px;
+  font-family:inherit;font-size:12px;font-weight:700;color:var(--mute);cursor:pointer}
+.tb-who:hover{border-color:var(--ink);color:var(--ink)}
+.tb-who.on{background:var(--matcha);border-color:var(--matcha);color:#fff}
+.tb-who.all{border-style:dashed}
+.tb-share{display:block;font-size:11px;color:var(--gold);margin-top:2px}
+.tb-share.all{color:var(--mute)}
+.tb-tbl{width:100%;border-collapse:collapse;font-size:12px;margin-top:4px}
+.tb-tbl th,.tb-tbl td{padding:5px 4px;text-align:right;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.tb-tbl th:first-child,.tb-tbl td:first-child{text-align:left;font-variant-numeric:normal}
+.tb-tbl th{font-size:9.5px;font-weight:900;letter-spacing:.05em;color:var(--mute);text-transform:uppercase}
+.tb-settle{display:flex;justify-content:space-between;gap:10px;padding:6px 9px;border-radius:8px;
+  background:var(--kon);border:1px solid var(--konline);font-size:12px;margin-top:5px}
+.tb-settle.owe{background:#fdf1ef;border-color:#f0c9c4}
+
 /* ===== theme palette (generated: light keeps the original colours) ===== */
 :root{
   --bd1:#b9c2cf;
@@ -1337,7 +1370,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <div class="hd">
     <div class="kanjirow">
       <div class="kanji">東北・東京　八日間</div>
-      <span class="verchip" id="verChip" data-zh="v69 <span class=&quot;vd&quot;>更新于 2026年9月14日</span>">v69 <span class="vd">updated 14 Sep 2026</span></span>
+      <span class="verchip" id="verChip" data-zh="v70 <span class=&quot;vd&quot;>更新于 2026年9月14日</span>">v70 <span class="vd">updated 14 Sep 2026</span></span>
     </div>
     <h1 data-zh="日本东北 + 东京 <span class=&quot;jp&quot;>每日行程指南</span>">Japan Tohoku + Tokyo <span class="jp">Day-by-Day Guide</span></h1>
     <p data-zh="2026年10月4–11日 · 槟城出发跟团游 · 每天一条时间线：团队行程 + 购物任务 + 便利店打卡，全部标好时间和距离">4 – 11 Oct 2026 · Group tour from Penang · one timeline per day: tour plan + shopping missions + konbini runs, all with times &amp; distances</p>
@@ -1804,7 +1837,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <div class="icard full">
     <p style="font-size:12.5px;color:var(--mute);margin-bottom:10px" data-zh="只保存在<b>这台手机／浏览器</b>（localStorage）— 不会同步到别人的设备。适合由一个人记录全团开销。先把团里每个人加一次，之后每笔支出随手记。">Saved on <b>this phone/browser only</b> (localStorage) — it won't sync to anyone else's device. Good for one person tracking the group's spending. Add everyone on the trip once, then log each expense as it happens.</p>
 
-    <div class="sp-tabs"><button id="spTabSplit" class="on" data-spmode="split" data-zh="💸 谁欠谁">💸 Who owes who</button><button id="spTabTabung" data-spmode="tabung" data-zh="🏦 Tabung 公款">🏦 Tabung (pool)</button></div><div id="tbPane" style="display:none"><p style="font-size:12.5px;color:var(--mute);margin-bottom:10px" data-zh="共同的钱箱：大家先把钱<b>放进去</b>，团体开销再从里面<b>拿出来</b>。适合你们有一笔共同基金，而不是各付各的再算谁欠谁。">A shared kitty: everyone pays money <b>in</b>, and group costs come <b>out</b> of it. Use this when you hold one common fund rather than tracking who owes whom.</p><div style="margin-bottom:10px"><div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="谁有份">Who is in the tabung</div><div id="tbMemberChips" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px"></div><div style="display:flex;gap:6px"><input id="tbNewMember" placeholder="Add name…" data-zh-ph="加名字…" style="flex:1;padding:7px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px"><button onclick="tbAddMember()" class="cpchip" style="cursor:pointer" data-zh="+ 新增">+ Add</button></div></div><div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap"><span style="font-size:11.5px;color:var(--mute)" data-zh="货币">Currency</span><select id="tbCur" style="padding:7px 8px;border:1px solid var(--line);border-radius:8px;font-size:13px;font-weight:700"><option value="JPY">¥ JPY</option><option value="MYR">RM MYR</option><option value="SGD">S$ SGD</option></select><span style="font-size:11px;color:var(--mute)" data-zh="用在下一笔">applies to the next entry</span></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px;color:var(--matcha)" data-zh="⬇ 存钱 — 有人出资">⬇ Money in — someone contributes</div><div class="tb-form"><select id="tbWho"></select><input id="tbInAmt" placeholder="Amount paid in" data-zh-ph="存入金额" type="number" step="0.01"><input id="tbInRemark" placeholder="Remark (optional)" data-zh-ph="备注（选填）"><button class="tb-go in" onclick="tbAddIn()" data-zh="记一笔存入">Add contribution</button></div></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px;color:var(--red)" data-zh="⬆ 花钱 — 从公款支出">⬆ Money out — paid from the pool</div><div class="tb-form"><input id="tbOutDesc" placeholder="What was it for? (e.g. Day 3 taxi)" data-zh-ph="花在哪？（例：第3天打车）"><input id="tbOutAmt" placeholder="Amount spent" data-zh-ph="支出金额" type="number" step="0.01"><input id="tbOutRemark" placeholder="Remark (optional)" data-zh-ph="备注（选填）"><button class="tb-go out" onclick="tbAddOut()" data-zh="记一笔支出">Add spending</button></div></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="公款状况">The pool</div><div id="tbBalance"></div></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="公款记录">Tabung log</div><div id="tbLog" style="font-size:12.5px"></div></div><div style="margin-top:12px"><button onclick="tbReset()" style="background:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--mute);cursor:pointer" data-zh="清空 Tabung">Clear the tabung</button></div></div><div id="spPane"><div id="spMembersRow" style="margin-bottom:10px">
+    <div class="sp-tabs"><button id="spTabSplit" class="on" data-spmode="split" data-zh="💸 谁欠谁">💸 Who owes who</button><button id="spTabTabung" data-spmode="tabung" data-zh="🏦 Tabung 公款">🏦 Tabung (pool)</button></div><div id="tbPane" style="display:none"><p style="font-size:12.5px;color:var(--mute);margin-bottom:10px" data-zh="共同的钱箱：大家先把钱<b>放进去</b>，团体开销再从里面<b>拿出来</b>。适合你们有一笔共同基金，而不是各付各的再算谁欠谁。">A shared kitty: everyone pays money <b>in</b>, and group costs come <b>out</b> of it. Use this when you hold one common fund rather than tracking who owes whom.</p><div style="margin-bottom:10px"><div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="谁有份">Who is in the tabung</div><div id="tbMemberChips" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px"></div><div style="display:flex;gap:6px"><input id="tbNewMember" placeholder="Add name…" data-zh-ph="加名字…" style="flex:1;padding:7px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px"><button onclick="tbAddMember()" class="cpchip" style="cursor:pointer" data-zh="+ 新增">+ Add</button></div></div><div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap"><span style="font-size:11.5px;color:var(--mute)" data-zh="货币">Currency</span><select id="tbCur" style="padding:7px 8px;border:1px solid var(--line);border-radius:8px;font-size:13px;font-weight:700"><option value="JPY">¥ JPY</option><option value="MYR">RM MYR</option><option value="SGD">S$ SGD</option></select><span style="font-size:11px;color:var(--mute)" data-zh="用在下一笔">applies to the next entry</span></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px;color:var(--matcha)" data-zh="⬇ 存钱 — 有人出资">⬇ Money in — someone contributes</div><div class="tb-form"><select id="tbWho"></select><input id="tbInAmt" placeholder="Amount paid in" data-zh-ph="存入金额" type="number" step="0.01"><input id="tbInRemark" placeholder="Remark (optional)" data-zh-ph="备注（选填）"><button class="tb-go in" onclick="tbAddIn()" data-zh="记一笔存入">Add contribution</button></div></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px;color:var(--red)" data-zh="⬆ 花钱 — 从公款支出">⬆ Money out — paid from the pool</div><div class="tb-form"><label class="tb-sharelab" data-zh="谁一起分摊这笔？">Who shared this?</label><div id="tbShare" class="tb-whorow"></div><input id="tbOutDesc" placeholder="What was it for? (e.g. Day 3 taxi)" data-zh-ph="花在哪？（例：第3天打车）"><input id="tbOutAmt" placeholder="Amount spent" data-zh-ph="支出金额" type="number" step="0.01"><input id="tbOutRemark" placeholder="Remark (optional)" data-zh-ph="备注（选填）"><button class="tb-go out" onclick="tbAddOut()" data-zh="记一笔支出">Add spending</button></div></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="公款状况">The pool</div><div id="tbBalance"></div></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="公款记录">Tabung log</div><div id="tbLog" style="font-size:12.5px"></div></div><div style="margin-top:12px"><button onclick="tbReset()" style="background:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--mute);cursor:pointer" data-zh="清空 Tabung">Clear the tabung</button></div></div><div id="spPane"><div id="spMembersRow" style="margin-bottom:10px">
       <div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="团队成员">Group members</div>
       <div id="spMemberChips" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px"></div>
       <div style="display:flex;gap:6px">
@@ -1990,7 +2023,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 </div>
 </details>
 
-<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v69</b> · 更新于 2026年9月14日</span>">Built for your 4–11 Oct 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v69</b> · updated 14 Sep 2026</span></footer>
+<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v70</b> · 更新于 2026年9月14日</span>">Built for your 4–11 Oct 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v70</b> · updated 14 Sep 2026</span></footer>
 
 <script>
 // ===== Trip Split (localStorage-backed, this device only) =====
@@ -5286,7 +5319,7 @@ document.addEventListener("click", function(){ if(slSkipOpen){ slSkipOpen = null
 /* Single source of truth for the version shown on the page. Bump these two and
    both the header chip and the footer line follow. The values are also written
    into the HTML above, so the version still shows if scripts don't run. */
-var GUIDE_VERSION = "v69";
+var GUIDE_VERSION = "v70";
 var GUIDE_UPDATED = {en: "14 Sep 2026", zh: "2026年9月14日"};
 (function(){
   function paint(){
@@ -5520,7 +5553,12 @@ function tbNormalise(d){
         desc: kind === "out" ? (m.desc || "") : "",
         amount: amt,
         cur: SP_CURS.indexOf(m.cur) > -1 ? m.cur : "JPY",
-        remark: m.remark || ""
+        remark: m.remark || "",
+        /* who actually shared this spend. An entry saved before this feature
+           existed has no list, which means it was shared by everyone. */
+        share: (kind === "out" && Object.prototype.toString.call(m.share) === "[object Array]")
+               ? m.share.filter(function(x){ return typeof x === "string" && x.trim(); })
+               : null
       });
     });
   }
@@ -5572,12 +5610,70 @@ function tbAddIn(){
   document.getElementById("tbInRemark").value = "";
   tbSave(); tbRenderAll();
 }
+/* Who a spend falls on. null means "everyone", resolved against the roster as
+   it stands now, so adding a member later doesn't rewrite history. */
+function tbShareOf(m, members){
+  if(m.kind !== "out") return [];
+  if(!m.share || !m.share.length) return members.slice();
+  var live = m.share.filter(function(x){ return members.indexOf(x) > -1; });
+  return live.length ? live : members.slice();
+}
+function tbSharePicked(){
+  var out = [];
+  document.querySelectorAll("#tbShare [data-tbshare]").forEach(function(b){
+    if(b.classList.contains("on")) out.push(b.getAttribute("data-tbshare"));
+  });
+  return out;
+}
+function tbRenderShare(){
+  var box = document.getElementById("tbShare");
+  if(!box) return;
+  var prev = {};
+  box.querySelectorAll("[data-tbshare]").forEach(function(b){
+    prev[b.getAttribute("data-tbshare")] = b.classList.contains("on");
+  });
+  var html = '<button type="button" class="tb-who all" data-tbshareall>' + T("Everyone") + '</button>';
+  tbData.members.forEach(function(m){
+    var on = (prev[m] === undefined) ? true : prev[m];
+    html += '<button type="button" class="tb-who' + (on ? " on" : "") + '" data-tbshare="' + tbEsc(m) + '">' + tbEsc(m) + '</button>';
+  });
+  box.innerHTML = html;
+  tbSyncShareAll();
+}
+function tbSyncShareAll(){
+  var all = document.querySelector("#tbShare [data-tbshareall]");
+  if(!all) return;
+  var btns = document.querySelectorAll("#tbShare [data-tbshare]");
+  var every = btns.length > 0;
+  btns.forEach(function(b){ if(!b.classList.contains("on")) every = false; });
+  all.classList.toggle("on", every);
+}
+document.addEventListener("click", function(e){
+  var t = e.target && e.target.closest ? e.target.closest("#tbShare button") : null;
+  if(!t) return;
+  var btns = [].slice.call(document.querySelectorAll("#tbShare [data-tbshare]"));
+  if(t.hasAttribute("data-tbshareall")){
+    var every = btns.every(function(b){ return b.classList.contains("on"); });
+    btns.forEach(function(b){ b.classList.toggle("on", !every); });
+    if(btns.every(function(b){ return !b.classList.contains("on"); }))
+      btns.forEach(function(b){ b.classList.add("on"); });
+  } else {
+    t.classList.toggle("on");
+    /* never let a spend belong to nobody */
+    if(btns.every(function(b){ return !b.classList.contains("on"); })) t.classList.add("on");
+  }
+  tbSyncShareAll();
+});
+
 function tbAddOut(){
   var desc = (document.getElementById("tbOutDesc").value || "").trim();
   var amt = parseFloat(document.getElementById("tbOutAmt").value);
   if(!desc || !amt || amt <= 0){ alert(T("Say what it was spent on, and how much.")); return; }
+  var picked = tbSharePicked();
+  var everyone = picked.length === tbData.members.length;
   tbData.moves.push({id: Date.now(), kind: "out", who: "", desc: desc, amount: amt,
-                     cur: tbCur(), remark: (document.getElementById("tbOutRemark").value || "").trim()});
+                     cur: tbCur(), remark: (document.getElementById("tbOutRemark").value || "").trim(),
+                     share: everyone ? null : picked});
   document.getElementById("tbOutDesc").value = "";
   document.getElementById("tbOutAmt").value = "";
   document.getElementById("tbOutRemark").value = "";
@@ -5623,16 +5719,20 @@ function tbRenderInner(){
   });
   if(tbData.members.indexOf(prev) > -1) sel.value = prev;
 
-  /* totals, kept per currency */
-  var inBy = {}, totIn = {}, totOut = {};
-  SP_CURS.forEach(function(c){ totIn[c] = 0; totOut[c] = 0; inBy[c] = {}; });
+  /* totals, kept per currency. "used" is what each person actually consumed:
+     every spend is divided evenly among the people who shared that spend. */
+  var inBy = {}, usedBy = {}, totIn = {}, totOut = {};
+  SP_CURS.forEach(function(c){ totIn[c] = 0; totOut[c] = 0; inBy[c] = {}; usedBy[c] = {}; });
   tbData.moves.forEach(function(m){
     if(m.kind === "in"){
       totIn[m.cur] += m.amount;
-      if(!inBy[m.cur][m.who]) inBy[m.cur][m.who] = 0;
-      inBy[m.cur][m.who] += m.amount;
+      inBy[m.cur][m.who] = (inBy[m.cur][m.who] || 0) + m.amount;
     } else {
       totOut[m.cur] += m.amount;
+      var sh = tbShareOf(m, tbData.members);
+      if(!sh.length) return;
+      var each = m.amount / sh.length;
+      sh.forEach(function(n){ usedBy[m.cur][n] = (usedBy[m.cur][n] || 0) + each; });
     }
   });
   var used = SP_CURS.filter(function(c){ return totIn[c] > 0 || totOut[c] > 0; });
@@ -5649,9 +5749,18 @@ function tbRenderInner(){
       var head = (m.kind === "in")
         ? ('<b>' + tbEsc(m.who) + '</b> ' + T("paid in"))
         : ('<b>' + tbEsc(m.desc) + '</b>');
+      var shareLine = "";
+      if(m.kind === "out"){
+        var sh = tbShareOf(m, tbData.members);
+        var all = sh.length === tbData.members.length;
+        shareLine = '<div class="tb-share' + (all ? " all" : "") + '">'
+          + (all ? T("shared by everyone") : (T("shared by") + " " + sh.map(tbEsc).join(", ")))
+          + '</div>';
+      }
       row.innerHTML =
         '<div class="tb-l"><span class="tb-tag ' + m.kind + '">' + (m.kind === "in" ? T("IN") : T("OUT")) + '</span>'
         + '<div><div>' + head + '</div>'
+        + shareLine
         + (m.remark ? '<div class="tb-rem">\ud83d\udcac ' + tbEsc(m.remark) + '</div>' : '') + '</div></div>'
         + '<div class="tb-r"><span class="tb-amt ' + m.kind + '">' + (m.kind === "in" ? "+" : "\u2212") + spFmt(m.amount, m.cur) + '</span>'
         + '<span class="sp-cur">' + m.cur + '</span>'
@@ -5663,11 +5772,12 @@ function tbRenderInner(){
     });
   }
 
-  /* balance + fair share */
+  /* balance card: paid in / actually used / gets back, per person */
   var bal = document.getElementById("tbBalance");
   bal.innerHTML = "";
   if(!used.length){
     bal.innerHTML = '<div style="color:var(--mute)">' + T("Add contributions and spending to see the pool.") + '</div>';
+    tbRenderShare();   /* the chips must exist before the first spend is entered */
     return;
   }
   used.forEach(function(c){
@@ -5682,31 +5792,49 @@ function tbRenderInner(){
     if(left < 0){
       rows += '<div class="tb-warn">\u26a0 ' + T("Spending is more than the pool holds \u2014 someone has covered the gap out of pocket.") + '</div>';
     }
-    /* who has put in what, and what an even share would have been */
+
     var names = tbData.members.slice();
     Object.keys(inBy[c]).forEach(function(n){ if(names.indexOf(n) === -1) names.push(n); });
+    Object.keys(usedBy[c]).forEach(function(n){ if(names.indexOf(n) === -1) names.push(n); });
+
     if(names.length){
-      var share = totOut[c] / names.length;   /* even share of what the pool has actually spent */
-      rows += '<div class="tb-h">' + T("Paid in by person") + '</div>';
+      rows += '<div class="tb-h">' + T("Settle up") + '</div>'
+           +  '<table class="tb-tbl"><tr><th>' + T("Person") + '</th><th>' + T("Paid in")
+           +  '</th><th>' + T("Used") + '</th><th>' + T("Gets back") + '</th></tr>';
+      var sum = 0;
       names.forEach(function(n){
-        var paid = inBy[c][n] || 0;
-        var diff = paid - share;
-        var tag = Math.abs(diff) < 0.01 ? '<span class="tb-even">' + T("even") + '</span>'
-          : (diff > 0 ? '<span class="tb-up">+' + spFmt(diff, c) + '</span>'
-                      : '<span class="tb-down">\u2212' + spFmt(-diff, c) + '</span>');
-        rows += '<div class="tb-sub"><span>' + tbEsc(n) + '</span><span>' + spFmt(paid, c) + ' ' + tag + '</span></div>';
+        var paid = inBy[c][n] || 0, usd = usedBy[c][n] || 0, back = paid - usd;
+        sum += back;
+        rows += '<tr><td>' + tbEsc(n) + '</td><td>' + spFmt(paid, c) + '</td><td>' + spFmt(usd, c)
+             +  '</td><td class="' + (back < 0 ? "tb-down" : "tb-up") + '">'
+             +  (back < 0 ? "\u2212" + spFmt(-back, c) : spFmt(back, c)) + '</td></tr>';
       });
-      rows += '<div class="tb-note">' + T("Compared with an even share of what the pool has spent so far") + ' (' + spFmt(share, c) + ' ' + T("each") + ').</div>';
+      rows += '</table>';
+      names.forEach(function(n){
+        var back = (inBy[c][n] || 0) - (usedBy[c][n] || 0);
+        if(Math.abs(back) < 0.5) return;
+        rows += '<div class="tb-settle' + (back < 0 ? " owe" : "") + '"><span>'
+             +  (back > 0 ? (T("Give back to") + " <b>" + tbEsc(n) + "</b>")
+                          : ("<b>" + tbEsc(n) + "</b> " + T("still owes the tabung")))
+             +  '</span><b>' + spFmt(Math.abs(back), c) + '</b></div>';
+      });
+      /* the pool can never quietly gain or lose money, so show the check */
+      rows += '<div class="tb-note">' + T("Refunds add up to") + " " + spFmt(sum, c) + " "
+           +  (Math.abs(sum - left) < 0.5 ? T("and the pool holds the same \u2014 balanced.")
+                                          : ("\u26a0 " + T("but the pool holds") + " " + spFmt(left, c)))
+           +  '</div>'
+           +  '<div class="tb-note">' + T("Each spend is divided evenly between the people who shared it.") + '</div>';
     }
     card.innerHTML = '<div class="tb-cur">' + c + '</div>' + rows;
     bal.appendChild(card);
   });
   if(used.length > 1){
-    var n = document.createElement("div");
-    n.className = "sp-note";
-    n.textContent = T("Each currency is pooled separately \u2014 no exchange rate is applied.");
-    bal.appendChild(n);
+    var n2 = document.createElement("div");
+    n2.className = "sp-note";
+    n2.textContent = T("Each currency is pooled separately \u2014 no exchange rate is applied.");
+    bal.appendChild(n2);
   }
+  tbRenderShare();
 }
 document.addEventListener("DOMContentLoaded", tbRenderAll);
 </script>
