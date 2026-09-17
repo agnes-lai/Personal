@@ -1,0 +1,735 @@
+{
+ "_readme": "Japan Trip Guide - 8-day tour rows. The guide reads this file from data/ and redraws Days 1-8 from it. Each day: title/meta/weather {en,zh}, then blocks (one per timeline column) of rows. A row = {time, class, en, zh, attrs?}. class: '' (tour), 'add' (ADD-ON, gold), 'kon' (konbini run, green), 'kon vital' (stock up). en/zh may be plain text or HTML. Items with only 'raw' are complex blocks copied verbatim - leave them unless you know HTML. Bump 'version' by 1 every time you save; devices ignore a copy with a lower version. Sample + guide: Shared_Data_Guide.html",
+ "version": 1,
+ "updated": "2026-09-17",
+ "days": [
+  {
+   "day": 1,
+   "title": {
+    "en": "Departure — Penang to Japan",
+    "zh": "出发 — 槟城飞日本"
+   },
+   "meta": {
+    "en": "Sun 4 Oct · via Singapore · stay: Hotel Metropolitan Tokyo Haneda",
+    "zh": "10月4日 周日 · 经新加坡转机 · 住：Hotel Metropolitan Tokyo Haneda"
+   },
+   "weather": {
+    "en": "<b>25° / 19°</b><br>cloudy",
+    "zh": "<b>25° / 19°</b><br>多云"
+   },
+   "blocks": [
+    [
+     {
+      "time": "7:00",
+      "class": "",
+      "en": "<b>Assembly</b> @ Penang Intl Airport check-in · breakfast: chiffon cake (V-Bakery)",
+      "zh": "<b>集合</b> @ 槟城国际机场办登机 · 早餐：戚风蛋糕（V-Bakery）"
+     },
+     {
+      "time": "10:15",
+      "class": "",
+      "en": "<b>SQ131</b> PEN → SIN (1h30m) · refreshment on board · 55m connection at Changi",
+      "zh": "<b>SQ131</b> 槟城 → 新加坡（1小时30分）· 机上有点心 · 樟宜转机 55 分钟"
+     },
+     {
+      "time": "13:55",
+      "class": "",
+      "en": "<b>SQ634</b> SIN → Haneda (7h15m) · dinner on board",
+      "zh": "<b>SQ634</b> 新加坡 → 羽田（7小时15分）· 机上晚餐"
+     },
+     {
+      "time": "21:55",
+      "class": "",
+      "en": "<b>Arrive Haneda</b> → ~5 min tour bus → check-in Hotel Metropolitan Tokyo Haneda",
+      "zh": "<b>抵达羽田</b> → 旅游巴士约 5 分钟 → 入住 Hotel Metropolitan Tokyo Haneda"
+     },
+     {
+      "time": "22:45",
+      "class": "kon",
+      "en": "<span class=\"badge kon\">KONBINI RUN</span><span class=\"chain clw\">Lawson — Haneda Airport Garden</span><span class=\"dist\">inside your hotel complex · 24h</span><span class=\"geo\"><span class=\"pin\">📍</span>Inside the same complex — <b>~2 min indoors</b>, you never go outside.</span><span class=\"verdict tight\">Tonight’s only shopping — the mall shops shut 8–9pm.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Your first <b>tamago sando</b> — Japan’s cult egg sandwich, ~¥250</li><li>Water and a Pocari</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"tip\">Buy tomorrow’s bus snacks now too — Day 2 is a long drive</li></ul><span class=\"back\">↩ 2 min back indoors · <a href=\"https://www.google.com/maps/search/?api=1&query=Lawson+Haneda+Airport+Garden\">Map</a></span>",
+      "zh": "<span class=\"badge kon\">便利店打卡</span><span class=\"chain clw\">罗森 Lawson — 羽田机场花园店</span><span class=\"dist\">就在你酒店的综合楼里 · 24 小时</span><span class=\"geo\"><span class=\"pin\">📍</span>就在同一栋楼里 — <b>室内走约 2 分钟</b>，不用出门。</span><span class=\"verdict tight\">今晚唯一能买东西的地方 — 商场店铺 20:00–21:00 就关。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>你在日本的第一个<b>玉子三明治</b> — 神级鸡蛋三明治，约 ¥250</li><li>水和宝矿力</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"tip\">顺便买明天巴士上的零食 — 第 2 天要坐很久的车</li></ul><span class=\"back\">↩ 室内走 2 分钟回房 · <a href=\"https://www.google.com/maps/search/?api=1&query=Lawson+Haneda+Airport+Garden\">地图</a></span>"
+     },
+     {
+      "time": "23:15",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span>Can't sleep after 12h flying? <b>Izumi Tenku no Yu onsen</b> is in the same complex (open ~24h, paid, runway view). Otherwise lights out — Day 2 breakfast is 7:30am.",
+      "zh": "<span class=\"badge add\">加点</span>飞了 12 小时睡不着？<b>泉天空之汤温泉</b>就在同一栋综合楼（约 24 小时营业、收费、能看跑道）。不然就关灯睡觉 — 第2天早餐 7:30。"
+     }
+    ]
+   ]
+  },
+  {
+   "day": 2,
+   "title": {
+    "en": "Haneda → Sendai, Miyagi",
+    "zh": "羽田 → 仙台（宫城）"
+   },
+   "meta": {
+    "en": "Mon 5 Oct · Shinkansen + Matsushima Bay · stay: Hotel Kameya (Onsen)",
+    "zh": "10月5日 周一 · 新干线 + 松岛湾 · 住：Hotel Kameya（温泉）"
+   },
+   "weather": {
+    "en": "<b>23° / 14°</b><br>rain ☔",
+    "zh": "<b>23° / 14°</b><br>有雨 ☔"
+   },
+   "blocks": [
+    [
+     {
+      "time": "7:30",
+      "class": "",
+      "en": "Breakfast @ hotel · <b>8:30</b> depart to Tokyo Station (~45 min) · arrive 9:15",
+      "zh": "酒店早餐 · <b>8:30</b> 出发去东京站（约 45 分钟）· 9:15 抵达"
+     },
+     {
+      "time": "9:20",
+      "class": "kon",
+      "en": "<span class=\"badge kon\">KONBINI RUN</span><b>Inside Tokyo Station</b><span class=\"dist\">0 min · on your walking route</span><span class=\"geo\"><span class=\"pin\">📍</span>NewDays kiosks and konbini on <b>every concourse</b> — zero detour.</span><span class=\"verdict go\">You have ~45 min before the 10:05 Shinkansen. Don’t skip this.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>An <b>ekiben</b> (train bento), ¥1,000–1,500 — the classic Japanese train ritual</li><li>Or onigiri + drinks for the 1h35m ride</li></ul>",
+      "zh": "<span class=\"badge kon\">便利店打卡</span><b>东京站里面</b><span class=\"dist\">0 分钟 · 就在你走的路上</span><span class=\"geo\"><span class=\"pin\">📍</span><b>每一层月台层</b>都有 NewDays 和便利店 — 完全不用绕路。</span><span class=\"verdict go\">10:05 的新干线前你有约 45 分钟。这个别跳过。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>一份<b>駅弁</b>（火车便当），¥1,000–1,500 — 日本坐火车的经典仪式</li><li>或者饭团 + 饮料，撐过 1 小时 35 分的车程</li></ul>"
+     },
+     {
+      "time": "10:05",
+      "class": "",
+      "en": "<b>Shinkansen</b> Tokyo → Sendai (1h35m, 304km) — sit left side for countryside views",
+      "zh": "<b>新干线</b> 东京 → 仙台（1小时35分，304公里）— 坐左边看乡村风景"
+     },
+     {
+      "time": "11:40",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Zunda Saryo — Sendai Station 3F</b><span class=\"dist\">inside the station · 10am–9pm</span><span class=\"geo\"><span class=\"pin\">📍</span>Inside the station itself, <b>2 min from the group meeting point</b> — not really a detour.</span><span class=\"verdict tight\">Only if the guide gives you buffer before the bus.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Zunda shake ~¥350, takeaway — Sendai’s icon, a sweet edamame shake</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\">Set a phone alarm for the bus time before you go</li></ul><span class=\"back\">↩ 2 min back to the meeting point · <a href=\"https://www.google.com/maps/search/?api=1&query=Zunda+Saryo+Sendai+Station\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>豆泥茶寮 — 仙台站 3 楼</b><span class=\"dist\">就在站内 · 10:00–21:00</span><span class=\"geo\"><span class=\"pin\">📍</span>就在车站里面，<b>离集合点 2 分钟</b> — 算不上绕路。</span><span class=\"verdict tight\">只有导游给了上车前的空档才去。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>豆泥奶昔 约 ¥350，可外带 — 仙台招牌，甜毛豆做的</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\">去之前先设好上车时间的手机闹钟</li></ul><span class=\"back\">↩ 2 分钟回集合点 · <a href=\"https://www.google.com/maps/search/?api=1&query=Zunda+Saryo+Sendai+Station\">地图</a></span>"
+     },
+     {
+      "time": "12:15",
+      "class": "",
+      "en": "<span class=\"fd\">Lunch:</span> Oyster set cuisine<button class=\"mealpic\" onclick=\"showMeal('d2l')\">📷 see meal</button>",
+      "zh": "<span class=\"fd\">午餐：</span>牡蛎套餐<button class=\"mealpic\" onclick=\"showMeal('d2l')\">📷 看餐点</button>"
+     },
+     {
+      "time": "13:18",
+      "class": "",
+      "en": "<b>Matsushima Fish Market</b> (1h)<ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>Grilled oysters ¥300+ · oyster burger · oyster ice cream for the brave</li><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Sasa-kamaboko — grill-your-own fish cake</li><li>Hagi no Tsuki custard cakes — Miyagi’s #1 boxed souvenir</li><li class=\"warn\">Gyutan jerky — but eat it <span class=\"k\">before flying home</span>; meat can’t enter Malaysia. See <a href=\"#airport\">Airport rules</a></li></ul>",
+      "zh": "<b>松岛鱼市场</b>（1小时）<ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>烤牡蛎 ¥300 起 · 牡蛎汉堡 · 敢吃的话来个牡蛎冰淇淋</li><li class=\"grp buy\"><span>🛍 要买的</span></li><li>笹蒲鉾 — 自己烤的竹叶鱼板</li><li>萩之月奶黄蛋糕 — 宫城第一名的盒装手信</li><li class=\"warn\">牛舌肉干 — 但要<span class=\"k\">回国前吃完</span>；肉类不能带进马来西亚。看<a href=\"#airport\">机场规定</a></li></ul>"
+     },
+     {
+      "time": "14:20",
+      "class": "",
+      "en": "<b>Zuiganji Temple</b> (1h) — the Date clan's Zen temple, cedar avenue + caves\n      <ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Omamori (protection charms, ~¥500–1,000)</li><li>A <b>goshuin</b> stamp (~¥300–500) — start a goshuinchō book here</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"tip\">Collect the matching stamp at Tōshō-gū on Day 5</li></ul>",
+      "zh": "<b>瑞岩寺</b>（1小时）— 伊达家的禅寺，杉树大道 + 岩窟<ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>御守（护身符，约 ¥500–1,000）</li><li><b>御朱印</b>（约 ¥300–500）— 在这里开一本御朱印帐</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"tip\">第 5 天到东照宫再收集配对的那一枚</li></ul>"
+     },
+     {
+      "time": "15:22",
+      "class": "",
+      "en": "<b>Godaido Temple</b> (30m) — Matsushima’s icon on its islet<ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li><b>Kanrantei</b>, right beside Godaido and the cruise pier — the Date clan’s 400-year-old tea pavilion. A bowl of matcha + zunda mochi over the bay view</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Open 8:30am–4:30pm, small entry fee</li><li class=\"warn\">A 15–20 min squeeze <span class=\"k\">only</span> if the guide’s timing allows — ask on the bus</li></ul>",
+      "zh": "<b>五大堂</b>（30分）— 松岛地标，建在小岛上<ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li><b>观澜亭</b>就在五大堂和游船码头旁边 — 伊达家 400 年的茶亭。一碗抹茶配豆泥麻糬，看着海湾</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>8:30–16:30，门票很便宜</li><li class=\"warn\">只有导游时间容得下才挤这 15–20 分钟 — <span class=\"k\">先在车上问</span></li></ul>"
+     },
+     {
+      "time": "16:00",
+      "class": "",
+      "en": "<b>Matsushima Bay Cruise</b> (1h) — one of Japan's Three Great Views",
+      "zh": "<b>松岛湾游船</b>（1小时）— 日本三景之一"
+     },
+     {
+      "time": "18:30",
+      "class": "",
+      "en": "Check-in Hotel Kameya · <b>19:00</b> <span class=\"fd\">Kaiseki dinner</span><button class=\"mealpic\" onclick=\"showMeal('d2d')\">📷 see meal</button>",
+      "zh": "入住 Hotel Kameya · <b>19:00</b> <span class=\"fd\">会席晚餐</span><button class=\"mealpic\" onclick=\"showMeal('d2d')\">📷 看餐点</button>"
+     },
+     {
+      "time": "20:30",
+      "class": "kon",
+      "en": "<span class=\"badge kon\">KONBINI RUN</span><span class=\"chain cfm\">FamilyMart — Matsushima Kaigandori</span><span class=\"dist\">seafront road · 6–12 min walk · 24h</span><span class=\"geo\"><span class=\"pin\">📍</span>On the seafront road — <b>the exact walk depends which hotel you’re assigned</b>, so ask at check-in.</span><span class=\"verdict go\">Best after dinner, before your second onsen soak.</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>A <b>famichiki</b> at the eat-in corner</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"tip\">Going earlier instead? A&amp;COOP supermarket (10am–9pm) + Daiso are ~10 min inland and cheaper</li></ul><span class=\"back\">↩ <a href=\"https://www.google.com/maps/search/?api=1&query=FamilyMart+Matsushima+Kaigandori\">Map</a></span>",
+      "zh": "<span class=\"badge kon\">便利店打卡</span><span class=\"chain cfm\">全家 FamilyMart — 松岛海岸通店</span><span class=\"dist\">海边那条路 · 步行 6–12 分钟 · 24 小时</span><span class=\"geo\"><span class=\"pin\">📍</span>在海边那条路上 — <b>实际走多久看你被分到哪家酒店</b>，入住时问一下。</span><span class=\"verdict go\">最好是晚餐后、第二次泡汤前去。</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>在店里的用餐区吃一份<b>炸鸡（famichiki）</b></li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"tip\">想早一点去？A&COOP 超市（10:00–21:00）和大创往内陆走约 10 分钟，更便宜</li></ul><span class=\"back\">↩ <a href=\"https://www.google.com/maps/search/?api=1&query=FamilyMart+Matsushima+Kaigandori\">地图</a></span>"
+     },
+     {
+      "time": "21:30",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Second onsen soak</b> when the bath is quiet, or a bay-front stroll if rain stops — Godaido is lit at night. Onsen towns sleep early; that is the charm.",
+      "zh": "<span class=\"badge add\">加点</span><b>再泡一轮温泉</b>，趁浴场安静的时候；雨停了就去海边散步 — 五大堂晚上有灯光。温泉小镇睡得早，这正是它的魅力。"
+     }
+    ]
+   ]
+  },
+  {
+   "day": 3,
+   "title": {
+    "en": "Miyagi → Ginzan Onsen → Zao → Fukushima",
+    "zh": "宫城 → 银山温泉 → 藏王 → 福岛"
+   },
+   "meta": {
+    "en": "Tue 6 Oct · stay: Okuiizaka Aanabara Onsen Yoshikawa-ya",
+    "zh": "10月6日 周二 · 住：奥饭坂 穴原温泉 吉川屋"
+   },
+   "weather": {
+    "en": "<b>25° / 18°</b><br>rain ☔",
+    "zh": "<b>25° / 18°</b><br>有雨 ☔"
+   },
+   "blocks": [
+    [
+     {
+      "time": "7:30",
+      "class": "",
+      "en": "Breakfast @ Hotel Kameya · <b>8:30</b> depart (~56 min, 44km)",
+      "zh": "Hotel Kameya 早餐 · <b>8:30</b> 出发（约 56 分钟，44 公里）"
+     },
+     {
+      "time": "9:30",
+      "class": "",
+      "en": "<b>Ginzan Onsen Street</b> (2h) — Taisho-era wooden ryokan street, the “Spirited Away” look<ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li><b>Haikara-san curry bread</b> ~¥250 — but it’s 12 min out on the falls promenade, and often pre-made rather than fresh. See <b>10:15</b></li><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Onsen manju</li><li>Kokeshi dolls</li><li>Yamagata fruit sweets — shine muscat &amp; La France pear, <b>October is peak season</b></li></ul>",
+      "zh": "<b>银山温泉老街</b>（2小时）— 大正时代木造旅馆街，「千与千寻」既视感<ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li><b>はいからさん 咖喱面包</b> 约 ¥250 — 但在往瀑布的步道上，走过去 12 分钟，而且不一定是现炸的。看 <b>10:15</b></li><li class=\"grp buy\"><span>🛍 要买的</span></li><li>温泉馒头</li><li>小芥子木偶</li><li>山形水果甜点 — 晴王麝香葡萄和 La France 洋梨，<b>十月正当季</b></li></ul>"
+     },
+     {
+      "time": "10:15",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Haikara-san curry bread (Meiyuu Ginzan)</b><span class=\"dist\">Ginzanshinhata 451 · 12 min from the drop-off · 5 min past the gas-lamp street</span><span class=\"geo\"><span class=\"pin\">📍</span><b>Not on the main street</b> — it’s on the Haikara-san promenade heading towards <b>Shirogane Falls</b>, 5 min beyond the gas-lamp street, or 12 min from the coach parking.</span><span class=\"verdict tight\">You have 2 hours and the walk is 24 min return — go early if you want it.</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>The signature curry bread, ~¥250. The wrapper art — a woman with an umbrella under a gas lamp — photographs well</li><li>The <b>fried manju (agemanju)</b> is worth it too — several reviewers rate it above the curry bread</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\"><b>It isn’t always fresh.</b> It sits at 3.1 stars mostly because it is often <span class=\"k\">pre-made and cold</span>. Ask “<i>agetate desu ka?</i>” (is it just fried?) and wait for the next batch if not</li><li class=\"warn\">Expect a queue — it’s the most popular snack in Ginzan</li><li class=\"tip\">Much better in the cold, and an October morning in Ginzan is cold</li></ul><span class=\"back\">↩ 5 min back to the gas-lamp street, 12 min to the parking · <a href=\"https://www.google.com/maps/search/?api=1&query=Meiyuu+Ginzan+Haikara-san+street\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>はいからさん 咖喱面包（名勇 银山店）</b><span class=\"dist\">银山新畑 451 · 从下车点走 12 分钟 · 煤气灯街再往里 5 分钟</span><span class=\"geo\"><span class=\"pin\">📍</span><b>不在主街上</b> — 在往<b>白银瀑布</b>方向的「はいからさん通り」步道上，从煤气灯街再走 5 分钟，从停车场算共 12 分钟。</span><span class=\"verdict tight\">你有 2 小时，来回走路就要 24 分钟 — 想吃就早点去。</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>招牌咖喱面包，约 ¥250。包装纸上是撑伞的女子配煤气灯，很好拍</li><li><b>炸馒头（あげまんじゅう）</b>也值得 — 有评论说比咖喱面包还好吃</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\"><b>不一定是现炸的。</b>评价只有 3.1 分，主要就是因为常常是<span class=\"k\">预先做好、放凉了</span>的。买之前问一句「<i>あげたてですか？</i>」（是刚炸的吗），凉的就等下一锅</li><li class=\"warn\">会排队 — 这是银山最有人气的小吃</li><li class=\"tip\">天冷的时候特别好吃 — 十月的银山早上很凉</li></ul><span class=\"back\">↩ 往回走 5 分钟回煤气灯街，12 分钟回停车场 · <a href=\"https://www.google.com/maps/search/?api=1&query=Meiyuu+Ginzan+Haikara-san+street\">地图</a></span>"
+     },
+     {
+      "time": "12:00",
+      "class": "",
+      "en": "<span class=\"fd\">Lunch:</span> Tempura soba set<button class=\"mealpic\" onclick=\"showMeal('d3l')\">📷 see meal</button> · <b>13:00</b> depart to Zao (~2h10m, 130km)",
+      "zh": "<span class=\"fd\">午餐：</span>天妇罗荞麦面套餐<button class=\"mealpic\" onclick=\"showMeal('d3l')\">📷 看餐点</button> · <b>13:00</b> 出发去藏王（约 2小时10分，130公里）"
+     },
+     {
+      "time": "13:40",
+      "class": "kon vital",
+      "en": "<span class=\"badge stock\">STOCK UP</span><span class=\"badge kon\">KONBINI RUN</span><b>Highway rest stop (SA/PA) on the 2h drive</b><span class=\"dist\">0 min · the bus stops anyway</span><span class=\"geo\"><span class=\"pin\">📍</span>No detour — tour buses always break on a 2h+ leg.</span><span class=\"verdict tight\">Your main stock-up today. Nothing is walkable at tonight’s ryokan.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Rest stops have konbini corners plus <b>regional-only snacks</b> you won’t see again</li><li>Get your drinks here</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\">There is <span class=\"k\">no konbini</span> within walking distance of tonight’s ryokan</li></ul>",
+      "zh": "<span class=\"badge stock\">先囤货</span><span class=\"badge kon\">便利店打卡</span><b>2 小时车程中的高速休息站（SA/PA）</b><span class=\"dist\">0 分钟 · 巴士本来就会停</span><span class=\"geo\"><span class=\"pin\">📍</span>完全不用绕路 — 超过 2 小时的车程，团车一定会停一次。</span><span class=\"verdict tight\">今天主要的囤货点。今晚的旅馆走不到任何便利店。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>休息站有便利店区，还有<b>只在当地卖的零食</b>，之后见不到了</li><li>饮料在这里买好</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\">今晚旅馆步行范围内<span class=\"k\">没有便利店</span></li></ul>"
+     },
+     {
+      "time": "15:10",
+      "class": "",
+      "en": "<b>Zao Fox Village</b> (1h30m) — 100+ free-roaming foxes 🦊\n      <ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Fox plushies &amp; merch — sold nowhere else</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\">Keep straps and bags zipped — the foxes will test you</li></ul>",
+      "zh": "<b>藏王狐狸村</b>（1小时30分）— 100 多只自由放养的狐狸 🦊<ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>狐狸玩偶和周边 — 别处买不到</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\">背带、袋子都要拉好拉链 — 狐狸真的会来试探你</li></ul>"
+     },
+     {
+      "time": "16:40",
+      "class": "",
+      "en": "Depart (~1h5m, 45km) · <b>17:45</b> check-in Iizaka Onsen · <b>18:00</b> <span class=\"fd\">Kaiseki dinner</span><button class=\"mealpic\" onclick=\"showMeal('d3d')\">📷 see meal</button>",
+      "zh": "出发（约 1小时5分，45公里）· <b>17:45</b> 入住饭坂温泉 · <b>18:00</b> <span class=\"fd\">会席晚餐</span><button class=\"mealpic\" onclick=\"showMeal('d3d')\">📷 看餐点</button>"
+     },
+     {
+      "time": "20:00",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Iizaka Onsen night stroll</b><span class=\"dist\">izakayas by the station · most close 9–10pm</span><span class=\"geo\"><span class=\"pin\">📍</span>Your ryokan is up the <b>Anabara valley</b>; the gyoza lane is down by the station — 5 min taxi (~¥1,000) or the hotel shuttle.</span><span class=\"verdict go\">Worth leaving the ryokan for — but book the taxi back first.</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li><b>Enban gyoza</b> — a crispy ring of ~20, ~¥1,300. Share one.</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Free public foot baths and the historic Sabako-yu lane</li><li class=\"tip\">Ask the front desk which gyoza shop is open tonight, plus shuttle times</li><li class=\"warn\">Book the return taxi <span class=\"k\">before</span> you leave — Iizaka taxis don’t cruise late</li></ul><span class=\"back\">↩ 5 min taxi (~¥1,000) or hotel shuttle</span>",
+      "zh": "<span class=\"badge add\">加点</span><b>饭坂温泉夜游</b><span class=\"dist\">居酒屋在车站附近 · 多数 21:00–22:00 关</span><span class=\"geo\"><span class=\"pin\">📍</span>你的旅馆在<b>穴原谷</b>上面；饺子街在车站那边 — 打车 5 分钟（约 ¥1,000）或坐酒店接驳车。</span><span class=\"verdict go\">值得出门一趟 — 但先把回程车订好。</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li><b>圆盘饺子</b> — 约 20 颗排成一圈，约 ¥1,300。合吃一份。</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>免费公共足汤，还有历史悠久的鲭湖汤小巷</li><li class=\"tip\">问前台今晚哪家饺子店开，顺便问接驳车时间</li><li class=\"warn\"><span class=\"k\">出门前</span>就把回程出租车订好 — 饭坂晚上没有空车在路上跑</li></ul><span class=\"back\">↩ 打车 5 分钟（约 ¥1,000）或酒店接驳车</span>"
+     },
+     {
+      "time": "20:45",
+      "class": "kon",
+      "en": "<span class=\"badge kon\">KONBINI RUN</span><span class=\"chain cfm\">FamilyMart — Iizaka-Onsen Station front</span><span class=\"dist\">~2km from ryokan · 5 min taxi / 25 min walk · 24h</span><span class=\"geo\"><span class=\"pin\">📍</span><b>Right at the station</b> — the same trip as the gyoza stroll above, so combine them.</span><span class=\"verdict go\">Only worth it if you’re doing the gyoza stroll anyway.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Iizaka’s famous <b>radium onsen eggs</b> from the souvenir corner</li><li>Fukushima peach juice from the chiller</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"tip\">Skipping the stroll? Skip this too — the 13:40 rest stop already covered you</li></ul><span class=\"back\">↩ <a href=\"https://www.google.com/maps/search/?api=1&query=FamilyMart+Iizaka+Onsen+Station\">Map</a></span>",
+      "zh": "<span class=\"badge kon\">便利店打卡</span><span class=\"chain cfm\">全家 FamilyMart — 饭坂温泉站前店</span><span class=\"dist\">离旅馆约 2 公里 · 打车 5 分钟／步行 25 分钟 · 24 小时</span><span class=\"geo\"><span class=\"pin\">📍</span><b>就在车站口</b> — 跟上面的饺子夜游是同一趟，一起走。</span><span class=\"verdict go\">只有你本来就要去逛饺子街才值得。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>手信区有饭坂有名的<b>镭温泉蛋</b></li><li>冷柜里的福岛桃子汁</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"tip\">不去逛饺子街？这家也跳过 — 13:40 的休息站已经囤够了</li></ul><span class=\"back\">↩ <a href=\"https://www.google.com/maps/search/?api=1&query=FamilyMart+Iizaka+Onsen+Station\">地图</a></span>"
+     }
+    ]
+   ]
+  },
+  {
+   "day": 4,
+   "title": {
+    "en": "Fukushima → Nikkō / Kinugawa Onsen",
+    "zh": "福岛 → 日光／鬼怒川温泉"
+   },
+   "meta": {
+    "en": "Wed 7 Oct · stay: Oedo Onsen Monogatari Premium Kinugawa Kanko",
+    "zh": "10月7日 周三 · 住：大江户温泉物语 Premium 鬼怒川观光酒店"
+   },
+   "weather": {
+    "en": "<b>22° / 13°</b><br>rain ☔",
+    "zh": "<b>22° / 13°</b><br>有雨 ☔"
+   },
+   "blocks": [
+    [
+     {
+      "time": "",
+      "class": "",
+      "en": "AM–PM",
+      "zh": "上午–下午",
+      "dclass": "t"
+     },
+     {
+      "time": "",
+      "class": "",
+      "en": "Noon",
+      "zh": "中午",
+      "dclass": "t"
+     },
+     {
+      "time": "",
+      "class": "kon vital",
+      "en": "Rest stop",
+      "zh": "休息站",
+      "dclass": "t"
+     },
+     {
+      "time": "",
+      "class": "",
+      "en": "Eve",
+      "zh": "傍晚",
+      "dclass": "t"
+     },
+     {
+      "time": "20:00",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Resort evening circuit</b> — rotate the indoor + open-air baths in yukata, game corner, and the large <b>in-hotel souvenir shop</b> (usually till ~9:30pm — covers Tochigi omiyage without leaving the building). Rain pause? The river-gorge bridges are lit and atmospheric.",
+      "zh": "<span class=\"badge add\">加点</span><b>度假村夜间巡游</b> — 穿浴衣轮流泡室内和露天风吕、游戏角，还有很大的<b>店内手信商店</b>（通常开到约 21:30 — 不出楼就能买齐栃木手信）。雨停了？溪谷的桥晚上有灯，很有气氛。"
+     },
+     {
+      "time": "21:00",
+      "class": "kon",
+      "en": "<span class=\"badge kon\">KONBINI RUN</span><span class=\"chain clw\">Lawson — Kinugawa Onsen Sakura Ave</span><span class=\"dist\">10–15 min walk downhill / 3 min taxi · 24h</span><span class=\"geo\"><span class=\"pin\">📍</span>Downhill from the hotel — <b>exact distance depends which Oedo building you’re in</b>; reception will point you.</span><span class=\"verdict tight\">The town’s ONLY night store — everything else in Kinugawa shuts by 4–5pm.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Go <b>before</b> your bath if you need anything at all</li><li class=\"warn\">After 10pm means a dark walk back <span class=\"k\">uphill</span></li></ul><span class=\"back\">↩ <a href=\"https://www.google.com/maps/search/?api=1&query=Lawson+Kinugawa+Onsen+Sakura+Avenue\">Map</a></span>",
+      "zh": "<span class=\"badge kon\">便利店打卡</span><span class=\"chain clw\">罗森 Lawson — 鬼怒川温泉樱花大道店</span><span class=\"dist\">下坡步行 10–15 分钟／打车 3 分钟 · 24 小时</span><span class=\"geo\"><span class=\"pin\">📍</span>从酒店往下坡走 — <b>实际距离看你住哪一栋大江户</b>，问前台会指给你。</span><span class=\"verdict tight\">镇上唯一的夜间商店 — 鬼怒川其他店 16:00–17:00 就关了。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>要买东西就<b>泡汤前</b>去</li><li class=\"warn\">过了 22:00，回来要走一段黑黑的<span class=\"k\">上坡</span></li></ul><span class=\"back\">↩ <a href=\"https://www.google.com/maps/search/?api=1&query=Lawson+Kinugawa+Onsen+Sakura+Avenue\">地图</a></span>"
+     }
+    ]
+   ]
+  },
+  {
+   "day": 5,
+   "title": {
+    "en": "Nikkō → Tochigi (Tsukuba)",
+    "zh": "日光 → 栃木（筑波）"
+   },
+   "meta": {
+    "en": "Thu 8 Oct · UNESCO shrines + Edo Wonderland · stay: Hotel Nikko Tsukuba",
+    "zh": "10月8日 周四 · 世界遗产神社 + 江户村 · 住：Hotel Nikko Tsukuba"
+   },
+   "weather": {
+    "en": "<b>24° / 19°</b><br>cloudy",
+    "zh": "<b>24° / 19°</b><br>多云"
+   },
+   "blocks": [
+    [
+     {
+      "time": "7:30",
+      "class": "",
+      "en": "Breakfast @ hotel · <b>8:30</b> depart (~50 min, 41km)",
+      "zh": "酒店早餐 · <b>8:30</b> 出发（约 50 分钟，41 公里）"
+     },
+     {
+      "time": "9:20",
+      "class": "",
+      "en": "<b>Kegon Waterfalls</b> (1h) — 97m drop; early autumn colour\n      <ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>The stalls by the falls do hot <b>yuba croquettes</b> and dango — perfect in the morning chill</li></ul>",
+      "zh": "<b>华严瀑布</b>（1小时）— 97 米落差；初秋红叶<ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>瀑布旁的小摊有热腾腾的<b>汤叶可乐饼</b>和团子 — 早晨凉意里最舒服</li></ul>"
+     },
+     {
+      "time": "11:00",
+      "class": "",
+      "en": "<b>Nikkō Tōshō-gū</b> (1h15m) — UNESCO shrine of Tokugawa Ieyasu<ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Find the <b>sleeping cat</b> and the <b>three wise monkeys</b></li><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Yuba manju (tofu-skin bun) + Nikkō castella on the shrine approach</li><li>Omamori, and your second goshuin stamp to pair with Zuiganji’s</li><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li class=\"tip\">☕ <b>Nikkō Coffee</b> — a famous renovated-warehouse café on the approach streets. If the guide’s timing allows a quick cup, that’s today’s ONE coffee (check hours on the day, typically ~10am–5pm)</li></ul>",
+      "zh": "<b>日光东照宫</b>（1小时15分）— 德川家康的世界遗产神社<ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>记得找<b>眠猫</b>和<b>三猿</b></li><li class=\"grp buy\"><span>🛍 要买的</span></li><li>参道上的汤波馒头（豆皮包）和日光蜂蜜蛋糕</li><li>御守，还有第二个御朱印，跟瑞岩寺那个配成一对</li><li class=\"grp eat\"><span>🍴 要吃的</span></li><li class=\"tip\">☕ <b>日光咖啡</b> — 参道街上有名的仓库改建咖啡馆。如果导游的时间容得下一杯，那就是今天那唯一一杯（当天再确认营业时间，通常约 10:00–17:00）</li></ul>"
+     },
+     {
+      "time": "12:30",
+      "class": "",
+      "en": "<span class=\"fd\">Lunch:</span> Ramen + gyoza set<button class=\"mealpic\" onclick=\"showMeal('d5l')\">📷 see meal</button>",
+      "zh": "<span class=\"fd\">午餐：</span>拉面 + 饺子套餐<button class=\"mealpic\" onclick=\"showMeal('d5l')\">📷 看餐点</button>"
+     },
+     {
+      "time": "14:00",
+      "class": "",
+      "en": "<b>Edo Wonderland</b> (2h) — Edo-period theme park, ninja &amp; oiran shows<ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>Edo-style <b>senbei</b> rice crackers, grilled on the street</li><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Ninja &amp; samurai goods — wooden katana, shuriken sets</li><li>The best kids’ souvenirs of the whole trip are here</li><li class=\"grp film\"><span>🎬 TO FILM</span></li><li><b>Snap the reel here</b> — rent an Edo costume at the entrance and the whole park becomes your set: unpaved streets, wooden shopfronts, no modern signage anywhere in frame</li><li>Best fit is the <b>spin-transition</b> — a costume change either side of the turn reads as a time jump</li><li class=\"warn\">Check the ninja and oiran <span class=\"k\">show times</span> on arrival and film around them, not during — you only have 2h</li></ul>",
+      "zh": "<b>日光江户村</b>（2小时）— 江户时代主题乐园，忍者和花魁表演<ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>江户风<b>煎饼</b>，在街边现烤</li><li class=\"grp buy\"><span>🛍 要买的</span></li><li>忍者和武士周边 — 木刀、手里剑套装</li><li>全程最好的小孩伴手礼都在这里</li><li class=\"grp film\"><span>🎬 要拍的</span></li><li><b>在这里拍视频</b> — 入口可以租江户时代的衣服，整个园区就是你的布景：土路、木造店面，画面里完全没有现代招牌</li><li>最适合拍<b>转圈转场</b> — 转身前后换一套衣服，看起来就像穿越了</li><li class=\"warn\">到了先看忍者和花魁的<span class=\"k\">表演时间</span>，在表演前后拍、不要在表演时拍 — 你只有 2 小时</li></ul>"
+     },
+     {
+      "time": "16:45",
+      "class": "",
+      "en": "<span class=\"fd\">Dinner:</span> Japanese BBQ all-you-can-eat<button class=\"mealpic\" onclick=\"showMeal('d5d')\">📷 see meal</button> · then ~2h10m (123km) to Tsukuba",
+      "zh": "<span class=\"fd\">晚餐：</span>日式烧肉放题<button class=\"mealpic\" onclick=\"showMeal('d5d')\">📷 看餐点</button> · 然后约 2小时10分（123公里）到筑波"
+     },
+     {
+      "time": "17:50",
+      "class": "kon",
+      "en": "<span class=\"badge kon\">KONBINI RUN</span><b>Highway rest stop on the 2h leg to Tsukuba</b><span class=\"dist\">0 min · the bus stops anyway</span><span class=\"geo\"><span class=\"pin\">📍</span>No detour — and this is the <b>last Tochigi stop</b> of the trip.</span><span class=\"verdict go\">One thing to buy here, then you’re out of Tochigi for good.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Tochigi <b>lemon milk</b> — the retro local drink — plus lemon-milk sweets</li></ul>",
+      "zh": "<span class=\"badge kon\">便利店打卡</span><b>去筑波路上 2 小时车程的高速休息站</b><span class=\"dist\">0 分钟 · 巴士本来就会停</span><span class=\"geo\"><span class=\"pin\">📍</span>不用绕路 — 而且这是全程<b>最后一个栃木的站</b>。</span><span class=\"verdict go\">这里只有一样要买，之后就离开栃木了。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>栃木<b>柠檬牛奶</b> — 复古的当地饮料 — 还有柠檬牛奶口味的零食</li></ul>"
+     },
+     {
+      "time": "18:00*",
+      "class": "",
+      "en": "Check-in Hotel Nikko Tsukuba — earliest free evening of the whole trip (*bus may arrive closer to 19:00 with the 2h drive; plans below still fit)",
+      "zh": "入住 Hotel Nikko Tsukuba — 全程最早有自由时间的晚上（*算上 2 小时车程巴士可能接近 19:00 才到；下面的计划照样来得及）"
+     },
+     {
+      "time": "19:00",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON · EARLY CHANCE</span><button class=\"badge cpn\" onclick=\"showCp('donki')\">🎟 OPEN DONKI COUPON PAGE (live barcode)</button><b>Don Quijote Tsukuba — Seika ZEN attempt #1</b><span class=\"dist\">5–8 min taxi (~¥1,000–1,300)</span><span class=\"geo\"><span class=\"pin\">📍</span>Same district as <b>UNIQLO Tsukuba</b>, so one taxi run covers both.</span><span class=\"verdict go\">Free shot a day early. Nothing lost if it isn’t stocked.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>If it’s on the shelf, tomorrow’s Kabukicho pressure disappears</li><li>The full hunt, in order: <b>here → HANDS Shibuya (D6 15:33) → Donki Kabukicho (D6 19:15) → Donki or HANDS Ginza (D7)</b></li><li>Passport for tax-free, min <span class=\"k\">¥5,000</span></li><li class=\"tip\">UNIQLO Tsukuba (Kenkyūgakuen) till 9pm — same taxi</li><li class=\"tip\">Rather stay on foot? tonarie CREO / Q’t by Tsukuba Stn, till ~8–9pm</li><li>Certified starry-sky area — look up</li></ul><span class=\"back\">↩ Taxi both ways ~¥1,100; have the hotel call it, pickup at Donki’s entrance · <a href=\"https://www.google.com/maps/search/?api=1&query=Don+Quijote+Tsukuba\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点 · 提前机会</span><button class=\"badge cpn\" onclick=\"showCp('donki')\">🎟 打开 Donki 优惠券页（实时条码）</button><b>Don Quijote 筑波店 — Seika ZEN 第一次机会</b><span class=\"dist\">打车 5–8 分钟（约 ¥1,000–1,300）</span><span class=\"geo\"><span class=\"pin\">📍</span>跟<b>优衣库 筑波店</b>同一区，一趟车两家都能去。</span><span class=\"verdict go\">提前一天白捡的机会。没货也不损失什么。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>要是架上有，明天歌舞伎町的压力就没了</li><li>完整的找货顺序：<b>这里 → HANDS 涩谷（第6天 15:33）→ Donki 歌舞伎町（第6天 19:15）→ 第7天的 Donki 或 HANDS 银座</b></li><li>退税要护照，最低 <span class=\"k\">¥5,000</span></li><li class=\"tip\">优衣库 筑波（研究学園）开到 21:00 — 同一趟车</li><li class=\"tip\">想走路？筑波站的 tonarie CREO／Q’t 开到约 20:00–21:00</li><li>这里是认证的星空区 — 记得抬头看</li></ul><span class=\"back\">↩ 来回都打车约 ¥1,100；让酒店帮叫，回程在 Donki 门口上车 · <a href=\"https://www.google.com/maps/search/?api=1&query=Don+Quijote+Tsukuba\">地图</a></span>"
+     },
+     {
+      "time": "21:00",
+      "class": "kon",
+      "en": "<span class=\"badge kon\">KONBINI RUN</span><span class=\"chain cfm\">FamilyMart — Tsukuba Q’t</span><span class=\"dist\">~280m · 4 min walk · 24h</span><span class=\"geo\"><span class=\"pin\">📍</span><b>On the way back from Donki / the mall</b> — no separate trip needed.</span><span class=\"verdict go\">FamilyMart dominates here; 7-Eleven and Lawson are a longer walk.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Ibaraki <b>hoshi-imo</b> — dried sweet potato, and Ibaraki is Japan’s #1 producer</li><li>Natto snacks, for the brave</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Backup: <span class=\"chain cfm\">FamilyMart TX Station</span> ~5 min, 6am–11pm</li><li class=\"tip\">Cheaper: <span class=\"chain csp\">Lopia supermarket</span> ~420m, 6 min, till 8pm — <span class=\"k\">cash only</span></li></ul><span class=\"back\">↩ <a href=\"https://www.google.com/maps/search/?api=1&query=FamilyMart+Tsukuba+Q%27t\">Map</a></span>",
+      "zh": "<span class=\"badge kon\">便利店打卡</span><span class=\"chain cfm\">全家 FamilyMart — 筑波 Q’t 店</span><span class=\"dist\">约 280m · 步行 4 分钟 · 24 小时</span><span class=\"geo\"><span class=\"pin\">📍</span><b>从 Donki／商场回来的路上</b> — 不用另外跑一趟。</span><span class=\"verdict go\">这一带全家最多；7-11 和罗森都要走更远。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>茨城<b>干地瓜（hoshi-imo）</b> — 茨城是日本第一产地</li><li>纳豆零食，敢吃的话</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>备选：<span class=\"chain cfm\">全家 TX 车站店</span> 约 5 分钟，6:00–23:00</li><li class=\"tip\">更便宜：<span class=\"chain csp\">Lopia 超市</span> 约 420m，6 分钟，开到 20:00 — <span class=\"k\">只收现金</span></li></ul><span class=\"back\">↩ <a href=\"https://www.google.com/maps/search/?api=1&query=FamilyMart+Tsukuba+Q%27t\">地图</a></span>"
+     }
+    ]
+   ]
+  },
+  {
+   "day": 6,
+   "title": {
+    "en": "Tochigi → Ibaraki → Tokyo",
+    "zh": "栃木 → 茨城 → 东京"
+   },
+   "meta": {
+    "en": "Fri 9 Oct · stay: Shinjuku Granbell Hotel (Kabukicho)",
+    "zh": "10月9日 周五 · 住：新宿格兰贝尔酒店（歌舞伎町）"
+   },
+   "weather": {
+    "en": "<b>28° / 19°</b><br>cloudy",
+    "zh": "<b>28° / 19°</b><br>多云"
+   },
+   "blocks": [
+    [
+     {
+      "time": "7:30",
+      "class": "",
+      "en": "Breakfast @ hotel · <b>8:30</b> depart (~1h, 74km)",
+      "zh": "酒店早餐 · <b>8:30</b> 出发（约 1 小时，74 公里）"
+     },
+     {
+      "time": "9:30",
+      "class": "",
+      "en": "<b>Hitachi Seaside Park</b> (1h) — October = the famous <b>red kochia hills</b> 🍂\n      <ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Hoshi-imo · Ibaraki melon sweets</li><li>Hitachino Nest owl-label craft beer at the park shop</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"tip\">The red kochia hills are also your backdrop for the spin-transition reel</li></ul>",
+      "zh": "<b>国营日立海滨公园</b>（1小时）— 十月 = 著名的<b>红色扫帚草山丘</b> 🍂<ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>干地瓜 · 茨城蜜瓜甜点</li><li>公园商店的常陆野 Nest 猫头鹰精酿啤酒</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"tip\">红色扫帚草山丘也是拍转圈转场的好背景</li></ul>"
+     },
+     {
+      "time": "11:30",
+      "class": "",
+      "en": "<span class=\"fd\">Lunch:</span> Curry chicken katsu set<button class=\"mealpic\" onclick=\"showMeal('d6l')\">📷 see meal</button> · then ~2h (150km) to Kawagoe",
+      "zh": "<span class=\"fd\">午餐：</span>咖喱鸡排套餐<button class=\"mealpic\" onclick=\"showMeal('d6l')\">📷 看餐点</button> · 然后约 2 小时（150公里）到川越"
+     },
+     {
+      "time": "13:30",
+      "class": "",
+      "en": "<b>Kawagoe Old Town</b> (1h) — “Little Edo” warehouse street<ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>Imo (sweet potato) soft serve + imo chips</li><li class=\"warn\">Eat <span class=\"k\">standing at the stall</span>, not while walking — local rule</li><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Dagashi at <b>Kashiya Yokocho candy alley</b> (9am–5pm ✓, bring coins) · giant fugashi stick</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"tip\">Toki no Kane bell tower photo — also a good backdrop for the spin-transition reel</li></ul>",
+      "zh": "<b>川越老街</b>（1小时）— 「小江户」藏造仓库街<ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>地瓜霜淇淋 + 地瓜脆片</li><li class=\"warn\">要<span class=\"k\">站在摊位旁吃</span>，不能边走边吃 — 当地规矩</li><li class=\"grp buy\"><span>🛍 要买的</span></li><li><b>菓子屋横丁糖果巷</b>的传统零食（9:00–17:00 ✓，带零钱）· 超长麸菓子</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"tip\">时之钟钟楼打卡拍照 — 也很适合拍转圈转场那支视频</li></ul>"
+     },
+     {
+      "time": "15:30",
+      "class": "",
+      "en": "<b>Shibuya Crossing</b> (1h free time)",
+      "zh": "<b>涩谷十字路口</b>（1小时自由时间）"
+     }
+    ],
+    [
+     {
+      "time": "15:33",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>HANDS Shibuya — the calm alternative to Donki</b><span class=\"dist\">Scramble Square 10F · 3 min from the Crossing · daily 10am–9pm</span><span class=\"geo\"><span class=\"pin\">📍</span><b>Right by the meeting point</b> — 3 min south of the Crossing, inside Shibuya Scramble Square. <b>It clashes with none of the three lanes</b>, so anyone can take it.</span><span class=\"verdict go\">Go here for beauty and hair care instead of fighting the Donki crowds.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li><b>Check for Seika ZEN here.</b> Big hair-care range and it’s the calmest place to look — if it’s in stock, buy it here rather than fighting Kabukicho at 19:15</li><li>Beauty, hair care, perfume — one reviewer put it bluntly: “don’t bother going to Donki for cosmetics, go to HANDS on the 10th floor”</li><li>Stationery, luggage, travel goods, homeware — seven floors</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li><b>Tax-free counter is on 3F</b> at the Scramble Square branch</li><li class=\"warn\">Prices run higher than the drugstores — OS Drug and Donki are cheaper. What you buy here is calm, organised and tax-free.</li><li class=\"tip\">On the <b>WEST lane</b>? The older <b>Tokyu Hands Udagawacho</b> store is 1 min from HUMAN MADE and 2 min from atmos — it adds just 1 min to that lane</li><li class=\"warn\">But a reviewer reports the Udagawacho store is <b>closing to become a hotel</b> — if unsure, use Scramble Square</li><li class=\"tip\">Prefer to do HANDS tonight? The Shinjuku branch works if you reorder the evening — see <b>19:40</b> today</li></ul><span class=\"back\">↩ 3 min north back to the Crossing · <a href=\"https://www.google.com/maps/search/?api=1&query=Hands+Shibuya+Scramble+Square\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>HANDS 涩谷 — 比 Donki 好逛的美妆／杂货</b><span class=\"dist\">Scramble Square 10 楼 · 离十字路口 3 分钟 · 每天 10:00–21:00</span><span class=\"geo\"><span class=\"pin\">📍</span><b>就在集合点旁边</b>（十字路口往南 3 分钟，涩谷 Scramble Square 里）— <b>三条路线都不冲突</b>，谁都能去。</span><span class=\"verdict go\">想安静地挑美妆／护发，来这里，不要去 Donki 人挤人。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li><b>顺便在这里找 Seika ZEN。</b>护发品类很齐，而且是最好逛的一家 — 有货就在这里买，不用晚上 19:15 在歌舞伎町人挤人</li><li>美妆、护发、香水 — 有评论直接写「别去 Donki 买化妆品，来 HANDS 10 楼」</li><li>文具、行李箱、旅行小物、家居 — 7 层楼</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li><b>退税柜台在 3 楼</b>（Scramble Square 店）</li><li class=\"warn\">东西比药妆店贵 — 便宜要去 OS Drug／Donki，这里买的是「好找 + 安静 + 能退税」</li><li class=\"tip\">走<b>西路</b>的话：旧的<b>东急 HANDS 宇田川町店</b>离 HUMAN MADE 只有 1 分钟、离 atmos 2 分钟，塞进西路只多 1 分钟</li><li class=\"warn\">但有评论说宇田川町那家<b>即将结业改建成酒店</b> — 不确定就去 Scramble Square 那家</li><li class=\"tip\">想今晚逛 HANDS？新宿那家只要把晚上的顺序调一下就来得及 — 看今天 <b>19:40</b></li></ul><span class=\"back\">↩ 往北 3 分钟回十字路口 · <a href=\"https://www.google.com/maps/search/?api=1&query=Hands+Shibuya+Scramble+Square\">地图</a></span>"
+     },
+     {
+      "time": "15:33",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>ÉCHIRÉ Pâtisserie au Beurre — French butter pastries</b><span class=\"dist\">Shibuya Scramble Square 1F (Tokyu Food Show Edge) · 3 min from the Crossing · 10am–9pm</span><span class=\"geo\"><span class=\"pin\">📍</span><b>First stop on the EAST lane</b> — it sits on the station, and the EAST walk out to Hatou / 豆虎 / Nanaya passes the door. 3 min from the Crossing, then 4 min on to Chatei Hatou or 10 min to Nanaya. Same building as HANDS.</span><span class=\"verdict tight\">Go in first, ~15:33. Every minute in the queue here comes off Nanaya — cap yourself at 10 min inside.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li><span class=\"k\">Petit Beurre</span> butter sablés (10 pcs ¥2,484), <b>Galette Bretonne</b> and <b>Sablé Nantais</b> (¥1,782) — all <b>30-day shelf life</b>, so these are the ones to bring home</li><li>Financier / madeleine ¥389 — eat on the walk to Nanaya. Sablé sand and tropézienne need a fridge — hotel fridge is fine, the D7 bus is not</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\"><b>What it costs the lane:</b> with 10 min here you reach Nanaya ~15:55, not 15:40 — buy the Matcha 7 box, skip the gelato line, leave by <span class=\"k\">16:02</span>; 豆虎 becomes a 2-min bean grab or gets dropped. Back at the Crossing 16:15</li><li class=\"warn\">The famous <span class=\"k\">canelé</span> is sold only at 10:00 and 17:00 (queue from 16:30) — your 17:00 dinner rules it out, don’t wait for it</li><li class=\"warn\">Queues of 15–30 min are normal — <b>look first</b>; a line past the door means walk on to Nanaya and use tonight’s backup instead</li><li>Tax-free at the Scramble Square <b>3F counter</b> with passport + receipt — same counter as HANDS</li><li class=\"tip\"><b>Missed it?</b> ÉCHIRÉ also sits in <b>Isetan Shinjuku B1F</b>, 2 min from OS Drug — see 19:00 tonight (closes 8pm, shelves thin by then)</li></ul><span class=\"back\">↩ 4 min on to Chatei Hatou / 10 min to Nanaya along Miyamasuzaka → Aoyama-dōri · <a href=\"https://www.google.com/maps/search/?api=1&query=ECHIRE+PATISSERIE+AU+BEURRE+Shibuya+Scramble+Square\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>ÉCHIRÉ 艾许黄油 — 法式黄油甜点</b><span class=\"dist\">涩谷 Scramble Square 1 楼（Tokyu Food Show Edge）· 离十字路口 3 分钟 · 10:00–21:00</span><span class=\"geo\"><span class=\"pin\">📍</span><b>东路的第一站</b> — 它就在车站上面，东路去羽當／豆虎／Nanaya 的路正好经过门口。离十字路口 3 分钟，再走 4 分钟到茶亭羽當，或 10 分钟到 Nanaya。跟 HANDS 同一栋。</span><span class=\"verdict tight\">先进来，约 15:33。在这里排的每一分钟都是从 Nanaya 扣的 — 店里最多待 10 分钟。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li><span class=\"k\">Petit Beurre</span> 黄油小酥饼（10 片 ¥2,484）、<b>Galette Bretonne</b>、<b>Sablé Nantais</b>（¥1,782）— 都能放 <b>30 天</b>，带回家就买这些</li><li>费南雪／玛德琳 ¥389 — 走去 Nanaya 的路上吃掉。夹心酥和 tropézienne 要冷藏 — 酒店冰箱可以，第 7 天的巴士不行</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\"><b>对这条路的代价：</b>这里花 10 分钟，到 Nanaya 就是约 15:55 而不是 15:40 — 买抹茶 7 号礼盒、不排 gelato，最晚 <span class=\"k\">16:02</span> 走；豆虎变成 2 分钟拿豆子，或者直接放弃。16:15 回到十字路口</li><li class=\"warn\">招牌<span class=\"k\">可露丽</span>只在 10:00 和 17:00 两批发售（16:30 开始排）— 你 17:00 要吃晚餐，别等它</li><li class=\"warn\">排 15–30 分钟很正常 — <b>先看队伍</b>；排到门外就直接往 Nanaya 走，用今晚的备用</li><li>退税在 Scramble Square <b>3 楼柜台</b>，带护照 + 收据 — 跟 HANDS 同一个柜台</li><li class=\"tip\"><b>没买到？</b>ÉCHIRÉ 在<b>伊势丹新宿 B1</b>也有店，离 OS Drug 2 分钟 — 看今晚 19:00（20:00 关，到时候货会少）</li></ul><span class=\"back\">↩ 沿宮益坂 → 青山通，4 分钟到茶亭羽當／10 分钟到 Nanaya · <a href=\"https://www.google.com/maps/search/?api=1&query=ECHIRE+PATISSERIE+AU+BEURRE+Shibuya+Scramble+Square\">地图</a></span>",
+      "attrs": {
+       "data-lane": "east"
+      }
+     },
+     {
+      "time": "15:34",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Onitsuka Tiger Shibuya</b><span class=\"dist\">Jinnan 1-21-3 · 4 min north of the Crossing · daily 11am–8pm</span><span class=\"geo\"><span class=\"pin\">📍</span><b>First stop on the WEST lane</b> and the closest branch to the Crossing on the whole trip — 4 min north, then 3 min on to HUMAN MADE.</span><span class=\"verdict tight\">Convenient on the west lane — but tonight’s Shinjuku branch is better. See 19:05.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Mexico 66 and Japan-only colourways — roughly half Malaysian prices</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Two floors, 1,189 reviews · 900m from the Harajuku store</li><li class=\"warn\">Reviews repeatedly flag this branch as <b>crowded with poor service</b>, and say Shinjuku and Omotesando are much better</li><li class=\"tip\">Easier plan: the Shinjuku flagship tonight — 4.3 stars and 2 min from OS Drug</li><li class=\"warn\">Passport for tax-free, min ¥5,000</li></ul><span class=\"back\">↩ 4 min south to the Crossing, or 4 min on to MEGA Donki · <a href=\"https://www.google.com/maps/search/?api=1&query=Onitsuka+Tiger+Shibuya\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>鬼塚虎 涩谷店</b><span class=\"dist\">神南 1-21-3 · 十字路口往北 4 分钟 · 每天 11:00–20:00</span><span class=\"geo\"><span class=\"pin\">📍</span><b>西路的第一站</b>，也是全程离十字路口最近的一家 — 往北 4 分钟，再走 3 分钟就到 HUMAN MADE。</span><span class=\"verdict tight\">西路的顺路加点。但今晚新宿那家更好 — 看 19:05。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>Mexico 66 和日本限定配色 — 价格大约是马来西亚的一半</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>两层楼，1189 条评论 · 离原宿那家只有 900m</li><li class=\"warn\">评论一再提到这家<b>人多、服务差</b>，说新宿和原宿的体验好得多</li><li class=\"tip\">想省事就今晚去新宿旗舰店 — 那家 4.3 分，而且离 OS Drug 只有 2 分钟</li><li class=\"warn\">要退税就带护照，最低 ¥5,000</li></ul><span class=\"back\">↩ 往南 4 分钟回十字路口，或往 MEGA Donki 走 4 分钟 · <a href=\"https://www.google.com/maps/search/?api=1&query=Onitsuka+Tiger+Shibuya\">地图</a></span>",
+      "attrs": {
+       "data-lane": "west"
+      }
+     },
+     {
+      "time": "15:35",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Chatei Hatou — the legendary Shōwa kissaten</b><span class=\"dist\">Shibuya 1-15-19 · 4 min east · 11am–10:30pm</span><span class=\"geo\"><span class=\"pin\">📍</span><b>Second stop on the EAST lane</b> (after ÉCHIRÉ), right on the walk to 豆虎 and Nanaya — 4 min from Scramble Square, or 5 min back from 豆虎.</span><span class=\"verdict skip\">Only if you give up Nanaya. One hand-pour needs 30+ min.</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>Theatrical hand-pour since 1989, ~¥1,000 · every cup comes in a different antique cup</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\">One cup takes <span class=\"k\">30+ min</span> — the hour will not hold this and Nanaya</li><li class=\"warn\">No photos inside</li><li class=\"tip\">Want coffee <i>and</i> Nanaya? Take 豆虎 at 16:05 instead — far quicker, and you leave with beans</li></ul><span class=\"back\">↩ 4 min west back to the Crossing · <a href=\"https://www.google.com/maps/search/?api=1&query=Chatei+Hatou+Shibuya\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>茶亭羽當 — 传奇昭和喫茶店</b><span class=\"dist\">渋谷 1-15-19 · 往东 4 分钟 · 11:00–22:30</span><span class=\"geo\"><span class=\"pin\">📍</span><b>东路的第二站</b>（ÉCHIRÉ 之后），就在去 豆虎 和 Nanaya 的那条路上 — 从 Scramble Square 4 分钟，从 豆虎 回来 5 分钟。</span><span class=\"verdict skip\">除非你放弃 Nanaya。一杯手冲要 30 分钟以上。</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>剧场式手冲，1989 年至今，约 ¥1,000 · 每一杯都用不同的古董杯</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\">一杯要 <span class=\"k\">30 分钟以上</span> — 这一小时装不下它和 Nanaya</li><li class=\"warn\">店内不能拍照</li><li class=\"tip\">想喝咖啡又想要 Nanaya？改喝 豆虎（16:05），快得多，还能带豆子走</li></ul><span class=\"back\">↩ 往西 4 分钟回十字路口 · <a href=\"https://www.google.com/maps/search/?api=1&query=Chatei+Hatou+Shibuya\">地图</a></span>",
+      "attrs": {
+       "data-lane": "east"
+      }
+     },
+     {
+      "time": "15:38",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>About Life Coffee Brewers</b><span class=\"dist\">Dōgenzaka 1-19-8 · 8 min south-west · till 6pm</span><span class=\"geo\"><span class=\"pin\">📍</span><b>The only stop on the SOUTH-WEST lane</b> — 8 min out, 16 min round trip, and the opposite direction from both other lanes.</span><span class=\"verdict go\">The fastest coffee. Best for whoever wants a cup and nothing else.</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>Onibus beans · standing bar with no seats, so it’s genuinely in and out</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\">Closes at <span class=\"k\">6pm</span> — the earliest of today’s four coffee options</li><li class=\"warn\">16 min of walking for one stop — take this lane and you won’t fit anything else</li></ul><span class=\"back\">↩ 8 min north-east back to the Crossing · <a href=\"https://www.google.com/maps/search/?api=1&query=About+Life+Coffee+Brewers+Shibuya\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>About Life Coffee Brewers</b><span class=\"dist\">道玄坂 1-19-8 · 往西南 8 分钟 · 开到 18:00</span><span class=\"geo\"><span class=\"pin\">📍</span><b>西南路唯一的一站</b> — 单程 8 分钟，来回 16 分钟，跟其他两路完全相反方向。</span><span class=\"verdict go\">最快的一杯咖啡。适合只想喝咖啡、别的都不逛的人。</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>用 Onibus 的豆子 · 站着喝的吧台，没有座位，所以进出很快</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\"><span class=\"k\">18:00 就关</span> — 是今天四家咖啡里关得最早的</li><li class=\"warn\">来回 16 分钟走路，却只有一站 — 走这一路就别想再逛别的</li></ul><span class=\"back\">↩ 往东北 8 分钟回十字路口 · <a href=\"https://www.google.com/maps/search/?api=1&query=About+Life+Coffee+Brewers+Shibuya\">地图</a></span>",
+      "attrs": {
+       "data-lane": "sw"
+      }
+     },
+     {
+      "time": "15:40",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Nanaya Aoyama — premium matcha chocolate</b><span class=\"dist\">1.1km east · 11am–7pm, closed Tue (your Friday is safe)</span><span class=\"geo\"><span class=\"pin\">📍</span>Far end of the <b>EAST lane</b> above — 豆虎 is 2 min before it, Chatei Hatou 5 min before that.</span><span class=\"verdict tight\">Straight here first — the box sells out by late afternoon.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li><span class=\"k\">Matcha 7 box</span> ~¥1,600 — the thing that sells out. Buy before photos.</li><li>Nanaya’s own matcha powder tins — Marushichi Shizuoka leaf, same as the No.7 gelato</li><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>7-level gelato: <span class=\"k\">No.7</span> world’s richest, <span class=\"k\">No.3</span> if you like it sweeter</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\">10 min walk out, so you arrive ~15:40 — leave Nanaya by <span class=\"k\">15:54</span> and 豆虎 is 2 min on</li><li class=\"warn\">Stopped at ÉCHIRÉ first? Then you arrive ~<span class=\"k\">15:55</span> — buy the box, skip the gelato queue, leave by 16:02</li><li class=\"tip\">15 min spare? MEGA Donki Shibuya is 6 min west — browse only</li></ul><span class=\"back\">↩ 13 min walk west, or taxi on Aoyama-dōri if past 4:10pm (5 min, ~¥1,000) · <a href=\"https://www.google.com/maps/search/?api=1&query=Nanaya+Aoyama+Store+Shibuya\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>Nanaya 青山店 — 高级抹茶巧克力</b><span class=\"dist\">往东 1.1 公里 · 11:00–19:00，周二休（你是周五，没问题）</span><span class=\"geo\"><span class=\"pin\">📍</span>上面<b>东路</b>的最远一站 — 豆虎在它前面 2 分钟，茶亭羽當再往前 5 分钟。</span><span class=\"verdict tight\">直接先来这里 — 礼盒下午就会卖完。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li><span class=\"k\">抹茶 7 号礼盒</span> 约 ¥1,600 — 会卖完的就是这个。先买，再拍照。</li><li>Nanaya 自家抹茶粉罐 — 丸七静冈茶叶，跟 No.7 gelato 同一款</li><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>7 个浓度的 gelato：<span class=\"k\">No.7</span> 世界最浓，<span class=\"k\">No.3</span> 偏甜</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\">走过去要 10 分钟，大约 15:40 到 — 最晚 <span class=\"k\">15:54</span> 离开，豆虎就在 2 分钟外</li><li class=\"warn\">先去了 ÉCHIRÉ？那大约 <span class=\"k\">15:55</span> 才到 — 买礼盒、不排 gelato，最晚 16:02 走</li><li class=\"tip\">还有 15 分钟？MEGA Donki 涩谷在西边 6 分钟 — 只逛不买</li></ul><span class=\"back\">↩ 往西步行 13 分钟，或过了 16:10 在青山通拦出租车（5 分钟，约 ¥1,000）· <a href=\"https://www.google.com/maps/search/?api=1&query=Nanaya+Aoyama+Store+Shibuya\">地图</a></span>",
+      "attrs": {
+       "data-lane": "east"
+      }
+     },
+     {
+      "time": "15:43",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>LOFT Shibuya</b><span class=\"dist\">Udagawacho 21-1 · 3 min from the Crossing · daily 11am–9pm</span><span class=\"geo\"><span class=\"pin\">📍</span><b>Second stop on the WEST lane</b> — 2 min on from Onitsuka, 2 min to HUMAN MADE. Adds only <b>1 min</b> to that lane (14 → 15 min).</span><span class=\"verdict go\">Slots into the west lane almost free. 4.3★ from 5,900 reviews.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Stationery, character goods, phone accessories, home and beauty — multi-floor</li><li>Reviewers single out the <b>matcha selection</b> — see it here and you can skip Ginza LOFT on D7</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\">Gets crowded, and <b>pricier than Donki</b> — you pay for curation</li><li class=\"warn\">The west lane now has <b>5 stops</b> and the hour won’t hold them — pick 3, don’t race all five</li><li class=\"tip\"><b>Can’t fit it in the hour?</b> Ginza LOFT tomorrow is the same chain — in the ALT PLAN it’s the <b>2:45pm</b> step, 9 min north of GINZA SIX, 11am–9pm, tax refund on 3F. Itoya and the Bongen beans store sit 2–4 min from it, so that window is the better one anyway.</li></ul><span class=\"back\">↩ 3 min south-east back to the Crossing · <a href=\"https://www.google.com/maps/search/?api=1&query=Loft+Shibuya+Udagawacho\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>LOFT 涩谷店</b><span class=\"dist\">宇田川町 21-1 · 离十字路口 3 分钟 · 每天 11:00–21:00</span><span class=\"geo\"><span class=\"pin\">📍</span><b>西路的第二站</b> — 从鬼塚虎再走 2 分钟，再 2 分钟到 HUMAN MADE。加进西路只多 <b>1 分钟</b>（14 → 15 分钟）。</span><span class=\"verdict go\">塞进西路几乎不花时间。4.3 分，5,900 条评论。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>文具、卡通周边、手机配件、家居、美妆 — 好几层楼</li><li>评论特别提到<b>抹茶品类不错</b> — 在这里看过，第 7 天的银座 LOFT 就可以跳过</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\">人很多，而且<b>比 Donki 贵</b> — 贵在选品</li><li class=\"warn\">西路现在有 <b>5 站</b>，一小时装不下 — 挑 3 站就好，别硬赶</li><li class=\"tip\"><b>这一小时塞不进去？</b>明天的银座 LOFT 是同一家连锁 — 在替代方案里是 <b>14:45</b> 那一站，从 GINZA SIX 往北 9 分钟，11:00–21:00，退税在 3 楼。伊东屋和 Bongen 豆子店离它只有 2–4 分钟，所以那个时段其实更好用。</li></ul><span class=\"back\">↩ 往东南 3 分钟回十字路口 · <a href=\"https://www.google.com/maps/search/?api=1&query=Loft+Shibuya+Udagawacho\">地图</a></span>",
+      "attrs": {
+       "data-lane": "west"
+      }
+     },
+     {
+      "time": "15:44",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>On Store — Cat Street flagship</b><span class=\"dist\">Jingūmae 5-17-27 · daily 11am–8pm</span><span class=\"geo\"><span class=\"pin\">📍</span>14 min north-east — <b>on none of the lanes above</b>, so it’s a trip of its own.</span><span class=\"verdict skip\">Skip today — do it in Ginza tomorrow.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\">Entry is by queue ticket — <span class=\"k\">60–90 min</span> reported here, even when it looks empty</li><li class=\"warn\">Plus 28 min of walking — it will not fit the hour</li><li>What’s inside: 3 floors, indoor run track, gait analysis, foot scan</li><li class=\"tip\">Take the On Ginza ticket at 1:35pm tomorrow, then shop GINZA SIX while you wait — see Day 7</li><li class=\"tip\">If you go north-east anyway, <b>Onitsuka Tiger Omotesando</b> is 5 min further and better rated than the Shibuya branch — but the round trip is 38 min of walking, so it needs the whole hour</li></ul><span class=\"back\">↩ 14 min south back to the Crossing</span>",
+      "zh": "<span class=\"badge add\">加点</span><b>On 昂跑 — 猫街旗舰店</b><span class=\"dist\">神宮前 5-17-27 · 每天 11:00–20:00</span><span class=\"geo\"><span class=\"pin\">📍</span>往东北 14 分钟 — <b>不在上面任何一路上</b>，去了就是单独一趟。</span><span class=\"verdict skip\">今天跳过 — 明天在银座做。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\">进店要取号 — 这家评论说要等 <span class=\"k\">60–90 分钟</span>，看起来没人也一样</li><li class=\"warn\">再加来回 28 分钟走路 — 一小时装不下</li><li>店里有：三层楼、室内跑道、跑姿分析、足型扫描</li><li class=\"tip\">明天 13:35 一到银座先取号，再去逛 GINZA SIX — 看第 7 天</li><li class=\"tip\">如果你反正要往东北走，<b>鬼塚虎 表参道店</b>再过去 5 分钟，评价比涩谷那家好 — 但来回要走 38 分钟，等于整个小时都花在这</li></ul><span class=\"back\">↩ 往南 14 分钟回十字路口</span>",
+      "attrs": {
+       "data-lane": "ne"
+      }
+     },
+     {
+      "time": "15:53",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>HUMAN MADE — Shibuya PARCO 1F</b><span class=\"dist\">Udagawa-cho 15-1 · daily 11am–9pm</span><span class=\"geo\"><span class=\"pin\">📍</span><b>Second stop on the WEST lane</b> above — 3 min on from Onitsuka Tiger, or 5 min straight from the Crossing. The <b>opposite direction</b> from Nanaya, with MEGA Donki 3 min further south.</span><span class=\"verdict go\">Easiest stop on the west lane. Doing both sides means a taxi.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Nigo’s brand — tees, cardigans, the duck/tiger graphics</li><li>Split into <span class=\"k\">PART 1</span> and <span class=\"k\">PART 2</span> since the Sept 2025 refit</li><li class=\"tip\">Chain MEGA Donki with it — 3 min south, browse only</li><li class=\"warn\">The 9pm closing doesn’t help you — you leave Shibuya at 5pm</li><li>Other branches: Harajuku Laforet 1F (11am–8pm) · OFFLINE STORE, Jingūmae 2-6-6 (11am–7pm, Blue Bottle counter)</li><li class=\"warn\">A bigger HUMAN MADE TOKYO flagship was announced for Harajuku in 2026 — check if it’s open</li></ul><span class=\"back\">↩ 5 min east back to the Crossing</span>",
+      "zh": "<span class=\"badge add\">加点</span><b>HUMAN MADE — 涩谷 PARCO 1 楼</b><span class=\"dist\">宇田川町 15-1 · 每天 11:00–21:00</span><span class=\"geo\"><span class=\"pin\">📍</span>上面<b>西路的第二站</b> — 从鬼塚虎再走 3 分钟，或从十字路口直接走 5 分钟。跟 Nanaya <b>完全反方向</b>，MEGA Donki 就在它南边 3 分钟。</span><span class=\"verdict go\">西路最轻松的一站。想两边都去就得打车。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>Nigo 的牌子 — T恤、开襟毛衣、鸭子和老虎图案</li><li>2025 年 9 月改装后分 <span class=\"k\">PART 1</span> 和 <span class=\"k\">PART 2</span> 两间</li><li class=\"tip\">顺路加 MEGA Donki（南边 3 分钟）— 只逛不买</li><li class=\"warn\">开到 21:00 也没用 — 你 17:00 就离开涩谷了</li><li>其他分店：原宿 Laforet 1 楼（11:00–20:00）· 神宮前 2-6-6 OFFLINE STORE（11:00–19:00，附 Blue Bottle）</li><li class=\"warn\">更大的 HUMAN MADE TOKYO 旗舰店宣布 2026 年在原宿开幕 — 先查开了没有</li></ul><span class=\"back\">↩ 往东 5 分钟回十字路口</span>",
+      "attrs": {
+       "data-lane": "west"
+      }
+     },
+     {
+      "time": "15:54",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>豆虎 Mametora — order-roast coffee beans</b><span class=\"dist\">Shibuya 1-1-10, New Heights Aoyama 104 · daily 10am–8pm</span><span class=\"geo\"><span class=\"pin\">📍</span><b>Same walk as Nanaya</b>, <b>2 min before it</b> on Aoyama-dōri — you pass the door either way. Chatei Hatou is on this line too, 5 min back toward the Crossing.</span><span class=\"verdict go\">Do this one. Almost zero extra time.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>They roast your beans while you wait — <span class=\"k\">5 levels</span>, ~25 kinds on the shelf</li><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>Mocha-rich soft serve and coffee gelato too</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"tip\">Doubles as today’s coffee — much quicker than Chatei Hatou’s 30-min pour</li><li class=\"warn\">Fake 豆虎 beans get resold on 小红书 — buy in the shop</li></ul><span class=\"back\">↩ Leave by <b>16:05</b> — 9 min back to the Crossing, passing Chatei Hatou at the 5-min mark.</span>",
+      "zh": "<span class=\"badge add\">加点</span><b>豆虎 — 点单现烘咖啡豆</b><span class=\"dist\">渋谷 1-1-10 ニューハイツ青山 104 · 每天 10:00–20:00</span><span class=\"geo\"><span class=\"pin\">📍</span>跟 Nanaya <b>同一条路</b>，在它前面 <b>2 分钟</b>（青山通上）— 来回都会经过门口。茶亭羽當也在这条线上，往十字路口方向再 5 分钟。</span><span class=\"verdict go\">这家一定去。几乎不多花时间。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>当场帮你烘豆 — <span class=\"k\">5 个烘焙度</span>，架上约 25 种</li><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>也有摩卡浓郁的软冰淇淋和咖啡 gelato</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"tip\">可以当今天的咖啡 — 比茶亭羽當那杯 30 分钟手冲快得多</li><li class=\"warn\">小红书上有人卖假豆虎豆 — 一定到店里买</li></ul><span class=\"back\">↩ 最晚 <b>16:05</b> 走 — 回十字路口 9 分钟，途中 5 分钟处会经过茶亭羽當。</span>",
+      "attrs": {
+       "data-lane": "east"
+      }
+     },
+     {
+      "time": "16:03",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>atmos Shibuya — On Cloud here, with tax-free</b><span class=\"dist\">Udagawacho 31-8 · 5 min north-west · 11am–9pm</span><span class=\"geo\"><span class=\"pin\">📍</span><b>Sits on the WEST lane</b>: 2 min from HUMAN MADE, 1 min on to MEGA Donki — it adds <b>zero minutes</b> to that lane.</span><span class=\"verdict go\">This is where you look at On — not Cat Street.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Several On Cloud models — and <span class=\"k\">tax-free works here</span>, which On’s own stores (Cat Street and Ginza) don’t offer</li><li>Nike / adidas / AJ sneakers too</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"tip\">A reviewer wrote it plainly: “if you decide to go to On Store Cat Street, please try here first” — they were turned away from Cat Street at 7pm</li><li class=\"warn\">Small, two floors · open till 9pm, an hour later than Cat Street</li><li class=\"warn\">Cat Street is 28 min of walking plus a 60–90 min queue — not worth it even for a look from outside</li></ul><span class=\"back\">↩ 1 min to MEGA Donki, or 5 min south-east back to the Crossing · <a href=\"https://www.google.com/maps/search/?api=1&query=atmos+Shibuya+Udagawacho\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>atmos 涩谷店 — 这里买 On 昂跑，还能退税</b><span class=\"dist\">宇田川町 31-8 · 往西北 5 分钟 · 11:00–21:00</span><span class=\"geo\"><span class=\"pin\">📍</span><b>就在西路上</b>：HUMAN MADE 过来 2 分钟，MEGA Donki 再走 1 分钟 — 塞进这一路<b>一分钟都不多花</b>。</span><span class=\"verdict go\">想看 On 昂跑就来这里，不要走去猫街。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>On Cloud 多个型号 — 而且<span class=\"k\">可以退税</span>，On 自家门店（猫街和银座）都不能退税</li><li>也有 Nike／adidas／AJ 等球鞋</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"tip\">有评论专门写：「要去猫街 On 店之前，先来 atmos 试试」— 他们 19:00 到猫街就被拒绝进场了</li><li class=\"warn\">店不大，两层楼 · 开到 21:00，比猫街晚一小时</li><li class=\"warn\">猫街 On 店来回要走 28 分钟，还要排 60–90 分钟 — 光是从外面看一眼也不值得</li></ul><span class=\"back\">↩ 往南 1 分钟到 MEGA Donki，或往东南 5 分钟回十字路口 · <a href=\"https://www.google.com/maps/search/?api=1&query=atmos+Shibuya+Udagawacho\">地图</a></span>",
+      "attrs": {
+       "data-lane": "west"
+      }
+     },
+     {
+      "time": "16:09",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>MEGA Donki Shibuya — browse only</b><span class=\"dist\">Udagawacho 28-6 · 4 min west · 24h</span><span class=\"geo\"><span class=\"pin\">📍</span><b>Last stop on the WEST lane</b> — 1 min from atmos, 4 min back to the Crossing.</span><span class=\"verdict tight\">Look, don’t buy. Tonight’s Kabukicho branch is the real one.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\"><b>Buy nothing heavy here</b> — you’d carry it for the rest of the hour</li><li class=\"tip\">Use it to check Seika ZEN stock and price, then buy at Kabukicho at 19:15</li><li class=\"tip\">HANDS Scramble Square is 3 min from the Crossing and also carries hair care — worth a look before you commit</li><li>Fewer floors than the Kabukicho flagship, but the same snack and drugstore range</li></ul><span class=\"back\">↩ 4 min east back to the Crossing for the 16:15 meet · <a href=\"https://www.google.com/maps/search/?api=1&query=MEGA+Don+Quijote+Shibuya\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>MEGA Donki 涩谷店 — 只逛不买</b><span class=\"dist\">宇田川町 28-6 · 往西 4 分钟 · 24 小时</span><span class=\"geo\"><span class=\"pin\">📍</span><b>西路的最后一站</b> — 从 atmos 1 分钟，走回十字路口 4 分钟。</span><span class=\"verdict tight\">只看不买。今晚在歌舞伎町那家才是主场。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\"><b>重的东西一律别买</b> — 剩下的一小时你要一路提着走</li><li class=\"tip\">在这里看 Seika ZEN 有没有货、什么价，晚上 19:15 到歌舞伎町再买</li><li class=\"tip\">HANDS Scramble Square 离十字路口 3 分钟，护发也很齐 — 决定前先去看一眼</li><li>楼层比歌舞伎町那家少，但零食和药妆一样齐</li></ul><span class=\"back\">↩ 往东 4 分钟回十字路口，赶 16:15 集合 · <a href=\"https://www.google.com/maps/search/?api=1&query=MEGA+Don+Quijote+Shibuya\">地图</a></span>",
+      "attrs": {
+       "data-lane": "west"
+      }
+     },
+     {
+      "time": "17:00",
+      "class": "",
+      "en": "<span class=\"fd\">Dinner:</span> Unagi grilled rice set<button class=\"mealpic\" onclick=\"showMeal('d6d')\">📷 see meal</button> · ~20 min to Shinjuku<div class=\"sub\"><span style=\"color:#a8291f;font-weight:700\">⚠ Go easy here.</span> Ichiran ramen is at 20:30 and the konbini dessert round at 22:00 — tonight is the biggest eating night of the trip.</div>",
+      "zh": "<span class=\"fd\">晚餐：</span>鳗鱼烤饭套餐<button class=\"mealpic\" onclick=\"showMeal('d6d')\">📷 看餐点</button> · 约 20 分钟到新宿<div class=\"sub\"><span style=\"color:#a8291f;font-weight:700\">⚠ 这餐别吃太饱。</span>20:30 还有一兰拉面，22:00 还有便利店甜点回合 — 今晚是全程吃最多的一晚。</div>"
+     },
+     {
+      "time": "18:30",
+      "class": "",
+      "en": "Check-in Shinjuku Granbell Hotel — drop bags, grab passport, head out ↓",
+      "zh": "入住新宿格兰贝尔酒店 — 放行李、拿护照、出发 ↓"
+     },
+     {
+      "time": "18:50",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>OS Drug Shinjuku — the locals’ cheap drugstore</b><span class=\"dist\">~590m · 8 min walk · closes 7:45pm</span><span class=\"geo\"><span class=\"pin\">📍</span><b>6 min north-west of Donki</b> — so come here first and carry on to Donki after.</span><span class=\"verdict tight\">Closes 7:45pm. Do this one first — Donki never closes.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Shelf prices often beat Donki’s <b>even after</b> tax-free — the shop from your saved post</li><li class=\"warn\">No tax-free, and <span class=\"k\">cash only</span></li><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Best for sunscreen, sheet masks, eye drops, painkillers</li><li>Also a <b>big beauty range</b>, and that’s where the gap is widest — people report the same item <span class=\"k\">±¥200</span> cheaper here than at Donki</li><li class=\"tip\">So the rule is: <b>check OS Drug first, fall back to Donki</b> at 19:15 for whatever they don’t have</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"tip\">Compare prices here, then buy the rest at Donki</li><li>Same block later tonight: Sun Drug till 11pm <button class=\"cpchip\" onclick=\"showCp('sundrug')\">🎟 17% coupon</button> · Alpen TOKYO till 10pm <button class=\"cpchip\" onclick=\"showCp('alpen')\">🎟 5% coupon</button></li><li>The other famous “cheapest in Japan” branch (O.S. Pharmacy, Nishi-Shinjuku basement) is the same chain — no need to trek</li></ul><span class=\"back\">↩ 6 min north-west to Donki for 7:15pm · <a href=\"https://www.google.com/maps/search/?api=1&query=OS+Drug+Shinjuku+3-29-13\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>OS Drug 新宿店 — 当地人的便宜药妆店</b><span class=\"dist\">约 590m · 步行 8 分钟 · 19:45 关门</span><span class=\"geo\"><span class=\"pin\">📍</span><b>在 Donki 西北 6 分钟</b> — 所以先来这家，逛完再去 Donki。</span><span class=\"verdict tight\">19:45 就关。先来这家 — Donki 是 24 小时。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>架上价格常常<b>连退税后</b>都比 Donki 便宜 — 就是你存的那篇帖子里的店</li><li class=\"warn\">不能退税，而且<span class=\"k\">只收现金</span></li><li class=\"grp buy\"><span>🛍 要买的</span></li><li>防晒、面膜、眼药水、止痛药最值得买</li><li>美妆品类也很齐，而这一块差价最大 — 有人比过同一样东西这里便宜 <span class=\"k\">±¥200</span></li><li class=\"tip\">所以规则是：<b>先来 OS Drug，没有的再 19:15 去 Donki 补</b></li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"tip\">先在这里比价，剩下的再去 Donki 买</li><li>同一条街今晚还有：Sun Drug 开到 23:00 <button class=\"cpchip\" onclick=\"showCp('sundrug')\">🎟 17% 券</button> · Alpen TOKYO 开到 22:00 <button class=\"cpchip\" onclick=\"showCp('alpen')\">🎟 5% 券</button></li><li>另一家有名的「日本最便宜」（O.S. Pharmacy，西新宿地下）是同一个连锁 — 不用特地跑</li></ul><span class=\"back\">↩ 往西北走 6 分钟到 Donki，赶 19:15 · <a href=\"https://www.google.com/maps/search/?api=1&query=OS+Drug+Shinjuku+3-29-13\">地图</a></span>"
+     },
+     {
+      "time": "19:00",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>ÉCHIRÉ — Isetan Shinjuku B1F (optional backup)</b><span class=\"dist\">Shinjuku 3-14-1, Isetan main bldg B1F · 2 min from OS Drug · 10am–8pm</span><span class=\"geo\"><span class=\"pin\">📍</span><b>2 min east of OS Drug</b>, then 3 min back west to the Onitsuka flagship — a ~10 min loop off tonight’s line. Everything after it is 24h or closes ≥9pm, so nothing downstream breaks.</span><span class=\"verdict tight\">Only if Shibuya didn’t happen. Closes 8pm and shelves are thin by evening — a quick look, not a mission.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Same 30-day sablé boxes (Petit Beurre, Galette Bretonne, Sablé Nantais) — the gift-able ones</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\">No canelé here (Shibuya only) · <b>counter closes with the store at 20:00</b> — you have about an hour</li><li class=\"warn\">Depachika counters run out late in the day; if the case is half-empty, don’t queue</li><li class=\"tip\">Isetan B1 also has Noix de Beurre financiers — same floor if ÉCHIRÉ is sold out</li><li class=\"tip\">If you <i>did</i> get ÉCHIRÉ in Shibuya, skip this and go straight OS Drug → Onitsuka as planned</li></ul><span class=\"back\">↩ 3 min west to Onitsuka Tiger Shinjuku, then 4 min on to Donki · <a href=\"https://www.google.com/maps/search/?api=1&query=ECHIRE+Isetan+Shinjuku\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>ÉCHIRÉ — 伊势丹新宿 B1（可选备用）</b><span class=\"dist\">新宿 3-14-1 伊势丹本馆 B1 · 离 OS Drug 2 分钟 · 10:00–20:00</span><span class=\"geo\"><span class=\"pin\">📍</span><b>OS Drug 往东 2 分钟</b>，再往西 3 分钟回鬼塚虎旗舰店 — 在今晚的路线上多绕约 10 分钟。后面的店都是 24 小时或 21:00 以后才关，不会被打乱。</span><span class=\"verdict tight\">涩谷没买到才来。20:00 关门，晚上货已经不多 — 看一眼就好，别当任务。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>同样是能放 30 天的酥饼礼盒（Petit Beurre、Galette Bretonne、Sablé Nantais）— 适合送人的那几款</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\">这里没有可露丽（只有涩谷店有）· <b>柜台跟百货一起 20:00 关</b> — 你大概只有一小时</li><li class=\"warn\">百货地下食品街傍晚就会卖空；柜子半空就别排了</li><li class=\"tip\">伊势丹 B1 同一层还有 Noix de Beurre 的费南雪 — ÉCHIRÉ 卖完可以看它</li><li class=\"tip\">如果涩谷<i>已经</i>买到 ÉCHIRÉ，这站直接跳过，照原计划 OS Drug → 鬼塚虎</li></ul><span class=\"back\">↩ 往西 3 分钟到鬼塚虎新宿店，再 4 分钟到 Donki · <a href=\"https://www.google.com/maps/search/?api=1&query=ECHIRE+Isetan+Shinjuku\">地图</a></span>"
+     },
+     {
+      "time": "19:05",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Onitsuka Tiger Shinjuku Flagship — the best stop of the trip</b><span class=\"dist\">Shinjuku 3-26-11 · 3 floors · daily 11am–8pm</span><span class=\"geo\"><span class=\"pin\">📍</span><b>2 min from OS Drug</b> and 4 min on to Donki Kabukicho — it sits directly on the walk you’re already doing tonight.</span><span class=\"verdict go\">The easiest Onitsuka on the whole trip. It drops between OS Drug and Donki.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>The full Mexico 66 range · 3F is the classic line</li><li><b>2F is Nippon Made</b> — about double the price, but not sold in Malaysia at all</li><li>Bags and sunglasses too</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>4.3 stars — the best-rated of the three Shinjuku branches, with reviews calling it “the entire line”</li><li class=\"warn\">Closes at <span class=\"k\">8pm</span> and clears the floor promptly — arriving 19:05 gives you ~55 min</li><li class=\"warn\">Don’t confuse it with the small shop nearby — reviewers warn they’re not the same place</li><li class=\"tip\">The Lumine Est branch on this same line runs till 9pm, but you don’t reach Bic until 21:15 — too late</li></ul><span class=\"back\">↩ 4 min north to Donki Kabukicho · <a href=\"https://www.google.com/maps/search/?api=1&query=Onitsuka+Tiger+Shinjuku+Flagship+Store\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>鬼塚虎 新宿旗舰店 — 最好的一站</b><span class=\"dist\">新宿 3-26-11 · 3 层 · 每天 11:00–20:00</span><span class=\"geo\"><span class=\"pin\">📍</span><b>离 OS Drug 只有 2 分钟</b>，再走 4 分钟就是 Donki 歌舞伎町 — 完全在你今晚本来要走的那条线上。</span><span class=\"verdict go\">全程最顺的鬼塚虎。就塞在 OS Drug 和 Donki 中间。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>Mexico 66 全系列 · 3 楼是经典线</li><li><b>2 楼是 Nippon Made 日本製</b> — 价格约两倍，但在马来西亚根本买不到</li><li>也有包和太阳镜</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>4.3 分 — 三家新宿店里评价最好，评论说「整条产品线都有」</li><li class=\"warn\"><span class=\"k\">20:00 关门</span>，而且会准时清场 — 19:05 到，大约有 55 分钟</li><li class=\"warn\">别跟旁边那家小店搞混 — 评论说「跟 2 分钟外那家小店不是一回事」</li><li class=\"tip\">同样在这条线上的 Lumine Est 那家开到 21:00，但你 21:15 才到 Bic — 太晚了</li></ul><span class=\"back\">↩ 往北 4 分钟到 Donki 歌舞伎町 · <a href=\"https://www.google.com/maps/search/?api=1&query=Onitsuka+Tiger+Shinjuku+Flagship+Store\">地图</a></span>"
+     },
+     {
+      "time": "19:15",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><button class=\"badge cpn\" onclick=\"showCp('donki')\">🎟 OPEN DONKI COUPON PAGE (live barcode)</button><b>Don Quijote Kabukicho — Seika ZEN + souvenir haul</b><span class=\"dist\">500m · 7 min walk · 24h</span><span class=\"geo\"><span class=\"pin\">📍</span><b>Ichiran is 1 min away</b> and Bic Camera 8 min on — the whole evening is one line.</span><span class=\"verdict go\">Tonight’s main mission. Open 24h, so no closing-time pressure.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Tax-free counter on <span class=\"k\">3F</span>, min ¥5,000 — bring your passport</li><li class=\"tip\">Shelf empty? Ask “<i>Seika ZEN shampoo, arimasu ka?</i>” and show a photo</li><li class=\"tip\">Still empty, or the crowds are too much? <b>HANDS Shibuya</b> this afternoon and <b>HANDS Ginza</b> tomorrow both carry hair care — quieter, though pricier</li><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Japan-only KitKats, beauty masks, bulk snacks</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"tip\">Scan the coupon QR at the register (Wi-Fi: DONKI_Free_Wi-Fi), pick 5% or 7% — it stacks on tax-free. Saved in your <a href=\"#coupons\">Coupon Wallet</a></li></ul><span class=\"back\">↩ 7 min to the hotel, or 1 min on to Ichiran · <a href=\"https://www.google.com/maps/search/?api=1&query=Don+Quijote+Shinjuku+Kabukicho\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><button class=\"badge cpn\" onclick=\"showCp('donki')\">🎟 打开 Donki 优惠券页（实时条码）</button><b>Don Quijote 歌舞伎町店 — Seika ZEN + 手信大扫货</b><span class=\"dist\">500m · 步行 7 分钟 · 24 小时</span><span class=\"geo\"><span class=\"pin\">📍</span><b>一兰就在 1 分钟外</b>，Bic Camera 再走 8 分钟 — 今晚整条线是顺路的。</span><span class=\"verdict go\">今晚的主要任务。24 小时营业，不用赶关门。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>退税柜台在 <span class=\"k\">3 楼</span>，最低 ¥5,000 — 带护照</li><li class=\"tip\">架上没货？就问「<i>Seika ZEN shampoo, arimasu ka?</i>」并给店员看照片</li><li class=\"tip\">还是没有，或人太多受不了？今天下午的 <b>HANDS 涩谷</b>和明天的 <b>HANDS 银座</b>护发都有卖 — 安静一点，但贵一点</li><li class=\"grp buy\"><span>🛍 要买的</span></li><li>日本限定 KitKat、面膜、大包零食</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"tip\">结账时扫优惠券 QR（Wi-Fi：DONKI_Free_Wi-Fi），选 5% 或 7% — 可以叠加退税。已存在你的<a href=\"#coupons\">优惠券钱包</a></li></ul><span class=\"back\">↩ 7 分钟回酒店，或再走 1 分钟去一兰 · <a href=\"https://www.google.com/maps/search/?api=1&query=Don+Quijote+Shinjuku+Kabukicho\">地图</a></span>"
+     },
+     {
+      "time": "19:40",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>HANDS Shinjuku — fits tonight, but only if you reorder</b><span class=\"dist\">Takashimaya Times Square 2–7F · 8 min from the Onitsuka flagship · 10am–9pm</span><span class=\"geo\"><span class=\"pin\">📍</span><b>South</b> of Shinjuku station: 8 min from the Onitsuka flagship, 7 min on to Bic — it sits neatly between those two.</span><span class=\"verdict tight\">Closes 9pm. It fits if you move Donki and Ichiran to the end.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li><b>Why it doesn’t fit as planned:</b> it shuts at 21:00 and you don’t reach Bic until 21:15</li><li class=\"tip\"><b>The trick: Donki and Ichiran are both 24h</b> — put them last and the earlier slots free up</li><li>Reordered evening:<br>6:50 OS Drug (closes 7:45) → 7:05 Onitsuka (closes 8:00) → <b>7:40 HANDS (closes 9:00)</b> → 8:25 Bic (closes 10:00) → 9:10 Ichiran (shorter queue after 9) → 9:50 Donki → 10:30 hotel</li><li class=\"tip\">This is better anyway: Bic gains 45 min, and Ichiran lands after the queue thins</li><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Stationery, luggage, travel goods, beauty — six floors</li><li><b>Tax-free counter on 5F</b></li><li class=\"warn\">Reviewers find skincare <b>pricier than the nearby drugstores</b> — buy cheap at OS Drug</li></ul><span class=\"back\">↩ 7 min north to Bic Camera · <a href=\"https://www.google.com/maps/search/?api=1&query=HANDS+Shinjuku+Takashimaya+Times+Square\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>HANDS 新宿店 — 今晚也去得到，但要换顺序</b><span class=\"dist\">高岛屋 Times Square 2–7 楼 · 离鬼塚虎旗舰店 8 分钟 · 10:00–21:00</span><span class=\"geo\"><span class=\"pin\">📍</span>在新宿站<b>南边</b>：离鬼塚虎旗舰店 8 分钟，再 7 分钟到 Bic — 所以它正好卡在这两站之间。</span><span class=\"verdict tight\">21:00 关门。只要把 Donki 和一兰挪到最后就来得及。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li><b>为什么原本排不进去：</b>它 21:00 关，而你原本 21:15 才到 Bic</li><li class=\"tip\"><b>关键：Donki 和一兰都是 24 小时</b> — 把它们放到最后，前面的时段就腾出来了</li><li>换成这个顺序：<br>18:50 OS Drug（19:45 关）→ 19:05 鬼塚虎（20:00 关）→ <b>19:40 HANDS（21:00 关）</b> → 20:25 Bic（22:00 关）→ 21:10 一兰（9 点后队伍更短）→ 21:50 Donki → 22:30 回酒店</li><li class=\"tip\">这样反而更好：Bic 多出 45 分钟，一兰也刚好避开人潮</li><li class=\"grp buy\"><span>🛍 要买的</span></li><li>文具、行李箱、旅行小物、美妆 — 6 层楼</li><li><b>退税柜台在 5 楼</b></li><li class=\"warn\">有评论说这里护肤品<b>比附近药妆店贵</b> — 便宜还是去 OS Drug</li></ul><span class=\"back\">↩ 往北 7 分钟到 Bic Camera · <a href=\"https://www.google.com/maps/search/?api=1&query=HANDS+Shinjuku+Takashimaya+Times+Square\">地图</a></span>"
+     },
+     {
+      "time": "20:30",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Ichiran Kabukicho — ramen supper</b><span class=\"dist\">1 min from Donki · 24h</span><span class=\"geo\"><span class=\"pin\">📍</span>Sits <b>between Donki and Bic</b> — 1 min back, 8 min on.</span><span class=\"verdict go\">Go after 9pm and the queue shrinks.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Ticket machine → paper slip (richness / garlic / spice / noodle firmness) → solo booth</li><li>~¥1,100–1,600</li><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li><b>Take-home ramen box</b> ~¥2,000, 5 servings — sold right at the shop, and one of Japan’s most-loved edible souvenirs</li></ul><span class=\"back\">↩ 7 min through Kabukicho’s main street, or 8 min on to Bic · <a href=\"https://www.google.com/maps/search/?api=1&query=ICHIRAN+Shinjuku+Kabukicho\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>一兰 歌舞伎町店 — 拉面宵夜</b><span class=\"dist\">离 Donki 1 分钟 · 24 小时</span><span class=\"geo\"><span class=\"pin\">📍</span>正好<b>在 Donki 和 Bic 之间</b> — 回头 1 分钟，往前 8 分钟。</span><span class=\"verdict go\">9 点以后去，队伍会短很多。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>售票机 → 纸单（浓度／蒜／辣／面硬度）→ 单人隔间</li><li>约 ¥1,100–1,600</li><li class=\"grp buy\"><span>🛍 要买的</span></li><li><b>外带拉面盒</b> 约 ¥2,000，5 份 — 店里直接买，日本最受欢迎的食物手信之一</li></ul><span class=\"back\">↩ 穿过歌舞伎町大街 7 分钟，或往前 8 分钟去 Bic · <a href=\"https://www.google.com/maps/search/?api=1&query=ICHIRAN+Shinjuku+Kabukicho\">地图</a></span>"
+     },
+     {
+      "time": "21:15",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><button class=\"badge cpn\" onclick=\"showCp('bic')\">🎟 SHOW BIC COUPON</button><b>Camera &amp; film — Bic Camera Shinjuku East (+ UNIQLO + GU)</b><span class=\"dist\">Shinjuku 3-29-1 · ~620m · 8 min walk · all till 22:00</span><span class=\"geo\"><span class=\"pin\">📍</span>The <b>UNIQLO Shinjuku flagship (floors 1–3) and GU (7F) are in the same building</b>, all open till 10pm — one elevator ride covers camera, film, Uniqlo and GU.</span><span class=\"verdict tight\">You arrive ~40 min before closing — and this is the trip’s only camera + Uniqlo window.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li><b>Film rolls</b> (Fujifilm / Kodak), disposable QuickSnaps, Instax — plus bodies and lenses, all one roof</li><li>UNIQLO 1–3F: HeatTech, UT tees, AIRism — also tax-free</li><li><b>GU 7F</b> (Uniqlo’s cheaper sister brand, 10am–10pm): ¥990–1,990 basics, wide-leg trousers, knits, the ¥990 glasses frames — tax-free from ¥5,000 with passport. Do GU before UNIQLO so you know what to skip downstairs</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Tax-free, and the live Bic coupon stacks</li><li class=\"warn\">Yodobashi tomorrow morning doesn’t fit the schedule — it’s tonight or not at all</li><li class=\"tip\">If Blue Bottle was your one coffee, it slots at ~8pm — see the ☕ box</li><li class=\"tip\">Ran out of time? <b>GU Seibu Shinjuku PePe 5F</b> (Kabukicho 1-30-1, 11am–9:30pm) is 5 min from the Granbell — but it opens at 11am, so tomorrow’s 6:45 slot can’t use it. It’s tonight, or GU Ginza on D7’s ALT PLAN</li><li>Full options in <a href=\"#camera\">📷 Camera &amp; film</a></li></ul><span class=\"back\">↩ 8 min up Yasukuni-dōri to the hotel, or a taxi if the bags got heavy (~¥500–700) · <a href=\"https://www.google.com/maps/search/?api=1&query=BicCamera+Shinjuku+East+Store\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><button class=\"badge cpn\" onclick=\"showCp('bic')\">🎟 显示 Bic 优惠券</button><b>相机 & 胶卷 — Bic Camera 新宿东口店（+ 优衣库 + GU）</b><span class=\"dist\">新宿 3-29-1 · 约 620m · 步行 8 分钟 · 都开到 22:00</span><span class=\"geo\"><span class=\"pin\">📍</span><b>优衣库新宿旗舰店（1–3 楼）和 GU（7 楼）都在同一栋</b>，都开到 22:00 — 坐一趟电梯，相机、胶卷、优衣库、GU 一次搞定。</span><span class=\"verdict tight\">你到的时候离关门只剩约 40 分钟 — 而这是全程唯一能同时买相机和优衣库的时段。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li><b>胶卷</b>（富士／柯达）、一次性 QuickSnap、拍立得 — 加上机身镜头，全在一栋</li><li>优衣库 1–3 楼：HeatTech、UT 联名 T、AIRism — 也能退税</li><li><b>GU 7 楼</b>（优衣库的平价副牌，10:00–22:00）：¥990–1,990 基本款、阔腿裤、针织、¥990 眼镜框 — 满 ¥5,000 带护照退税。先逛 GU 再下楼逛优衣库，就知道哪些不用买</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>可退税，Bic 实时优惠券还能叠加</li><li class=\"warn\">明天早上去 Yodobashi 排不进行程 — 今晚不去就没有了</li><li class=\"tip\">如果你的那一杯咖啡选了 Blue Bottle，约 20:00 刚好 — 看 ☕ 框</li><li class=\"tip\">没时间了？<b>GU 西武新宿 PePe 5 楼</b>（歌舞伎町 1-30-1，11:00–21:30）离格兰贝尔 5 分钟 — 但 11:00 才开，明早 6:45 那个空档用不上。要么今晚，要么第 7 天替代方案的 GU 银座</li><li>完整选择看 <a href=\"#camera\">📷 相机 & 胶卷</a></li></ul><span class=\"back\">↩ 沿靖国通走 8 分钟回酒店，东西太重就打车（约 ¥500–700）· <a href=\"https://www.google.com/maps/search/?api=1&query=BicCamera+Shinjuku+East+Store\">地图</a></span>"
+     },
+     {
+      "time": "21:50",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><button class=\"badge cpn\" onclick=\"showCp('daikoku')\">🎟 SHOW DAIKOKU COUPON</button><b>Daikoku Drug Kabukicho 2-chome — the 18% drugstore run, 3 min from the hotel</b><span class=\"dist\">Kabukicho 2-19-15, Tenamu Town Bldg 1F · ~250m · 3 min walk · Fri 9:05am–10:50pm</span><span class=\"geo\"><span class=\"pin\">📍</span><b>The closest drugstore to the Granbell</b> — one extra block toward Higashi-Shinjuku on the walk back from Bic. Sun Drug Shinjuku East is the other way, 9 min.</span><span class=\"verdict tight\">Only worth it if the basket will pass ¥50,000 — 18% edges Sun Drug’s 17%. The coupon’s printed validity ends 30 Sep, so show it first and walk to Sun Drug (till 11pm) if refused.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Everything drugstore on the shopping list — eye drops, Kyusoku Jikan, Ora2 / Clean Dental toothpaste, cosmetics</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Three tiers: 13% from ¥10,000 · 15% from ¥30,000 · 18% from ¥50,000 (incl. the 10% tax-free) — one combined bill for the group is the best value</li><li class=\"tip\">Fine print asks for payment via Taiwan’s 全支付 app — if nobody has it, <b>ask before they scan</b> whether the tier still applies</li><li class=\"tip\">Queue one tax-free counter together, passports in one hand</li></ul><span class=\"back\">↩ 3 min back to the hotel · <a href=\"https://www.google.com/maps/search/?api=1&amp;query=Daikoku+Drug+Kabukicho+2-19-15\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><button class=\"badge cpn\" onclick=\"showCp('daikoku')\">🎟 出示大国药妆优惠券</button><b>大国药妆 歌舞伎町2丁目店 — 18% 的药妆大采购，离酒店 3 分钟</b><span class=\"dist\">歌舞伎町 2-19-15 てなむタウンビル 1F · 约 250 米 · 步行 3 分钟 · 周五 9:05–22:50</span><span class=\"geo\"><span class=\"pin\">📍</span><b>离格兰贝尔最近的药妆店</b> — 从 Bic 走回酒店的路上，往东新宿方向多拐一个街口。Sun Drug 新宿东口店在另一边，9 分钟。</span><span class=\"verdict tight\">只有当篓子会超过 ¥50,000 才值得来 — 18% 比 Sun Drug 的 17% 多一点。券印的有效期到 9 月 30 日，先出示，被拒就走 Sun Drug（开到 23:00）。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>药妆、眼药水、休足时间、Ora2／Clean Dental 牙膏 — 购物清单上所有药妆店的东西</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>三档：¥10,000 起 13% · ¥30,000 起 15% · ¥50,000 起 18%（含免税 10%）— 全团合并一单最划算</li><li class=\"tip\">细则要求用台湾「全支付」App 付款 — 没有的话<b>刷之前先问</b>店员是否照样打折</li><li class=\"tip\">四个人一起排一个免税柜台，护照一起给</li></ul><span class=\"back\">↩ 3 分钟回酒店 · <a href=\"https://www.google.com/maps/search/?api=1&query=Daikoku+Drug+Kabukicho+2-19-15\">地图</a></span>"
+     },
+     {
+      "time": "22:00",
+      "class": "kon",
+      "en": "<span class=\"badge kon\">KONBINI RUN</span><b>On the walk home — pick whichever you pass</b><span class=\"dist\">all 3–8 min from the hotel · 24h</span><span class=\"geo\"><span class=\"pin\">📍</span>They’re all on the way back — no need to choose in advance.</span><span class=\"verdict go\">Dessert round. Pick one, don’t tour all four.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li><span class=\"chain c7\">7-Eleven Kuyakusho-dōri</span> 230m · 3 min · <span class=\"k\">has an ATM</span></li><li><span class=\"chain c7\">7-Eleven Toho Bldg</span> 360m · 5 min · the <span class=\"k\">Godzilla head</span> photo is above this one</li><li><span class=\"chain cfm\">FamilyMart Kabukicho</span> 480m · 7 min</li><li><span class=\"chain clw\">Lawson</span> several within 5–8 min</li><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li class=\"tip\">What to get: 7-Eleven tamago sando &amp; onigiri · FamilyMart famichiki · Lawson Karaage-kun + premium roll cake</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Full try-list in <a href=\"#konbini\">Konbini menu</a></li></ul><span class=\"back\">↩ <a href=\"https://www.google.com/maps/search/?api=1&query=7-Eleven+Shinjuku+Kuyakusho-dori\">Map</a></span>",
+      "zh": "<span class=\"badge kon\">便利店打卡</span><b>回酒店路上 — 顺路经过哪家就进哪家</b><span class=\"dist\">都离酒店 3–8 分钟 · 24 小时</span><span class=\"geo\"><span class=\"pin\">📍</span>几家都在回去的路上 — 不用提前决定。</span><span class=\"verdict go\">甜点回合。挑一家就好，不用四家都逛。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li><span class=\"chain c7\">7-11 区役所通店</span> 230m · 3 分钟 · <span class=\"k\">有 ATM</span></li><li><span class=\"chain c7\">7-11 东宝大楼店</span> 360m · 5 分钟 · <span class=\"k\">哥斯拉头</span>就在这家楼上</li><li><span class=\"chain cfm\">全家 歌舞伎町店</span> 480m · 7 分钟</li><li><span class=\"chain clw\">罗森</span> 5–8 分钟内有好几家</li><li class=\"grp eat\"><span>🍴 要吃的</span></li><li class=\"tip\">买什么：7-11 玉子三明治和饭团 · 全家炸鸡 · 罗森唐扬鸡块 + 特浓生奶油卷</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>完整必试清单看 <a href=\"#konbini\">便利店菜单</a></li></ul><span class=\"back\">↩ <a href=\"https://www.google.com/maps/search/?api=1&query=7-Eleven+Shinjuku+Kuyakusho-dori\">地图</a></span>"
+     },
+     {
+      "time": "22:30",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Before bed — sort tonight’s haul</b><span class=\"dist\">tomorrow starts 7:30</span><span class=\"verdict tight\">Do the three sorting lines even if you skip the nightlife.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Nanaya chocolate → <span class=\"k\">hotel fridge</span></li><li>Seika ZEN → <span class=\"k\">checked-luggage pile</span></li><li class=\"warn\">Tax-free sealed bags stay sealed</li><li class=\"tip\">Optional: Omoide Yokocho yakitori lane, 15 min walk, till midnight · or Golden Gai bars</li><li class=\"tip\">Fuglen Tokyo — your saved red-bird shop — is tonight’s night-owl coffee, but only if it’s your ONE pick</li><li>Tired? Skip all of it. Tomorrow starts 7:30.</li></ul>",
+      "zh": "<span class=\"badge add\">加点</span><b>睡前 — 整理今晚的战利品</b><span class=\"dist\">明天 7:30 就开始</span><span class=\"verdict tight\">就算不去逛夜生活，这三样也要分好。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>Nanaya 巧克力 → <span class=\"k\">放酒店冰箱</span></li><li>Seika ZEN → <span class=\"k\">放托运那一堆</span></li><li class=\"warn\">退税密封袋不要拆</li><li class=\"tip\">可选：回忆横丁烤鸡串小巷，走 15 分钟，开到午夜 · 或黄金街酒吧</li><li class=\"tip\">Fuglen Tokyo（你存的红鸟店）是今晚的夜猫子咖啡，但只有它是你选的那一杯才去</li><li>累了就全部跳过。明天 7:30 开始。</li></ul>"
+     }
+    ]
+   ]
+  },
+  {
+   "day": 7,
+   "title": {
+    "en": "Tokyo → Narita / Haneda",
+    "zh": "东京 → 成田"
+   },
+   "meta": {
+    "en": "Sat 10 Oct · stay: International Resort Hotel Yurakujo (Narita)",
+    "zh": "10月10日 周六 · 住：国际观光酒店 有乐城（成田）"
+   },
+   "weather": {
+    "en": "<b>23° / 17°</b><br>rain ☔",
+    "zh": "<b>23° / 17°</b><br>有雨 ☔"
+   },
+   "blocks": [
+    [
+     {
+      "time": "6:45",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Backup slot</b> — Donki Kabukicho and Ichiran are 24h and empty now. Zero-queue ramen breakfast is a real Tokyo experience.<span class=\"back\">↩ Getting back: 7-min walk — leave Donki/Ichiran by 7:10 to make 7:30 breakfast.</span>",
+      "zh": "<span class=\"badge add\">加点</span><b>补救时段</b> — Donki 歌舞伎町和一兰都是 24 小时，这会儿没人。零排队的拉面早餐是很真实的东京体验。<span class=\"back\">↩ 怎么回来：步行 7 分钟 — 7:10 前离开 Donki／一兰，赶 7:30 早餐。</span>"
+     },
+     {
+      "time": "7:30",
+      "class": "",
+      "en": "Breakfast @ Granbell · <b>8:30</b> depart (~30 min, 10km)",
+      "zh": "格兰贝尔酒店早餐 · <b>8:30</b> 出发（约 30 分钟，10 公里）"
+     },
+     {
+      "time": "9:00",
+      "class": "",
+      "en": "<b>Tokyo Tower</b> (1h30m) — main deck views\n      <ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Tokyo Banana at the gift shop</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"tip\">Bags already full? It’s at the airport tomorrow too</li></ul>",
+      "zh": "<b>东京塔</b>（1小时30分）— 主观景台看风景<ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>礼品店的东京香蕉</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"tip\">行李已经满了？明天机场也有</li></ul>"
+     },
+     {
+      "time": "10:50",
+      "class": "",
+      "en": "<b>Tsukiji Outer Market</b> (1h) — go hungry, lunch is 12:15 so snack smart\n      <ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>Yamachou <b>tamagoyaki</b> skewer, ¥150–200</li><li>Tuna &amp; uni skewers · grilled scallop · strawberry daifuku</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\">Eat at the stall, not walking — Tsukiji rule</li><li class=\"tip\">Lunch is 12:15, so snack smart</li></ul>",
+      "zh": "<b>筑地场外市场</b>（1小时）— 空着肚子去，午餐 12:15，零食要吃得聪明<ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>山长<b>玉子烧</b>串，¥150–200</li><li>金枪鱼和海胆串 · 烤扇贝 · 草莓大福</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\">要站在摊位旁吃，不能边走边吃 — 筑地规矩</li><li class=\"tip\">午餐 12:15，零食别吃太饱</li></ul>"
+     },
+     {
+      "time": "11:25",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Turret Coffee</b><span class=\"dist\">4 min from the market · Sat 7am–5pm</span><span class=\"geo\"><span class=\"pin\">📍</span><b>4 min from the stalls</b> — Bongen is the other way, 8 min each way.</span><span class=\"verdict go\">Today’s coffee if you picked it over Bongen — the safe choice.</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>One of Tokyo’s best lattes, ¥590+</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>A <span class=\"k\">15-min</span> stop that fits inside your market hour</li><li class=\"warn\">Tiny shop, and no photos inside</li><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Their roasted <b>beans</b> + turret-truck merch for coffee friends</li></ul><span class=\"back\">↩ 4 min back to the stalls · Bongen instead? 8 min each way, watch the clock · <a href=\"https://www.google.com/maps/search/?api=1&query=Turret+Coffee+Tsukiji\">Turret map</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=BONGENCOFFEE+Ginza\">Bongen map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>Turret Coffee</b><span class=\"dist\">离市场 4 分钟 · 周六 7:00–17:00</span><span class=\"geo\"><span class=\"pin\">📍</span><b>离摊位区 4 分钟</b> — Bongen 在另一边，来回各 8 分钟。</span><span class=\"verdict go\">如果你选了它而不是 Bongen，这就是今天那杯 — 稳妥之选。</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>东京最好的拿铁之一，¥590 起</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li><span class=\"k\">15 分钟</span>就能搞定，塞得进你的市场时段</li><li class=\"warn\">店很小，而且店内不能拍照</li><li class=\"grp buy\"><span>🛍 要买的</span></li><li>他们自己烘的<b>咖啡豆</b>和小卡车周边，送咖啡朋友很好</li></ul><span class=\"back\">↩ 4 分钟回摊位区 · 改去 Bongen？来回各 8 分钟，看紧时间 · <a href=\"https://www.google.com/maps/search/?api=1&query=Turret+Coffee+Tsukiji\">Turret 地图</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=BONGENCOFFEE+Ginza\">Bongen 地图</a></span>"
+     },
+     {
+      "time": "11:40",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Matcha stop — Uogashi Meicha (魚がし銘茶)</b><span class=\"dist\">~3 min from the stalls · Sat 8am–3pm</span><span class=\"geo\"><span class=\"pin\">📍</span><b>3 min from the market stalls</b> — inside the same hour, no separate trip.</span><span class=\"verdict go\">The trip’s best one-stop matcha shop, and it closes at 3pm.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Proper <b>matcha powder tins</b> — they let you taste before you buy</li><li>Bamboo <b>chasen whisks</b> and scoops</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"tip\">Your guaranteed tool stop — Ginza LOFT’s tea gear varies by season</li><li>Full brand guide in <a href=\"#matcha\">🍵 Matcha</a></li></ul><span class=\"back\">↩ 3 min back to the market — lunch is 12:15 · <a href=\"https://www.google.com/maps/search/?api=1&query=Uogashi+Meicha+Tsukiji\">Map</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>抹茶站 — 魚がし銘茶 筑地总店</b><span class=\"dist\">离摊位区约 3 分钟 · 周六 8:00–15:00</span><span class=\"geo\"><span class=\"pin\">📍</span><b>离市场摊位 3 分钟</b> — 就在同一个时段里，不用另外跑一趟。</span><span class=\"verdict go\">全程最好的一站式抹茶店，而且 15:00 就关。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>正统<b>抹茶粉罐</b> — 可以先试喝再买</li><li>竹制<b>茶筅</b>和茶勺</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"tip\">这是你保底的工具站 — 银座 LOFT 的茶具看季节，不一定有</li><li>完整品牌指南看 <a href=\"#matcha\">🍵 抹茶</a></li></ul><span class=\"back\">↩ 3 分钟回市场 — 12:15 要吃午餐 · <a href=\"https://www.google.com/maps/search/?api=1&query=Uogashi+Meicha+Tsukiji\">地图</a></span>"
+     },
+     {
+      "time": "12:15",
+      "class": "",
+      "en": "<span class=\"fd\">Lunch:</span> Crab miso set<button class=\"mealpic\" onclick=\"showMeal('d7l')\">📷 see meal</button> · then ~1h10m (60km) east",
+      "zh": "<span class=\"fd\">午餐：</span>蟹肉味噌套餐<button class=\"mealpic\" onclick=\"showMeal('d7l')\">📷 看餐点</button> · 然后往东约 1小时10分（60公里）"
+     },
+     {
+      "time": "14:30",
+      "class": "",
+      "en": "<b>Shisui Premium Outlets</b> (2h30m) — last big shopping of the trip<span class=\"geo\"><span class=\"pin\">📍</span>Not into outlets? The <b>Ginza ALT PLAN</b> is in the blue box right below this row.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li><span class=\"badge cpn\">🎟 PASSPORT = COUPON</span>Show your passport at the <b>Information Center first</b> for the tourist offer sheet — no image needed</li><li class=\"tip\">Outlet price <span class=\"k\">plus</span> tax-free with passport. Food court for a break.</li><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Onitsuka Tiger sneakers — the Japan-trip classic. <b>Outlet pricing</b>, and no queue-ticket system unlike the Ginza concept stores — but past-season colourways only</li><li>Coach &amp; Kate Spade bags · Nike / adidas</li><li>Samsonite luggage, if your haul outgrew your bag</li></ul>",
+      "zh": "<b>酒々井 Premium Outlets</b>（2小时30分）— 全程最后一次大采购<span class=\"geo\"><span class=\"pin\">📍</span>不想逛 outlet？<b>银座替代方案</b>就在这一行下面的蓝色框里。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li><span class=\"badge cpn\">🎟 护照 = 优惠券</span><b>先去服务中心</b>出示护照领游客优惠册 — 不需要任何图片</li><li class=\"tip\">Outlet 价<span class=\"k\">再加</span>护照退税。累了去美食广场休息。</li><li class=\"grp buy\"><span>🛍 要买的</span></li><li>鬼塚虎球鞋 — 日本行的经典。<b>Outlet 价</b>，而且不像银座那几家要取号排队 — 但只有过季配色</li><li>Coach、Kate Spade 包 · Nike／adidas</li><li>新秀丽行李箱，如果战利品装不下了</li></ul>"
+     },
+     {
+      "raw": "<div class=\"altplan\" data-zh=\"<div class=&quot;ahead&quot;><div class=&quot;t1&quot;>🔄 替代方案 — 跳过酒々井，下午留在银座</div><div class=&quot;t2&quot;>一个抹茶下午，然后自己坐车回成田的酒店。预报有雨，而这个方案几乎全在室内。</div></div><div class=&quot;apbody&quot;><div class=&quot;apre&quot;><b>早餐时就要说：</b>告诉导游你不去 outlet。行李照常跟巴士回酒店，晚上 18:00 再归队吃晚餐。</div><div class=&quot;phase&quot;>银座 — 下午</div><div class=&quot;step first&quot;><div class=&quot;tm&quot;>13:30</div><div><div class=&quot;nm&quot;>抵达银座 <span class=&quot;dist&quot;>从筑地步行 13 分钟 · 或打车 5 分钟</span></div></div></div><div class=&quot;step&quot;><div class=&quot;tm&quot;>13:35</div><div><div class=&quot;nm&quot;>On 昂跑 银座旗舰店 — 先取号，别急着逛</div><span class=&quot;verdict tight&quot;>先扫码取号，再边等边逛。这就是整个诀窍。</span><ul class=&quot;pts&quot;><li class=&quot;grp info&quot;><span>ℹ 要注意的</span></li><li>进店要扫 QR 取号 — 有人报过<span class=&quot;k&quot;>等两小时以上</span></li><li class=&quot;tip&quot;>快到号时系统会发邮件通知，所以可以先走开再回来</li><li class=&quot;warn&quot;>周六营业时间是<span class=&quot;k&quot;>11:00–19:00</span>，比平日短</li><li class=&quot;warn&quot;>这家不能退税，跟银座大部分店不一样</li><li class=&quot;warn&quot;>如果取号后显示要等到<span class=&quot;k&quot;>15:30</span>以后，就整个放弃</li></ul><a href=&quot;https://www.google.com/maps/search/?api=1&amp;query=On+Flagship+Store+Tokyo+Ginza&quot;>地图</a></div></div><div class=&quot;step&quot;><div class=&quot;tm&quot;>13:45</div><div><div class=&quot;nm&quot;>GINZA SIX <span class=&quot;dist&quot;>离 On 5 分钟 · B2 到屋顶</span></div><span class=&quot;verdict go&quot;>这就是选这个方案的理由。直接上 4 楼。</span><ul class=&quot;pts&quot;><li class=&quot;grp buy&quot;><span>🛍 要买的</span></li><li><b>中村藤吉</b>，4 楼 — 1854 年的宇治老铺。真·宇治抹茶罐。</li><li>传说级抹茶芭菲 — 银座店几乎不用排队，宇治本店要排很久</li><li class=&quot;grp info&quot;><span>ℹ 要注意的</span></li><li>有时间就再花 20 分钟：B2 食品街和免费的屋顶花园</li></ul><span class=&quot;spare&quot;><span class=&quot;sh&quot;>↳ 如果进度超前，这家就在路上</span><span class=&quot;nm2&quot;>茶·银座 Cha Ginza</span><span class=&quot;hrs&quot;>周六 12:00–19:00 · 周日、周一休</span><span class=&quot;cost&quot;>只多花 1 分钟</span><br>鱼がし铭茶自家的品茶室 — 就是你早上在筑地买茶的那一家。买之前他们会泡好几款抹茶给你试。它正好<b>在 On → GINZA SIX 的路上</b>：3 分钟 + 3 分钟，直走是 5 分钟。</span><span class=&quot;spare&quot;><span class=&quot;sh&quot;>↳ 4 分钟，就在 On ↔ GINZA SIX 这条线上</span><span class=&quot;nm2&quot;>鬼塚虎 银座 YELLOW</span><span class=&quot;hrs&quot;>4 分钟 · 每天 11:00–20:00</span><span class=&quot;cost&quot;>不用久等</span><br>银座有<b>三家</b>鬼塚虎概念店，只有这家快。评论说得很直接：YELLOW 店人最少、最快，<b>而且商品选择不打折</b>。它离 On 银座店 2 分钟，正好跟你刚取的号搭配。<br><span class=&quot;wr&quot;>⚠ 今天别去 ORANGE 和 RED。</span>这两家跟 On 银座一样要<b>取号等 2 小时</b> — 有人 11:39 取号，13:26 才进去。它们是做刺绣／订制的店，所以想要绣字的 Mexico 66 得留一整个早上，不是这个下午。</span><span class=&quot;spare&quot;><span class=&quot;sh&quot;>↳ 跟 GINZA SIX 同一个街区</span><span class=&quot;nm2&quot;>优衣库 银座店</span><span class=&quot;hrs&quot;>1 分钟 · 12 层</span> — 如果第 6 天新宿旗舰店没去到，这里是第二次机会。<br><span class=&quot;nm2&quot;>GU 银座店</span><span class=&quot;hrs&quot;>银座 5-7-7 · 2 分钟 · 5 层 · 11:00–21:00</span> — 银座的大 GU，4 楼退税；昨晚 Bic 那栋 7 楼的 GU 没去到才需要它。<br><span class=&quot;nm2&quot;>Don Quijote 银座本馆</span><span class=&quot;hrs&quot;>5 分钟 · 24 小时</span> — 第 5、6 天都没买到 Seika ZEN 的话，这是<b>最后</b>一次机会 <button class=&quot;cpchip&quot; onclick=&quot;showCp('donki')&quot;>🎟 打开 Donki 优惠券页</button></span><a href=&quot;https://www.google.com/maps/search/?api=1&amp;query=GINZA+SIX&quot;>地图</a></div></div><div class=&quot;step&quot;><div class=&quot;tm&quot;>14:45</div><div><div class=&quot;nm&quot;>银座 LOFT <span class=&quot;dist&quot;>往北步行 9 分钟 · 11:00–21:00</span></div><ul class=&quot;pts&quot;><li class=&quot;grp buy&quot;><span>🛍 要买的</span></li><li>日本文具 · 美容小家电 · 厨房和茶具</li><li class=&quot;tip&quot;><b>跟 LOFT 涩谷是同一家连锁</b>（昨天，第6天 15:43 — 宇田川町 21-1，离十字路口 3 分钟，11:00–21:00，西路第二站，也有抹茶品类）。在那边逛过了？<b>这一站就跳过</b>，把来回 18 分钟留给四丁目那一带。没逛到？那这里就是唯一机会 — 而且伊东屋和 Bongen 豆子店只在 2–4 分钟外，涩谷那家给不了这个。</li><li class=&quot;grp info&quot;><span>ℹ 要注意的</span></li><li class=&quot;warn&quot;>抹茶碗和茶筅套装看季节，不一定有 — 早上的鱼がし铭茶才是你保底的工具站</li><li class=&quot;warn&quot;>退税柜台在 3 楼，20:00 就不再排队</li></ul><span class=&quot;spare&quot;><span class=&quot;sh&quot;>↳ 这个方向只有这两家值得</span><span class=&quot;nm2&quot;>伊东屋 Itoya</span><span class=&quot;hrs&quot;>2 分钟 · 周六 10:00–20:00</span> — 12 层的文具店，基本就在隔壁。<br><span class=&quot;nm2&quot;>BONGEN BEANS STORE</span><span class=&quot;hrs&quot;>再走 4 分钟 · 10:00–17:00</span> — 不是咖啡店，是<b>另开的咖啡豆和周边专卖店，不用排队</b>。如果早上想去 Bongen 但被 30–40 分钟的队伍打退，这里还是能买到豆子。<br><span class=&quot;nm2&quot;>HANDS 银座</span><span class=&quot;hrs&quot;>离 LOFT 2 分钟 · 11:00–21:00</span> — Marronnier Gate 5–9 楼。跟 LOFT 差不多，但杂货更杂；退税在 9 楼。评论说比涩谷那家贵，买之前比一下。<br>这几家跟 LOFT 一起走，因为你不会再回 2 丁目这一带。</span><a href=&quot;https://www.google.com/maps/search/?api=1&amp;query=Ginza+LOFT&quot;>地图</a><span class=&quot;spare&quot;><span class=&quot;sh&quot;>↳ 15:10，如果药妆清单还没买完</span><span class=&quot;nm2&quot;>大国药妆 银座1丁目店</span><span class=&quot;hrs&quot;>银座 1-10-6 银座ファーストビル · GINZA SIX 往北 10 分钟</span><span class=&quot;cost&quot;>来回多 20 分钟</span><br>大国药妆券（按档 13／15／18%，⚠ 印的有效期到 9 月 30 日）在任何大国免税分店都能出示。只有第6天歌舞伎町那趟没去成才绕过来 — 会吃掉 15:45 的缓冲。<a href=&quot;https://www.google.com/maps/search/?api=1&amp;query=Daikoku+Drug+Ginza+1-10-6&quot;>地图</a></span></div></div><div class=&quot;phase&quot;>回程</div><div class=&quot;step&quot;><div class=&quot;tm hard&quot;>15:45</div><div><div class=&quot;nm&quot;>开始回程 — 二选一</div><span class=&quot;verdict skip&quot;>这是死线。晚过这个点就赶不上晚餐。</span><div class=&quot;pick&quot;><div class=&quot;opt best&quot;><span class=&quot;nm2&quot;>路线 A — 都营浅草线直通车<span class=&quot;chr&quot;>最简单</span></span><span class=&quot;meta&quot;>东银座站（离 GINZA SIX 3 分钟）→ 京成成田 · 约 80–90 分钟 · 约 ¥1,150–1,400 · 刷 Suica</span><span class=&quot;why&quot;>不需要 JR 票。有些班次要在青砥同月台换乘 — 跟着 Google Maps 实时建议，上标着「成田／成田机场」的车就对。</span></div><div class=&quot;opt&quot;><span class=&quot;nm2&quot;>路线 B — JR 总武线快速<span class=&quot;chr&quot;>用得到那张免费 JR 票</span></span><span class=&quot;meta&quot;>坐地铁或打车到东京站 → JR 成田 · 约 80 分钟 · 没被覆盖是 ¥1,340</span><span class=&quot;why&quot;>先跟导游确认免费票包不包这一段，以及票是哪个站发的。路线 B 的顺路彩蛋：<b>ÉCHIRÉ Maison du Beurre</b>（本店，品项最全）在丸之内 Brick Square 1 楼，离丸之内南口 5 分钟，10:00–20:00 — 但下午 4 点大多已卖完，看看就好，别当计划。</span></div></div><span class=&quot;spare&quot;><span class=&quot;sh&quot;>↳ 15:30，走路线 A 前的最后一站</span><span class=&quot;nm2&quot;>寿月堂 Jugetsudo</span><span class=&quot;hrs&quot;>歌舞伎座塔 5 楼 · 开到 17:30</span><span class=&quot;cost&quot;>完全不绕路</span><br>在歌舞伎座楼上的安静茶室，有茶、茶具和抹茶芭菲。它<b>离路线 A 出发的东银座站入口只有 1 分钟</b> — 你反正会经过门口，所以留到最后，不要提前挤进去。</span><span class=&quot;spare&quot;><span class=&quot;sh&quot;>↳ 16:00，只有走路线 B 才去</span><span class=&quot;nm2&quot;>一保堂 新丸之内店</span><span class=&quot;hrs&quot;>周六 11:00–21:00</span><span class=&quot;cost&quot;>顺路</span><br>这份行程本来到不了的京都传奇抹茶老铺 — <b>离东京站 5 分钟，在新丸之内大楼 B1</b>。从银座走过去要 23 分钟，但走路线 B 你反正就是去东京站。<span class=&quot;wr&quot;>⚠ 抹茶限购每人 1 罐，好等级会卖完 — 不要指望买到最高级。</span></span></div></div><div class=&quot;step&quot;><div class=&quot;tm&quot;>17:20</div><div><div class=&quot;nm&quot;>成田站 → 酒店 <span class=&quot;dist&quot;>6 公里</span></div><ul class=&quot;pts&quot;><li class=&quot;grp info&quot;><span>ℹ 要注意的</span></li><li class=&quot;tip&quot;>有乐城在 JR／京成成田站和酒店之间有<b>免费接驳车</b> — 早上问导游或打给酒店拿傍晚的班次时间</li><li>不然就在车站排班坐出租车，约 10–15 分钟，约 ¥2,500–3,500</li></ul></div></div><div class=&quot;step&quot;><div class=&quot;tm&quot;>18:00</div><div><div class=&quot;nm&quot;>归队吃居酒屋晚餐</div><ul class=&quot;pts&quot;><li class=&quot;grp info&quot;><span>ℹ 要注意的</span></li><li class=&quot;warn&quot;>缓冲很紧 — 万一列车不给力，发信息告诉导游你 18:30 才开始吃</li></ul></div></div><div class=&quot;solo&quot;><div class=&quot;sh&quot;>⚠ 单飞之前先确认</div><ul><li>早餐时已通知导游</li><li>Suica 充值 ¥2,000 以上</li><li>存好日文酒店名给司机看 — 国際観光ホテル 有楽城，富里市</li><li>雨伞（预报有雨）</li><li>手机电量够用 Google Maps 实时导航</li></ul></div><div class=&quot;apre&quot; style=&quot;margin-top:13px;margin-bottom:0&quot;><b>如果放弃 On 银座店</b>（取号显示要等到 15:30 以后）— 你会多出大约 40 分钟。把它花在 LOFT 那一段（伊东屋 + Bongen 豆子店），因为那个方向本来最赶。</div></div>\"><div class=\"ahead\"><div class=\"t1\">🔄 ALT PLAN — skip Shisui, spend the afternoon in Ginza</div><div class=\"t2\">A matcha afternoon, then you get yourself back to the Narita hotel. Rain is forecast and this plan is almost entirely indoors.</div></div><div class=\"apbody\"><div class=\"apre\"><b>Do this at breakfast:</b> tell the guide you’re skipping the outlets. Your luggage still rides the bus to the hotel as normal, and you rejoin the group for dinner at 6:00pm.</div><div class=\"phase\">GINZA — THE AFTERNOON</div><div class=\"step first\"><div class=\"tm\">1:30pm</div><div><div class=\"nm\">Arrive in Ginza <span class=\"dist\">13 min walk from Tsukiji · or 5 min taxi</span></div></div></div><div class=\"step\"><div class=\"tm\">1:35pm</div><div><div class=\"nm\">On Flagship Ginza — take the queue ticket, don’t shop yet</div><span class=\"verdict tight\">Scan first, shop while you wait. That’s the whole trick.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Entry is by QR queue ticket — waits of <span class=\"k\">2 hours or worse</span> reported</li><li class=\"tip\">It emails you when your turn is near, so you can leave and come back</li><li class=\"warn\">Saturday hours are <span class=\"k\">11am–7pm</span>, shorter than weekdays</li><li class=\"warn\">No tax-free here, unlike most Ginza shops</li><li class=\"warn\">If the estimate lands after <span class=\"k\">3:30pm</span>, drop it entirely</li></ul><a href=\"https://www.google.com/maps/search/?api=1&query=On+Flagship+Store+Tokyo+Ginza\">Map</a></div></div><div class=\"step\"><div class=\"tm\">1:45pm</div><div><div class=\"nm\">GINZA SIX <span class=\"dist\">5 min from On · B2 to rooftop</span></div><span class=\"verdict go\">The reason to take this plan. Straight to 4F.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li><b>Nakamura Tokichi</b>, 4F — the 1854 Uji house. Real Uji matcha tins.</li><li>The legendary matcha parfait — the Ginza branch has almost no queue, unlike Uji</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Worth 20 min if you have it: the B2 depachika and the free rooftop garden</li></ul><span class=\"spare\"><span class=\"sh\">↳ IF YOU’RE AHEAD, ON THIS WALK</span><span class=\"nm2\">Cha Ginza</span><span class=\"hrs\">Sat 12–7pm · closed Sun &amp; Mon</span><span class=\"cost\">costs 1 min</span><br>Uogashi Meicha’s own tasting room — the same house you buy from at Tsukiji this morning. They pour you several matcha free before you choose. It sits <b>on the On → GINZA SIX walk</b>: 3 min + 3 min, versus 5 min direct.</span><span class=\"spare\"><span class=\"sh\">↳ 4 MIN, ON THE ON ↔ GINZA SIX CORRIDOR</span><span class=\"nm2\">Onitsuka Tiger Ginza YELLOW</span><span class=\"hrs\">4 min · daily 11am–8pm</span><span class=\"cost\">no long queue</span><br>Ginza has <b>three</b> Onitsuka concept stores and only this one is quick. Reviewers put it plainly: the Yellow store is the least crowded and the fastest, <b>without losing product selection</b>. It sits 2 min from On Ginza, so it pairs with the ticket you just took.<br><span class=\"wr\">⚠ Avoid ORANGE and RED today.</span> Both run the same <b>2-hour queue-ticket</b> system as On Ginza — one reviewer took a ticket at 11:39 and got in at 13:26. They’re the embroidery/customisation stores, so if a monogrammed Mexico 66 is the goal it needs a whole morning, not this afternoon.</span><span class=\"spare\"><span class=\"sh\">↳ SAME BLOCK AS GINZA SIX</span><span class=\"nm2\">UNIQLO Ginza</span><span class=\"hrs\">1 min · 12 floors</span> — second chance if Day 6’s Shinjuku flagship got skipped.<br><span class=\"nm2\">GU Ginza</span><span class=\"hrs\">Ginza 5-7-7 · 2 min · 5 floors · 11am–9pm</span> — the big Ginza GU, tax-free counter on 4F; only matters if the 7F GU in last night’s Bic building got skipped.<br><span class=\"nm2\">Donki Ginza Honkan</span><span class=\"hrs\">5 min · 24h</span> — your <b>final</b> Seika ZEN backup if D5 and D6 both came up empty <button class=\"cpchip\" onclick=\"showCp('donki')\">🎟 open Donki coupon</button></span><a href=\"https://www.google.com/maps/search/?api=1&query=GINZA+SIX\">Map</a></div></div><div class=\"step\"><div class=\"tm\">2:45pm</div><div><div class=\"nm\">Ginza LOFT <span class=\"dist\">9 min walk north · 11am–9pm</span></div><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Japanese stationery · beauty gadgets · kitchen and tea goods</li><li class=\"tip\"><b>Same chain as LOFT Shibuya</b> (yesterday, D6 15:43 — Udagawacho 21-1, 3 min from the Crossing, 11am–9pm, 2nd stop on the WEST lane, also has a matcha selection). Did it there? <b>Skip this step</b> and put the 18 min round trip into the 4-chome cluster instead. Didn’t get to it? Then this is your one shot — and Itoya plus the Bongen beans store are 2–4 min away, which Shibuya’s branch can’t offer.</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\">Matcha bowls and whisk sets vary by season — this morning’s Uogashi Meicha stays your guaranteed tool stop</li><li class=\"warn\">Tax-refund counter is on 3F and closes its queue at 8pm</li></ul><span class=\"spare\"><span class=\"sh\">↳ ONLY SPARE SHOPS IN THIS DIRECTION</span><span class=\"nm2\">Itoya</span><span class=\"hrs\">2 min · Sat 10am–8pm</span> — 12 floors of stationery, essentially next door.<br><span class=\"nm2\">BONGEN BEANS STORE</span><span class=\"hrs\">4 min on · 10am–5pm</span> — not the café: a <b>separate beans-and-merch shop with no queue</b>. If you wanted Bongen this morning but the 30–40 min line killed it, this is how you still get the beans.<br><span class=\"nm2\">HANDS Ginza</span><span class=\"hrs\">2 min from LOFT · 11am–9pm</span> — Marronnier Gate, floors 5–9. Same idea as LOFT but more general goods; tax refund on 9F. Reviewers call it pricier than the Shibuya branch, so compare before buying.<br>Pair these with LOFT, because you won’t come back up to 2-chome.</span><a href=\"https://www.google.com/maps/search/?api=1&query=Ginza+LOFT\">Map</a><span class=\"spare\"><span class=\"sh\">↳ 3:10PM, IF THE DRUGSTORE LIST IS STILL OPEN</span><span class=\"nm2\">Daikoku Drug Ginza 1-chome</span><span class=\"hrs\">Ginza 1-10-6, Ginza First Bldg · 10 min north of GINZA SIX</span><span class=\"cost\">+20 min round trip</span><br>The Daikoku coupon (13/15/18% by tier, ⚠ printed validity 30 Sep) works at any Daikoku tax-free branch. Only detour here if the Day 6 Kabukicho run didn’t happen — it costs you the 3:45pm buffer. <a href=\"https://www.google.com/maps/search/?api=1&amp;query=Daikoku+Drug+Ginza+1-10-6\">Map</a></span></div></div><div class=\"phase\">GETTING BACK</div><div class=\"step\"><div class=\"tm hard\">3:45pm</div><div><div class=\"nm\">Start heading back — pick one route</div><span class=\"verdict skip\">Hard deadline. Later than this and you miss dinner.</span><div class=\"pick\"><div class=\"opt best\"><span class=\"nm2\">Route A — Toei Asakusa through-train<span class=\"chr\">EASIEST</span></span><span class=\"meta\">Higashi-Ginza (3 min from GINZA SIX) → Keisei-Narita · ~80–90 min · ~¥1,150–1,400 · Suica</span><span class=\"why\">No JR ticket needed. Some runs need a cross-platform change at Aoto — follow Google Maps live and board trains marked “Narita / Narita Airport”.</span></div><div class=\"opt\"><span class=\"nm2\">Route B — JR Sōbu Line Rapid<span class=\"chr\">USES THE FREE TICKET</span></span><span class=\"meta\">Metro or taxi to Tokyo Station → JR Narita · ~80 min · ¥1,340 if not covered</span><span class=\"why\">Confirm with the guide whether the tour’s free JR ticket covers this leg, and which station it’s issued for. Route B bonus: <b>ÉCHIRÉ Maison du Beurre</b> (the original, widest range) is in Marunouchi Brick Square 1F, 5 min from the Marunouchi South Exit, 10am–8pm — but by 4pm most items are gone, so treat it as a look, not a plan.</span></div></div><span class=\"spare\"><span class=\"sh\">↳ 3:30PM, LAST STOP BEFORE ROUTE A</span><span class=\"nm2\">Jugetsudo</span><span class=\"hrs\">Kabukiza Tower 5F · till 5:30pm</span><span class=\"cost\">zero detour</span><br>Tea, teaware and a matcha parfait in a quiet room above the kabuki theatre. It’s <b>1 minute from the Higashi-Ginza entrance</b> Route A leaves from — you walk past the door anyway, so save it for last rather than fitting it in early.</span><span class=\"spare\"><span class=\"sh\">↳ 4:00PM, ROUTE B ONLY</span><span class=\"nm2\">Ippodo Tea, Shin-Marunouchi</span><span class=\"hrs\">Sat 11am–9pm</span><span class=\"cost\">on the way</span><br>The legendary Kyoto house this itinerary otherwise never reaches — <b>5 min from Tokyo Station, inside Shin-Marunouchi B1</b>. From Ginza it’d be a 23-min walk, but on Route B you’re going there regardless. <span class=\"wr\">⚠ Limited to 1 matcha tin per person and the good grades sell out — don’t count on the top tier.</span></span></div></div><div class=\"step\"><div class=\"tm\">5:20pm</div><div><div class=\"nm\">Narita Station → hotel <span class=\"dist\">6 km</span></div><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"tip\">The Yurakujo runs a <b>free shuttle</b> between JR/Keisei Narita Station and the hotel — ask the guide or call the hotel <b>in the morning</b> for evening times</li><li>Otherwise a station-rank taxi, ~10–15 min, ~¥2,500–3,500</li></ul></div></div><div class=\"step\"><div class=\"tm\">6:00pm</div><div><div class=\"nm\">Rejoin the group for the izakaya dinner</div><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\">Buffer is thin — if the trains misbehave, message the guide that you’ll start at 6:30</li></ul></div></div><div class=\"solo\"><div class=\"sh\">⚠ BEFORE YOU SPLIT OFF</div><ul><li>Guide informed at breakfast</li><li>Suica loaded with ¥2,000+</li><li>Hotel name saved in Japanese for the taxi driver — 国際観光ホテル 有楽城, Tomisato</li><li>Umbrella (rain forecast)</li><li>Phone charged for live Google Maps routing</li></ul></div><div class=\"apre\" style=\"margin-top:13px;margin-bottom:0\"><b>If you drop On Ginza</b> — the queue estimate came back past 3:30pm — you free about 40 minutes. Spend it on the LOFT window (Itoya plus the Bongen beans store), since that’s the direction you’d otherwise be rushing.</div></div></div>\n  <div class=\"smap\">\n    <svg viewBox=\"0 0 470 400\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"Zen Kaku Gothic New,sans-serif\"><rect width=\"470\" height=\"400\" fill=\"#16233e\" rx=\"8\"/><text x=\"18\" y=\"26\" fill=\"#f0c86a\" font-size=\"14\" font-weight=\"900\" text-anchor=\"start\" data-zh=\"银座的下午 — 按取号牌决定的顺序\">The Ginza afternoon &#8212; in the order that beats the queue</text><text x=\"18\" y=\"44\" fill=\"#8fa3c8\" font-size=\"10.5\" font-weight=\"500\" text-anchor=\"start\" data-zh=\"总共走约 35 分钟 · 示意图，非实际比例\">~35 min of walking in total &#183; schematic, not to scale</text><path d=\"M95,128 L445,128 M95,246 L445,246 M200,330 L440,330\" stroke=\"#2b3c60\" stroke-width=\"7\" fill=\"none\"/><path d=\"M158,128 L158,246 M232,128 L232,330 M330,128 L330,330 M400,128 L400,330\" stroke=\"#2b3c60\" stroke-width=\"6\" fill=\"none\"/><path d=\"M400,330 L232,330 L232,246 M232,246 L330,246 M330,246 L232,246 L232,128 M232,128 L400,128 L400,190 M400,190 L400,246\" stroke=\"#f0c86a\" stroke-width=\"3\" fill=\"none\" stroke-dasharray=\"7 6\"/><path d=\"M330,246 L330,300 M232,128 L158,128\" stroke=\"#69d2a0\" stroke-width=\"2.5\" fill=\"none\" stroke-dasharray=\"3 5\" opacity=\".75\"/><circle cx=\"232\" cy=\"246\" r=\"14\" fill=\"#e06055\"/><text x=\"232\" y=\"251\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"900\" fill=\"#fff\">1</text><text x=\"212\" y=\"241\" fill=\"#ffb3ab\" font-size=\"12\" font-weight=\"900\" text-anchor=\"end\" data-zh=\"On 昂跑 银座店\">On Ginza</text><text x=\"212\" y=\"257\" fill=\"#8fa3c8\" font-size=\"10\" font-weight=\"500\" text-anchor=\"end\" data-zh=\"13:35 · 先扫码取号\">1:35pm &#183; take the QR ticket FIRST</text><circle cx=\"330\" cy=\"246\" r=\"14\" fill=\"#f0c86a\"/><text x=\"330\" y=\"251\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"900\" fill=\"#16233e\">2</text><text x=\"330\" y=\"210\" fill=\"#f0c86a\" font-size=\"12\" font-weight=\"900\" text-anchor=\"middle\" data-zh=\"GINZA SIX\">GINZA SIX</text><text x=\"330\" y=\"226\" fill=\"#8fa3c8\" font-size=\"10\" font-weight=\"500\" text-anchor=\"middle\" data-zh=\"中村藤吉 4 楼\">Nakamura Tokichi 4F</text><circle cx=\"232\" cy=\"128\" r=\"14\" fill=\"#f0c86a\"/><text x=\"232\" y=\"133\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"900\" fill=\"#16233e\">3</text><text x=\"252\" y=\"123\" fill=\"#f0c86a\" font-size=\"12\" font-weight=\"900\" text-anchor=\"start\" data-zh=\"银座 LOFT\">Ginza LOFT</text><text x=\"252\" y=\"139\" fill=\"#8fa3c8\" font-size=\"10\" font-weight=\"500\" text-anchor=\"start\" data-zh=\"14:45 · 渋谷那家逐过就跳\">2:45pm &#183; skip if you did Shibuya</text><circle cx=\"400\" cy=\"190\" r=\"14\" fill=\"#f0c86a\"/><text x=\"400\" y=\"195\" text-anchor=\"middle\" font-size=\"13\" font-weight=\"900\" fill=\"#16233e\">4</text><text x=\"382\" y=\"170\" fill=\"#f0c86a\" font-size=\"12\" font-weight=\"900\" text-anchor=\"end\" data-zh=\"寿月堂\">Jugetsudo</text><text x=\"382\" y=\"186\" fill=\"#8fa3c8\" font-size=\"10\" font-weight=\"500\" text-anchor=\"end\" data-zh=\"15:30 · 歌舞伎座 5 楼\">3:30pm &#183; Kabukiza 5F</text><circle cx=\"288\" cy=\"246\" r=\"10\" fill=\"#69d2a0\"/><text x=\"288\" y=\"251\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"900\" fill=\"#16233e\">a</text><circle cx=\"330\" cy=\"300\" r=\"10\" fill=\"#69d2a0\"/><text x=\"330\" y=\"305\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"900\" fill=\"#16233e\">b</text><circle cx=\"158\" cy=\"128\" r=\"10\" fill=\"#69d2a0\"/><text x=\"158\" y=\"133\" text-anchor=\"middle\" font-size=\"10\" font-weight=\"900\" fill=\"#16233e\">c</text><circle cx=\"400\" cy=\"330\" r=\"13\" fill=\"none\" stroke=\"#8fa3c8\" stroke-width=\"2.5\" stroke-dasharray=\"4 3\"/><text x=\"400\" y=\"334\" text-anchor=\"middle\" font-size=\"11\" font-weight=\"900\" fill=\"#8fa3c8\">T</text><text x=\"382\" y=\"326\" fill=\"#8fa3c8\" font-size=\"11\" font-weight=\"700\" text-anchor=\"end\" data-zh=\"筑地\">Tsukiji</text><text x=\"382\" y=\"341\" fill=\"#8fa3c8\" font-size=\"9.5\" font-weight=\"500\" text-anchor=\"end\" data-zh=\"从这里出发\">you start here</text><circle cx=\"400\" cy=\"246\" r=\"14\" fill=\"#8fb4ff\"/><text x=\"400\" y=\"250\" text-anchor=\"middle\" font-size=\"12\" font-weight=\"900\" fill=\"#16233e\">H</text><text x=\"400\" y=\"278\" fill=\"#dbe4f5\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\" data-zh=\"东银座站\">Higashi-Ginza</text><text x=\"400\" y=\"292\" fill=\"#ffb3ab\" font-size=\"10\" font-weight=\"900\" text-anchor=\"middle\" data-zh=\"15:45 死线\">3:45pm HARD STOP</text><text x=\"265\" y=\"322\" fill=\"#f0c86a\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\" data-zh=\"13 分钟\">13 min</text><text x=\"272\" y=\"268\" fill=\"#f0c86a\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\" data-zh=\"5 分钟\">5 min</text><text x=\"222\" y=\"195\" fill=\"#f0c86a\" font-size=\"11\" font-weight=\"700\" text-anchor=\"end\" data-zh=\"9 分钟\">9 min</text><text x=\"372\" y=\"118\" fill=\"#f0c86a\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\" data-zh=\"10 分钟\">10 min</text><text x=\"426\" y=\"222\" fill=\"#f0c86a\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\" data-zh=\"1 分钟\">1 min</text><text x=\"18\" y=\"368\" fill=\"#69d2a0\" font-size=\"9.5\" font-weight=\"700\" text-anchor=\"start\" data-zh=\"a 茶·银座 +1 分 · b 鬼塚虎 YELLOW 4 分 · c 伊东屋 + Bongen 2 分\">a Cha Ginza +1 min &#183; b Onitsuka YELLOW 4 min &#183; c Itoya + Bongen 2 min</text><text x=\"18\" y=\"384\" fill=\"#8fa3c8\" font-size=\"9.5\" font-weight=\"500\" text-anchor=\"start\" data-zh=\"进度超前才绕 — 先在 1 取号，再边等边逐\">Only if you are ahead &#8212; take the ticket at 1 first, shop while it queues</text></svg>\n    <div class=\"cap\" data-zh=\"替代方案的路线图。13:30 筑地 → 13:35 On 银座（先取号）→ 13:45 GINZA SIX → 14:45 LOFT → 15:30 寿月堂 → 15:45 东银座站。绿色字母是只有进度超前才值得绕的点 — 优衣库、GU 和银座 Donki 也在 GINZA SIX 那一块，HANDS 银座离 LOFT 2 分钟。\">The ALT PLAN, drawn. 1:30pm Tsukiji → 1:35 On Ginza (ticket) → 1:45 GINZA SIX → 2:45 LOFT → 3:30 Jugetsudo → 3:45 Higashi-Ginza. The green letters are detours worth taking only if you are running ahead — UNIQLO, GU and Donki Ginza sit on the GINZA SIX block too, and HANDS Ginza is 2 min from LOFT.</div>\n  </div>"
+     },
+     {
+      "time": "17:30",
+      "class": "",
+      "en": "Check-in Yurakujo (~15 min) · <b>18:00</b> <span class=\"fd\">Izakaya dinner</span> @ hotel<button class=\"mealpic\" onclick=\"showMeal('d7d')\">📷 see meal</button>",
+      "zh": "入住有乐城（约 15 分钟）· <b>18:00</b> 酒店<span class=\"fd\">居酒屋晚餐</span><button class=\"mealpic\" onclick=\"showMeal('d7d')\">📷 看餐点</button>"
+     },
+     {
+      "time": "19:30",
+      "class": "kon vital",
+      "en": "<span class=\"badge stock\">STOCK UP</span><span class=\"badge kon\">KONBINI RUN</span><span class=\"chain c7\">7-Eleven — inside your hotel grounds</span><span class=\"dist\">on the property · 1 min · 7am–11pm</span><span class=\"geo\"><span class=\"pin\">📍</span><b>On the hotel property</b> — lucky, because nothing else out here is walkable.</span><span class=\"verdict tight\">Go before 11pm. It reopens at 7am, after you’ve already left.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\">Buy the flight-morning drinks <span class=\"k\">tonight</span> — breakfast is 6:30am, the store opens 7am</li><li>The Yurakujo (former Radisson Narita) has its own 7-Eleven on site</li><li class=\"tip\">Gets busy with tour groups ~8–9pm — go earlier if you can</li></ul><span class=\"back\">↩ <a href=\"https://www.google.com/maps/search/?api=1&query=7-Eleven+Radisson+Narita+Tomisato\">Map</a></span>",
+      "zh": "<span class=\"badge stock\">先囤货</span><span class=\"badge kon\">便利店打卡</span><span class=\"chain c7\">7-11 — 就在你酒店里</span><span class=\"dist\">在酒店范围内 · 1 分钟 · 7:00–23:00</span><span class=\"geo\"><span class=\"pin\">📍</span><b>就在酒店范围内</b> — 很幸运，因为这一带其他地方都走不到。</span><span class=\"verdict tight\">23:00 前去。它 7:00 才开，那时你已经走了。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\">搭飞机那天早上要喝的<span class=\"k\">今晚</span>就买 — 早餐 6:30，店 7:00 才开</li><li>有乐城（原 Radisson 成田）自己就有一家 7-11</li><li class=\"tip\">20:00–21:00 团客会很多 — 能早点去就早点</li></ul><span class=\"back\">↩ <a href=\"https://www.google.com/maps/search/?api=1&query=7-Eleven+Radisson+Narita+Tomisato\">地图</a></span>"
+     },
+     {
+      "time": "20:00",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Pack-and-weigh night</b><span class=\"dist\">last night in Japan</span><span class=\"verdict tight\">Weigh the bags here, not at the airport counter.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Seika ZEN + all liquids &gt;100ml → <span class=\"k\">checked bag</span></li><li>Nanaya chocolate → <span class=\"k\">hand-carry</span></li><li class=\"warn\">Tax-free sealed bags stay sealed until Malaysia</li><li>Big hotel bath for the last soak</li><li class=\"tip\">Still in shopping mode? AEON Mall Narita till ~10pm, with a standalone UNIQLO 7 min from the mall (till 8pm) <button class=\"cpchip\" onclick=\"showCp('aeon')\">🎟 AEON coupon</button> — you have 1 free JR ticket each from a city station back to the hotel’s station, but confirm the return trip before committing · <a href=\"https://www.google.com/maps/search/?api=1&query=AEON+Mall+Narita\">Map</a></li></ul>",
+      "zh": "<span class=\"badge add\">加点</span><b>打包 & 秤重之夜</b><span class=\"dist\">在日本的最后一晚</span><span class=\"verdict tight\">在这里就把行李秤好，不要到机场柜台才发现。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>Seika ZEN + 所有超过 100ml 的液体 → <span class=\"k\">托运</span></li><li>Nanaya 巧克力 → <span class=\"k\">随身</span></li><li class=\"warn\">退税密封袋到马来西亚前都不要拆</li><li>去泡最后一次酒店大浴场</li><li class=\"tip\">还想买？永旺梦乐城 成田 开到约 22:00，商场外 7 分钟还有一家独立优衣库（开到 20:00）<button class=\"cpchip\" onclick=\"showCp('aeon')\">🎟 AEON 优惠券</button> — 每人有 1 张免费 JR 票从市区站回酒店那一站，但出发前先确认回程 · <a href=\"https://www.google.com/maps/search/?api=1&query=AEON+Mall+Narita\">地图</a></li></ul>"
+     }
+    ]
+   ]
+  },
+  {
+   "day": 8,
+   "title": {
+    "en": "Return — Japan to Penang",
+    "zh": "回程 — 日本飞槟城"
+   },
+   "meta": {
+    "en": "Sun 11 Oct · NRT → SIN → PEN · SQ from Narita Terminal 1",
+    "zh": "10月11日 周日 · 成田 → 新加坡 → 槟城 · 新航从成田第 1 航站楼起飞"
+   },
+   "weather": {
+    "en": "<b>22° / 15°</b><br>cloudy",
+    "zh": "<b>22° / 15°</b><br>多云"
+   },
+   "blocks": [
+    [
+     {
+      "time": "6:30",
+      "class": "",
+      "en": "Breakfast @ hotel · tour bus ~15 min to Narita Airport (T1 for SQ) · check in bags — liquids inside! ✓",
+      "zh": "酒店早餐 · 旅游巴士约 15 分钟到成田机场（新航在 T1）· 托运行李 — 液体都要放里面！✓"
+     },
+     {
+      "time": "8:30",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Airport final round</b><span class=\"dist\">after security · ~1.5–2h window</span><span class=\"verdict go\">Your last buying window — but read the transit rule first.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li><b>Royce’ Nama chocolate</b> — sold with cold packs</li><li>Japan-only KitKats · Shiroi Koibito · last Tokyo Banana · liquor</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\">Read <a href=\"#airport\">Airport rules</a> first for the Singapore-transit trick</li><li>Coupons: <button class=\"cpchip\" onclick=\"showCp('ana_nrt')\">🎟 ANA Duty Free 5%</button> <button class=\"cpchip\" onclick=\"showCp('jdf')\">🎟 Japan Duty Free 5%</button> — the JDF one covers alcohol too</li></ul>",
+      "zh": "<span class=\"badge add\">加点</span><b>机场最后一轮</b><span class=\"dist\">过安检后 · 约 1.5–2 小时</span><span class=\"verdict go\">最后的采买时段 — 但先看清转机规定。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li><b>Royce’ 生巧克力</b> — 附保冷袋</li><li>日本限定 KitKat · 白色恋人 · 最后的东京香蕉 · 酒类</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\">先看<a href=\"#airport\">机场规定</a>里新加坡转机那一招</li><li>优惠券：<button class=\"cpchip\" onclick=\"showCp('ana_nrt')\">🎟 ANA 免税店 5%</button> <button class=\"cpchip\" onclick=\"showCp('jdf')\">🎟 Japan Duty Free 5%</button> — JDF 那张连酒也能用</li></ul>"
+     },
+     {
+      "time": "10:00",
+      "class": "kon",
+      "en": "<span class=\"badge kon\">KONBINI RUN</span><span class=\"chain c7\">7-Eleven — Narita T1 (airside)</span><span class=\"dist\">in the terminal · expect a queue</span><span class=\"geo\"><span class=\"pin\">📍</span>Airside, so it’s after security — <span class=\"chain clw\">Lawson</span> is in the T1 landside basement if you’re still outside.</span><span class=\"verdict go\">Final ritual — spend the leftover coins.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Onigiri + drinks for the flight</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Airport konbini charge <b>city prices</b> — cheapest snacks in the building</li><li>Konbini streak: 8 days complete 🎉</li></ul>",
+      "zh": "<span class=\"badge kon\">便利店打卡</span><span class=\"chain c7\">7-11 — 成田 T1（安检内）</span><span class=\"dist\">在航站楼里 · 会排队</span><span class=\"geo\"><span class=\"pin\">📍</span>这家在安检内 — 如果你还在外面，<span class=\"chain clw\">罗森</span>在 T1 地下一层。</span><span class=\"verdict go\">最后的仪式 — 把零钱花掉。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>飞机上吃的饭团和饮料</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>机场便利店是<b>市区价</b> — 全楼最便宜的零食</li><li>便利店连打卡：8 天全达成 🎉</li></ul>"
+     },
+     {
+      "time": "10:55",
+      "class": "",
+      "en": "<b>SQ637</b> NRT → SIN (7h) · lunch on board · arrive SIN 4:55pm, 2h15m transit",
+      "zh": "<b>SQ637</b> 成田 → 新加坡（7小时）· 机上午餐 · 16:55 抵达新加坡，转机 2小时15分"
+     },
+     {
+      "time": "17:30",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Changi transit (no immigration needed)</b> — best place to buy liquor for Malaysia (see <a href=\"#airport\">Airport rules</a>). Jewel is landside, skip it; the transit area has plenty.",
+      "zh": "<span class=\"badge add\">加点</span><b>樟宜转机（不用过关）</b> — 带酒回马来西亚最好在这里买（见<a href=\"#airport\">机场规定</a>）。星耀樟宜在禁区外，跳过；转机区里已经很多店。"
+     },
+     {
+      "time": "19:10",
+      "class": "",
+      "en": "<b>SQ142</b> SIN → PEN (1h25m) · arrive Penang <b>8:35pm</b> — welcome home! Malaysia customs: green lane if within allowances (next section).",
+      "zh": "<b>SQ142</b> 新加坡 → 槟城（1小时25分）· <b>20:35</b> 抵达槟城 — 欢迎回家！马来西亚海关：在免税额度内走绿色通道（见下一节）。"
+     }
+    ]
+   ]
+  }
+ ]
+}
