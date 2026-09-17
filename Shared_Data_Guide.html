@@ -28,8 +28,8 @@ table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0}th,td{bord
 <h2>0. Live mode — the two Google Sheets (v72)</h2>
 <div class="zh">实时模式 — 两个 Google 表格</div>
 <p>The Excel files were imported into two Google Sheets, and the guide now knows their IDs (near the top of the HTML, <code>SHARED_SHEET_IDS</code>):</p>
-<ul><li><b>trylist</b> — <a href="https://docs.google.com/spreadsheets/d/1tom-ULU6yPkGP5vZ6R2OHSdpjCeibzTNiJ6JFuO0NXc/edit" target="_blank">docs.google.com/…/1tom-ULU6…</a></li>
-<li><b>tabung</b> — <a href="https://docs.google.com/spreadsheets/d/1PvZx_wpyCqcD6wpTuFhtGejgP13O5F8E1ZscYjOJWAI/edit" target="_blank">docs.google.com/…/1PvZx_wpy…</a></li></ul>
+<ul><li><b>trylist</b> — <a href="https://docs.google.com/spreadsheets/d/1a_-J5KSoMVTNBCo2YaNRHNCFqNOgtI5Dj8hwkKCkZUs/edit" target="_blank">docs.google.com/…/1tom-ULU6…</a></li>
+<li><b>tabung</b> — <a href="https://docs.google.com/spreadsheets/d/1ME8e0A4OafWsM6E6hQPSvi3TDKZXTpHiY_jeB8AlWpI/edit" target="_blank">docs.google.com/…/1PvZx_wpy…</a></li></ul>
 <div class="scroll"><table><tr><th>State</th><th>What everyone gets</th><th>How to edit</th></tr>
 <tr><td><b>Now</b> — sheets shared as “anyone with the link can view”, <code>SHARED_API_URL</code> empty</td><td>The guide pulls the tabs <b>read-only</b> straight from the Sheets (no login, needs internet). Everyone sees the same list, ranking and balances.</td><td>In the Google Sheets app. Add 1 to <code>Meta → revision</code> after editing, then tap 🔄 Reload from Sheet in the guide.</td></tr>
 <tr><td><b>After the 10-minute setup below</b> — Apps Script deployed, URL pasted</td><td><b>Live read + write.</b> Ticks, skips, new items and Tabung entries go into the Sheet within ~1 s; other phones pick them up on open / when the tab comes back to the foreground / 🔄 Sync now. Offline: last synced copy, edits queued and sent when back online.</td><td>Inside the guide (password once per device — checked by the script, so it is real) or in the Sheets app (no revision bump needed: the script maintains it).</td></tr>
