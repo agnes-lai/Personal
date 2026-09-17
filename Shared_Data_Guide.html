@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shared data files — user guide &amp; samples · Japan Trip Guide v72</title>
+<style>
+:root{--ink:#1c2431;--paper:#f6f5f1;--card:#fff;--line:#e4e1d8;--matcha:#20603a;--red:#c93a2e;--gold:#b98a2f;--mute:#6b7180}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#e8e6df;--paper:#15181d;--card:#1e222a;--line:#333945;--mute:#9aa1ad}}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;font-size:15px}
+.wrap{max-width:820px;margin:0 auto;padding:18px 14px 60px}
+h1{font-size:24px;margin:8px 0 4px}h2{font-size:19px;margin:34px 0 8px;border-bottom:2px solid var(--matcha);padding-bottom:4px}h3{font-size:15.5px;margin:18px 0 6px}
+.zh{color:var(--mute);font-size:13px;margin:-2px 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:10px 0}
+.warn{border-left:4px solid var(--red)}.tip{border-left:4px solid var(--matcha)}.gold{border-left:4px solid var(--gold)}
+code,pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px}code{background:rgba(127,127,127,.12);padding:1px 5px;border-radius:4px}
+pre{background:#1a1f27;color:#e6e6e6;padding:12px;border-radius:8px;overflow-x:auto;line-height:1.45}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0}th,td{border:1px solid var(--line);padding:5px 7px;text-align:left;vertical-align:top}th{background:rgba(32,96,58,.1)}
+.scroll{overflow-x:auto}ol li,ul li{margin:4px 0}.k{font-weight:800}.small{font-size:12.5px;color:var(--mute)}
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:10px 0}.flow div{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:9px 10px;font-size:13px}.flow b{display:block;color:var(--matcha);margin-bottom:3px}
+</style></head><body><div class="wrap">
+<h1>📂 Shared data files — user guide &amp; samples</h1>
+<div class="zh">共享数据文件 — 使用说明和样本 · Japan Trip Guide v72</div>
+<p>From v71 three parts of the guide no longer live inside the HTML. They are read from a <code>data/</code> folder that sits next to <code>Japan_Trip_Guide_V71.html</code>, so the whole group looks at the <b>same copy</b>:</p>
+<div class="scroll"><table><tr><th>File</th><th>What it holds</th><th>Edit inside the guide?</th><th>Password</th></tr>
+<tr><td><code>data/trylist.xlsx</code></td><td>The <b>shared To-try list</b> (🍜 tab → 📗 Shared (Excel)) and the 🏆 Top Skip Person ranking</td><td>Yes — tick, skip, edit, add, copy, delete</td><td><code>ViTroxAIS</code> (asked once per device)</td></tr>
+<tr><td><code>data/tabung.xlsx</code></td><td>The <b>shared Tabung</b> ledger — members, money in, money out, who shared each spend</td><td>Yes — add / delete entries, members</td><td><code>NoNameAgong</code> (asked once per device)</td></tr>
+<tr><td><code>data/tour_8d.json</code></td><td>Every row of <b>Days 1–8</b> (times, text in EN + 中文, badges)</td><td>No — edit the file only</td><td>none (file-only)</td></tr></table></div>
+
+
+<h2>0. Live mode — the two Google Sheets (v72)</h2>
+<div class="zh">实时模式 — 两个 Google 表格</div>
+<p>The Excel files were imported into two Google Sheets, and the guide now knows their IDs (near the top of the HTML, <code>SHARED_SHEET_IDS</code>):</p>
+<ul><li><b>trylist</b> — <a href="https://docs.google.com/spreadsheets/d/1tom-ULU6yPkGP5vZ6R2OHSdpjCeibzTNiJ6JFuO0NXc/edit" target="_blank">docs.google.com/…/1tom-ULU6…</a></li>
+<li><b>tabung</b> — <a href="https://docs.google.com/spreadsheets/d/1PvZx_wpyCqcD6wpTuFhtGejgP13O5F8E1ZscYjOJWAI/edit" target="_blank">docs.google.com/…/1PvZx_wpy…</a></li></ul>
+<div class="scroll"><table><tr><th>State</th><th>What everyone gets</th><th>How to edit</th></tr>
+<tr><td><b>Now</b> — sheets shared as “anyone with the link can view”, <code>SHARED_API_URL</code> empty</td><td>The guide pulls the tabs <b>read-only</b> straight from the Sheets (no login, needs internet). Everyone sees the same list, ranking and balances.</td><td>In the Google Sheets app. Add 1 to <code>Meta → revision</code> after editing, then tap 🔄 Reload from Sheet in the guide.</td></tr>
+<tr><td><b>After the 10-minute setup below</b> — Apps Script deployed, URL pasted</td><td><b>Live read + write.</b> Ticks, skips, new items and Tabung entries go into the Sheet within ~1 s; other phones pick them up on open / when the tab comes back to the foreground / 🔄 Sync now. Offline: last synced copy, edits queued and sent when back online.</td><td>Inside the guide (password once per device — checked by the script, so it is real) or in the Sheets app (no revision bump needed: the script maintains it).</td></tr>
+<tr><td>No internet at all</td><td>Falls back to the last synced copy, then to <code>data/*.xlsx</code>, then to the built-in list.</td><td>—</td></tr></table></div>
+
+<h3>Setup — deploy the Apps Script (owner of the sheets does this once)</h3>
+<ol>
+<li>Open the <b>trylist</b> Google Sheet → menu <b>Extensions ▸ Apps Script</b>. A script editor opens with an empty <code>Code.gs</code>.</li>
+<li>Delete its contents and paste the whole of <code>apps_script.gs</code> (in this folder). The two sheet IDs and the two passwords are already filled in at the top — change them there if you ever rotate a password.</li>
+<li>Click <b>Run ▸ testRead</b> once. Google asks you to authorise the script to access your spreadsheets — accept (it runs as you; nobody else ever logs in). The log should show both sheets' first rows.</li>
+<li><b>Deploy ▸ New deployment</b> → gear icon → type <b>Web app</b>. Description anything. <b>Execute as: Me</b>. <b>Who has access: Anyone</b>. Click Deploy.</li>
+<li>Copy the <b>Web app URL</b> (it ends in <code>/exec</code>).</li>
+<li>Open <code>Japan_Trip_Guide_V72.html</code> in a text editor, find near the top:<pre>var SHARED_API_URL = "";</pre> and paste the URL between the quotes. Save. Send this HTML to the group (or put it in the shared folder).</li>
+<li>Open the guide: the To-try (Shared) and Tabung panels now say <b>live from the Google Sheet</b>. Tick something — the row in the Sheet changes within a second.</li></ol>
+<div class="card warn"><b>If you later change the script</b> (e.g. a password), use <b>Deploy ▸ Manage deployments ▸ ✎ ▸ Version: New version ▸ Deploy</b>. The URL stays the same, so the HTML does not need to change.</div>
+<div class="card tip"><b>Sharing the sheets:</b> “anyone with the link can <i>view</i>” is enough for the read-only fallback and for the script (the script writes as its owner). Give <i>edit</i> rights only to people who should be able to change rows in the Sheets app directly.</div>
+<h3>How a write works (for the curious)</h3>
+<p>The guide sends the whole tab (all rows) plus the revision it last saw. The script locks, checks the revision still matches, rewrites the tab, bumps <code>Meta → revision</code> and returns the fresh copy. If two people edit within the same second, the second one gets “someone else changed the list first — reloaded, please redo”, so nothing is silently overwritten. Typing in a field is coalesced into one write about a second after you stop.</p>
+
+<h2>1. The one thing to understand first</h2>
+<div class="zh">先搞懂这一点</div>
+<div class="card warn"><b>A web page can read a file next to it, but it can never write into your folder.</b> That is why the <i>file</i> mode below is a download-and-replace loop, and why the <i>live</i> mode above needs the small Apps Script as the writer. So, in file mode:</div>
+<div class="flow">
+<div><b>① Read</b>When the guide opens it looks for <code>data/…</code> and loads whatever is there.</div>
+<div><b>② Edit</b>In the guide (after the password) or straight in Excel / a text editor.</div>
+<div><b>③ Download</b>Guide edits produce a fresh <code>trylist.xlsx</code> / <code>tabung.xlsx</code> with <b>revision +1</b>.</div>
+<div><b>④ Put back</b>Drop the downloaded file into <code>data/</code>, replacing the old one. Everyone sees it next time.</div></div>
+<h3>Automatic vs. manual loading</h3>
+<ul>
+<li><span class="k">Hosted / opened over a link (http or https)</span> — OneDrive/SharePoint/Google Drive <i>web preview</i> of the folder, a company intranet folder, GitHub Pages, a NAS, or a laptop running <code>python -m http.server</code> in the folder: the three files load <b>automatically</b> every time the guide opens. Nothing to do.</li>
+<li><span class="k">Opened as a plain file</span> (double-click → <code>file:///…</code>, or sent through WhatsApp): the browser is not allowed to read the sibling files. Each person taps <b>📂 Load data files</b> once (the button sits at the top of the guide, in the To-try list and in the Tabung), selects the two/three files from <code>data/</code> in one go, and the copy is <b>cached on that phone</b> until a newer revision is loaded. Repeat when someone announces a new revision.</li></ul>
+<div class="card tip"><b>Recommended for the trip:</b> keep the whole folder (HTML + <code>data/</code>) in one shared cloud folder everyone has offline access to. On the phone, open the HTML from the cloud app; when a new Excel is put back, everyone re-taps “Load data files” (or the files load by themselves if the folder is served over http).</div>
+
+<h2>2. The status panel</h2>
+<div class="zh">状态栏怎么看</div>
+<p>Each shared section shows a small dashed panel:</p>
+<ul>
+<li><b>● green</b> — loaded, clean. <code>rev 3 · from the shared folder · 9 Oct, 21:15</code> tells you which revision this phone is looking at and where it came from (<i>shared folder</i> = automatic, <i>loaded on this device</i> = via the button).</li>
+<li><b>● orange + ⚠ 2 edit(s) not yet in the shared file</b> — you changed something here; nobody else can see it until you press <b>⬇ Download updated Excel</b> and put the file back.</li>
+<li><b>⬇ downloaded — waiting to be put back in data/</b> — you exported; the folder still has the old file.</li>
+<li><b>grey — shared file not loaded</b> — showing the built-in copy (To-try) or this device's own ledger (Tabung). Tap <b>📂 Load data files</b>.</li>
+<li><b>🔒 Enter password to edit / 🔓 Unlocked · lock again</b> — the password is asked <b>once</b> and remembered on that device. Lock again before handing your phone to someone who shouldn't edit.</li></ul>
+<div class="card gold"><b>Revision rule.</b> Every export bumps <code>Meta → revision</code> by 1. A phone that already holds revision 5 ignores a copy with revision 4, so two people's exports can't silently roll each other back. If two people edited at the same time, the second one to put back a file must first load the other's file, redo their edits, then export — the guide will ask “a newer file was found… replace your N edits?” to make this obvious.</div>
+
+<h2>3. Shared To-try list — <code>data/trylist.xlsx</code></h2>
+<div class="zh">共享想试清单</div>
+<p>In the 🍜 <b>To try there</b> tab a toggle appears: <b>✎ Customise</b> (your own list, this phone only — exactly as before, but without the ranking) and <b>📗 Shared (Excel)</b>. The 🏆 <b>Top Skip Person</b> ranking now lives only in the shared list, counted from the <code>skipping</code> column.</p>
+<h3>Sheet <code>TryList</code> — one row per thing to try</h3>
+<div class="scroll"><table><tr><th>id</th><th>name</th><th>tried</th><th>skipping</th><th>desc</th><th>where</th><th>links</th><th>qty</th><th>price</th><th>photo</th><th>remark</th></tr>
+<tr><td>sd1</td><td>Zunda shake ずんだシェイク</td><td></td><td>WK, Jolynn</td><td>Sendai's icon — a sweet edamame shake…</td><td>Zunda Saryo — Sendai Station 3F (D2, 11:40)</td><td></td><td></td><td>¥350</td><td>https://…jpg</td><td>Set a phone alarm for the bus</td></tr>
+<tr><td>sd3</td><td>Ichiran ramen — solo booth</td><td>Y</td><td></td><td>…</td><td>Ichiran Kabukicho (D6 20:30, 24h)</td><td>http://xhslink.com/…</td><td>1</td><td>¥1,200</td><td>@builtin</td><td></td></tr>
+<tr><td>new1</td><td>Melon soda float</td><td></td><td>ALH</td><td>Any konbini or kissaten</td><td>7-Eleven, Chatei Hatou (D6 15:35)</td><td></td><td>-1</td><td>¥300</td><td></td><td>added by Agnes</td></tr></table></div>
+<ul class="small">
+<li><b>id</b> — any unique text; keep it once given (ticks and skips follow the id). New rows: anything, e.g. <code>new1</code>.</li>
+<li><b>tried</b> — <code>Y</code> = done, blank = not yet. <b>skipping</b> — names of who is <i>not</i> having it, comma separated: <code>Agnes, WK, ALH, Jolynn</code>.</li>
+<li><b>where</b> — comma-separated places; text inside (brackets) stays together and becomes a filter chip. <b>links</b> — comma-separated URLs.</li>
+<li><b>qty</b> — <code>-1</code> shows “as many as possible”. <b>price</b> — free text.</li>
+<li><b>photo</b> — a URL; <code>@builtin</code> keeps the photo that is embedded in the guide for that id; blank shows a 📸 Photos search button.</li>
+<li>Keep the header row exactly as it is. Column order doesn't matter; extra columns are ignored.</li></ul>
+<h3>Sheet <code>Meta</code></h3>
+<div class="scroll"><table><tr><th>key</th><th>value</th></tr><tr><td>revision</td><td>1</td></tr><tr><td>updated</td><td>2026-09-17T00:00:00Z</td></tr><tr><td>updated_by</td><td>Agnes</td></tr><tr><td>guide_version</td><td>v71</td></tr></table></div>
+<p class="small">Editing by hand in Excel? Bump <code>revision</code> by 1 yourself, otherwise phones that already loaded revision 1 will keep their cached copy.</p>
+<h3>Starting from zero</h3>
+<p>The shipped <code>trylist.xlsx</code> already contains the 54 default items. If the file ever goes missing, switch to Shared, tap <b>✨ Start from built-in list</b>, then <b>⬇ Download updated Excel</b> and put it in <code>data/</code>.</p>
+
+<h2>4. Shared Tabung — <code>data/tabung.xlsx</code></h2>
+<div class="zh">共享 Tabung 公款账</div>
+<p>The 🏦 Tabung tab (inside 💸 Trip split) reads the ledger from this file when it is loaded; balances, “who gets back what” and the log are calculated from it on every phone identically. Adding a contribution, a spend, a member, or deleting an entry asks for the password once, then marks the ledger dirty until you download and put the file back.</p>
+<h3>Sheet <code>Members</code></h3>
+<div class="scroll"><table><tr><th>name</th></tr><tr><td>Agnes</td></tr><tr><td>WK</td></tr><tr><td>ALH</td></tr><tr><td>Jolynn</td></tr></table></div>
+<h3>Sheet <code>Moves</code> — one row per movement</h3>
+<div class="scroll"><table><tr><th>id</th><th>date</th><th>kind</th><th>who</th><th>desc</th><th>amount</th><th>currency</th><th>shared_by</th><th>remark</th></tr>
+<tr><td>1789613443231</td><td>2026-10-04</td><td>in</td><td>Agnes</td><td></td><td>30000</td><td>JPY</td><td></td><td>first top-up</td></tr>
+<tr><td>1789613555000</td><td>2026-10-05</td><td>out</td><td></td><td>Day 2 taxi Sendai</td><td>2400</td><td>JPY</td><td>everyone</td><td></td></tr>
+<tr><td>1789613666000</td><td>2026-10-06</td><td>out</td><td></td><td>Ginzan onsen towels</td><td>1800</td><td>JPY</td><td>Agnes, Jolynn</td><td>WK &amp; ALH didn't go in</td></tr></table></div>
+<ul class="small">
+<li><b>kind</b> — <code>in</code> (someone paid into the pool → fill <b>who</b>) or <code>out</code> (paid from the pool → fill <b>desc</b>).</li>
+<li><b>amount</b> — plain number. <b>currency</b> — <code>JPY</code>, <code>MYR</code> or <code>SGD</code>.</li>
+<li><b>shared_by</b> — for <code>out</code> rows: <code>everyone</code> (or blank) or the names who shared that spend, comma separated.</li>
+<li>The shipped file has two <b>SAMPLE</b> rows — delete them before the first real entry.</li></ul>
+
+<h2>5. The 8-day tour — <code>data/tour_8d.json</code></h2>
+<div class="zh">8天行程 JSON</div>
+<p>When this file loads, the guide throws away the Day 1–8 rows baked into the HTML and redraws them from the file. Nothing else (coupons, shopping list, route calculator, Shibuya lane picker…) is touched. To change the itinerary you edit <b>only this file</b> — never the HTML.</p>
+<h3>Shape</h3>
+<pre>{
+ "_readme": "…",
+ "version": 1,                       ← bump by 1 every time you save
+ "updated": "2026-09-17",
+ "days": [
+  {
+   "day": 6,
+   "title":   {"en": "Tochigi → Ibaraki → Tokyo", "zh": "栃木 → 茨城 → 东京"},
+   "meta":    {"en": "Fri 9 Oct · stay: Shinjuku Granbell Hotel (Kabukicho)", "zh": "10月9日 周五 · 住：新宿格兰贝尔酒店（歌舞伎町）"},
+   "weather": {"en": "&lt;b&gt;28° / 19°&lt;/b&gt;&lt;br&gt;cloudy", "zh": "&lt;b&gt;28° / 19°&lt;/b&gt;&lt;br&gt;多云"},
+   "blocks": [
+     [ …rows before the Shibuya lane picker… ],
+     [ …rows after it… ]
+   ]
+  }
+ ]
+}</pre>
+<p>A day has one or more <b>blocks</b> (Day 6 has two because the Shibuya lane picker sits between them; every other day has one). A block is a list of rows, top to bottom.</p>
+<h3>A row</h3>
+<pre>{"time": "21:50",
+ "class": "add",
+ "en": "&lt;span class=\"badge add\"&gt;ADD-ON&lt;/span&gt;&lt;b&gt;Daikoku Drug Kabukicho 2-chome&lt;/b&gt; …",
+ "zh": "&lt;span class=\"badge add\"&gt;加点&lt;/span&gt;&lt;b&gt;大国药妆 歌舞伎町2丁目店&lt;/b&gt; …"}</pre>
+<div class="scroll"><table><tr><th>field</th><th>meaning</th></tr>
+<tr><td><code>time</code></td><td>Text shown in the left column: <code>"7:30"</code>, <code>"21:50"</code>. Can be blank.</td></tr>
+<tr><td><code>class</code></td><td><code>""</code> grey tour row · <code>"add"</code> gold ADD-ON · <code>"kon"</code> green konbini run · <code>"kon vital"</code> 🟠 stock-up konbini run.</td></tr>
+<tr><td><code>en</code> / <code>zh</code></td><td>The row text in English and Chinese. Plain text is fine; HTML is allowed (the existing rows use <code>&lt;b&gt;</code>, <code>&lt;span class="dist"&gt;</code>, <code>&lt;ul class="pts"&gt;</code>…). Copy an existing row of the same kind and change the words.</td></tr>
+<tr><td><code>attrs</code></td><td>Optional. Day 6 Shibuya rows carry <code>{"data-lane": "east"}</code> (east / west / sw / ne) so the lane picker can filter them.</td></tr>
+<tr><td><code>raw</code></td><td>A few complex blocks (e.g. the Day 7 ALT PLAN) are stored verbatim as one HTML string. Leave those alone unless you are comfortable with HTML.</td></tr></table></div>
+<h3>Minimal examples</h3>
+<pre>// simplest possible new row (plain text, both languages)
+{"time": "17:45", "class": "", "en": "Group photo at the hotel lobby", "zh": "酒店大堂大合照"}
+
+// a gold ADD-ON with a Google Maps link
+{"time": "20:10", "class": "add",
+ "en": "&lt;span class=\"badge add\"&gt;ADD-ON&lt;/span&gt;&lt;b&gt;Melon soda float — Chatei Hatou&lt;/b&gt;&lt;span class=\"dist\"&gt;4 min · till 10:30pm&lt;/span&gt; &lt;a href=\"https://www.google.com/maps/search/?api=1&amp;query=Chatei+Hatou\"&gt;Map&lt;/a&gt;",
+ "zh": "&lt;span class=\"badge add\"&gt;加点&lt;/span&gt;&lt;b&gt;哈密瓜苏打漂浮 — 茶亭羽當&lt;/b&gt;&lt;span class=\"dist\"&gt;4 分钟 · 开到 22:30&lt;/span&gt; &lt;a href=\"https://www.google.com/maps/search/?api=1&amp;query=Chatei+Hatou\"&gt;地图&lt;/a&gt;"}</pre>
+<h3>How to edit safely</h3>
+<ol>
+<li>Open <code>data/tour_8d.json</code> in VS Code / Notepad++ (anything that shows JSON errors). Keep the file UTF-8.</li>
+<li>Find the day (<code>"day": 6</code>) and the block; insert, move or delete a row object. Rows are separated by commas — the last one in a block has no trailing comma.</li>
+<li>Inside <code>en</code>/<code>zh</code>, write quotes as <code>\"</code>. Newlines are not needed.</li>
+<li>Bump <code>"version"</code> by 1, save, and paste the file into <a href="https://jsonlint.com" target="_blank">jsonlint.com</a> once — a single missing comma makes the guide fall back to the built-in rows (it says so in the browser console, nothing breaks).</li>
+<li>Put the file back in <code>data/</code>. Hosted folders pick it up on the next open; plain-file users re-tap 📂 Load data files.</li></ol>
+<div class="card tip">The checklist in <code>Japan_Trip_Guide_V71.md</code> (“How to add a new location”) still applies — route-calculator coordinates, coupon chips and shopping-list <code>where</code> fields live in the HTML and are not part of this file.</div>
+
+<h2>6. Quick reference · 快速对照</h2>
+<div class="scroll"><table><tr><th>I want to…</th><th>Do this</th></tr>
+<tr><td>Tick something as tried for everyone</td><td>🍜 tab → 📗 Shared → tap <b>To try</b> on the card → password once → <b>⬇ Download updated Excel</b> → replace <code>data/trylist.xlsx</code></td></tr>
+<tr><td>Mark that WK skips an item</td><td>Shared list → 🚫 Skipping ▾ → tick WK → download &amp; replace as above. The 🏆 ranking updates for everyone.</td></tr>
+<tr><td>Add a To-try item only for myself</td><td>🍜 tab → ✎ Customise → ＋ New thing to try (stays on your phone, no password)</td></tr>
+<tr><td>Record a Tabung spend</td><td>💸 Trip split → 🏦 Tabung → fill “Money out” → Add spending → password once → ⬇ Download → replace <code>data/tabung.xlsx</code></td></tr>
+<tr><td>See the latest ledger on my phone</td><td>Hosted: just reopen. Plain file: 📂 Load data files → pick <code>tabung.xlsx</code></td></tr>
+<tr><td>Change a time in Day 3</td><td>Edit <code>data/tour_8d.json</code>, bump <code>version</code>, put back</td></tr>
+<tr><td>Reorder my souvenir list</td><td>🎁 tab → drag the ⋮⋮ handle (mouse or finger)</td></tr>
+<tr><td>Delete a shopping card on the phone</td><td>Swipe the card to the left → red 🗑 Delete</td></tr></table></div>
+<p class="small">Passwords are checked inside the page only; they keep casual taps from changing the shared lists, they are not security. Anyone with the files can open them in Excel.</p>
+</div></body></html>
