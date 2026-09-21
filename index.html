@@ -37,6 +37,10 @@ var ZH = {
   "Couldn't calculate balances:":"无法计算余额：",
   "No one added yet.":"还没加入成员。",
   "Who paid?":"谁付的？",
+  "Delete this expense?":"删除这笔开销？",
+  "Paid out":"垫付了",
+  "Their share":"应分摊",
+  "Total":"合计",
   "No expenses logged yet.":"还没有支出记录。",
   "paid":"付了",
   "split among":"分摊人数",
@@ -1159,6 +1163,16 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   background:var(--kon);border:1px solid var(--konline);font-size:12px;margin-top:5px}
 .tb-settle.owe{background:#fdf1ef;border-color:#f0c9c4}
 
+/* ===== split: paid-out / share table ===== */
+.sp-tbl{width:100%;border-collapse:collapse;font-size:12px;margin:4px 0 8px}
+.sp-tbl th,.sp-tbl td{padding:5px 4px;text-align:right;border-bottom:1px solid var(--line);
+  font-variant-numeric:tabular-nums}
+.sp-tbl th:first-child,.sp-tbl td:first-child{text-align:left;font-variant-numeric:normal}
+.sp-tbl th{font-size:9.5px;font-weight:900;letter-spacing:.05em;color:var(--mute);text-transform:uppercase}
+.sp-tbl tr.sp-tot td{border-top:1.5px solid var(--ink);border-bottom:none;font-weight:900}
+.sp-row [data-del]{border-radius:6px}
+.sp-row [data-del]:hover{background:#fdf1ef}
+
 /* ===== theme palette (generated: light keeps the original colours) ===== */
 :root{
   --bd1:#b9c2cf;
@@ -1387,7 +1401,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <div class="hd">
     <div class="kanjirow">
       <div class="kanji">東北・東京　八日間</div>
-      <span class="verchip" id="verChip" data-zh="v72 <span class=&quot;vd&quot;>更新于 2026年9月17日</span>">v72 <span class="vd">updated 17 Sep 2026</span></span>
+      <span class="verchip" id="verChip" data-zh="v73 <span class=&quot;vd&quot;>更新于 2026年9月17日</span>">v73 <span class="vd">updated 17 Sep 2026</span></span>
     </div>
     <h1 data-zh="日本东北 + 东京 <span class=&quot;jp&quot;>每日行程指南</span>">Japan Tohoku + Tokyo <span class="jp">Day-by-Day Guide</span></h1>
     <p data-zh="2026年10月4–11日 · 槟城出发跟团游 · 每天一条时间线：团队行程 + 购物任务 + 便利店打卡，全部标好时间和距离">4 – 11 Oct 2026 · Group tour from Penang · one timeline per day: tour plan + shopping missions + konbini runs, all with times &amp; distances</p>
@@ -2044,7 +2058,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 </div>
 </details>
 
-<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v72</b> · 更新于 2026年9月14日</span>">Built for your 4–11 Oct 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v72</b> · updated 14 Sep 2026</span></footer>
+<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v73</b> · 更新于 2026年9月14日</span>">Built for your 4–11 Oct 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v73</b> · updated 14 Sep 2026</span></footer>
 
 <script>
 // ===== Trip Split (localStorage-backed, this device only) =====
@@ -2300,8 +2314,8 @@ function spRenderInner(){
   spRenderSplitInputs();
 
   /* ---- balances kept strictly per currency, never mixed ---- */
-  var bal = {}, totals = {};
-  SP_CURS.forEach(function(c){ bal[c] = {}; totals[c] = 0; });
+  var bal = {}, totals = {}, paidBy = {}, shareBy = {};
+  SP_CURS.forEach(function(c){ bal[c] = {}; totals[c] = 0; paidBy[c] = {}; shareBy[c] = {}; });
   spData.expenses.forEach(function(e){
     var c = spCurOf(e);
     var b = bal[c];
@@ -2309,9 +2323,11 @@ function spRenderInner(){
     Object.keys(e.splits).forEach(function(p){
       if(b[p]===undefined) b[p]=0;
       b[p] -= e.splits[p];
+      shareBy[c][p] = (shareBy[c][p] || 0) + e.splits[p];   /* what this trip cost them */
     });
     if(b[e.paidBy]===undefined) b[e.paidBy]=0;
     b[e.paidBy] += e.amount;
+    paidBy[c][e.paidBy] = (paidBy[c][e.paidBy] || 0) + e.amount;   /* what they laid out */
   });
   var used = SP_CURS.filter(function(c){ return Object.keys(bal[c]).length > 0; });
 
@@ -2346,6 +2362,30 @@ function spRenderInner(){
       wrap.innerHTML = head + '<div id="spDetail_' + e.id + '" class="sp-detail" style="display:none">' + rows + '</div>';
       log.appendChild(wrap);
     });
+    /* The delete and expand controls are drawn above but nothing listened to
+       them, so an expense could never be removed. Bind them here, scoped to the
+       log so they can never collide with the packing list's own [data-del]. */
+    log.querySelectorAll("[data-del]").forEach(function(el){
+      var id = el.getAttribute("data-del");
+      el.setAttribute("role", "button");
+      el.setAttribute("tabindex", "0");
+      el.setAttribute("title", T("Remove"));
+      function go(){
+        var e = null;
+        spData.expenses.forEach(function(x){ if(String(x.id) === String(id)) e = x; });
+        var what = e ? (e.desc + " \u00b7 " + spFmt(e.amount, spCurOf(e))) : "";
+        if(!confirm(T("Delete this expense?") + (what ? "\n\n" + what : ""))) return;
+        spDeleteExpense(id);
+      }
+      el.addEventListener("click", function(ev){ ev.stopPropagation(); go(); });
+      el.addEventListener("keydown", function(ev){
+        if(ev.key === "Enter" || ev.key === " "){ ev.preventDefault(); ev.stopPropagation(); go(); }
+      });
+    });
+    log.querySelectorAll("[data-tog]").forEach(function(el){
+      el.addEventListener("click", function(){ spToggleDetail(el.getAttribute("data-tog")); });
+    });
+
     var tot = document.createElement("div");
     tot.style.cssText = "padding:9px 0 0;font-weight:900";
     tot.innerHTML = used.map(function(c){
@@ -2373,6 +2413,19 @@ function spRenderInner(){
     head.className = "sp-curhead";
     head.innerHTML = '<span>' + T(spMeta(c).label) + '</span><span class="sp-cur">' + c + '</span>';
     balDiv.appendChild(head);
+
+    /* who actually laid out money, and what the trip cost each of them */
+    var tbl = document.createElement("table");
+    tbl.className = "sp-tbl";
+    var rowsHtml = '<tr><th>' + T("Person") + '</th><th>' + T("Paid out") + '</th><th>' + T("Their share") + '</th></tr>';
+    names.forEach(function(m){
+      rowsHtml += '<tr><td>' + spEsc(m) + '</td><td>' + spFmt(paidBy[c][m] || 0, c)
+               +  '</td><td>' + spFmt(shareBy[c][m] || 0, c) + '</td></tr>';
+    });
+    rowsHtml += '<tr class="sp-tot"><td>' + T("Total") + '</td><td>' + spFmt(totals[c], c)
+             +  '</td><td>' + spFmt(totals[c], c) + '</td></tr>';
+    tbl.innerHTML = rowsHtml;
+    balDiv.appendChild(tbl);
 
     names.forEach(function(m){
       var v = b[m]||0;
@@ -6109,7 +6162,7 @@ document.addEventListener("click", function(){ if(slSkipOpen){ slSkipOpen = null
 /* Single source of truth for the version shown on the page. Bump these two and
    both the header chip and the footer line follow. The values are also written
    into the HTML above, so the version still shows if scripts don't run. */
-var GUIDE_VERSION = "v72";
+var GUIDE_VERSION = "v73";
 var GUIDE_UPDATED = {en: "17 Sep 2026", zh: "2026年9月17日"};
 (function(){
   function paint(){
