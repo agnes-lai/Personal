@@ -1,6 +1,6 @@
 {
   "_readme": "Japan Trip Guide — reference links. The guide reads this file from data/reference.json and falls back to the copy baked into the HTML when it can't be reached (opening the guide straight off your phone, or before this file exists). Add an entry by copying one of the objects below. 'url' can be an external link (https://...) or a file you put in the same data/ folder (data/whatever.html). 'kind' only changes the icon: pdf | page | sheet | map | link. Titles and descriptions take either a plain string or {\"en\": ..., \"zh\": ...}; a plain string is shown in both languages.",
-  "version": 3,
+  "version": 4,
   "updated": "2026-09-22",
   "groups": [
     {
@@ -70,6 +70,20 @@
         "zh": "这份指南怎么用"
       },
       "items": [
+        {
+          "id": "tabung-guide",
+          "kind": "page",
+          "title": {
+            "en": "Tabung — how the shared money pool works",
+            "zh": "Tabung — 公款怎么用"
+          },
+          "desc": {
+            "en": "Setting it up, recording contributions and spending, the “who shared this” tick boxes that keep it fair, reading the settle-up, and sharing it across phones.",
+            "zh": "怎么开始、怎么记存入和支出、【谁一起分摊】怎么保证公平、最后的结算表怎么看，以及多台手机怎么共用。"
+          },
+          "url": "data/Tabung_Guide.html",
+          "local": true
+        },
         {
           "id": "shared-data-guide",
           "kind": "page",
