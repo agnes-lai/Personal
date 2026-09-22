@@ -1173,6 +1173,25 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 .sp-row [data-del]{border-radius:6px}
 .sp-row [data-del]:hover{background:#fdf1ef}
 
+/* ===== references ===== */
+.rf-group{margin-bottom:14px}
+.rf-gh{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:900;letter-spacing:.1em;
+  color:var(--mute);margin:0 0 7px}
+.rf-gh::after{content:"";flex:1;height:1px;background:currentColor;opacity:.25}
+.rf-item{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;
+  padding:10px 11px;margin-bottom:7px;background:var(--card);text-decoration:none;color:inherit}
+.rf-item:hover{border-color:var(--gold);background:var(--goldbg)}
+.rf-ico{flex:0 0 auto;width:30px;height:30px;border-radius:8px;display:flex;align-items:center;
+  justify-content:center;font-size:15px;background:var(--paper);border:1px solid var(--line)}
+.rf-tx{min-width:0;flex:1;display:block}
+.rf-t{display:block;font-weight:900;font-size:13px;line-height:1.35}
+.rf-d{display:block;font-size:12px;line-height:1.45;color:var(--mute);margin-top:3px}
+.rf-go{flex:0 0 auto;align-self:center;font-size:11px;font-weight:900;color:var(--blue,#1a56a8)}
+.rf-tag{display:inline-block;font-size:9.5px;font-weight:900;letter-spacing:.04em;border-radius:4px;
+  padding:1px 6px;margin-left:6px;background:var(--paper);border:1px solid var(--line);color:var(--mute);
+  vertical-align:1px;white-space:nowrap}
+.rf-empty{font-size:12.5px;color:var(--mute)}
+
 /* ===== theme palette (generated: light keeps the original colours) ===== */
 :root{
   --bd1:#b9c2cf;
@@ -1401,7 +1420,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <div class="hd">
     <div class="kanjirow">
       <div class="kanji">東北・東京　八日間</div>
-      <span class="verchip" id="verChip" data-zh="v73 <span class=&quot;vd&quot;>更新于 2026年9月17日</span>">v73 <span class="vd">updated 17 Sep 2026</span></span>
+      <span class="verchip" id="verChip" data-zh="v74 <span class=&quot;vd&quot;>更新于 2026年9月17日</span>">v74 <span class="vd">updated 17 Sep 2026</span></span>
     </div>
     <h1 data-zh="日本东北 + 东京 <span class=&quot;jp&quot;>每日行程指南</span>">Japan Tohoku + Tokyo <span class="jp">Day-by-Day Guide</span></h1>
     <p data-zh="2026年10月4–11日 · 槟城出发跟团游 · 每天一条时间线：团队行程 + 购物任务 + 便利店打卡，全部标好时间和距离">4 – 11 Oct 2026 · Group tour from Penang · one timeline per day: tour plan + shopping missions + konbini runs, all with times &amp; distances</p>
@@ -1454,6 +1473,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
         <a href="#rcalc" data-zh="<span>🧭</span>路线计算"><span>🧭</span>Route calc</a>
         <a href="#airport" data-zh="<span>✈</span>机场规定"><span>✈</span>Airport rules</a>
         <a href="#rules" data-zh="<span>🇯🇵</span>日本礼仪"><span>🇯🇵</span>Japan etiquette</a>
+        <a href="#refs" data-zh="<span>📚</span>参考资料"><span>📚</span>References</a>
         <a href="#sos" data-zh="<span>🆘</span>紧急联络"><span>🆘</span>Emergency</a>
       </div>
     </div>
@@ -1473,7 +1493,6 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 </div>
 <input type="file" id="sfPicker" multiple accept=".xlsx,.json" style="display:none">
 <div id="sfPanel_tour"></div>
-<div class="glance" style="margin-top:4px" data-zh="📑 <b>公司行程官方简报（PDF，Google Drive）：</b><a href=&quot;https://drive.google.com/file/d/1WzjxuV0ndQWSZODDwR7FDO2LnLeIAzK7/view?usp=sharing&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>[Briefing] 2026 ViTrox Company Incentive Trip — 打开</a> · 2026年8月11日简报会的原版投影片：行程、餐食、活动、志工任务、换钱服务。这份指南里的 [TOUR] 行程行以它为准。">📑 <b>Company trip briefing slides (PDF, Google Drive):</b> <a href="https://drive.google.com/file/d/1WzjxuV0ndQWSZODDwR7FDO2LnLeIAzK7/view?usp=sharing" target="_blank" rel="noopener">[Briefing] 2026 ViTrox Company Incentive Trip — open</a> · the original deck from the 11 Aug 2026 briefing: itinerary, meals, activities, volunteer tasks, money-changer service. The <span class="k">[TOUR]</span> rows in this guide follow it.</div>
 <div class="glance" data-zh="<b>快速跳转：</b> 🔴 Nanaya 抹茶巧克力 → <a href=&quot;#d6&quot;>第6天 15:32</a> · 🔴 Seika ZEN 洗发水 @ Donki／HANDS → <a href=&quot;#d6&quot;>第6天 19:15</a>（提早机会 <a href=&quot;#d5&quot;>第5天 19:00</a>；最后备用 <a href=&quot;#d7&quot;>第7天 筑地附近的银座 Donki</a>）· 一兰拉面 → <a href=&quot;#d6&quot;>第6天 20:30</a> · 相机胶卷 + 优衣库旗舰店（同一栋楼！）→ <a href=&quot;#d6&quot;>第6天 21:15</a>（详情见 <a href=&quot;#camera&quot;>📷 相机</a>）· 抹茶粉 & 茶筅 → <a href=&quot;#d6&quot;>第6天 Nanaya</a> ／ <a href=&quot;#d7&quot;>第7天 筑地 11:40</a>（指南见 <a href=&quot;#matcha&quot;>🍵 抹茶</a>）· 商店优惠券 → <a href=&quot;#coupons&quot;>🎟 优惠券</a>（你的优惠券图片已内嵌 — 点开放大给收银员看）。详细内容都写在下面对应的时间轴里。"><b>Quick links:</b> 🔴 Nanaya matcha chocolate → <a href="#d6">Day 6, 3:32pm</a> · 🔴 Seika ZEN @ Donki / HANDS → <a href="#d6">Day 6, 7:15pm</a> (early chance <a href="#d5">Day 5, 7pm</a>; emergency backup <a href="#d7">Day 7, Ginza Donki near Tsukiji</a>) · Ichiran ramen → <a href="#d6">Day 6, 8:30pm</a> · Camera/film + Uniqlo flagship (same building!) → <a href="#d6">Day 6, 9:15pm</a> (details in <a href="#camera">📷 Camera</a>) · Matcha powder &amp; whisk → <a href="#d6">Day 6 Nanaya</a> / <a href="#d7">Day 7 Tsukiji, 11:40am</a> (guide: <a href="#matcha">🍵 Matcha</a>) · Store coupons → <a href="#coupons">🎟 Coupons</a> (your coupon images embedded — tap to zoom &amp; show cashier). Full details are written inside those exact timeline rows below.</div>
 
 
@@ -2040,6 +2059,17 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 </div>
 </details>
 
+<!-- ============ REFERENCES ============ -->
+<details class="ref"><summary class="sec" id="refs" data-zh="<span class=&quot;g&quot;>📚</span>参考资料 &amp; 链接"><span class="g">📚</span>References &amp; links</summary>
+<div class="info">
+  <div class="icard full">
+    <p class="pk-intro" data-zh="行程相关的文件和链接都放这里。内容来自 <b>data/reference.json</b> — 改那个档案就会更新，不用动 HTML。读不到档案时，会显示内建的那一份。">Documents and links that back up this trip. The list comes from <b>data/reference.json</b>, so editing that file updates this section — no HTML editing. If the file can’t be reached, the copy built into this page is shown instead.</p>
+    <div id="sfPanel_refs"></div>
+    <div id="refBody"></div>
+  </div>
+</div>
+</details>
+
 <!-- ============ EMERGENCY ============ -->
 <details class="ref"><summary class="sec" id="sos" data-zh="<span class=&quot;g red&quot;>救</span>紧急 &amp; 重要联络"><span class="g red">救</span>Emergency &amp; Important Contacts</summary>
 <div class="info">
@@ -2058,7 +2088,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 </div>
 </details>
 
-<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v73</b> · 更新于 2026年9月14日</span>">Built for your 4–11 Oct 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v73</b> · updated 14 Sep 2026</span></footer>
+<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v74</b> · 更新于 2026年9月14日</span>">Built for your 4–11 Oct 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v74</b> · updated 14 Sep 2026</span></footer>
 
 <script>
 // ===== Trip Split (localStorage-backed, this device only) =====
@@ -3558,7 +3588,8 @@ var SF = (function(){
   var FILES = {
     trylist:{file:"trylist.xlsx", kind:"xlsx", pw:"VmlUcm94QUlT",     label:["Shared To-try list","共享想试清单"]},
     tabung: {file:"tabung.xlsx",  kind:"xlsx", pw:"Tm9OYW1lQWdvbmc=", label:["Shared Tabung","共享 Tabung 公款"]},
-    tour:   {file:"tour_8d.json", kind:"json", pw:null,               label:["8-day tour data","8天行程数据"]}
+    tour:   {file:"tour_8d.json", kind:"json", pw:null,               label:["8-day tour data","8天行程数据"]},
+    refs:   {file:"reference.json", kind:"json", pw:null,              label:["Reference links","参考链接"]}
   };
   var LS = "japanTripSF_", UNLOCK_KEY = "japanTripSF_unlock";
   var st = {}, subs = {}, unlocked = {};
@@ -6162,7 +6193,7 @@ document.addEventListener("click", function(){ if(slSkipOpen){ slSkipOpen = null
 /* Single source of truth for the version shown on the page. Bump these two and
    both the header chip and the footer line follow. The values are also written
    into the HTML above, so the version still shows if scripts don't run. */
-var GUIDE_VERSION = "v73";
+var GUIDE_VERSION = "v74";
 var GUIDE_UPDATED = {en: "17 Sep 2026", zh: "2026年9月17日"};
 (function(){
   function paint(){
@@ -6764,6 +6795,85 @@ document.addEventListener("DOMContentLoaded", tbRenderAll);
     apply(now);
   });
   document.addEventListener("DOMContentLoaded", function(){ apply(saved); });
+})();
+</script>
+
+<script>
+/* ===== References ===== */
+(function(){
+  /* Baked-in copy: what shows when data/reference.json can't be reached — opening
+     the guide straight from a phone, or before the file has been uploaded. */
+  var BUILT_IN = {"_readme": "Japan Trip Guide — reference links. The guide reads this file from data/reference.json and falls back to the copy baked into the HTML when it can't be reached (opening the guide straight off your phone, or before this file exists). Add an entry by copying one of the objects below. 'url' can be an external link (https://...) or a file you put in the same data/ folder (data/whatever.html). 'kind' only changes the icon: pdf | page | sheet | map | link. Titles and descriptions take either a plain string or {\"en\": ..., \"zh\": ...}; a plain string is shown in both languages.", "version": 1, "updated": "2026-09-21", "groups": [{"id": "official", "title": {"en": "Official tour documents", "zh": "官方行程文件"}, "items": [{"id": "briefing", "kind": "pdf", "title": {"en": "[Briefing] 2026 ViTrox Company Incentive Trip", "zh": "[简报] 2026 ViTrox 公司奖励旅游"}, "desc": {"en": "The original slides from the 11 Aug 2026 briefing — itinerary, meals, activities, volunteer duties, money-changing service. The [TOUR] rows in this guide follow it.", "zh": "2026年8月11日简报会的原版投影片：行程、餐食、活动、志工任务、换钱服务。这份指南里的 [TOUR] 行程行以它为准。"}, "url": "https://drive.google.com/file/d/1WzjxuV0ndQWSZODDwR7FDO2LnLeIAzK7/view?usp=sharing", "local": false}]}, {"id": "howto", "title": {"en": "How this guide works", "zh": "这份指南怎么用"}, "items": [{"id": "shared-data-guide", "kind": "page", "title": {"en": "Shared data files — user guide & samples", "zh": "共享数据文件 — 使用说明与范例"}, "desc": {"en": "How the shared to-try list, tabung and tour data files work, what the status panel is telling you, and the sample files.", "zh": "共享的想试清单、Tabung 公款、行程数据这三个档案怎么运作，状态面板在说什么，以及范例档。"}, "url": "data/Shared_Data_Guide.html", "local": true}]}]};
+  var ICON = {pdf:"\ud83d\udcc4", page:"\ud83d\udcd8", sheet:"\ud83d\udcca", map:"\ud83d\uddfa", link:"\ud83d\udd17"};
+
+  function zh(){ return (typeof LANG !== "undefined" && LANG === "zh"); }
+  function pick(v){
+    if(v === undefined || v === null) return "";
+    if(typeof v === "string") return v;
+    return (zh() ? (v.zh || v.en) : (v.en || v.zh)) || "";
+  }
+  function esc(s){
+    return String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+  var data = null;
+
+  function render(){
+    var body = document.getElementById("refBody");
+    if(!body) return;
+    var d = data || BUILT_IN;
+    var groups = (d && Object.prototype.toString.call(d.groups) === "[object Array]") ? d.groups : [];
+    if(!groups.length){
+      body.innerHTML = '<div class="rf-empty">' + (zh() ? "还没有任何参考链接。" : "No references yet.") + '</div>';
+      return;
+    }
+    var html = "";
+    groups.forEach(function(g){
+      var items = (Object.prototype.toString.call(g.items) === "[object Array]") ? g.items : [];
+      if(!items.length) return;
+      html += '<div class="rf-group"><div class="rf-gh">' + esc(pick(g.title)) + '</div>';
+      items.forEach(function(it){
+        var url = String(it.url || "").trim();
+        if(!url) return;
+        var ico = ICON[it.kind] || ICON.link;
+        var local = !!it.local || url.indexOf("http") !== 0;
+        var tag = local ? (zh() ? "档案" : "file") : (zh() ? "网页" : "web");
+        var desc = esc(pick(it.desc));
+        html += '<a class="rf-item" href="' + esc(url) + '" target="_blank" rel="noopener">'
+             +  '<span class="rf-ico">' + ico + '</span>'
+             +  '<span class="rf-tx"><span class="rf-t">' + esc(pick(it.title))
+             +  '<span class="rf-tag">' + tag + '</span></span>'
+             +  (desc ? '<span class="rf-d">' + desc + '</span>' : '')
+             +  '</span><span class="rf-go">\u2192</span></a>';
+      });
+      html += '</div>';
+    });
+    body.innerHTML = html;
+  }
+
+  /* SF is the shared-file loader the other data files use. Its API is on()/get(),
+     and panelHTML() draws the little status line for a file. */
+  function hook(){
+    if(typeof SF === "undefined" || !SF || typeof SF.on !== "function") return false;
+    SF.on("refs", function(v){ if(v){ data = v; render(); } });
+    var have = (typeof SF.get === "function") ? SF.get("refs") : null;
+    if(have){ data = have; }
+    var panel = document.getElementById("sfPanel_refs");
+    if(panel && typeof SF.panelHTML === "function"){
+      var paint = function(){ try{ panel.innerHTML = SF.panelHTML("refs", {}); }catch(e){} };
+      paint();
+      if(typeof SF.onPaint === "function") SF.onPaint(paint);
+    }
+    render();
+    return true;
+  }
+  document.addEventListener("DOMContentLoaded", function(){
+    render();
+    if(!hook()) setTimeout(function(){ hook(); render(); }, 400);
+  });
+  var prev = window.applyLang;
+  if(typeof prev === "function"){ window.applyLang = function(){ prev.apply(this, arguments); render(); }; }
+  window.refRender = render;
 })();
 </script>
 </body>
