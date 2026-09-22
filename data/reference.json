@@ -1,6 +1,6 @@
 {
   "_readme": "Japan Trip Guide — reference links. The guide reads this file from data/reference.json and falls back to the copy baked into the HTML when it can't be reached (opening the guide straight off your phone, or before this file exists). Add an entry by copying one of the objects below. 'url' can be an external link (https://...) or a file you put in the same data/ folder (data/whatever.html). 'kind' only changes the icon: pdf | page | sheet | map | link. Titles and descriptions take either a plain string or {\"en\": ..., \"zh\": ...}; a plain string is shown in both languages.",
-  "version": 2,
+  "version": 3,
   "updated": "2026-09-22",
   "groups": [
     {
@@ -23,6 +23,20 @@
           },
           "url": "https://drive.google.com/file/d/1WzjxuV0ndQWSZODDwR7FDO2LnLeIAzK7/view?usp=sharing",
           "local": false
+        },
+        {
+          "id": "cimb-travelcurrency",
+          "kind": "page",
+          "title": {
+            "en": "CIMB TravelCurrency — ordering yen before you fly",
+            "zh": "CIMB TravelCurrency — 出发前先订日元"
+          },
+          "desc": {
+            "en": "Screenshot walkthrough of the online order, the 4pm cut-off on 3 Oct, collection rules at Penang airport, whether the rate is any good, and how much yen to actually order.",
+            "zh": "网上下单的图文步骤、3 日下午 4 点的截止时间、槟城机场取款规矩、汇率划不划算，以及到底该订多少日元。"
+          },
+          "url": "data/CIMB_TravelCurrency_Guide.html",
+          "local": true
         }
       ]
     },
