@@ -1,6 +1,6 @@
 {
  "_readme": "Japan Trip Guide - 8-day tour rows. The guide reads this file from data/ and redraws Days 1-8 from it. Each day: title/meta/weather {en,zh}, then blocks (one per timeline column) of rows. A row = {time, class, en, zh, attrs?}. class: '' (tour), 'add' (ADD-ON, gold), 'kon' (konbini run, green), 'kon vital' (stock up). en/zh may be plain text or HTML. Items with only 'raw' are complex blocks copied verbatim - leave them unless you know HTML. Bump 'version' by 1 every time you save; devices ignore a copy with a lower version. Sample + guide: Shared_Data_Guide.html",
- "version": 3,
+ "version": 4,
  "updated": "2026-09-22",
  "days": [
   {
@@ -245,32 +245,32 @@
    "blocks": [
     [
      {
-      "time": "",
+      "time": "AM–PM",
       "class": "",
-      "en": "AM–PM",
-      "zh": "上午–下午",
-      "dclass": "t"
+      "en": "Travel day south — Nikkō area, then east to the Nasu plateau (per tour)",
+      "zh": "拉车日，往南到日光一带，再往东到那須高原（按团行程）",
+      "tzh": "上午–下午"
      },
      {
-      "time": "",
+      "time": "Noon",
       "class": "",
-      "en": "Noon",
-      "zh": "中午",
-      "dclass": "t"
+      "en": "<span class=\"fd\">Lunch:</span> Ceramic-plate (tōban-yaki) beef set<button class=\"mealpic\" onclick=\"showMeal('d4l')\">📷 see meal</button>",
+      "zh": "<span class=\"fd\">午餐：</span>陶板烧牛肉套餐<button class=\"mealpic\" onclick=\"showMeal('d4l')\">📷 看餐点</button>",
+      "tzh": "中午"
      },
      {
-      "time": "",
+      "time": "Rest stop",
       "class": "kon vital",
-      "en": "Rest stop",
-      "zh": "休息站",
-      "dclass": "t"
+      "en": "<span class=\"badge stock\">STOCK UP</span><span class=\"badge kon\">KONBINI RUN</span><b>Highway rest stop on the Fukushima → Tochigi leg</b> <span class=\"dist\">0 min · bus stops anyway</span>\n      <ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li><b>Mamador</b> (“mama’s chocolate”) cakes — Fukushima’s legendary omiyage since 1967</li><li>Restock drinks too</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\"><span class=\"k\">Last chance</span> before you leave the prefecture — you will not see them again</li><li class=\"tip\">Tonight’s Lawson is a downhill walk away, so don’t rely on it</li></ul>",
+      "zh": "<span class=\"badge stock\">先囤货</span><span class=\"badge kon\">便利店打卡</span><b>福岛 → 栃木路段的高速休息站</b> <span class=\"dist\">0 分钟 · 巴士反正会停</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li><b>Mamador（妈妈的巧克力）</b>奶油蛋糕 — 福岛 1967 年至今的传奇手信</li><li>饮料也顺便补货</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\">离开福岛县前的<span class=\"k\">最后机会</span> — 之后再也见不到</li><li class=\"tip\">今晚的罗森要走一段下坡路，别指望它</li></ul>",
+      "tzh": "休息站"
      },
      {
-      "time": "",
+      "time": "Eve",
       "class": "",
-      "en": "Eve",
-      "zh": "傍晚",
-      "dclass": "t"
+      "en": "Check-in <b>Nasu Sunlight Hotel</b> — golf resort on the plateau · Dinner: hotel buffet<button class=\"mealpic\" onclick=\"showMeal('d4d')\">📷 see meal</button>",
+      "zh": "入住<b>那須陽光酒店</b> — 高原上的高尔夫度假酒店 · 晚餐：酒店自助餐<button class=\"mealpic\" onclick=\"showMeal('d4d')\">📷 看餐点</button>",
+      "tzh": "傍晚"
      },
      {
       "time": "20:00",
