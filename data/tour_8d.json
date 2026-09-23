@@ -1,6 +1,6 @@
 {
  "_readme": "Japan Trip Guide - 8-day tour rows. The guide reads this file from data/ and redraws Days 1-8 from it. Each day: title/meta/weather {en,zh}, then blocks (one per timeline column) of rows. A row = {time, class, en, zh, attrs?}. class: '' (tour), 'add' (ADD-ON, gold), 'kon' (konbini run, green), 'kon vital' (stock up). en/zh may be plain text or HTML. Items with only 'raw' are complex blocks copied verbatim - leave them unless you know HTML. Bump 'version' by 1 every time you save; devices ignore a copy with a lower version. Sample + guide: Shared_Data_Guide.html",
- "version": 4,
+ "version": 5,
  "updated": "2026-09-22",
  "days": [
   {
@@ -231,12 +231,12 @@
   {
    "day": 4,
    "title": {
-    "en": "Fukushima → Nikkō → Nasu",
-    "zh": "福岛 → 日光 → 那須"
+    "en": "Fukushima → Nikkō",
+    "zh": "福岛 → 日光"
    },
    "meta": {
-    "en": "Wed 7 Oct · Nikkō area · stay: Nasu Sunlight Hotel (那須陽光ホテル)",
-    "zh": "10月7日 周三 · 日光一带 · 住：那須陽光酒店（那須陽光ホテル）"
+    "en": "Wed 7 Oct · Goshikinuma · Tsuruga Castle · Ouchi-juku · stay: Nasu Sunlight Hotel",
+    "zh": "10月7日 周三 · 五色沼 · 鹤ヶ城 · 大内宿 · 住：那須陽光酒店"
    },
    "weather": {
     "en": "<b>22° / 13°</b><br>rain ☔",
@@ -245,32 +245,40 @@
    "blocks": [
     [
      {
-      "time": "AM–PM",
+      "time": "8:00",
       "class": "",
-      "en": "Travel day south — Nikkō area, then east to the Nasu plateau (per tour)",
-      "zh": "拉车日，往南到日光一带，再往东到那須高原（按团行程）",
-      "tzh": "上午–下午"
+      "en": "Breakfast @ Nagame no Yakata Kōunkaku · 9:00 depart (~1h, 45km)",
+      "zh": "在ながめの館 光云阁吃早餐 · 9:00 出发（约 1 小时，45 公里）"
      },
      {
-      "time": "Noon",
+      "time": "10:00",
       "class": "",
-      "en": "<span class=\"fd\">Lunch:</span> Ceramic-plate (tōban-yaki) beef set<button class=\"mealpic\" onclick=\"showMeal('d4l')\">📷 see meal</button>",
-      "zh": "<span class=\"fd\">午餐：</span>陶板烧牛肉套餐<button class=\"mealpic\" onclick=\"showMeal('d4l')\">📷 看餐点</button>",
-      "tzh": "中午"
+      "en": "<b>Goshikinuma Ponds</b> (1h) — the “five-coloured ponds” in Bandai-Asahi National Park<ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Volcanic minerals make each pond a different colour — <b>Aoike</b> is the famously blue one</li><li class=\"tip\">Early October is the <b>start of the autumn colour</b> here; the ponds read best in sun</li><li class=\"warn\">The full trail is 3.6km one way — in an hour you will see the near ponds only, so don’t set off down the path</li><li class=\"warn\">Upland and exposed: it is the coldest stop of the day, take the extra layer</li></ul>",
+      "zh": "<b>五色沼</b>（1小时）— 磐梯朝日国立公园里的「五色沼」<ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>火山矿物质让每个池子颜色不同 — <b>青池</b>是最有名的那个蓝</li><li class=\"tip\">十月初刚好是<b>红叶开始</b>；有太阳的时候水色最好看</li><li class=\"warn\">完整步道单程 3.6 公里 — 一小时只看得完近处几个，别往里走</li><li class=\"warn\">地势高、无遮挡，是今天最冷的一站，外套带着</li></ul>"
      },
      {
-      "time": "Rest stop",
-      "class": "kon vital",
-      "en": "<span class=\"badge stock\">STOCK UP</span><span class=\"badge kon\">KONBINI RUN</span><b>Highway rest stop on the Fukushima → Tochigi leg</b> <span class=\"dist\">0 min · bus stops anyway</span>\n      <ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li><b>Mamador</b> (“mama’s chocolate”) cakes — Fukushima’s legendary omiyage since 1967</li><li>Restock drinks too</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\"><span class=\"k\">Last chance</span> before you leave the prefecture — you will not see them again</li><li class=\"tip\">Tonight’s Lawson is a downhill walk away, so don’t rely on it</li></ul>",
-      "zh": "<span class=\"badge stock\">先囤货</span><span class=\"badge kon\">便利店打卡</span><b>福岛 → 栃木路段的高速休息站</b> <span class=\"dist\">0 分钟 · 巴士反正会停</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li><b>Mamador（妈妈的巧克力）</b>奶油蛋糕 — 福岛 1967 年至今的传奇手信</li><li>饮料也顺便补货</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\">离开福岛县前的<span class=\"k\">最后机会</span> — 之后再也见不到</li><li class=\"tip\">今晚的罗森要走一段下坡路，别指望它</li></ul>",
-      "tzh": "休息站"
+      "time": "12:00",
+      "class": "",
+      "en": "Lunch: Ceramic-plate (tōban-yaki) beef / chicken set · vegetarian option available<button class=\"mealpic\" onclick=\"showMeal('d4l')\">📷 see meal</button> · 13:10 depart (~1h10m, 45km)",
+      "zh": "午餐：陶板烧牛肉／鸡肉套餐 · 有素食选项<button class=\"mealpic\" onclick=\"showMeal('d4l')\">📷 看餐点</button> · 13:10 出发（约 1小时10分，45 公里）"
      },
      {
-      "time": "Eve",
+      "time": "13:10",
       "class": "",
-      "en": "Check-in <b>Nasu Sunlight Hotel</b> — golf resort on the plateau · Dinner: hotel buffet<button class=\"mealpic\" onclick=\"showMeal('d4d')\">📷 see meal</button>",
-      "zh": "入住<b>那須陽光酒店</b> — 高原上的高尔夫度假酒店 · 晚餐：酒店自助餐<button class=\"mealpic\" onclick=\"showMeal('d4d')\">📷 看餐点</button>",
-      "tzh": "傍晚"
+      "en": "<b>Tsuruga Castle</b> (1h30m) — Aizu-Wakamatsu’s keep, rebuilt with its original <b>red roof tiles</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>The <b>only red-tiled castle keep in Japan</b> — that roof is the photo</li><li>Inside is a museum on the Boshin War and the Byakkotai, the teenage samurai unit</li><li class=\"tip\">The top-floor gallery gives a 360° view over the Aizu basin</li><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li><b>Akabeko</b> — the red papier-mâché cow that nods; Aizu’s signature souvenir and easy to pack</li></ul> · 14:40 depart (~50 min, 30km)",
+      "zh": "<b>鹤ヶ城</b>（1小时30分）— 会津若松的天守阁，重建时用回了<b>红色屋瓦</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li><b>日本唯一的红瓦天守阁</b> — 拍的就是那个屋顶</li><li>里面是博物馆，讲戊辰战争和白虎队（少年武士部队）</li><li class=\"tip\">顶层可以 360° 看会津盆地</li><li class=\"grp buy\"><span>🛍 要买的</span></li><li><b>赤べこ（红牛）</b> — 会摇头的红色纸胎牛，会津的代表手信，好带</li></ul> · 14:40 出发（约 50 分钟，30 公里）"
+     },
+     {
+      "time": "14:40",
+      "class": "",
+      "en": "<b>Ouchi-juku</b> (2h) — a preserved Edo post town, thatched roofs down both sides of one street<ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li><b>Negi soba</b> — soba eaten using a whole spring onion as the chopstick, then you eat the onion. It is the thing to do here, and it photographs well</li><li>Grilled char (iwana) on a stick, and tochimochi</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"tip\">Walk to the <b>viewpoint at the far end</b> — the stepped path up the hill gives the postcard shot down the street</li><li class=\"warn\">Unpaved and uneven; most shops close around 5pm and it empties fast</li><li class=\"warn\"><b>Last chance for Fukushima souvenirs</b> — after this you cross into Tochigi. Mamador and Aizu crafts are here</li></ul> · 16:40 depart (~1h40m, 80km)",
+      "zh": "<b>大内宿</b>（2小时）— 保存下来的江户驿站町，一条街两边全是茅草屋顶<ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li><b>大葱荞麦（ねぎそば）</b> — 用一根大葱当筷子吃荞麦，最后把葱也吃掉。这里就是要吃这个，而且很上镜</li><li>烤岩鱼串、栃饼</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"tip\">走到<b>街尾的观景台</b> — 上坡的石阶上去，才能拍到那张明信片视角</li><li class=\"warn\">路面没铺、不平；店家大约 17:00 就关，人走得很快</li><li class=\"warn\"><b>买福岛手信的最后机会</b> — 过了这里就进栃木了。Mamador 和会津工艺品这里都有</li></ul> · 16:40 出发（约 1小时40分，80 公里）"
+     },
+     {
+      "time": "18:20",
+      "class": "",
+      "en": "Check-in <b>Nasu Sunlight Hotel</b> · 18:30 dinner: hotel buffet<button class=\"mealpic\" onclick=\"showMeal('d4d')\">📷 see meal</button>",
+      "zh": "入住<b>那須陽光酒店</b> · 18:30 晚餐：酒店自助餐<button class=\"mealpic\" onclick=\"showMeal('d4d')\">📷 看餐点</button>"
      },
      {
       "time": "20:00",
