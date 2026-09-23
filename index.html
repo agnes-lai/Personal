@@ -1420,7 +1420,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <div class="hd">
     <div class="kanjirow">
       <div class="kanji">東北・東京　八日間</div>
-      <span class="verchip" id="verChip" data-zh="v75 <span class=&quot;vd&quot;>更新于 2026年9月17日</span>">v75 <span class="vd">updated 17 Sep 2026</span></span>
+      <span class="verchip" id="verChip" data-zh="v76 <span class=&quot;vd&quot;>更新于 2026年9月17日</span>">v76 <span class="vd">updated 17 Sep 2026</span></span>
     </div>
     <h1 data-zh="日本东北 + 东京 <span class=&quot;jp&quot;>每日行程指南</span>">Japan Tohoku + Tokyo <span class="jp">Day-by-Day Guide</span></h1>
     <p data-zh="2026年10月4–11日 · 槟城出发跟团游 · 每天一条时间线：团队行程 + 购物任务 + 便利店打卡，全部标好时间和距离">4 – 11 Oct 2026 · Group tour from Penang · one timeline per day: tour plan + shopping missions + konbini runs, all with times &amp; distances</p>
@@ -2088,7 +2088,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 </div>
 </details>
 
-<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v75</b> · 更新于 2026年9月14日</span>">Built for your 4–11 Oct 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v75</b> · updated 14 Sep 2026</span></footer>
+<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v76</b> · 更新于 2026年9月14日</span>">Built for your 4–11 Oct 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v76</b> · updated 14 Sep 2026</span></footer>
 
 <script>
 // ===== Trip Split (localStorage-backed, this device only) =====
@@ -4052,7 +4052,10 @@ function tourRowHTML(r){
   var cls = "row" + (r["class"] ? " " + r["class"] : ""), attrs = "";
   if(r.attrs) Object.keys(r.attrs).forEach(function(k){ if(/^data-[a-z-]+$/.test(k)) attrs += ' ' + k + '="' + SF.esc(r.attrs[k]) + '"'; });
   var zh = (r.zh !== undefined && r.zh !== null) ? ' data-zh="' + SF.esc(r.zh) + '"' : "";
-  return '<div class="' + SF.esc(cls) + '"' + attrs + '><div class="t">' + (r.time || "") + '</div><div class="' + SF.esc(r.dclass || "d") + '"' + zh + '>' + (r.en || "") + '</div></div>';
+  /* word time-labels (AM-PM, Noon, Eve) need a Chinese form too; numeric times don't */
+  var tzh = (r.tzh !== undefined && r.tzh !== null && r.tzh !== r.time)
+            ? ' data-zh="' + SF.esc(r.tzh) + '"' : "";
+  return '<div class="' + SF.esc(cls) + '"' + attrs + '><div class="t"' + tzh + '>' + (r.time || "") + '</div><div class="' + SF.esc(r.dclass || "d") + '"' + zh + '>' + (r.en || "") + '</div></div>';
 }
 function tourApply(data){
   if(!data || !data.days) return;
@@ -6193,7 +6196,7 @@ document.addEventListener("click", function(){ if(slSkipOpen){ slSkipOpen = null
 /* Single source of truth for the version shown on the page. Bump these two and
    both the header chip and the footer line follow. The values are also written
    into the HTML above, so the version still shows if scripts don't run. */
-var GUIDE_VERSION = "v75";
+var GUIDE_VERSION = "v76";
 var GUIDE_UPDATED = {en: "17 Sep 2026", zh: "2026年9月17日"};
 (function(){
   function paint(){
