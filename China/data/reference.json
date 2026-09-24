@@ -1,1 +1,30 @@
-
+{
+  "_readme": "Chengdu Trip Guide — reference links. The guide reads this file from data/reference.json and falls back to the copy baked into the HTML when it can't be reached. Add an entry by copying one of the objects below. 'url' can be an external link (https://...) or a file in the same data/ folder (data/whatever.html). 'kind' only changes the icon: pdf | page | sheet | map | link | image. Titles and descriptions take a plain string or {\"en\": ..., \"zh\": ...}.",
+  "version": 1,
+  "updated": "2026-09-24",
+  "groups": [
+    {"id": "trip", "title": {"en": "Trip documents", "zh": "行程文件"}, "items": [
+      {"id": "quote", "kind": "image", "title": {"en": "Travel agent quote — Chengdu 8 days (陈浩南)", "zh": "旅行社报价单 — 成都 8 天（陈浩南）"},
+       "desc": {"en": "The original quote image: day-by-day route, hotels, meals and the cost table. The grey [tour] rows in this guide follow it.", "zh": "原版报价图：每日路线、酒店、餐食和费用表。指南里灰色的行程行以它为准。"},
+       "url": "data/Chengdu_Quote.jpg", "local": true},
+      {"id": "eticket", "kind": "image", "title": {"en": "Singapore Airlines e-ticket (DN7UG8)", "zh": "新加坡航空电子机票（DN7UG8）"},
+       "desc": {"en": "Outbound and return legs as issued on 15 Sep 2026.", "zh": "2026年9月15日出票的去程和回程。"},
+       "url": "data/SQ_Eticket_Outbound.jpg", "local": true}
+    ]},
+    {"id": "entry", "title": {"en": "Entry to China", "zh": "入境中国"}, "items": [
+      {"id": "nia-card", "kind": "link", "title": {"en": "China online arrival card (NIA) — phone version", "zh": "中国网上入境卡（国家移民管理局）— 手机版"},
+       "desc": {"en": "Fill in before flying, save the QR. Available since 20 Nov 2025.", "zh": "出发前填好，存下 QR 码。2025年11月20日起开放。"},
+       "url": "https://s.nia.gov.cn/ArrivalCardFillingPhone/", "local": false},
+      {"id": "nia-card-pc", "kind": "link", "title": {"en": "China online arrival card — desktop version", "zh": "中国网上入境卡 — 电脑版"},
+       "url": "https://s.nia.gov.cn/ArrivalCardFillingPC/", "local": false}
+    ]},
+    {"id": "howto", "title": {"en": "How this guide works", "zh": "这份指南怎么用"}, "items": [
+      {"id": "tabung-guide", "kind": "page", "title": {"en": "Tabung — how the shared money pool works", "zh": "Tabung — 公款怎么用"},
+       "desc": {"en": "Setting it up, recording contributions and spending, the 'who shared this' tick boxes, reading the settle-up, and sharing it across phones.", "zh": "怎么开始、怎么记存入和支出、【谁一起分摊】、结算表怎么看，以及多台手机怎么共用。"},
+       "url": "data/Tabung_Guide.html", "local": true},
+      {"id": "shared-data-guide", "kind": "page", "title": {"en": "Shared data files — user guide", "zh": "共享数据文件 — 使用说明"},
+       "desc": {"en": "Same guide as the Japan trip: how the shared to-try list, tabung and tour files work. Copy it into data/ from the Japan folder.", "zh": "跟日本行同一份：共享想试清单、Tabung、行程档案怎么运作。从日本文件夹复制到 data/。"},
+       "url": "data/Shared_Data_Guide.html", "local": true}
+    ]}
+  ]
+}

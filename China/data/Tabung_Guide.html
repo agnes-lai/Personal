@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#16233e">
+<title>Tabung — how the shared money pool works</title>
+<style>
+:root{--ink:#1c2431;--paper:#f6f5f1;--card:#fff;--line:#e4e1d8;--night:#16233e;--red:#c93a2e;
+--matcha:#20603a;--gold:#b98a2f;--goldbg:#fdf6e4;--mute:#6b7180;--kon:#e9f3ec;--konline:#bcd8c4;--blue:#1a56a8}
+[data-theme="dark"]{--ink:#e6eaf2;--paper:#12161e;--card:#1b2130;--line:#2f374a;--night:#0e1523;
+--mute:#9aa4b6;--goldbg:#2d2717;--kon:#16291f;--konline:#2f5742;--gold:#dcb254;--matcha:#4f9d72;
+--red:#d9584a;--blue:#8fb8ff;color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Zen Kaku Gothic New',-apple-system,'Segoe UI',sans-serif;background:var(--paper);
+color:var(--ink);line-height:1.55;font-size:15px}
+.wrap{max-width:820px;margin:0 auto;padding:0 12px 70px}
+header{background:var(--night);color:#fff;padding:20px 14px 16px}
+header h1{font-size:19px;font-weight:900;line-height:1.3}
+header p{color:#aebbd8;font-size:12.5px;margin-top:6px;line-height:1.5}
+.hbtns{display:flex;gap:7px;margin-top:11px;flex-wrap:wrap}
+.hbtns button{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#dce7f6;
+  border-radius:20px;padding:5px 12px;font-family:inherit;font-size:11.5px;font-weight:700;cursor:pointer}
+.hbtns button:hover{background:rgba(255,255,255,.22)}
+nav.qn{position:sticky;top:0;z-index:20;background:var(--night);border-top:1px solid rgba(255,255,255,.12);
+  display:flex;gap:6px;overflow-x:auto;padding:8px 12px;-webkit-overflow-scrolling:touch}
+nav.qn a{flex:0 0 auto;color:#c8d4ec;text-decoration:none;font-size:11.5px;font-weight:700;
+  background:rgba(255,255,255,.08);border-radius:20px;padding:5px 11px;white-space:nowrap}
+nav.qn a:hover,nav.qn a.on{background:#fff;color:var(--night)}
+h2.sec{font-size:15px;font-weight:900;margin:24px 0 9px;padding-left:9px;border-left:4px solid var(--red);scroll-margin-top:56px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 13px;margin-bottom:11px}
+.note{background:#eaf1fb;border:1px solid #b9cdea;border-radius:9px;padding:10px 12px;font-size:12.5px;line-height:1.55;margin-top:10px}
+[data-theme="dark"] .note{background:#16233a;border-color:#2b3c60}
+.note b{color:var(--blue)}
+.warn{background:#fdf1ef;border:1px solid #f0c9c4;border-radius:9px;padding:10px 12px;font-size:12.5px;line-height:1.55;margin-top:10px}
+[data-theme="dark"] .warn{background:#331d1a;border-color:#5a2f29}
+.warn b{color:var(--red)}
+.good{background:var(--kon);border:1px solid var(--konline);border-radius:9px;padding:10px 12px;
+  font-size:12.5px;line-height:1.55;margin-top:10px;color:var(--matcha)}
+.step{border:1px solid var(--line);border-radius:11px;margin-bottom:9px;background:var(--card);overflow:hidden}
+.step>.sh{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;cursor:pointer;user-select:none}
+.step>.sh:hover{background:var(--goldbg)}
+.step .no{flex:0 0 auto;width:25px;height:25px;border-radius:50%;background:var(--night);color:#fff;
+  font-size:12.5px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.step .st{flex:1;min-width:0}
+.step .st b{display:block;font-size:13.5px;line-height:1.35}
+.step .st span{display:block;font-size:12px;color:var(--mute);margin-top:2px}
+.step .cv{flex:0 0 auto;color:var(--mute);font-size:12px;transition:transform .15s}
+.step.open .cv{transform:rotate(180deg)}
+.step>.sb{display:none;padding:0 12px 12px;border-top:1px dashed var(--line)}
+.step.open>.sb{display:block}
+.step .sb p{font-size:12.5px;line-height:1.6;margin-top:9px}
+ul.pts{list-style:none;margin:8px 0 0}
+ul.pts li{position:relative;padding-left:16px;margin:4px 0;font-size:12.5px;line-height:1.5}
+ul.pts li::before{content:"";position:absolute;left:4px;top:.62em;width:4px;height:4px;border-radius:50%;background:#c9ceda}
+ul.pts li.w{color:var(--red)} ul.pts li.w::before{content:"\26a0";left:0;top:0;width:auto;height:auto;background:none;font-size:11px}
+ul.pts li.t{color:var(--matcha)} ul.pts li.t::before{content:"\2192";left:0;top:0;width:auto;height:auto;background:none;font-size:11px}
+table.f{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px}
+table.f th,table.f td{padding:7px 6px;text-align:right;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+table.f th:first-child,table.f td:first-child{text-align:left;font-variant-numeric:normal}
+table.f th{font-size:10px;font-weight:900;letter-spacing:.06em;color:var(--mute);text-transform:uppercase}
+table.f tr.tot td{border-top:2px solid var(--ink);border-bottom:none;font-weight:900}
+.k{font-weight:900}
+.up{color:var(--matcha);font-weight:900} .down{color:var(--red);font-weight:900}
+footer{font-size:11.5px;color:var(--mute);line-height:1.55;margin-top:20px;padding-top:12px;border-top:1px solid var(--line)}
+</style></head><body>
+
+<header>
+  <h1 data-zh="Tabung — 公款怎么用">Tabung — how the shared money pool works</h1>
+  <p data-zh="大家凑一笔钱，团体开销从里面出，最后自动算出谁该拿回多少。每一步可以收起。">
+  Everyone puts money into one kitty, group costs come out of it, and the settle-up at the end works itself out. Every step folds away.</p>
+  <div class="hbtns">
+    <button id="allOpen" data-zh="全部展开">Expand all</button>
+    <button id="allShut" data-zh="全部收起">Collapse all</button>
+    <button id="lang">中文</button>
+    <button id="theme">◐</button>
+  </div>
+</header>
+
+<nav class="qn">
+  <a href="#why" data-zh="为什么用它">Why use it</a>
+  <a href="#steps" data-zh="分步操作">Step by step</a>
+  <a href="#fair" data-zh="公平在哪">The fairness bit</a>
+  <a href="#cur" data-zh="多货币">Currencies</a>
+  <a href="#tips" data-zh="实用建议">Tips</a>
+</nav>
+
+<div class="wrap">
+
+<h2 class="sec" id="why" data-zh="什么时候用 Tabung，什么时候用【谁欠谁】">When to use Tabung, and when not to</h2>
+<div class="card">
+  <table class="f">
+    <tr><th data-zh="情况">Situation</th><th data-zh="用哪个">Use</th></tr>
+    <tr><td data-zh="大家先凑一笔共同的钱，开销从里面出">You pool money up front and spend from it</td><td data-zh="<b>🏦 Tabung</b>"><b>🏦 Tabung</b></td></tr>
+    <tr><td data-zh="各付各的，事后才算谁欠谁">Everyone pays separately and you square up later</td><td data-zh="<b>💸 谁欠谁</b>"><b>💸 Who owes who</b></td></tr>
+    <tr><td data-zh="两种都有（很常见）">Both happen (common)</td><td data-zh="两个都用，但<b>同一笔只记一边</b>">Use both, but <b>log each expense in only one</b></td></tr>
+  </table>
+  <div class="note"><b data-zh="典型用法：">Typical use:</b> <span data-zh="出发前换的那笔人民币现金当公款 — 打车、共享的小吃、投币行李柜、小费都从里面出；个人购物自己刷卡，不进公款。">the RMB cash you changed before the trip becomes the pool — taxis, shared snacks, coin lockers and tips come out of it, while personal shopping goes on your own card and never touches the tabung.</span></div>
+</div>
+
+<h2 class="sec" id="steps" data-zh="分步操作">Step by step</h2>
+<div class="step" id="s1"><div class="sh"><span class="no">1</span><span class="st"><b data-zh="打开【旅费分摊】，切到 Tabung">Open Trip Split, then the Tabung tab</b><span data-zh="这里有两个不同的工具">Two different tools live here</span></span><span class="cv">▾</span></div><div class="sb"><p data-zh="在指南里打开【💰 旅费分摊】，上方有两个页签：">Open <b>💰 Trip Split</b> in the guide. There are two tabs at the top:</p><ul class="pts"><li data-zh="<b>💸 谁欠谁</b> — 各付各的，事后算谁欠谁。适合有人先垫一顿饭、有人先垫车费。"><b>💸 Who owes who</b> — everyone pays for things themselves and you work out the debts afterwards. Good when one person covers a dinner and someone else covers a taxi.</li><li data-zh="<b>🏦 Tabung（公款）</b> — 先凑一笔共同的钱，团体开销从里面出。这份指南讲的是这个。"><b>🏦 Tabung (pool)</b> — everyone puts money into one shared kitty and group costs come out of it. That’s what this guide covers.</li><li class="t" data-zh="两个是<b>完全独立</b>的，记在一边不会影响另一边。不要两边都记同一笔。">They are <b>completely separate</b> — entering something in one does not touch the other. Don’t log the same expense in both.</li></ul></div></div><div class="step" id="s2"><div class="sh"><span class="no">2</span><span class="st"><b data-zh="把有份的人都加进去">Add everyone who has a share</b><span data-zh="【谁有份】→ 输名字 → + 新增">“Who is in the tabung” → type a name → + Add</span></span><span class="cv">▾</span></div><div class="sb"><p data-zh="在【Who is in the tabung / 谁有份】下面输名字，按 <b>+ Add</b>。每个人加一次就好。">Type each name under <b>Who is in the tabung</b> and press <b>+ Add</b>. Once per person.</p><ul class="pts"><li class="t" data-zh="名字用<b>大家认得出的那个</b>，因为最后结算表会直接用它。">Use names everyone will recognise — they appear directly in the settle-up table at the end.</li><li data-zh="后面还能加人。已经记过的支出<b>不会追溯</b>把新人算进去 — 旧的账就是旧的账。">You can add people later. Spending already recorded is <b>not recalculated</b> to include them — past entries keep their original split.</li><li class="w" data-zh="删人会问你一次。他的<b>存款记录会留着</b>，不会凭空消失。">Removing someone asks for confirmation. Their <b>contributions stay in the log</b> rather than vanishing.</li></ul></div></div><div class="step" id="s3"><div class="sh"><span class="no">3</span><span class="st"><b data-zh="存钱 — 记下每一笔出资">Money in — record each contribution</b><span data-zh="选人、填金额、按【记一笔存入】">Pick who paid in, the amount, press Add contribution</span></span><span class="cv">▾</span></div><div class="sb"><p data-zh="在 <b>⬇ Money in</b> 那一段：选是谁存的、填金额，需要的话写个备注，按 <b>Add contribution</b>。">Under <b>⬇ Money in</b>: choose who paid in, enter the amount, add a remark if useful, then press <b>Add contribution</b>.</p><ul class="pts"><li data-zh="每个人<b>分开记一笔</b>，不要把四个人的钱合成一笔 — 否则最后算不出谁该拿回多少。">Record <b>one entry per person</b>. Don’t lump four people’s money into a single entry, or the final “gets back” column can’t be worked out.</li><li class="t" data-zh="上方的<b>货币</b>选择会用在<b>下一笔</b>记录上 — 先选对再按按钮。">The <b>currency</b> selector at the top applies to the <b>next</b> entry — set it before pressing the button.</li><li data-zh="例子：四个人各存 ¥10,000 → 记四笔，公款共 ¥40,000。">Example: four people each put in ¥10,000 → four entries, pool total ¥40,000.</li></ul></div></div><div class="step" id="s4"><div class="sh"><span class="no">4</span><span class="st"><b data-zh="花钱 — 以及谁真的分摊了">Money out — and who actually shared it</b><span data-zh="这一步决定公不公平">The part that keeps it fair</span></span><span class="cv">▾</span></div><div class="sb"><p data-zh="在 <b>⬆ Money out</b> 那一段：写花在哪里、填金额，然后看 <b>Who shared this? / 谁一起分摊这笔？</b> 那一排名字。">Under <b>⬆ Money out</b>: say what it was for, enter the amount, then look at the <b>Who shared this?</b> row of names.</p><ul class="pts"><li data-zh="默认是 <b>Everyone / 全部人</b> — 普通的团体开销直接按钮就行，不用动。">It defaults to <b>Everyone</b> — for ordinary group costs just press the button, nothing to change.</li><li class="t" data-zh="只有部分人分摊时，<b>把没份的人点掉</b>，只留下真正享受到的。">When only some people shared it, <b>tap off the ones who didn’t</b> and leave only those who actually got the benefit.</li><li data-zh="金额会在选中的人之间<b>平均分</b>。">The amount is split <b>evenly</b> between the people you leave selected.</li><li class="w" data-zh="不能一个人都不选 — 全部点掉的话系统会自动留一个。">You can’t deselect everybody — if you try, one stays selected, because a spend belonging to nobody would break the arithmetic.</li><li class="t" data-zh="记录里会写【全部人一起分摊】或【分摊的人：A、B】 — 之后对账时查得到。">The log then reads “shared by everyone” or “shared by A, B” — so an unusual refund can always be traced back to the entry that caused it.</li></ul></div></div><div class="step" id="s5"><div class="sh"><span class="no">5</span><span class="st"><b data-zh="看最后怎么算">Read the settle-up</b><span data-zh="存入 · 实际用掉 · 该拿回">Paid in · Used · Gets back</span></span><span class="cv">▾</span></div><div class="sb"><p data-zh="【The pool / 公款状况】会显示余额，下面一张表：">The <b>The pool</b> block shows the balance, then a table:</p><table class="f"><tr><th data-zh="栏位">Column</th><th data-zh="意思">Means</th></tr><tr><td data-zh="存入">Paid in</td><td data-zh="这个人放进公款的钱">what this person put into the pool</td></tr><tr><td data-zh="实际用掉">Used</td><td data-zh="他分摊到的那些支出加起来">their share of the spending they were part of</td></tr><tr><td data-zh="该拿回">Gets back</td><td data-zh="存入 − 实际用掉。负数就是还欠公款">paid in − used. Negative means they still owe the pool</td></tr></table><ul class="pts"><li class="t" data-zh="下面每个人还有一行话：【要退给 X 广广】或【X 还欠公款 广广】— 直接照着做就行。">Below the table each person gets a line — “Give back to X” or “X still owes the tabung” — which you can just act on.</li><li data-zh="最后一行会自己对账：<b>退款合计必须等于公款余额</b>。对不上它会直接说出来。">The last line checks itself: <b>refunds must equal what’s left in the pool</b>. If they ever don’t, it says so rather than quietly showing wrong numbers.</li><li class="w" data-zh="支出超过公款时，余额变红，并提醒<b>有人先自己垫了</b>。">If spending exceeds the pool, the balance turns red and warns that <b>someone has covered the gap out of pocket</b>.</li></ul></div></div><div class="step" id="s6"><div class="sh"><span class="no">6</span><span class="st"><b data-zh="记错了怎么改">Fixing mistakes</b><span data-zh="删单笔，或清空全部">Delete a single entry, or clear everything</span></span><span class="cv">▾</span></div><div class="sb"><p data-zh="记录里每一笔右边都有个 <b>×</b>，按下去就删掉那一笔，数字会马上重算。">Every row in the log has a <b>×</b> on the right. Pressing it removes that entry and the numbers recalculate immediately.</p><ul class="pts"><li data-zh="改金额的做法：<b>删掉重新记一笔</b>，没有编辑功能。">To change an amount: <b>delete it and re-enter</b> — there is no edit.</li><li class="w" data-zh="<b>Clear the tabung</b> 会把这台设备上的整个公款清空，会先问你一次。不要随手按。"><b>Clear the tabung</b> wipes the whole pool on this device. It asks first, but don’t press it casually.</li></ul></div></div><div class="step" id="s7"><div class="sh"><span class="no">7</span><span class="st"><b data-zh="多台手机一起用">Sharing it across phones</b><span data-zh="共享账本，或一台手机记到底">One shared ledger, or one phone keeps it</span></span><span class="cv">▾</span></div><div class="sb"><p data-zh="公款可以<b>只存在你自己手机里</b>，也可以做成<b>大家共享的账本</b>。">The pool can live <b>only on your phone</b>, or be a <b>shared ledger</b> everyone can see.</p><ul class="pts"><li data-zh="Tabung 那一段上方有状态栏，以及 <b>🔄 Sync now</b>、<b>✨ Start shared ledger from this device</b> 两个按钮。">There’s a status strip above the tabung with <b>🔄 Sync now</b> and <b>✨ Start shared ledger from this device</b>.</li><li class="w" data-zh="要<b>修改</b>共享账本，需要解锁（<b>🔒 Enter password to edit</b>）。<b>密码不写在这份指南里</b> — 向建立账本的那个人拿。">Editing the shared ledger needs unlocking (<b>🔒 Enter password to edit</b>). <b>The password is deliberately not written in this guide</b> — get it from whoever set the ledger up.</li><li class="t" data-zh="最简单的做法：<b>指定一个人记账</b>，其他人只看。旅途中少很多麻烦。">Simplest arrangement: <b>one person records everything</b> and the rest just look. Far fewer problems mid-trip.</li><li class="w" data-zh="没网络也能记 — 先存在本机，有网络再按 Sync。">It works offline — entries save locally and you press Sync once you have signal.</li></ul></div></div>
+
+<h2 class="sec" id="fair" data-zh="公平在哪里 — 一个例子">Why “who shared this” matters</h2>
+<div class="card">
+  <p style="font-size:13px;line-height:1.6" data-zh="四个人各存 <b>¥10,000</b>，公款 <b>¥40,000</b>。花了四笔，其中两笔只有部分人分摊：">
+  Four people each put in <b>¥10,000</b> → pool <b>¥40,000</b>. Four things are paid out, two of them only for some people:</p>
+  <table class="f">
+    <tr><th data-zh="支出">Spend</th><th data-zh="金额">Amount</th><th data-zh="谁分摊">Shared by</th></tr>
+    <tr><td data-zh="第3天打车">Day 3 taxi</td><td>¥6,000</td><td data-zh="四个人">all 4</td></tr>
+    <tr><td data-zh="团体晚餐">Group dinner</td><td>¥9,000</td><td data-zh="四个人">all 4</td></tr>
+    <tr><td data-zh="买零食">Snack run</td><td>¥300</td><td>Agnes, WK</td></tr>
+    <tr><td data-zh="Bee 的纪念品">Bee’s souvenir</td><td>¥2,000</td><td data-zh="只有 Bee">Bee only</td></tr>
+  </table>
+  <p style="font-size:13px;line-height:1.6;margin-top:12px" data-zh="勾对了【谁分摊】之后，结果是：">With “who shared this” filled in correctly, the result is:</p>
+  <table class="f">
+    <tr><th data-zh="人">Person</th><th data-zh="存入">Paid in</th><th data-zh="实际用掉">Used</th><th data-zh="该拿回">Gets back</th></tr>
+    <tr><td>Agnes</td><td>¥10,000</td><td>¥3,900</td><td class="up">¥6,100</td></tr>
+    <tr><td>WK</td><td>¥10,000</td><td>¥3,900</td><td class="up">¥6,100</td></tr>
+    <tr><td>Bee</td><td>¥10,000</td><td>¥5,750</td><td class="up">¥4,250</td></tr>
+    <tr><td>Sam</td><td>¥10,000</td><td>¥3,750</td><td class="up">¥6,250</td></tr>
+    <tr class="tot"><td data-zh="合计">Total</td><td>¥40,000</td><td>¥17,300</td><td>¥22,700</td></tr>
+  </table>
+  <div class="warn"><b data-zh="如果不分，全部平摊：">If you skip it and split everything evenly:</b> <span data-zh="四个人都算用掉 ¥4,325，都拿回 ¥5,675 — <b>Bee 多拿了 ¥1,425</b>，这笔钱是另外三个人替她出的。">
+  all four are charged ¥4,325 and all four get ¥5,675 back — <b>Bee walks away ¥1,425 ahead</b>, paid for by the other three.</span></div>
+  <div class="good"><b data-zh="对账：">The check:</b> <span data-zh="退款合计 ¥22,700，公款余额也是 ¥22,700 — 对得上。这一行每次都会显示，所以公款不可能惄惄多出或少掉钱。">refunds add up to ¥22,700 and the pool holds ¥22,700 — balanced. That line is always shown, so the tabung can never quietly gain or lose money.</span></div>
+</div>
+
+<h2 class="sec" id="cur" data-zh="多货币">More than one currency</h2>
+<div class="card">
+  <ul class="pts">
+    <li data-zh="CNY、MYR、SGD <b>各算各的</b>，不换汇率，也不会加在一起。">'
+    CNY, MYR and SGD are <b>pooled separately</b> — no exchange rate is applied and they are never added together.</li>
+    <li data-zh="每种货币会有<b>自己一张结算表</b>。">Each currency gets <b>its own settle-up table</b>.</li>
+    <li class="t" data-zh="这是故意的 — 汇率每天在动，硬换反而会吵起来。真要合并，回来再用当时的汇率手动算。">'
+    That’s deliberate — rates move daily and forcing a conversion is what starts arguments. If you really want one number, convert manually after the trip at an agreed rate.</li>
+  </ul>
+</div>
+
+<h2 class="sec" id="tips" data-zh="实用建议">Tips that save arguments</h2>
+<div class="card">
+  <ul class="pts">
+    <li class="t" data-zh="<b>当场就记</b>。一天下来没人记得那 ¥300 是谁吃的。">'
+    <b>Record it on the spot.</b> By the end of a day nobody remembers who the ¥300 snack was for.</li>
+    <li data-zh="写得具体一点：<b>【第3天 银山打车】</b>比【打车】好查得多。">'
+    Be specific: <b>“Day 3 Ginzan taxi”</b> is far easier to check later than “taxi”.</li>
+    <li data-zh="存钱先记，再开始花 — 否则余额会是负的，看起来很吓人。">'
+    Log the contributions before you start spending, or the balance goes negative and looks alarming.</li>
+    <li class="w" data-zh="<b>个人购物不要进公款</b>。要进就勾只有他自己分摊 — 但那样还不如自己付。">'
+    <b>Keep personal shopping out of the pool.</b> If it must go in, tick only that person — but at that point it’s simpler for them to pay themselves.</li>
+    <li data-zh="最后一天先对一遍账再分钱，大家都在场比较好说话。">'
+    Do the settle-up on the last day while everyone is still together.</li>
+    <li class="t" data-zh="记得公款只存在<b>记账那台设备</b>里（除非用了共享账本）— 别清浏览器数据。">'
+    Unless you use the shared ledger, the pool lives <b>only on the device that recorded it</b> — don’t clear that browser’s data.</li>
+  </ul>
+</div>
+
+<footer><span data-zh="对应指南 v74 的 Tabung 功能。共享账本的密码不写在这里 — 向建立账本的人拿。">
+Written for the Tabung feature in guide v74. The shared-ledger password is deliberately not in this file — get it from whoever set the ledger up.</span></footer>
+
+</div>
+
+<script>
+(function(){
+  var LANG = "en";
+  function applyLang(){
+    document.querySelectorAll("[data-zh]").forEach(function(el){
+      if(!el.hasAttribute("data-en")) el.setAttribute("data-en", el.innerHTML);
+      el.innerHTML = (LANG === "zh") ? el.getAttribute("data-zh") : el.getAttribute("data-en");
+    });
+    var b = document.getElementById("lang");
+    if(b) b.textContent = (LANG === "zh") ? "EN" : "\u4e2d\u6587";
+    document.documentElement.lang = (LANG === "zh") ? "zh" : "en";
+  }
+  document.getElementById("lang").addEventListener("click", function(){
+    LANG = (LANG === "zh") ? "en" : "zh"; applyLang();
+    try{ localStorage.setItem("tabungGuideLang", LANG); }catch(e){}
+  });
+  try{ if(localStorage.getItem("tabungGuideLang") === "zh") LANG = "zh"; }catch(e){}
+  applyLang();
+
+  document.querySelectorAll(".step .sh").forEach(function(h){
+    h.addEventListener("click", function(){ h.parentNode.classList.toggle("open"); });
+  });
+  document.getElementById("allOpen").addEventListener("click", function(){
+    document.querySelectorAll(".step").forEach(function(s){ s.classList.add("open"); });
+  });
+  document.getElementById("allShut").addEventListener("click", function(){
+    document.querySelectorAll(".step").forEach(function(s){ s.classList.remove("open"); });
+  });
+
+  var TK = "tabungGuideTheme";
+  function theme(t){
+    if(t === "dark") document.documentElement.setAttribute("data-theme","dark");
+    else document.documentElement.removeAttribute("data-theme");
+    var b = document.getElementById("theme");
+    if(b) b.textContent = (t === "dark") ? "\u25d1" : "\u25d0";
+  }
+  var saved = "light";
+  try{ if(localStorage.getItem(TK) === "dark") saved = "dark"; }catch(e){}
+  theme(saved);
+  document.getElementById("theme").addEventListener("click", function(){
+    var now = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    try{ localStorage.setItem(TK, now); }catch(e){}
+    theme(now);
+  });
+
+  var links = [].slice.call(document.querySelectorAll("nav.qn a"));
+  var secs = links.map(function(a){ return document.getElementById(a.getAttribute("href").slice(1)); });
+  function spy(){
+    var best = 0;
+    secs.forEach(function(s, i){ if(s && s.getBoundingClientRect().top <= 90) best = i; });
+    links.forEach(function(a, i){ a.classList.toggle("on", i === best); });
+  }
+  window.addEventListener("scroll", spy, {passive:true});
+  spy();
+})();
+</script>
+</body></html>

@@ -1,0 +1,623 @@
+{
+ "_readme": "Chengdu Trip Guide - 8-day itinerary rows. The guide reads this file from data/tour_8d.json and redraws Days 1-8 from it. Each day: title/meta/weather {en,zh}, then blocks (one per timeline) of rows. A row = {time, class, en, zh, tzh?}. class: '' (agent's chartered-car plan, grey), 'add' (ADD-ON, gold), 'self' (self-guided free day, blue), 'kon' (supply run, green), 'kon vital' (stock up). en/zh may be plain text or HTML. Bump 'version' by 1 every time you save; devices ignore a copy with a lower version.",
+ "version": 1,
+ "updated": "2026-09-24",
+ "days": [
+  {
+   "day": 1,
+   "title": {
+    "en": "Fly in — Chengdu, easy first day",
+    "zh": "抵达成都 — 轻松第一天"
+   },
+   "meta": {
+    "en": "Sat 16 Jan · red-eye via Singapore · stay: Meiqin Hotel (Kuanzhai Alley · Kuixinglou)",
+    "zh": "1月16日 周六 · 经新加坡夜班机 · 住：美沁酒店（成都宽窄巷子奎星楼店）"
+   },
+   "weather": {
+    "en": "<b>10° / 4°</b><br>overcast",
+    "zh": "<b>10° / 4°</b><br>阴天"
+   },
+   "blocks": [
+    [
+     {
+      "time": "Fri 19:00",
+      "class": "",
+      "en": "<b>Meet at KLIA Terminal 1</b> — check in at the Scoot/SQ counter 3 h before. Ask for the bags to be <b>tagged through to TFU</b> (Chengdu Tianfu) so you don’t collect them in Singapore.",
+      "zh": "<b>KLIA 第1航站楼集合</b> — 起飞前 3 小时到 Scoot／新航柜台办登机。请柜台把行李<b>直挂到 TFU</b>（成都天府），新加坡不用领行李。",
+      "tzh": "周五 19:00"
+     },
+     {
+      "time": "Fri 22:00",
+      "class": "",
+      "en": "<b>SQ8505</b> (operated by Scoot) KUL T1 → SIN T1 · 1h20m",
+      "zh": "<b>SQ8505</b>（酷航执飞）吉隆坡 T1 → 新加坡 T1 · 1小时20分",
+      "tzh": "周五 22:00"
+     },
+     {
+      "time": "23:20",
+      "class": "",
+      "en": "<b>Changi transfer</b> — 2h50m. Follow <i>Transfer</i> signs from T1 to <b>T3</b> by the airside Skytrain; no immigration. Security is at the gate.",
+      "zh": "<b>樟宜转机</b> — 2小时50分。跟着 <i>Transfer</i> 指示从 T1 坐禁区内的 Skytrain 去 <b>T3</b>，不用过移民局。安检在登机口。"
+     },
+     {
+      "time": "02:10",
+      "class": "",
+      "en": "<b>SQ846</b> SIN T3 → Chengdu TFU T1 · 4h45m · meal on board — sleep as much as you can",
+      "zh": "<b>SQ846</b> 新加坡 T3 → 成都天府 T1 · 4小时45分 · 机上有餐 — 尽量睡"
+     },
+     {
+      "time": "06:55",
+      "class": "",
+      "en": "<b>Land at Chengdu Tianfu (TFU) T1</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Visa-free entry for Malaysians (up to 30 days). Have your <b>online arrival card QR</b> ready — see ✈ Airport rules.</li><li>Fingerprints + photo at the kiosk before the officer. Then bags → green channel.</li></ul>",
+      "zh": "<b>抵达成都天府国际机场 T1</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>马来西亚护照免签入境（最多 30 天）。准备好<b>网上入境卡的 QR 码</b> — 见 ✈ 机场规定。</li><li>先在自助机按指纹、拍照，再见移民官。然后领行李 → 走绿色通道。</li></ul>"
+     },
+     {
+      "time": "07:45",
+      "class": "kon",
+      "en": "<span class=\"badge kon\">SUPPLY RUN</span><b>TFU arrivals hall</b><span class=\"dist\">0 min · before you meet the driver</span><span class=\"verdict go\">Five minutes here saves hassle all day.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Check mobile data works (roaming / eSIM) and open Alipay once so it’s logged in.</li><li>Bank of China / ICBC ATMs take Visa & Mastercard — pull a little cash (¥300–500 each) for rural toilets and snack stalls.</li><li>Hot water & a coffee here if you slept badly.</li></ul>",
+      "zh": "<span class=\"badge kon\">补给站</span><b>天府机场到达大厅</b><span class=\"dist\">0 分钟 · 见司机之前</span><span class=\"verdict go\">花 5 分钟，整天都顺。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>确认手机数据能用（漫游／eSIM），打开支付宝登录一次。</li><li>中国银行／工商银行 ATM 接受 Visa 和万事达 — 每人领一点现金（¥300–500），山区厕所和小摊用。</li><li>没睡好就在这里买杯热饮或咖啡。</li></ul>"
+     },
+     {
+      "time": "08:00",
+      "class": "",
+      "en": "<b>Private car pick-up</b> (专车接机, in the package) → hotel · ~70 km, ~1h10 on the airport expressway. The driver waits free if the flight is late.",
+      "zh": "<b>专车接机</b>（套餐已含）→ 酒店 · 约 70 公里，机场高速约 1小时10分。航班延误司机免费等。"
+     },
+     {
+      "time": "09:30",
+      "class": "",
+      "en": "<b>Drop bags at the hotel</b> — Meiqin Hotel (Kuanzhai Alley · Kuixinglou)<ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Check-in is usually 14:00. Ask nicely for early check-in — you’ve been awake since KL.</li><li>Every hotel scans every passport — keep yours on you.</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E7%BE%8E%E6%B2%81%E9%85%92%E5%BA%97%20%E5%AE%BD%E7%AA%84%E5%B7%B7%E5%AD%90%E5%A5%8E%E6%98%9F%E6%A5%BC%E5%BA%97\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Meiqin%20Hotel%20Kuixinglou%20Chengdu\" target=\"_blank\">Google</a></span>",
+      "zh": "<b>酒店寄存行李</b> — 美沁酒店（成都宽窄巷子奎星楼店）<ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>入住一般 14:00。可以问问能不能提早入住 — 你们从吉隆坡出发就没好好睡。</li><li>每家酒店都要登记每个人的护照 — 随身带着。</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E7%BE%8E%E6%B2%81%E9%85%92%E5%BA%97%20%E5%AE%BD%E7%AA%84%E5%B7%B7%E5%AD%90%E5%A5%8E%E6%98%9F%E6%A5%BC%E5%BA%97\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Meiqin%20Hotel%20Kuixinglou%20Chengdu\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "10:00",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Breakfast like a local — Kuixinglou Street</b><span class=\"dist\">~3 min walk</span><span class=\"geo\"><span class=\"pin\">📍</span>Right outside the hotel — the lane is lined with noodle and snack shops.</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li><b>甜水面</b> sweet-water noodles, <b>担担面</b> dan dan noodles, <b>红油抄手</b> wontons in chilli oil — ¥12–20</li><li>Say <b>微辣</b> (wēi là, mild) — even ‘mild’ has a kick here</li></ul>",
+      "zh": "<span class=\"badge add\">加点</span><b>像本地人一样吃早餐 — 奎星楼街</b><span class=\"dist\">步行约 3 分钟</span><span class=\"geo\"><span class=\"pin\">📍</span>就在酒店门口 — 整条街都是面馆和小吃店。</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li><b>甜水面</b>、<b>担担面</b>、<b>红油抄手</b> — ¥12–20</li><li>点<b>微辣</b> — 这里的「微辣」也够辣</li></ul>"
+     },
+     {
+      "time": "11:00",
+      "class": "",
+      "en": "<b>People’s Park + Heming Teahouse</b><span class=\"dist\">~15 min walk / DiDi 5 min</span><span class=\"verdict go\">The most Chengdu hour of the trip — bamboo chairs, tea, mahjong clatter.</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>Covered-bowl tea at <b>鹤鸣茶社</b>, ~¥20–40 a cup, refills of hot water are free</li><li class=\"grp film\"><span>📸 TO SEE</span></li><li><b>采耳</b> ear-cleaning by roaming masters (~¥30–50) — only if you’re brave</li><li>It’s Saturday — the <b>matchmaking corner</b> (相亲角) is on: parents posting their children’s CVs</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E4%BA%BA%E6%B0%91%E5%85%AC%E5%9B%AD%20%E9%B9%A4%E9%B8%A3%E8%8C%B6%E7%A4%BE\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Heming%20Teahouse%20People%27s%20Park%20Chengdu\" target=\"_blank\">Google</a></span>",
+      "zh": "<b>人民公园 + 鹤鸣茶社</b><span class=\"dist\">步行约 15 分钟／滴滴 5 分钟</span><span class=\"verdict go\">最有成都味的一小时 — 竹椅、盖碗茶、麻将声。</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>在<b>鹤鸣茶社</b>喝盖碗茶，约 ¥20–40 一杯，热水免费续</li><li class=\"grp film\"><span>📸 要看的</span></li><li>流动师傅的<b>采耳</b>（约 ¥30–50）— 胆子大再试</li><li>今天周六 — <b>相亲角</b>开张：父母替子女贴「简历」</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E4%BA%BA%E6%B0%91%E5%85%AC%E5%9B%AD%20%E9%B9%A4%E9%B8%A3%E8%8C%B6%E7%A4%BE\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Heming%20Teahouse%20People%27s%20Park%20Chengdu\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "13:00",
+      "class": "",
+      "en": "Lunch nearby, then <b>check in and nap</b> 14:00–16:00. Tomorrow starts at 07:45 — bank the sleep.",
+      "zh": "附近吃午餐，然后<b>入住补眠</b> 14:00–16:00。明天 07:45 就出发 — 先把觉补回来。"
+     },
+     {
+      "time": "16:30",
+      "class": "self",
+      "en": "<span class=\"badge self\">SELF-GUIDED</span><b>Chunxi Road · Taikoo Li · IFS panda</b><span class=\"dist\">DiDi ~12 min, ~¥15</span><span class=\"verdict go\">Go at dusk — the lights come on around 17:45 and Taikoo Li looks best lit.</span><ul class=\"pts\"><li class=\"grp go\"><span>🚇 GETTING THERE</span></li><li>Metro: walk to <b>人民公园</b> station (Line 2) → 2 stops to <b>春熙路</b></li><li class=\"grp film\"><span>📸 TO SEE</span></li><li>The giant <b>panda climbing the IFS wall</b> (‘I Am Here’) — best view from the street corner opposite, or the 7F roof garden</li><li><b>大慈寺</b> Daci Temple sits inside Taikoo Li — free, calm, 10 min</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E6%88%90%E9%83%BDIFS%E5%9B%BD%E9%99%85%E9%87%91%E8%9E%8D%E4%B8%AD%E5%BF%83\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Chengdu%20IFS\" target=\"_blank\">Google</a></span>",
+      "zh": "<span class=\"badge self\">自由行</span><b>春熙路 · 太古里 · IFS 熊猫</b><span class=\"dist\">滴滴约 12 分钟，约 ¥15</span><span class=\"verdict go\">傍晚去 — 17:45 左右亮灯，太古里夜景最好看。</span><ul class=\"pts\"><li class=\"grp go\"><span>🚇 怎么去</span></li><li>地铁：走到<b>人民公园站</b>（2号线）→ 坐 2 站到<b>春熙路</b></li><li class=\"grp film\"><span>📸 要看的</span></li><li><b>IFS 外墙爬墙熊猫</b> —— 对面街角看最完整，也可以上 7 楼屋顶花园</li><li><b>大慈寺</b>就在太古里里面 — 免费、安静，逛 10 分钟</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E6%88%90%E9%83%BDIFS%E5%9B%BD%E9%99%85%E9%87%91%E8%9E%8D%E4%B8%AD%E5%BF%83\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Chengdu%20IFS\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "19:00",
+      "class": "",
+      "en": "<b>Kuanzhai Alley by night</b><span class=\"dist\">DiDi ~12 min back · 5 min from the hotel</span><span class=\"geo\"><span class=\"pin\">📍</span>Three parallel lanes — Wide, Narrow and Well Alley — just north-west of the hotel. Free entry.</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li><b>三大炮</b> (glutinous rice balls thrown so they ‘bang’), <b>糖油果子</b>, <b>叶儿粑</b></li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E5%AE%BD%E7%AA%84%E5%B7%B7%E5%AD%90\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Kuanzhai%20Alley%20Chengdu\" target=\"_blank\">Google</a></span>",
+      "zh": "<b>宽窄巷子夜游</b><span class=\"dist\">滴滴约 12 分钟回来 · 离酒店 5 分钟</span><span class=\"geo\"><span class=\"pin\">📍</span>宽巷子、窄巷子、井巷子三条平行小巷 — 就在酒店西北边。免费。</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li><b>三大炮</b>（打得「砰砰」响的糯米团）、<b>糖油果子</b>、<b>叶儿粑</b></li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E5%AE%BD%E7%AA%84%E5%B7%B7%E5%AD%90\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Kuanzhai%20Alley%20Chengdu\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "20:00",
+      "class": "",
+      "en": "<b>Dinner — Kuixinglou food street</b><span class=\"dist\">back at the hotel door</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li><b>钵钵鸡</b> (skewers in cold chilli broth), <b>冒菜</b>, <b>串串香</b> — the lighter cousins of hotpot, good for a tired first night</li><li>Save the proper hotpot for Day 6 when everyone’s rested</li></ul>",
+      "zh": "<b>晚餐 — 奎星楼美食街</b><span class=\"dist\">就在酒店门口</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li><b>钵钵鸡</b>、<b>冒菜</b>、<b>串串香</b> — 火锅的「轻量版」，第一晚累了吃刚好</li><li>正宗火锅留到第 6 天大家精神好再吃</li></ul>"
+     },
+     {
+      "time": "21:30",
+      "class": "kon vital",
+      "en": "<span class=\"badge kon\">SUPPLY RUN</span><span class=\"badge stock\">STOCK UP</span><b>Hongqi Chain / FamilyMart + a pharmacy near the hotel</b><span class=\"verdict tight\">Tomorrow night is a mountain hot-spring hotel — few shops. Buy tonight.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Snacks + water for a 3.5 h drive</li><li><b>晕车药</b> motion-sickness pills — the last stretch into Bipenggou is winding</li><li><b>红景天</b> (rhodiola) capsules if you want an altitude aid — start a day or two ahead</li><li><b>暖宝宝</b> heat patches — a fraction of the Malaysian price</li></ul>",
+      "zh": "<span class=\"badge kon\">补给站</span><span class=\"badge stock\">先囤货</span><b>红旗连锁／全家 + 酒店附近药店</b><span class=\"verdict tight\">明晚住山里的温泉酒店 — 附近几乎没店。今晚买好。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>3.5 小时车程的零食和水</li><li><b>晕车药</b> — 进毕棚沟的最后一段山路很弯</li><li>想预防高反可以买<b>红景天</b>胶囊 — 提早一两天开始吃</li><li><b>暖宝宝</b> — 比马来西亚便宜很多</li></ul>"
+     }
+    ]
+   ]
+  },
+  {
+   "day": 2,
+   "title": {
+    "en": "Chengdu → Bipenggou → Li County",
+    "zh": "成都 → 毕棚沟 → 理县"
+   },
+   "meta": {
+    "en": "Sun 17 Jan · chartered 7-seat van · stay: Lixian Bipeng · Shiguang Hot-spring Hotel",
+    "zh": "1月17日 周日 · 7座商务车包车 · 住：理县毕棚·拾光温泉酒店"
+   },
+   "weather": {
+    "en": "<b>-1° / -9°</b><br>snow in the valley",
+    "zh": "<b>-1° / -9°</b><br>沟里有雪 ❄"
+   },
+   "blocks": [
+    [
+     {
+      "time": "07:00",
+      "class": "",
+      "en": "Breakfast at the hotel",
+      "zh": "酒店早餐"
+     },
+     {
+      "time": "07:45",
+      "class": "",
+      "en": "<b>Driver pick-up → Bipenggou</b><span class=\"dist\">~210 km · ~3.5 h</span><span class=\"geo\"><span class=\"pin\">📍</span>Chengdu–Dujiangyan–Wenchuan expressway, then the valley road into Li County. The last ~30 km bends a lot.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Anyone who gets car-sick: take the pill <b>30 min before</b>, sit in the front row</li><li>Keep your passport in your day bag, not the boot — there can be ID checks on the road into Aba prefecture</li></ul>",
+      "zh": "<b>司机接 → 毕棚沟</b><span class=\"dist\">约 210 公里 · 约 3.5 小时</span><span class=\"geo\"><span class=\"pin\">📍</span>成灌／都汶高速，再转山谷公路进理县。最后约 30 公里很多弯。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>会晕车的：出发前 <b>30 分钟</b>吃药，坐前排</li><li>护照放随身包，别放后车厢 — 进阿坝州的路上可能查证件</li></ul>"
+     },
+     {
+      "time": "09:30",
+      "class": "kon",
+      "en": "<span class=\"badge kon\">SUPPLY RUN</span><b>Expressway service area</b><span class=\"dist\">the driver’s usual stop</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Toilet stop, hot drinks, <b>烤玉米</b> / hot sweet potato</li><li>No grip on your shoes? Village shops near the Bipenggou gate sell or rent <b>冰爪</b> (strap-on crampons) and snow boots — ask the driver</li></ul>",
+      "zh": "<span class=\"badge kon\">补给站</span><b>高速服务区</b><span class=\"dist\">司机惯常停的点</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>上厕所、买热饮、<b>烤玉米</b>／烤红薯</li><li>鞋子不防滑？毕棚沟门口的店有卖或租<b>冰爪</b>和雪地靴 — 问司机</li></ul>"
+     },
+     {
+      "time": "11:15",
+      "class": "",
+      "en": "<b>Bipenggou Scenic Area — visitor centre</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Tickets <b>¥70 + sightseeing bus ¥70</b> per person — booked by the agent (see References). Passport needed at the gate.</li><li>Eat lunch here before going up — food higher in the valley is limited</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E6%AF%95%E6%A3%9A%E6%B2%9F%E9%A3%8E%E6%99%AF%E5%8C%BA%E6%B8%B8%E5%AE%A2%E4%B8%AD%E5%BF%83\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Bipenggou%20Scenic%20Area\" target=\"_blank\">Google</a></span>",
+      "zh": "<b>毕棚沟风景区 — 游客中心</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>门票 <b>¥70 + 观光车 ¥70</b> 每人 — 旅行社代订（见参考资料）。进门要护照。</li><li>上山前先在这里吃午餐 — 沟里上面吃的很少</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E6%AF%95%E6%A3%9A%E6%B2%9F%E9%A3%8E%E6%99%AF%E5%8C%BA%E6%B8%B8%E5%AE%A2%E4%B8%AD%E5%BF%83\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Bipenggou%20Scenic%20Area\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "12:00",
+      "class": "",
+      "en": "<b>Bus to the top, then work your way down</b><span class=\"verdict go\">Go straight up to 上海子 first while you’re fresh — then descend stop by stop.</span><ul class=\"pts\"><li class=\"grp film\"><span>📸 TO SEE</span></li><li><b>上海子</b> Upper Haizi — the highest lake, snow peaks behind</li><li><b>飞龙瀑布</b> Flying Dragon Falls — in January it freezes into ice curtains</li><li><b>燕子岩</b> · <b>磐羊湖</b> · <b>圣山湖</b> · <b>龙王海</b> — the lake chain on the way down</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>The ‘川西红叶彩林’ red-leaf belt on the itinerary is an autumn sight — in January it’s a snow forest instead</li><li>Check the <b>last bus down</b> time at the ticket office (usually around 16:00–16:30 in winter)</li></ul>",
+      "zh": "<b>坐车先到最高点，再一站站往下玩</b><span class=\"verdict go\">趁体力好先直上上海子 — 再一站站往下。</span><ul class=\"pts\"><li class=\"grp film\"><span>📸 要看的</span></li><li><b>上海子</b> — 最高的海子，背后是雪山</li><li><b>飞龙瀑布</b> — 一月会冻成冰瀑</li><li><b>燕子岩</b> · <b>磐羊湖</b> · <b>圣山湖</b> · <b>龙王海</b> — 下山路上的一串湖</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>行程上写的「川西红叶彩林观光带」是秋天的景 — 一月看到的是雪林</li><li>在售票处确认<b>下山末班车</b>时间（冬天一般约 16:00–16:30）</li></ul>"
+     },
+     {
+      "time": "16:15",
+      "class": "",
+      "en": "Back at the visitor centre → drive to the hotel in Li County (~30–60 min).",
+      "zh": "回到游客中心 → 开车去理县酒店（约 30–60 分钟）。"
+     },
+     {
+      "time": "17:30",
+      "class": "",
+      "en": "<b>Check in — Bipeng · Shiguang Hot-spring Hotel</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li><b>Bring a swimsuit</b> — ask reception for the hot-spring hours and whether caps are required</li><li>Soak <b>before</b> dinner if you feel cold; keep it to 15–20 min at altitude</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E7%90%86%E5%8E%BF%E6%AF%95%E6%A3%9A%E6%8B%BE%E5%85%89%E6%B8%A9%E6%B3%89%E9%85%92%E5%BA%97\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Lixian%20hot%20spring%20hotel%20Bipenggou\" target=\"_blank\">Google</a></span>",
+      "zh": "<b>入住 — 理县毕棚·拾光温泉酒店</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li><b>带泳衣</b> — 问前台温泉开放时间、要不要戴泳帽</li><li>觉得冷就<b>晚餐前</b>先泡；高海拔每次 15–20 分钟就好</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E7%90%86%E5%8E%BF%E6%AF%95%E6%A3%9A%E6%8B%BE%E5%85%89%E6%B8%A9%E6%B3%89%E9%85%92%E5%BA%97\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Lixian%20hot%20spring%20hotel%20Bipenggou\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "18:45",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Dinner — yak hotpot or Qiang home cooking</b><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li><b>牦牛肉火锅</b> yak-meat hotpot, <b>洋芋糍粑</b> potato cakes, <b>酥油茶</b> butter tea</li><li class=\"warn\"><b>腊肉</b> smoked pork is everywhere here — eat it, don’t pack it (Malaysian customs)</li></ul>",
+      "zh": "<span class=\"badge add\">加点</span><b>晚餐 — 牦牛肉火锅或羌家菜</b><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li><b>牦牛肉火锅</b>、<b>洋芋糍粑</b>、<b>酥油茶</b></li><li class=\"warn\">这里到处是<b>腊肉</b> — 在这里吃，别带回马来西亚（海关）</li></ul>"
+     },
+     {
+      "time": "20:30",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span>Second soak when it’s quiet, then early night. Breakfast 07:30.",
+      "zh": "<span class=\"badge add\">加点</span>人少时再泡一轮，然后早睡。明早 07:30 早餐。"
+     }
+    ]
+   ]
+  },
+  {
+   "day": 3,
+   "title": {
+    "en": "Li County → Diexi Lake → Songpan Ancient Town",
+    "zh": "理县 → 叠溪海子 → 松潘古城"
+   },
+   "meta": {
+    "en": "Mon 18 Jan · chartered van · stay: Songpan Lizhe Bieyuan (丽呈别院)",
+    "zh": "1月18日 周一 · 包车 · 住：松潘丽呈别院"
+   },
+   "weather": {
+    "en": "<b>5° / -11°</b><br>sunny, very dry",
+    "zh": "<b>5° / -11°</b><br>晴，很干燥"
+   },
+   "blocks": [
+    [
+     {
+      "time": "07:30",
+      "class": "",
+      "en": "Breakfast at the hotel",
+      "zh": "酒店早餐"
+     },
+     {
+      "time": "08:30",
+      "class": "",
+      "en": "<b>Drive north along the Min River</b><span class=\"dist\">~200 km · ~3.5 h to Diexi</span><span class=\"geo\"><span class=\"pin\">📍</span>Li County → Maoxian → the Min River gorge (G213). Dramatic canyon scenery the whole way — sit by a window.</span>",
+      "zh": "<b>沿岷江一路往北</b><span class=\"dist\">到叠溪约 200 公里 · 约 3.5 小时</span><span class=\"geo\"><span class=\"pin\">📍</span>理县 → 茂县 → 岷江峡谷（G213）。一路都是峡谷风景 — 坐窗边。</span>"
+     },
+     {
+      "time": "12:00",
+      "class": "",
+      "en": "<b>Diexi Lake 叠溪海子</b><span class=\"dist\">roadside viewpoints · 30–45 min</span><span class=\"verdict go\">A lake made by the 1933 earthquake that buried the old town — winter water is deep turquoise.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Wind here is sharp — hat and gloves on before you step out</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E5%8F%A0%E6%BA%AA%E6%B5%B7%E5%AD%90\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Diexi%20Lake\" target=\"_blank\">Google</a></span>",
+      "zh": "<b>叠溪海子</b><span class=\"dist\">路边观景台 · 30–45 分钟</span><span class=\"verdict go\">1933 年大地震堵江形成的湖，淹没了古城 — 冬天湖水是深蓝绿色。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>风很大 — 下车前先戴好帽子手套</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E5%8F%A0%E6%BA%AA%E6%B5%B7%E5%AD%90\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Diexi%20Lake\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "12:45",
+      "class": "",
+      "en": "Lunch on the road (small restaurants around Diexi / Jiaochang) — or push on to Songpan and eat there.",
+      "zh": "路上吃午餐（叠溪／较场一带小馆子）— 或者直接到松潘再吃。"
+     },
+     {
+      "time": "14:30",
+      "class": "",
+      "en": "<b>Arrive Songpan</b> → check in at 丽呈别院 · rest 30–45 min before walking about. Let your body catch up with the altitude.",
+      "zh": "<b>抵达松潘</b> → 入住丽呈别院 · 先休息 30–45 分钟再出门，让身体适应海拔。"
+     },
+     {
+      "time": "15:30",
+      "class": "",
+      "en": "<b>Songpan Ancient Town</b><span class=\"dist\">walk from the hotel</span><span class=\"geo\"><span class=\"pin\">📍</span>A Ming-dynasty walled garrison town — gates, ramparts and covered bridges over the Min River.</span><ul class=\"pts\"><li class=\"grp film\"><span>📸 TO SEE</span></li><li>Walk a stretch of the <b>city wall</b> from the north gate — views over the valley</li><li><b>古松桥</b> covered bridge and the old street between the gates</li><li>A large <b>Hui Muslim</b> community — the mosque and halal food streets</li><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Yak-bone combs, Tibetan silver, woollen scarves</li><li class=\"warn\"><b>牦牛肉干</b> yak jerky is sold everywhere — snack on it here only</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E6%9D%BE%E6%BD%98%E5%8F%A4%E5%9F%8E\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Songpan%20Ancient%20Town\" target=\"_blank\">Google</a></span>",
+      "zh": "<b>松潘古城</b><span class=\"dist\">从酒店走过去</span><span class=\"geo\"><span class=\"pin\">📍</span>明代的边关古城 — 城门、城墙、岷江上的廊桥。</span><ul class=\"pts\"><li class=\"grp film\"><span>📸 要看的</span></li><li>从北门上<b>城墙</b>走一段 — 可以看整个河谷</li><li><b>古松桥</b>廊桥，和城门之间的老街</li><li>这里有很多<b>回族</b> — 清真寺和清真美食街</li><li class=\"grp buy\"><span>🛍 要买的</span></li><li>牦牛角梳、藏银饰品、羊毛围巾</li><li class=\"warn\">到处都卖<b>牦牛肉干</b> — 只能在这里吃</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E6%9D%BE%E6%BD%98%E5%8F%A4%E5%9F%8E\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Songpan%20Ancient%20Town\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "18:30",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Dinner — halal beef noodles or yak dishes</b><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li><b>牦牛肉包子</b> yak buns, hand-pulled beef noodles, <b>青稞</b> barley bread</li></ul>",
+      "zh": "<span class=\"badge add\">加点</span><b>晚餐 — 清真牛肉面或牦牛菜</b><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li><b>牦牛肉包子</b>、手工牛肉面、<b>青稞</b>饼</li></ul>"
+     },
+     {
+      "time": "20:00",
+      "class": "kon vital",
+      "en": "<span class=\"badge kon\">SUPPLY RUN</span><span class=\"badge stock\">STOCK UP</span><b>Supplies for Jiuzhaigou</b><span class=\"verdict tight\">Tomorrow leaves at 06:45 and food inside the park is limited and pricey. Buy tonight.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Water, chocolate, nuts, bread for the day</li><li><b>便携氧气</b> can if anyone felt the altitude today</li><li><b>冰爪</b> crampons if you didn’t get them at Bipenggou — the boardwalks by the upper lakes ice over</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Ask hotel reception tonight for an <b>early breakfast or a breakfast box</b> (早餐打包)</li></ul>",
+      "zh": "<span class=\"badge kon\">补给站</span><span class=\"badge stock\">先囤货</span><b>为九寨沟准备补给</b><span class=\"verdict tight\">明天 06:45 出发，景区里吃的少又贵。今晚买好。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>一天份的水、巧克力、坚果、面包</li><li>今天有人高反就买一罐<b>便携氧气</b></li><li>毕棚沟没买的话现在买<b>冰爪</b> — 上面湖边栈道会结冰</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>今晚跟前台说要<b>提早吃早餐或打包早餐</b></li></ul>"
+     }
+    ]
+   ]
+  },
+  {
+   "day": 4,
+   "title": {
+    "en": "Jiuzhaigou — the full day",
+    "zh": "九寨沟 — 一整天"
+   },
+   "meta": {
+    "en": "Tue 19 Jan · chartered van · stay: JS · Jisheng Hotel (Jiuzhaigou visitor-centre branch)",
+    "zh": "1月19日 周二 · 包车 · 住：JS·吉盛酒店（九寨沟游客中心店）"
+   },
+   "weather": {
+    "en": "<b>4° / -9°</b><br>clear, lakes part-frozen",
+    "zh": "<b>4° / -9°</b><br>晴，湖面部分结冰"
+   },
+   "blocks": [
+    [
+     {
+      "time": "06:15",
+      "class": "",
+      "en": "Breakfast (early, or the box you ordered)",
+      "zh": "早餐（提早吃，或昨晚订的打包早餐）"
+     },
+     {
+      "time": "06:45",
+      "class": "",
+      "en": "<b>Songpan → Jiuzhaigou</b><span class=\"dist\">~105 km · ~2 h in winter</span><span class=\"geo\"><span class=\"pin\">📍</span>Over the Gonggangling pass (~3,500 m) — the road can be icy, so the driver will take it slowly.</span>",
+      "zh": "<b>松潘 → 九寨沟</b><span class=\"dist\">约 105 公里 · 冬天约 2 小时</span><span class=\"geo\"><span class=\"pin\">📍</span>要翻弓杠岭（约 3,500 米）— 路面可能结冰，司机会开慢。</span>"
+     },
+     {
+      "time": "08:45",
+      "class": "",
+      "en": "<b>Jiuzhaigou gate (沟口)</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Off-season tickets <b>¥80 + green bus ¥80</b> per person (16 Nov–31 Mar) — booked by the agent, real-name on your passport</li><li>Keep the bus ticket — you show it every time you board</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E4%B9%9D%E5%AF%A8%E6%B2%9F%E6%99%AF%E5%8C%BA%20%E6%B2%9F%E5%8F%A3\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Jiuzhaigou%20Valley%20entrance\" target=\"_blank\">Google</a></span>",
+      "zh": "<b>九寨沟沟口</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>淡季门票 <b>¥80 + 观光车 ¥80</b> 每人（11月16日–3月31日）— 旅行社代订，护照实名</li><li>观光车票收好 — 每次上车都要出示</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E4%B9%9D%E5%AF%A8%E6%B2%9F%E6%99%AF%E5%8C%BA%20%E6%B2%9F%E5%8F%A3\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Jiuzhaigou%20Valley%20entrance\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "09:00",
+      "class": "",
+      "en": "<b>Bus up the Rize valley to the Primeval Forest</b><span class=\"dist\">~40 min ride</span><span class=\"verdict go\">Classic plan: top first, then hop down the valley stop by stop.</span><ul class=\"pts\"><li class=\"grp film\"><span>📸 TO SEE</span></li><li><b>原始森林</b> Primeval Forest — snow-loaded firs, quiet boardwalk</li><li><b>芳草海</b> Fragrant Grass Lake just below</li></ul>",
+      "zh": "<b>坐车上日则沟到原始森林</b><span class=\"dist\">车程约 40 分钟</span><span class=\"verdict go\">经典玩法：先到最高点，再一站站往下。</span><ul class=\"pts\"><li class=\"grp film\"><span>📸 要看的</span></li><li><b>原始森林</b> — 积雪的冷杉，很安静的栈道</li><li>下面是<b>芳草海</b></li></ul>"
+     },
+     {
+      "time": "10:30",
+      "class": "",
+      "en": "<b>Down the Rize valley — Five-Flower Lake & Pearl Shoal</b><ul class=\"pts\"><li class=\"grp film\"><span>📸 TO SEE</span></li><li><b>五花海</b> Five-Flower Lake — the most colourful water in the park, rarely freezes fully</li><li><b>珍珠滩瀑布</b> Pearl Shoal Falls — walk the boardwalk down beside it; in winter it’s a wall of icicles</li><li><b>镜海</b> Mirror Lake — on a still morning the reflection is perfect</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\">Boardwalks near waterfalls are the iciest — crampons on</li></ul>",
+      "zh": "<b>沿日则沟往下 — 五花海、珍珠滩</b><ul class=\"pts\"><li class=\"grp film\"><span>📸 要看的</span></li><li><b>五花海</b> — 全景区颜色最丰富的湖，很少完全结冰</li><li><b>珍珠滩瀑布</b> — 沿栈道走下去；冬天是一整面冰柱</li><li><b>镜海</b> — 无风的早上倒影完美</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\">瀑布边的栈道最滑 — 穿上冰爪</li></ul>"
+     },
+     {
+      "time": "12:00",
+      "class": "",
+      "en": "<b>Nuorilang Falls + lunch at Nuorilang Centre</b><ul class=\"pts\"><li class=\"grp film\"><span>📸 TO SEE</span></li><li><b>诺日朗瀑布</b> — one of China’s widest waterfalls; frozen curtains in January</li><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li><b>诺日朗餐厅</b> buffet (~¥60–80) — the only proper meal stop inside the park</li><li>Toilets and hot drinks here too</li></ul>",
+      "zh": "<b>诺日朗瀑布 + 诺日朗中心午餐</b><ul class=\"pts\"><li class=\"grp film\"><span>📸 要看的</span></li><li><b>诺日朗瀑布</b> — 中国最宽的瀑布之一；一月是冰帘</li><li class=\"grp eat\"><span>🍴 要吃的</span></li><li><b>诺日朗餐厅</b>自助餐（约 ¥60–80）— 景区里唯一像样的吃饭点</li><li>这里也有厕所和热饮</li></ul>"
+     },
+     {
+      "time": "13:00",
+      "class": "",
+      "en": "<b>Bus up the Zechawa valley — Long Lake & Five-Colour Pool</b><ul class=\"pts\"><li class=\"grp film\"><span>📸 TO SEE</span></li><li><b>长海</b> Long Lake (~3,100 m) — the biggest and highest lake, framed by snow peaks</li><li>Walk ~15 min down the boardwalk to <b>五彩池</b> Five-Colour Pool — small, but the most photographed spot in Jiuzhaigou</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Highest point of the day — move slowly, sip water</li></ul>",
+      "zh": "<b>坐车上则查洼沟 — 长海、五彩池</b><ul class=\"pts\"><li class=\"grp film\"><span>📸 要看的</span></li><li><b>长海</b>（约 3,100 米）— 最大最高的湖，雪山环绕</li><li>沿栈道往下走约 15 分钟到<b>五彩池</b> — 很小，却是九寨沟最多人拍的地方</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>今天最高点 — 慢慢走、小口喝水</li></ul>"
+     },
+     {
+      "time": "14:45",
+      "class": "",
+      "en": "<b>Shuzheng valley on the way out</b><ul class=\"pts\"><li class=\"grp film\"><span>📸 TO SEE</span></li><li><b>树正瀑布</b> Shuzheng Falls and the terraced <b>树正群海</b> lakes</li><li><b>火花海</b> Sparkling Lake</li><li><b>芦苇海</b> Reed Lake — golden reeds in winter</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Walk the Shuzheng boardwalk section and catch the bus again lower down — it’s the prettiest walk of the day</li><li>Last buses leave the upper valleys around 16:30–17:00 in winter — check at Nuorilang</li></ul>",
+      "zh": "<b>出沟路上的树正沟</b><ul class=\"pts\"><li class=\"grp film\"><span>📸 要看的</span></li><li><b>树正瀑布</b>和层层叠叠的<b>树正群海</b></li><li><b>火花海</b></li><li><b>芦苇海</b> — 冬天芦苇金黄</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>树正一段用走的，走到下面再搭车 — 是今天最美的步道</li><li>冬天上面各沟的末班车约 16:30–17:00 — 在诺日朗确认</li></ul>"
+     },
+     {
+      "time": "17:00",
+      "class": "",
+      "en": "<b>Exit → check in at JS · Jisheng Hotel</b><span class=\"dist\">near the visitor centre</span><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=JS%E5%90%89%E7%9B%9B%E9%85%92%E5%BA%97%20%E4%B9%9D%E5%AF%A8%E6%B2%9F%E6%B8%B8%E5%AE%A2%E4%B8%AD%E5%BF%83%E5%BA%97\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Jisheng%20Hotel%20Jiuzhaigou\" target=\"_blank\">Google</a></span>",
+      "zh": "<b>出沟 → 入住 JS·吉盛酒店</b><span class=\"dist\">就在游客中心附近</span><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=JS%E5%90%89%E7%9B%9B%E9%85%92%E5%BA%97%20%E4%B9%9D%E5%AF%A8%E6%B2%9F%E6%B8%B8%E5%AE%A2%E4%B8%AD%E5%BF%83%E5%BA%97\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Jisheng%20Hotel%20Jiuzhaigou\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "18:30",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Dinner at the gate + optional Tibetan show</b><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>Restaurants line the road by the gate — yak, sour cabbage fish, <b>牦牛酸奶</b> yak yoghurt</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Tibetan–Qiang song & dance shows run in the evenings (~¥200–280) — winter schedules are reduced, ask the hotel</li></ul>",
+      "zh": "<span class=\"badge add\">加点</span><b>沟口晚餐 + 可选藏羌歌舞</b><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>沟口路边一排餐馆 — 牦牛肉、酸菜鱼、<b>牦牛酸奶</b></li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>晚上有藏羌歌舞晚会（约 ¥200–280）— 冬天场次少，问酒店</li></ul>"
+     },
+     {
+      "time": "20:30",
+      "class": "kon",
+      "en": "<span class=\"badge kon\">SUPPLY RUN</span><b>Shops by the gate</b><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Snacks + water for tomorrow’s ~7-hour drive</li></ul>",
+      "zh": "<span class=\"badge kon\">补给站</span><b>沟口小店</b><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>明天约 7 小时车程的零食和水</li></ul>"
+     }
+    ]
+   ]
+  },
+  {
+   "day": 5,
+   "title": {
+    "en": "Jiuzhaigou → Dujiangyan → Chengdu",
+    "zh": "九寨沟 → 都江堰 → 成都"
+   },
+   "meta": {
+    "en": "Wed 20 Jan · chartered van (last car day) · stay: Meiqin Hotel (Kuanzhai Alley · Kuixinglou)",
+    "zh": "1月20日 周三 · 包车（最后一天有车）· 住：美沁酒店（成都宽窄巷子奎星楼店）"
+   },
+   "weather": {
+    "en": "<b>9° / 3°</b><br>cloudy (Dujiangyan)",
+    "zh": "<b>9° / 3°</b><br>多云（都江堰）"
+   },
+   "blocks": [
+    [
+     {
+      "time": "07:00",
+      "class": "",
+      "en": "Breakfast at the hotel",
+      "zh": "酒店早餐"
+     },
+     {
+      "time": "07:45",
+      "class": "",
+      "en": "<b>Long drive back down to the Sichuan basin</b><span class=\"dist\">~380 km · 6–7 h with stops</span><span class=\"geo\"><span class=\"pin\">📍</span>Back south past Songpan and down the Min River. You drop about 1,500 m in altitude — most people sleep better tonight.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Car-sick? Pill before leaving, front row, window cracked open</li></ul>",
+      "zh": "<b>长途开回四川盆地</b><span class=\"dist\">约 380 公里 · 含休息 6–7 小时</span><span class=\"geo\"><span class=\"pin\">📍</span>往南经过松潘沿岷江下来。海拔降约 1,500 米 — 今晚大多数人会睡得好一点。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>会晕车？出发前吃药、坐前排、窗开小缝</li></ul>"
+     },
+     {
+      "time": "12:00",
+      "class": "",
+      "en": "Lunch stop on the road (Maoxian / Wenchuan) — the driver knows the reliable places.",
+      "zh": "路上午餐（茂县／汶川）— 司机知道哪家靠谱。"
+     },
+     {
+      "time": "14:30",
+      "class": "",
+      "en": "<b>Yangtianwo Square — the giant selfie panda</b><span class=\"dist\">Dujiangyan city · 15 min</span><span class=\"verdict go\">A huge panda statue holding a phone for a selfie — silly, quick, and everyone takes the same photo.</span><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E9%83%BD%E6%B1%9F%E5%A0%B0%20%E4%BB%B0%E5%A4%A9%E7%AA%9D%E5%B9%BF%E5%9C%BA\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Yangtianwo%20Square%20Dujiangyan\" target=\"_blank\">Google</a></span>",
+      "zh": "<b>仰天窝广场 — 巨型自拍熊猫</b><span class=\"dist\">都江堰市区 · 15 分钟</span><span class=\"verdict go\">一只拿着手机自拍的巨型熊猫 — 很傻很可爱，拍完就走。</span><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E9%83%BD%E6%B1%9F%E5%A0%B0%20%E4%BB%B0%E5%A4%A9%E7%AA%9D%E5%B9%BF%E5%9C%BA\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Yangtianwo%20Square%20Dujiangyan\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "15:00",
+      "class": "",
+      "en": "<b>Guanxian Old Town 灌县古城</b><span class=\"dist\">next door · 1 h</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>Street snacks along the old lanes — <b>钵钵鸡</b>, <b>冰粉</b>, <b>糖油果子</b></li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E7%81%8C%E5%8E%BF%E5%8F%A4%E5%9F%8E\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Guanxian%20Ancient%20Town%20Dujiangyan\" target=\"_blank\">Google</a></span>",
+      "zh": "<b>灌县古城</b><span class=\"dist\">就在旁边 · 1 小时</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>老街小吃 — <b>钵钵鸡</b>、<b>冰粉</b>、<b>糖油果子</b></li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E7%81%8C%E5%8E%BF%E5%8F%A4%E5%9F%8E\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Guanxian%20Ancient%20Town%20Dujiangyan\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "16:30",
+      "class": "",
+      "en": "<b>Zhongshuge bookstore 钟书阁</b><span class=\"dist\">~40 min</span><span class=\"verdict go\">Famous for its mirrored, curved shelving — one of the most photographed bookshops in China. Free entry.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>It’s a working bookshop — quiet voices, no tripods</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E9%92%9F%E4%B9%A6%E9%98%81%20%E9%83%BD%E6%B1%9F%E5%A0%B0\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Zhongshuge%20Dujiangyan\" target=\"_blank\">Google</a></span>",
+      "zh": "<b>钟书阁</b><span class=\"dist\">约 40 分钟</span><span class=\"verdict go\">以镜面天花和弧形书架出名 — 中国最上镜的书店之一。免费。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>这是真的书店 — 小声说话，别架三脚架</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E9%92%9F%E4%B9%A6%E9%98%81%20%E9%83%BD%E6%B1%9F%E5%A0%B0\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Zhongshuge%20Dujiangyan\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "17:45",
+      "class": "",
+      "en": "<b>Nanqiao Bridge at dusk 南桥</b><span class=\"geo\"><span class=\"pin\">📍</span>A carved, covered bridge over the rushing Min River — the lights come on around 18:00.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>The ancient <b>Dujiangyan irrigation works</b> (UNESCO, ¥80) are just upstream but close before dusk — not in this plan; you see the river from the bridge</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E9%83%BD%E6%B1%9F%E5%A0%B0%20%E5%8D%97%E6%A1%A5\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Nanqiao%20Bridge%20Dujiangyan\" target=\"_blank\">Google</a></span>",
+      "zh": "<b>南桥夜景</b><span class=\"geo\"><span class=\"pin\">📍</span>横跨奔腾岷江的雕花廊桥 — 约 18:00 亮灯。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>上游就是古老的<b>都江堰水利工程</b>（世界遗产，¥80），但傍晚前就关门 — 不在今天计划里；在桥上可以看到江水</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E9%83%BD%E6%B1%9F%E5%A0%B0%20%E5%8D%97%E6%A1%A5\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Nanqiao%20Bridge%20Dujiangyan\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "18:30",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Dinner in Dujiangyan</b><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>River-fish dishes and <b>青城山老腊肉</b> (eat here, don’t pack)</li><li>Or keep it light and eat in Chengdu later</li></ul>",
+      "zh": "<span class=\"badge add\">加点</span><b>都江堰晚餐</b><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>江鱼，和<b>青城山老腊肉</b>（在这里吃，别打包）</li><li>或者吃简单点，回成都再吃</li></ul>"
+     },
+     {
+      "time": "19:30",
+      "class": "",
+      "en": "<b>Drive back to Chengdu</b> (~60 km, ~1 h) → hotel around 20:45. This is the last day with the car — take everything out of the van.",
+      "zh": "<b>开回成都</b>（约 60 公里，约 1 小时）→ 约 20:45 到酒店。今天是最后一天有车 — 车上东西全部带下来。"
+     },
+     {
+      "time": "21:00",
+      "class": "kon",
+      "en": "<span class=\"badge kon\">SUPPLY RUN</span><b>Near the hotel</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Laundry: many Chengdu hotels have a self-service washer — ask reception, or use a <b>洗衣</b> shop (next-day)</li></ul>",
+      "zh": "<span class=\"badge kon\">补给站</span><b>酒店附近</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>洗衣服：很多成都酒店有自助洗衣机 — 问前台，或找<b>洗衣店</b>（隔天拿）</li></ul>"
+     }
+    ]
+   ]
+  },
+  {
+   "day": 6,
+   "title": {
+    "en": "Chengdu free day — pandas, Dongjiao Memory, hotpot",
+    "zh": "成都自由日 — 熊猫、东郊记忆、火锅"
+   },
+   "meta": {
+    "en": "Thu 21 Jan · no car · Metro + DiDi · stay: Meiqin Hotel (Kuanzhai Alley · Kuixinglou)",
+    "zh": "1月21日 周四 · 无包车 · 地铁 + 滴滴 · 住：美沁酒店（成都宽窄巷子奎星楼店）"
+   },
+   "weather": {
+    "en": "<b>10° / 4°</b><br>overcast",
+    "zh": "<b>10° / 4°</b><br>阴天"
+   },
+   "blocks": [
+    [
+     {
+      "time": "06:45",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><span class=\"badge must\">DON’T MISS</span><b>Chengdu Panda Base — go early</b><span class=\"dist\">DiDi ~35–45 min, ~¥50–70</span><span class=\"verdict go\">Not in the package, but it’s the one thing people regret skipping. Pandas are most active 07:30–10:00 — and even more so in cold weather.</span><ul class=\"pts\"><li class=\"grp go\"><span>🚇 GETTING THERE</span></li><li>Opens <b>07:30</b>. Grab a breakfast box from the hotel or <b>包子</b> on the way</li><li>Metro alternative: Line 3 to <b>熊猫大道</b>, then a short DiDi</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Tickets are real-name — buy in advance on the official WeChat mini-programme or Trip.com with your passport; check the price when you book</li><li>Head for the adult enclosures and <b>Moonlight Nursery</b> (月亮产房) first; the internal shuttle saves a lot of walking</li><li>Allow 2.5–3 h</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E6%88%90%E9%83%BD%E5%A4%A7%E7%86%8A%E7%8C%AB%E7%B9%81%E8%82%B2%E7%A0%94%E7%A9%B6%E5%9F%BA%E5%9C%B0\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Chengdu%20Research%20Base%20of%20Giant%20Panda%20Breeding\" target=\"_blank\">Google</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><span class=\"badge must\">必去</span><b>成都大熊猫繁育研究基地 — 一定要早去</b><span class=\"dist\">滴滴约 35–45 分钟，约 ¥50–70</span><span class=\"verdict go\">套餐没包，但这是最多人后悔没去的地方。熊猫 07:30–10:00 最活跃 — 天冷更活泼。</span><ul class=\"pts\"><li class=\"grp go\"><span>🚇 怎么去</span></li><li><b>07:30</b> 开门。跟酒店拿打包早餐，或路上买<b>包子</b></li><li>地铁：3号线到<b>熊猫大道</b>，再坐一小段滴滴</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>门票实名 — 用护照提前在官方微信小程序或 Trip.com 买；订票时看当前价格</li><li>先去成年熊猫区和<b>月亮产房</b>；园内观光车能省很多路</li><li>预留 2.5–3 小时</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E6%88%90%E9%83%BD%E5%A4%A7%E7%86%8A%E7%8C%AB%E7%B9%81%E8%82%B2%E7%A0%94%E7%A9%B6%E5%9F%BA%E5%9C%B0\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Chengdu%20Research%20Base%20of%20Giant%20Panda%20Breeding\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "11:00",
+      "class": "self",
+      "en": "<span class=\"badge self\">SELF-GUIDED</span><b>Dongjiao Memory 东郊记忆 — the ‘Chengdu wall’</b><span class=\"dist\">DiDi ~20 min from the Panda Base</span><span class=\"geo\"><span class=\"pin\">📍</span>A 1950s electronics factory turned into an art and music park — brick chimneys, murals, the big CHENGDU sign photo spot.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Free to wander · ~1 h is enough</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E4%B8%9C%E9%83%8A%E8%AE%B0%E5%BF%86\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Dongjiao%20Memory%20Chengdu\" target=\"_blank\">Google</a></span>",
+      "zh": "<span class=\"badge self\">自由行</span><b>东郊记忆 — 打卡成都墙</b><span class=\"dist\">从熊猫基地坐滴滴约 20 分钟</span><span class=\"geo\"><span class=\"pin\">📍</span>1950 年代电子厂改成的艺术音乐园区 — 红砖烟囱、壁画、大大的 CHENGDU 字样打卡点。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>免费逛 · 约 1 小时就够</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E4%B8%9C%E9%83%8A%E8%AE%B0%E5%BF%86\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Dongjiao%20Memory%20Chengdu\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "12:30",
+      "class": "self",
+      "en": "<span class=\"badge self\">SELF-GUIDED</span><b>Lunch — Chengdu snack classics on Chunxi Road</b><span class=\"dist\">DiDi ~20 min</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li><b>龙抄手</b> wontons, <b>钟水饺</b> sweet-soy dumplings, <b>赖汤圆</b> glutinous rice balls — the famous trio, all around Chunxi Road</li><li>A 小吃套餐 (snack set) lets four people taste everything</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E9%BE%99%E6%8A%84%E6%89%8B%20%E6%98%A5%E7%86%99%E8%B7%AF\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Long%20Chaoshou%20Chunxi%20Road\" target=\"_blank\">Google</a></span>",
+      "zh": "<span class=\"badge self\">自由行</span><b>午餐 — 春熙路成都小吃</b><span class=\"dist\">滴滴约 20 分钟</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li><b>龙抄手</b>、<b>钟水饺</b>、<b>赖汤圆</b> — 成都三大老字号小吃，都在春熙路一带</li><li>点<b>小吃套餐</b>，四个人每样都能尝</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E9%BE%99%E6%8A%84%E6%89%8B%20%E6%98%A5%E7%86%99%E8%B7%AF\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Long%20Chaoshou%20Chunxi%20Road\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "14:00",
+      "class": "self",
+      "en": "<span class=\"badge self\">SELF-GUIDED</span><b>IFS rooftop · Taikoo Li · Chunxi Road in daylight</b><span class=\"dist\">all walkable, ~5 min apart</span><ul class=\"pts\"><li class=\"grp film\"><span>📸 TO SEE</span></li><li>Ride up to the <b>IFS 7F roof garden</b> to stand right under the climbing panda’s bottom</li><li>Shopping: Taikoo Li for brands, the Chunxi Road side streets for local snacks</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Already did this on Day 1? Swap in <b>成都博物馆</b> Chengdu Museum on Tianfu Square (free, passport, closed Mondays)</li></ul>",
+      "zh": "<span class=\"badge self\">自由行</span><b>IFS 屋顶 · 太古里 · 白天的春熙路</b><span class=\"dist\">都能走，相隔约 5 分钟</span><ul class=\"pts\"><li class=\"grp film\"><span>📸 要看的</span></li><li>上<b>IFS 7 楼屋顶花园</b>，站在爬墙熊猫的屁股正下方</li><li>购物：太古里逛品牌，春熙路小巷找本地零食</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>第 1 天已经逛过？换成天府广场的<b>成都博物馆</b>（免费、带护照、周一闭馆）</li></ul>"
+     },
+     {
+      "time": "17:00",
+      "class": "self",
+      "en": "<span class=\"badge self\">SELF-GUIDED</span>Back to the hotel to rest — Metro Line 2 春熙路 → 人民公园, then 10 min walk. Or DiDi ~12 min.",
+      "zh": "<span class=\"badge self\">自由行</span>回酒店休息 — 地铁 2 号线 春熙路 → 人民公园，再走 10 分钟。或滴滴约 12 分钟。"
+     },
+     {
+      "time": "18:30",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Proper Sichuan hotpot</b><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>Order a <b>鸳鸯锅</b> (split pot, half clear) so everyone can eat</li><li>Must-dips: <b>毛肚</b> tripe (7-up-8-down, ~15 s), <b>鸭肠</b>, <b>黄喉</b>, potato slices, lotus root</li><li>Dip in <b>油碟</b> — sesame oil + garlic — it cools the chilli</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Popular chains (小龙坎, 蜀大侠, 大龙燚…) get queues after 18:30 — take a number on the Dianping / Meituan app or arrive early</li></ul>",
+      "zh": "<span class=\"badge add\">加点</span><b>正宗四川火锅</b><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>点<b>鸳鸯锅</b>（一半清汤），大家都能吃</li><li>必点：<b>毛肚</b>（七上八下约 15 秒）、<b>鸭肠</b>、<b>黄喉</b>、土豆片、藕片</li><li>蘸<b>油碟</b> — 香油 + 蒜泥 — 能压辣</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>热门连锁（小龙坎、蜀大侠、大龙燚…）18:30 后要排队 — 用大众点评／美团取号，或早点到</li></ul>"
+     },
+     {
+      "time": "20:00",
+      "class": "add",
+      "en": "<span class=\"badge add\">ADD-ON</span><b>Sichuan Opera face-changing (变脸)</b><span class=\"dist\">DiDi ~10 min from the hotel</span><span class=\"geo\"><span class=\"pin\">📍</span>Shufeng Yayun (蜀风雅韵) in the Culture Park stages a nightly 90-min variety show — fire-spitting, shadow puppets, and the face-changing finale.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>~¥180–380 depending on the seat; book the same day on Trip.com or at the door</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E8%9C%80%E9%A3%8E%E9%9B%85%E9%9F%B5%20%E6%96%87%E5%8C%96%E5%85%AC%E5%9B%AD\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Shufeng%20Yayun%20Sichuan%20Opera\" target=\"_blank\">Google</a></span>",
+      "zh": "<span class=\"badge add\">加点</span><b>川剧变脸</b><span class=\"dist\">离酒店滴滴约 10 分钟</span><span class=\"geo\"><span class=\"pin\">📍</span>文化公园里的蜀风雅韵每晚有 90 分钟的综合演出 — 吐火、皮影，压轴是变脸。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>按座位约 ¥180–380；当天在 Trip.com 或现场买</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E8%9C%80%E9%A3%8E%E9%9B%85%E9%9F%B5%20%E6%96%87%E5%8C%96%E5%85%AC%E5%9B%AD\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Shufeng%20Yayun%20Sichuan%20Opera\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "22:00",
+      "class": "kon",
+      "en": "<span class=\"badge kon\">SUPPLY RUN</span><b>Late snack run</b><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Fruit, yoghurt, drinks for the room · <b>冰粉</b> from a street stall</li></ul>",
+      "zh": "<span class=\"badge kon\">补给站</span><b>宵夜补给</b><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>水果、酸奶、房间里喝的 · 路边摊来一碗<b>冰粉</b></li></ul>"
+     }
+    ]
+   ]
+  },
+  {
+   "day": 7,
+   "title": {
+    "en": "Chengdu free day — temples, souvenirs, night views",
+    "zh": "成都自由日 — 古寺、买手信、夜景"
+   },
+   "meta": {
+    "en": "Fri 22 Jan · no car · Metro + DiDi · stay: Meiqin Hotel (Kuanzhai Alley · Kuixinglou)",
+    "zh": "1月22日 周五 · 无包车 · 地铁 + 滴滴 · 住：美沁酒店（成都宽窄巷子奎星楼店）"
+   },
+   "weather": {
+    "en": "<b>10° / 4°</b><br>light drizzle possible",
+    "zh": "<b>10° / 4°</b><br>可能有小雨"
+   },
+   "blocks": [
+    [
+     {
+      "time": "08:30",
+      "class": "",
+      "en": "Breakfast at the hotel — a slow one",
+      "zh": "酒店早餐 — 慢慢吃"
+     },
+     {
+      "time": "09:30",
+      "class": "self",
+      "en": "<span class=\"badge self\">SELF-GUIDED</span><b>Wenshu Monastery 文殊院</b><span class=\"dist\">DiDi ~10 min · Metro Line 1 文殊院</span><span class=\"geo\"><span class=\"pin\">📍</span>A working Buddhist monastery with gardens, incense and old men playing cards in the tea court.</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>Vegetarian noodles or tea in the monastery’s own teahouse</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Shoulders covered inside the halls; no photos of monks at prayer</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E6%96%87%E6%AE%8A%E9%99%A2\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Wenshu%20Monastery%20Chengdu\" target=\"_blank\">Google</a></span>",
+      "zh": "<span class=\"badge self\">自由行</span><b>文殊院</b><span class=\"dist\">滴滴约 10 分钟 · 地铁 1 号线文殊院站</span><span class=\"geo\"><span class=\"pin\">📍</span>仍在运作的佛寺 — 园林、香火，茶园里有老人家打牌。</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>在寺里的茶园喝茶或吃素面</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>进殿遮住肩膀；僧人诵经时别拍照</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E6%96%87%E6%AE%8A%E9%99%A2\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Wenshu%20Monastery%20Chengdu\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "11:15",
+      "class": "self",
+      "en": "<span class=\"badge self\">SELF-GUIDED</span><b>Wuhou Shrine + Jinli Old Street</b><span class=\"dist\">DiDi ~20 min</span><span class=\"geo\"><span class=\"pin\">📍</span>Jinli is the lantern-hung lane beside the Three Kingdoms shrine — free to walk; the shrine itself is ticketed.</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>Lunch by grazing: <b>伤心凉粉</b> ‘heartbreak’ jelly noodles, <b>三大炮</b>, <b>糖画</b> sugar paintings</li><li class=\"warn\"><b>张飞牛肉</b> beef is the famous snack here — eat it, don’t pack it</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Wuhou Shrine ~¥50 if you want the history; Jinli alone is enough for most</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E9%94%A6%E9%87%8C%E5%8F%A4%E8%A1%97\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Jinli%20Ancient%20Street%20Chengdu\" target=\"_blank\">Google</a></span>",
+      "zh": "<span class=\"badge self\">自由行</span><b>武侯祠 + 锦里古街</b><span class=\"dist\">滴滴约 20 分钟</span><span class=\"geo\"><span class=\"pin\">📍</span>锦里是紧挨三国武侯祠、挂满灯笼的老街 — 免费逛；武侯祠要门票。</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>边走边吃当午餐：<b>伤心凉粉</b>、<b>三大炮</b>、<b>糖画</b></li><li class=\"warn\"><b>张飞牛肉</b>是这里的招牌 — 在这里吃，别带回家</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>想看历史就进武侯祠（约 ¥50）；多数人逛锦里就够了</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E9%94%A6%E9%87%8C%E5%8F%A4%E8%A1%97\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Jinli%20Ancient%20Street%20Chengdu\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "13:30",
+      "class": "self",
+      "en": "<span class=\"badge self\">SELF-GUIDED</span><b>Souvenir run (买手信)</b><span class=\"verdict go\">Buy what survives customs — tea, sauces, panda goods, sweets. Skip anything with meat.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li><b>竹叶青</b> / 峨眉 green tea, <b>郫县豆瓣</b> chilli bean paste</li><li>Hotpot base: choose <b>清油 / 素</b> (vegetable-oil) versions — the <b>牛油</b> ones contain beef tallow</li><li>Panda plush, panda-shaped sweets, <b>蜀绣</b> Shu embroidery</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Where: supermarkets around Chunxi Road (Ito Yokado, Hema 盒马) have fixed prices — cheaper than tourist lanes</li></ul>",
+      "zh": "<span class=\"badge self\">自由行</span><b>买手信时间</b><span class=\"verdict go\">买过得了海关的 — 茶叶、酱料、熊猫周边、糖果。有肉的都别买。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li><b>竹叶青</b>／峨眉绿茶、<b>郫县豆瓣</b></li><li>火锅底料：选<b>清油／素</b>的 — <b>牛油</b>的含牛油（肉类制品）</li><li>熊猫公仔、熊猫造型糖果、<b>蜀绣</b></li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>哪里买：春熙路一带的超市（伊藤洋华堂、盒马）明码标价 — 比景点便宜</li></ul>"
+     },
+     {
+      "time": "16:00",
+      "class": "self",
+      "en": "<span class=\"badge self\">SELF-GUIDED</span><b>Back to the hotel — start packing.</b> Weigh bags (25 kg each on Economy Lite). Liquids over 100 ml go in the checked bag.",
+      "zh": "<span class=\"badge self\">自由行</span><b>回酒店 — 开始收行李。</b>秤行李（经济舱轻便票每件 25 公斤）。超过 100ml 的液体放托运。"
+     },
+     {
+      "time": "17:30",
+      "class": "self",
+      "en": "<span class=\"badge self\">SELF-GUIDED</span><b>Yulin Road 玉林路</b><span class=\"dist\">DiDi ~15 min</span><span class=\"geo\"><span class=\"pin\">📍</span>The neighbourhood from the folk song ‘成都’ — small bars, noodle shops, locals out walking. Relaxed, not touristy.</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 TO EAT</span></li><li>Early dinner: <b>冒菜</b>, skewers, or a Yulin noodle shop</li><li class=\"grp film\"><span>📸 TO SEE</span></li><li>The <b>小酒馆</b> bar from the song — for the photo at the door</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E7%8E%89%E6%9E%97%E8%B7%AF%20%E5%B0%8F%E9%85%92%E9%A6%86\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Yulin%20Road%20Chengdu\" target=\"_blank\">Google</a></span>",
+      "zh": "<span class=\"badge self\">自由行</span><b>玉林路</b><span class=\"dist\">滴滴约 15 分钟</span><span class=\"geo\"><span class=\"pin\">📍</span>民谣《成都》里唱的街区 — 小酒馆、面馆、本地人散步。很松弛、不像景点。</span><ul class=\"pts\"><li class=\"grp eat\"><span>🍴 要吃的</span></li><li>早点吃晚餐：<b>冒菜</b>、串串，或玉林的面馆</li><li class=\"grp film\"><span>📸 要看的</span></li><li>歌里那家<b>小酒馆</b> — 在门口拍张照</li></ul><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E7%8E%89%E6%9E%97%E8%B7%AF%20%E5%B0%8F%E9%85%92%E9%A6%86\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Yulin%20Road%20Chengdu\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "19:30",
+      "class": "self",
+      "en": "<span class=\"badge self\">SELF-GUIDED</span><b>Jiuyan Bridge & Anshun covered bridge at night</b><span class=\"dist\">DiDi ~10 min from Yulin</span><span class=\"geo\"><span class=\"pin\">📍</span>The Jin River lit up both banks — riverside bars on one side, the red Anshun covered bridge glowing on the other.</span><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E4%B9%9D%E7%9C%BC%E6%A1%A5\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Jiuyan%20Bridge%20Chengdu\" target=\"_blank\">Google</a></span>",
+      "zh": "<span class=\"badge self\">自由行</span><b>九眼桥 + 安顺廊桥夜景</b><span class=\"dist\">从玉林坐滴滴约 10 分钟</span><span class=\"geo\"><span class=\"pin\">📍</span>锦江两岸灯火 — 一边是河边酒吧，一边是红色的安顺廊桥。</span><span class=\"back\"><a href=\"https://uri.amap.com/search?keyword=%E4%B9%9D%E7%9C%BC%E6%A1%A5\" target=\"_blank\">Amap 高德</a> · <a href=\"https://www.google.com/maps/search/?api=1&query=Jiuyan%20Bridge%20Chengdu\" target=\"_blank\">Google</a></span>"
+     },
+     {
+      "time": "21:00",
+      "class": "self",
+      "en": "<span class=\"badge self\">SELF-GUIDED</span><b>Back to the hotel — last checks</b><span class=\"dist\">DiDi ~15 min</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\">Finish packing · power banks and lighters in hand luggage? (<b>No lighters at all</b> on flights from China)</li><li>Ask reception for a <b>breakfast box</b> and confirm the <b>05:45 pick-up</b> with the driver on WeChat</li><li>Check in online for SQ847 (opens 48 h before)</li></ul>",
+      "zh": "<span class=\"badge self\">自由行</span><b>回酒店 — 最后确认</b><span class=\"dist\">滴滴约 15 分钟</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\">收完行李 · 充电宝放随身？（从中国起飞<b>完全不能带打火机</b>）</li><li>跟前台要<b>打包早餐</b>，微信跟司机确认 <b>05:45 接车</b></li><li>网上办 SQ847 登机手续（起飞前 48 小时开放）</li></ul>"
+     }
+    ]
+   ]
+  },
+  {
+   "day": 8,
+   "title": {
+    "en": "Fly home — Chengdu → Singapore → KL",
+    "zh": "回程 — 成都 → 新加坡 → 吉隆坡"
+   },
+   "meta": {
+    "en": "Sat 23 Jan · private car to TFU · SQ847 + SQ126",
+    "zh": "1月23日 周六 · 专车送机 · SQ847 + SQ126"
+   },
+   "weather": {
+    "en": "<b>10° / 3°</b><br>(KL 33°!)",
+    "zh": "<b>10° / 3°</b><br>（吉隆坡 33°！）"
+   },
+   "blocks": [
+    [
+     {
+      "time": "05:15",
+      "class": "",
+      "en": "Wake up, last sweep of the room (chargers! passports!), check out.",
+      "zh": "起床，最后检查房间（充电线！护照！），退房。"
+     },
+     {
+      "time": "05:45",
+      "class": "",
+      "en": "<b>Private car to TFU</b> (专车送机, in the package) · ~70 km, ~1h10 at dawn. Eat the breakfast box in the car.",
+      "zh": "<b>专车送机</b>（套餐已含）· 约 70 公里，清晨约 1小时10分。在车上吃打包早餐。"
+     },
+     {
+      "time": "07:00",
+      "class": "",
+      "en": "<b>TFU Terminal 1 — check in SQ847</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Ask for bags to be tagged through to <b>KUL</b></li><li class=\"warn\">Emigration → security. <b>Lighters are banned</b> on all flights from China; power banks must show their capacity</li><li>Tax-refund forms from ‘Tax Free’ shops? Go to the refund counter <b>before</b> emigration, with the unused goods</li></ul>",
+      "zh": "<b>天府 T1 — 办 SQ847 登机</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>请柜台把行李直挂到 <b>KUL</b></li><li class=\"warn\">出境检查 → 安检。从中国起飞<b>禁带打火机</b>；充电宝必须看得到容量标示</li><li>有「Tax Free」商店的退税单？<b>出境前</b>带着没用过的商品去退税柜台</li></ul>"
+     },
+     {
+      "time": "08:00",
+      "class": "kon",
+      "en": "<span class=\"badge kon\">SUPPLY RUN</span><b>TFU airside</b><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Spend the last RMB: panda souvenirs, tea, snacks</li><li>Alipay works everywhere here — keep a little cash only as backup</li></ul>",
+      "zh": "<span class=\"badge kon\">补给站</span><b>天府机场禁区内</b><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>花掉最后的人民币：熊猫周边、茶叶、零食</li><li>这里到处都能用支付宝 — 现金只留一点备用</li></ul>"
+     },
+     {
+      "time": "10:00",
+      "class": "",
+      "en": "<b>SQ847</b> TFU T1 → SIN · 5h10m · lunch on board",
+      "zh": "<b>SQ847</b> 天府 T1 → 新加坡 · 5小时10分 · 机上午餐"
+     },
+     {
+      "time": "15:10",
+      "class": "",
+      "en": "<b>Changi transfer — 3h20m</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Follow <i>Transfer</i> signs to <b>T2</b> for SQ126 — all airside, no immigration</li><li>Changi duty-free is the place for liquor if you want it — remember the <b>1 litre</b> Malaysian allowance</li></ul>",
+      "zh": "<b>樟宜转机 — 3小时20分</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>跟着 <i>Transfer</i> 指示去 <b>T2</b> 搭 SQ126 — 全程禁区内，不用过移民局</li><li>想买酒就在樟宜免税店买 — 记住马来西亚只有 <b>1 公升</b>免税额</li></ul>"
+     },
+     {
+      "time": "18:30",
+      "class": "",
+      "en": "<b>SQ126</b> SIN T2 → KUL T1 · 1h10m",
+      "zh": "<b>SQ126</b> 新加坡 T2 → 吉隆坡 T1 · 1小时10分"
+     },
+     {
+      "time": "19:40",
+      "class": "",
+      "en": "<b>Home — KLIA Terminal 1</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"warn\">Customs: declare if over the allowance. <b>No meat products</b> in the bags (beef jerky, 腊肉, beef-tallow hotpot base)</li></ul>",
+      "zh": "<b>到家 — KLIA 第1航站楼</b><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"warn\">海关：超过额度要申报。行李里<b>不能有肉类制品</b>（牛肉干、腊肉、牛油火锅底料）</li></ul>"
+     }
+    ]
+   ]
+  }
+ ]
+}
