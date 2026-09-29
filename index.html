@@ -57,6 +57,54 @@ var ZH = {
   "settled up":"已结清",
   "Everyone's square.":"大家都结清了。",
   "Each currency is settled separately — no exchange rate is applied.":"每种货币分开结算 — 不换算汇率。",
+  "tap anywhere to close":"点任意处关闭",
+  "My notes":"我的笔记",
+  "notes":"张笔记",
+  "today":"今天",
+  "edited":"已编辑",
+  "Title":"标题",
+  "Save":"保存",
+  "Cancel":"取消",
+  "Pin":"置顶",
+  "Colour":"颜色",
+  "Edit":"编辑",
+  "Delete":"删除",
+  "Write something first.":"先写点什么。",
+  "Delete this note?":"删掉这张笔记？",
+  "Delete every note on this device?":"删掉这台设备上的所有笔记？",
+  "Nothing matches that.":"没有符合的。",
+  "No notes yet \u2014 write the first one above.":"还没有笔记 — 在上面写第一张。",
+  "My spending":"我的账",
+  "Cash":"现金",
+  "Wise / card":"Wise / 卡",
+  "CASH":"现金",
+  "WISE":"Wise",
+  "left":"剩下",
+  "brought":"带来",
+  "at your rate":"（按你的汇率）",
+  "Money in":"带的钱",
+  "Category":"类别",
+  "Spent":"花了",
+  "Item":"东西",
+  "For":"帮谁",
+  "Budget":"预算",
+  "Paid":"实付",
+  "for":"帮",
+  "Food":"吃的",
+  "Shopping":"购物",
+  "Transport":"交通",
+  "Other":"其他",
+  "Enter how much you brought.":"请填带了多少钱。",
+  "Say what it was for, and how much.":"请填花在哪里和金额。",
+  "Delete this?":"删掉这笔？",
+  "Clear everything in My spending on this device?":"清空这台设备上【我的账】的全部内容？",
+  "Set your rate first.":"先填你的汇率。",
+  "Add what you brought to see the budget.":"先记下带了多少钱，这里就会显示预算。",
+  "Nothing logged yet.":"还没有任何记录。",
+  "No \u4ee3\u8d2d items yet.":"还没有代购的记录。",
+  "Marked items went over the budget you were given.":"标记的那几笔超过人家给的预算了。",
+  "You\u2019ve spent more than you logged bringing \u2014 add the rest under Money in.":"花的比你记的带来的多 — 把剩下的补到【带的钱】里。",
+  "Couldn\u2019t draw this:":"无法显示：",
   "Tabung (pool)":"Tabung 公款",
   "Who owes who":"谁欠谁",
   "Who is in the tabung":"谁有份",
@@ -256,7 +304,7 @@ function applyLang(){
   document.title = LANG === "zh"
     ? "日本东北 + 东京 — 每日行程指南 · 2026年10月4–11日"
     : "Japan Tohoku + Tokyo — Day-by-Day Guide · 4–11 Oct 2026";
-  ["spRenderAll","pkRenderAll","plRenderAll","rlRenderAll","rcRenderAll","slRenderAll","tbRenderAll"].forEach(function(fn){
+  ["spRenderAll","pkRenderAll","plRenderAll","rlRenderAll","rcRenderAll","slRenderAll","tbRenderAll","myRenderAll","ntRenderAll"].forEach(function(fn){
     if(typeof window[fn] === "function") { try{ window[fn](); }catch(e){} }
   });
 }
@@ -1192,6 +1240,118 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   vertical-align:1px;white-space:nowrap}
 .rf-empty{font-size:12.5px;color:var(--mute)}
 
+/* ===== My spending ===== */
+.my-sec{border-top:1px dashed var(--line);margin:12px 0;padding-top:11px}
+.my-sec:first-of-type{border-top:none;margin-top:0;padding-top:0}
+.my-h{font-weight:900;font-size:13px;margin-bottom:7px}
+.my-form{display:grid;gap:8px}
+.my-form input,.my-form select{width:100%;padding:7px 10px;border:1px solid var(--line);
+  border-radius:8px;font-family:inherit;font-size:13px;color:var(--ink);background:var(--card);min-width:0}
+.my-row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.my-go{border:none;border-radius:8px;padding:9px;font-family:inherit;font-weight:900;
+  font-size:13px;cursor:pointer;color:#fff}
+.my-go.in{background:var(--matcha)} .my-go.out{background:var(--red)}
+.my-rate,.my-calc{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;flex-wrap:wrap}
+.my-rate input,.my-calc input{flex:1 1 90px;min-width:0;padding:7px 10px;border:1px solid var(--line);
+  border-radius:8px;font-family:inherit;font-size:13px;color:var(--ink);background:var(--card)}
+.my-calcout{margin-top:7px;font-size:13px}
+.my-calcout .my-big{font-size:19px;color:var(--matcha)}
+.my-card{border:1px solid var(--line);border-radius:11px;padding:11px 12px;margin-bottom:9px;background:var(--card)}
+.my-big{font-size:21px;font-weight:900;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--matcha)}
+.my-big.neg{color:var(--red)}
+.my-big span{display:block;font-size:11px;font-weight:700;color:var(--mute);letter-spacing:0;margin-top:2px}
+.my-sub{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:3px 0}
+.my-note{font-size:11.5px;color:var(--mute);line-height:1.5;margin-top:6px}
+.my-warn{background:#fdf1ef;border:1px solid #f0c9c4;color:#a8291f;border-radius:8px;
+  padding:7px 9px;font-size:11.5px;line-height:1.45;margin-top:8px}
+[data-theme="dark"] .my-warn{background:#331d1a;border-color:#5a2f29;color:#ff9a8f}
+.my-tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.my-tbl th,.my-tbl td{padding:6px 5px;text-align:right;border-bottom:1px solid var(--line);
+  font-variant-numeric:tabular-nums}
+.my-tbl th:first-child,.my-tbl td:first-child{text-align:left;font-variant-numeric:normal}
+.my-tbl th{font-size:9.5px;font-weight:900;letter-spacing:.05em;color:var(--mute);text-transform:uppercase}
+.my-over{color:var(--red);font-weight:900} .my-ok{color:var(--matcha);font-weight:900}
+.my-row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;
+  padding:8px 0;border-bottom:1px dashed var(--line);font-size:12.5px}
+.my-l{display:flex;gap:8px;align-items:flex-start;min-width:0}
+.my-r{display:flex;align-items:center;gap:6px;flex:0 0 auto}
+.my-tag{flex:0 0 auto;font-size:9px;font-weight:900;border-radius:5px;padding:2px 6px;margin-top:2px}
+.my-tag.in{background:var(--kon);border:1px solid var(--konline);color:#14512c}
+.my-tag.cash{background:var(--goldbg);border:1px solid var(--gold);color:#8a6412}
+.my-tag.wise{background:#eaf1fb;border:1px solid #b9cdea;color:#1a56a8}
+[data-theme="dark"] .my-tag.wise{background:#16233a;border-color:#2b3c60;color:#8fb8ff}
+.my-amt{font-weight:900;font-variant-numeric:tabular-nums}
+.my-amt.in{color:var(--matcha)} .my-amt.out{color:var(--red)}
+.my-sm{font-size:11px;color:var(--mute);margin-top:2px}
+.my-rem{font-size:11.5px;font-style:italic;color:#8a6412;margin-top:2px}
+[data-theme="dark"] .my-rem{color:#e3bd63}
+.my-dg{font-size:9px;font-weight:900;background:var(--night);color:#fff;border-radius:4px;padding:1px 5px}
+.my-x{cursor:pointer;color:#cdd2da;font-weight:900;font-size:15px;padding:0 2px;line-height:1}
+.my-x:hover{color:var(--red)}
+
+/* ===== My notes ===== */
+.nt-new{border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:var(--card);margin-bottom:11px}
+.nt-new input,.nt-new textarea{width:100%;border:none;background:transparent;font-family:inherit;
+  color:var(--ink);padding:4px 2px;resize:vertical}
+.nt-new input{font-size:14px;font-weight:900}
+.nt-new textarea{font-size:13px;line-height:1.55;border-top:1px dashed var(--line);margin-top:4px;padding-top:7px}
+.nt-new input:focus,.nt-new textarea:focus{outline:none}
+.nt-opts{display:flex;align-items:center;gap:8px;margin-top:9px;flex-wrap:wrap}
+.nt-dots{display:flex;gap:6px;flex:1;min-width:0;flex-wrap:wrap}
+.nt-dot{width:19px;height:19px;border-radius:50%;cursor:pointer;border:2px solid transparent}
+.nt-dot.on{border-color:var(--ink);transform:scale(1.12)}
+.nt-pin-toggle{background:var(--paper);border:1px solid var(--line);border-radius:8px;
+  padding:4px 9px;font-size:13px;cursor:pointer;opacity:.4;filter:grayscale(1)}
+.nt-pin-toggle.on{opacity:1;filter:none;background:var(--goldbg);border-color:var(--gold)}
+.nt-add{border:none;border-radius:8px;padding:7px 15px;background:var(--night);color:#fff;
+  font-family:inherit;font-weight:900;font-size:12.5px;cursor:pointer}
+.nt-bar{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+.nt-bar input{flex:1;min-width:0;padding:7px 11px;border:1px solid var(--line);border-radius:20px;
+  font-family:inherit;font-size:12.5px;background:var(--card);color:var(--ink)}
+.nt-count{font-size:11px;color:var(--mute);font-weight:700;flex:0 0 auto}
+.nt-grid{display:grid;grid-template-columns:1fr;gap:10px}
+@media(min-width:620px){.nt-grid{grid-template-columns:1fr 1fr}}
+.nt-card{position:relative;border-radius:12px;padding:12px 13px 11px;border:1px solid var(--line);
+  border-left-width:5px;background:var(--card);box-shadow:0 1px 2px rgba(20,25,40,.05)}
+.nt-card.pin{box-shadow:0 2px 8px rgba(20,25,40,.12)}
+.nt-card .nt-t{font-size:14px;font-weight:900;line-height:1.35;padding-right:46px;word-break:break-word}
+.nt-card .nt-b{font-size:13px;line-height:1.6;margin-top:5px;white-space:pre-wrap;word-break:break-word}
+.nt-card .nt-meta{font-size:10.5px;color:var(--mute);margin-top:9px;display:flex;
+  justify-content:space-between;align-items:center;gap:8px}
+.nt-acts{position:absolute;top:9px;right:10px;display:flex;gap:3px}
+.nt-acts button{background:none;border:none;cursor:pointer;font-size:13px;padding:2px 4px;
+  border-radius:6px;opacity:.45;line-height:1}
+.nt-acts button:hover{opacity:1;background:var(--paper)}
+.nt-acts button.on{opacity:1}
+.nt-card .nt-edit{width:100%;border:1px solid var(--line);border-radius:8px;background:var(--paper);
+  font-family:inherit;font-size:13px;line-height:1.55;color:var(--ink);padding:7px 9px;resize:vertical}
+.nt-empty{grid-column:1/-1;text-align:center;color:var(--mute);font-size:12.5px;
+  border:1px dashed var(--line);border-radius:12px;padding:22px 14px;line-height:1.6}
+
+/* ===== Useful Japanese ===== */
+.ph-grp{margin-bottom:15px}
+.ph-h{display:flex;align-items:center;gap:7px;margin-bottom:8px}
+.ph-h span{font-size:15px}
+.ph-h b{font-size:12.5px;font-weight:900;letter-spacing:.03em}
+.ph-h::after{content:"";flex:1;height:1px;background:var(--line)}
+.ph-wrap{display:grid;grid-template-columns:1fr;gap:7px}
+@media(min-width:560px){.ph-wrap{grid-template-columns:1fr 1fr}}
+.jph{border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;
+  padding:9px 11px;background:var(--card);cursor:pointer}
+.jph:hover{background:var(--goldbg)}
+.ph-ro{font-size:16px;font-weight:900;letter-spacing:-.01em;line-height:1.25;color:var(--ink)}
+.ph-jp{font-size:13px;color:var(--mute);margin-top:1px}
+.ph-en{font-size:12.5px;margin-top:4px}
+.ph-n{display:block;font-size:11.5px;color:var(--gold);margin-top:4px;line-height:1.45}
+[data-theme="dark"] .ph-n{color:#e3bd63}
+.ph-ov{position:fixed;inset:0;z-index:999;background:rgba(10,14,22,.94);display:none;
+  align-items:center;justify-content:center;padding:22px;text-align:center}
+.ph-ov.on{display:flex}
+.ph-ov .in{max-width:620px}
+.ph-ov .big{font-size:clamp(30px,9vw,62px);font-weight:900;color:#fff;line-height:1.35;word-break:break-word}
+.ph-ov .sub{font-size:clamp(15px,4vw,22px);color:#aebbd8;margin-top:14px;font-weight:700}
+.ph-ov .hint{font-size:12px;color:#7c8ba8;margin-top:24px}
+
 /* ===== theme palette (generated: light keeps the original colours) ===== */
 :root{
   --bd1:#b9c2cf;
@@ -1420,14 +1580,14 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <div class="hd">
     <div class="kanjirow">
       <div class="kanji">東北・東京　八日間</div>
-      <span class="verchip" id="verChip" data-zh="v76 <span class=&quot;vd&quot;>更新于 2026年9月17日</span>">v76 <span class="vd">updated 17 Sep 2026</span></span>
+      <span class="verchip" id="verChip" data-zh="v82 <span class=&quot;vd&quot;>更新于 2026年9月29日</span>">v82 <span class="vd">updated 29 Sep 2026</span></span>
     </div>
     <h1 data-zh="日本东北 + 东京 <span class=&quot;jp&quot;>每日行程指南</span>">Japan Tohoku + Tokyo <span class="jp">Day-by-Day Guide</span></h1>
     <p data-zh="2026年10月4–11日 · 槟城出发跟团游 · 每天一条时间线：团队行程 + 购物任务 + 便利店打卡，全部标好时间和距离">4 – 11 Oct 2026 · Group tour from Penang · one timeline per day: tour plan + shopping missions + konbini runs, all with times &amp; distances</p>
     <div class="fl">
       <span data-zh="✈ 去程 SQ131 + SQ634 · 槟城 → 新加坡 → 羽田">✈ SQ131 + SQ634 · PEN → SIN → HND</span>
       <span data-zh="✈ 回程 SQ637 + SQ142 · 成田 → 新加坡 → 槟城">✈ SQ637 + SQ142 · NRT → SIN → PEN</span>
-      <span data-zh="🌡 13° – 28° · 第2–4天和第7天可能下雨">🌡 13° – 28° · rain likely D2–D4 &amp; D7</span>
+      <span data-zh="🌡 7° – 22° · 第1天和第3天可能下雨 · 藏王最低 7°">🌡 7° – 22° · rain likely D1 &amp; D3 · Zao drops to 7°</span>
     </div>
   </div>
 </header>
@@ -1455,7 +1615,8 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
     <div class="nv-panel-in">
       <div class="nv-grp-label" data-zh="我的清单">My lists</div>
       <div class="nv-grid">
-        <a href="#split" data-zh="<span>💰</span>旅费分摊"><span>💰</span>Trip split</a>
+        <a href="#split" data-zh="<span>💰</span>钱"><span>💰</span>Money</a>
+        <a href="#notes" data-zh="<span>📝</span>我的笔记"><span>📝</span>My notes</a>
         <a href="#pack" data-zh="<span>🧳</span>行李 & 准备"><span>🧳</span>Pack &amp; prepare</a>
         <a href="#shop" data-zh="<span>🛍</span>要买的清单"><span>🛍</span>Shopping list</a>
         <a href="#reels" data-zh="<span>🎬</span>想拍的视频"><span>🎬</span>Reels to film</a>
@@ -1467,6 +1628,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
         <a href="#camera" data-zh="<span>📷</span>相机 & 胶卷"><span>📷</span>Camera &amp; film</a>
         <a href="#uniqlocoffee" data-zh="<span>🧥</span>优衣库 & 咖啡"><span>🧥</span>Uniqlo &amp; coffee</a>
         <a href="#konbini" data-zh="<span>🏪</span>便利店菜单"><span>🏪</span>Konbini menu</a>
+        <a href="#jp" data-zh="<span>🗣</span>实用日语"><span>🗣</span>Useful Japanese</a>
       </div>
       <div class="nv-grp-label" data-zh="交通 & 规矩">Getting around &amp; rules</div>
       <div class="nv-grid">
@@ -1512,7 +1674,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <summary class="top">
     <div class="num"><small data-zh="第">DAY</small><span>1</span></div>
     <div><h3 data-zh="出发 — 槟城飞日本">Departure — Penang to Japan</h3><div class="meta" data-zh="10月4日 周日 · 经新加坡转机 · 住：Hotel Metropolitan Tokyo Haneda">Sun 4 Oct · via Singapore · stay: Hotel Metropolitan Tokyo Haneda</div></div>
-    <div class="wx" data-zh="<b>25° / 19°</b><br>多云"><b>25° / 19°</b><br>cloudy</div>
+    <div class="wx" data-zh="<b>21° / 16°</b><br>多云／有雨 ☔"><b>21° / 16°</b><br>cloudy / rain ☔</div>
   </summary>
   <div class="donkibar" data-zh="🔴 <b>今天的 Donki：</b>去不了（深夜才到机场）— 第一个机会是<a href=&quot;#d5&quot;>第5天 筑波</a>。">🔴 <b>Donki today:</b> none reachable (late-night airport arrival) — first Donki chance is <a href="#d5">Day 5 Tsukuba</a>.</div>
   <div class="tl">
@@ -1532,7 +1694,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <summary class="top">
     <div class="num"><small data-zh="第">DAY</small><span>2</span></div>
     <div><h3 data-zh="羽田 → 仙台（宫城）">Haneda → Sendai, Miyagi</h3><div class="meta" data-zh="10月5日 周一 · 新干线 + 松岛湾 · 住：Hotel Kameya（温泉）">Mon 5 Oct · Shinkansen + Matsushima Bay · stay: Hotel Kameya (Onsen)</div></div>
-    <div class="wx" data-zh="<b>23° / 14°</b><br>有雨 ☔"><b>23° / 14°</b><br>rain ☔</div>
+    <div class="wx" data-zh="<b>20° / 12°</b><br>多云转晴"><b>20° / 12°</b><br>partly cloudy</div>
   </summary>
   <div class="donkibar" data-zh="🔴 <b>今天的 Donki：</b>仙台站附近有 Don Quijote 仙台站前店 <span class=&quot;dist&quot;>离车站约 600 米</span> — 但你的行程在那里没有空档；只是让你知道，别专程去追。">🔴 <b>Donki today:</b> Don Quijote Sendai Ekimae exists near Sendai Station <span class="dist">~600m from station</span> — but your schedule has no gap there; FYI only, don't chase it.</div>
   <div class="cpstrip" data-zh="<span class=&quot;lb&quot;>🎟 今日优惠券 — 点开显示：</span><button class=&quot;cpchip&quot; onclick=&quot;showCp('daimaru')&quot;>大丸东京店 5%</button><span style=&quot;color:#7b3fa0;font-size:11.5px&quot;>只有导游在东京站给额外时间才用得上</span>"><span class="lb">🎟 Coupons for this day — tap to show:</span><button class="cpchip" onclick="showCp('daimaru')">Daimaru Tokyo Stn 5%</button><span style="color:#7b3fa0;font-size:11.5px">only if the guide gives extra time at Tokyo Station</span></div>
@@ -1560,10 +1722,10 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <summary class="top">
     <div class="num"><small data-zh="第">DAY</small><span>3</span></div>
     <div><h3 data-zh="宫城 → 银山温泉 → 藏王 → 福岛">Miyagi → Ginzan Onsen → Zao → Fukushima</h3><div class="meta" data-zh="10月6日 周二 · 住：奥饭坂 穴原温泉 吉川屋">Tue 6 Oct · stay: Okuiizaka Aanabara Onsen Yoshikawa-ya</div></div>
-    <div class="wx" data-zh="<b>25° / 18°</b><br>有雨 ☔"><b>25° / 18°</b><br>rain ☔</div>
+    <div class="wx" data-zh="<b>18° / 7°</b><br>多云／有雨 ☔"><b>18° / 7°</b><br>cloudy / rain ☔</div>
   </summary>
   <div class="donkibar" data-zh="🔴 <b>今天的 Donki：</b>没有 — 你在温泉乡深处。下个机会：<a href=&quot;#d5&quot;>第5天 筑波（打车）</a>。">🔴 <b>Donki today:</b> none — you're deep in onsen country. Next chance: <a href="#d5">Day 5 Tsukuba (taxi)</a>.</div>
-  <div class="tl">
+  <div class="warnbar" data-zh="🟠 <b>今天最冷：</b>藏王预报 <b>18° / 最低 7°</b>，而且可能下雨。狐狸村全程在室外、地势高，银山早上也冷 — <b>外套和可以弄脏的鞋放随身，别锁在行李里</b>。">🟠 <b>Coldest day:</b> Zao is forecast <b>18° / low 7°</b> with rain about. Fox Village is entirely outdoors and upland, and the Ginzan morning is cold too — <b>keep a jacket and shoes you don’t mind muddying with you, not in the case</b>.</div><div class="tl">
     <div class="row"><div class="t">7:30</div><div class="d" data-zh="Hotel Kameya 早餐 · <b>8:30</b> 出发（约 56 分钟，44 公里）">Breakfast @ Hotel Kameya · <b>8:30</b> depart (~56 min, 44km)</div></div>
     <div class="row"><div class="t">9:30</div><div class="d" data-zh="<b>银山温泉老街</b>（2小时）— 大正时代木造旅馆街，「千与千寻」既视感<ul class=&quot;pts&quot;><li class=&quot;grp eat&quot;><span>🍴 要吃的</span></li><li><b>はいからさん 咖喱面包</b> 约 ¥250 — 但在往瀑布的步道上，走过去 12 分钟，而且不一定是现炸的。看 <b>10:15</b></li><li class=&quot;grp buy&quot;><span>🛍 要买的</span></li><li>温泉馒头</li><li>小芥子木偶</li><li>山形水果甜点 — 晴王麝香葡萄和 La France 洋梨，<b>十月正当季</b></li></ul>"><b>Ginzan Onsen Street</b> (2h) — Taisho-era wooden ryokan street, the “Spirited Away” look<ul class="pts"><li class="grp eat"><span>🍴 TO EAT</span></li><li><b>Haikara-san curry bread</b> ~¥250 — but it’s 12 min out on the falls promenade, and often pre-made rather than fresh. See <b>10:15</b></li><li class="grp buy"><span>🛍 TO BUY</span></li><li>Onsen manju</li><li>Kokeshi dolls</li><li>Yamagata fruit sweets — shine muscat &amp; La France pear, <b>October is peak season</b></li></ul></div></div>
     <div class="row add"><div class="t">10:15</div><div class="d" data-zh="<span class=&quot;badge add&quot;>加点</span><b>はいからさん 咖喱面包（名勇 银山店）</b><span class=&quot;dist&quot;>银山新畑 451 · 从下车点走 12 分钟 · 煤气灯街再往里 5 分钟</span><span class=&quot;geo&quot;><span class=&quot;pin&quot;>📍</span><b>不在主街上</b> — 在往<b>白银瀑布</b>方向的「はいからさん通り」步道上，从煤气灯街再走 5 分钟，从停车场算共 12 分钟。</span><span class=&quot;verdict tight&quot;>你有 2 小时，来回走路就要 24 分钟 — 想吃就早点去。</span><ul class=&quot;pts&quot;><li class=&quot;grp eat&quot;><span>🍴 要吃的</span></li><li>招牌咖喱面包，约 ¥250。包装纸上是撑伞的女子配煤气灯，很好拍</li><li><b>炸馒头（あげまんじゅう）</b>也值得 — 有评论说比咖喱面包还好吃</li><li class=&quot;grp info&quot;><span>ℹ 要注意的</span></li><li class=&quot;warn&quot;><b>不一定是现炸的。</b>评价只有 3.1 分，主要就是因为常常是<span class=&quot;k&quot;>预先做好、放凉了</span>的。买之前问一句「<i>あげたてですか？</i>」（是刚炸的吗），凉的就等下一锅</li><li class=&quot;warn&quot;>会排队 — 这是银山最有人气的小吃</li><li class=&quot;tip&quot;>天冷的时候特别好吃 — 十月的银山早上很凉</li></ul><span class=&quot;back&quot;>↩ 往回走 5 分钟回煤气灯街，12 分钟回停车场 · <a href=&quot;https://www.google.com/maps/search/?api=1&amp;query=Meiyuu+Ginzan+Haikara-san+street&quot;>地图</a></span>"><span class="badge add">ADD-ON</span><b>Haikara-san curry bread (Meiyuu Ginzan)</b><span class="dist">Ginzanshinhata 451 · 12 min from the drop-off · 5 min past the gas-lamp street</span><span class="geo"><span class="pin">📍</span><b>Not on the main street</b> — it’s on the Haikara-san promenade heading towards <b>Shirogane Falls</b>, 5 min beyond the gas-lamp street, or 12 min from the coach parking.</span><span class="verdict tight">You have 2 hours and the walk is 24 min return — go early if you want it.</span><ul class="pts"><li class="grp eat"><span>🍴 TO EAT</span></li><li>The signature curry bread, ~¥250. The wrapper art — a woman with an umbrella under a gas lamp — photographs well</li><li>The <b>fried manju (agemanju)</b> is worth it too — several reviewers rate it above the curry bread</li><li class="grp info"><span>ℹ GOOD TO KNOW</span></li><li class="warn"><b>It isn’t always fresh.</b> It sits at 3.1 stars mostly because it is often <span class="k">pre-made and cold</span>. Ask “<i>agetate desu ka?</i>” (is it just fried?) and wait for the next batch if not</li><li class="warn">Expect a queue — it’s the most popular snack in Ginzan</li><li class="tip">Much better in the cold, and an October morning in Ginzan is cold</li></ul><span class="back">↩ 5 min back to the gas-lamp street, 12 min to the parking · <a href="https://www.google.com/maps/search/?api=1&query=Meiyuu+Ginzan+Haikara-san+street">Map</a></span></div></div>
@@ -1584,7 +1746,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <summary class="top">
     <div class="num"><small data-zh="第">DAY</small><span>4</span></div>
     <div><h3 data-zh="福岛 → 日光／那須">Fukushima → Nikkō → Nasu</h3><div class="meta" data-zh="10月7日 周三 · 住：那須陽光酒店">Wed 7 Oct · stay: Nasu Sunlight Hotel</div></div>
-    <div class="wx" data-zh="<b>22° / 13°</b><br>有雨 ☔"><b>22° / 13°</b><br>rain ☔</div>
+    <div class="wx" data-zh="<b>20° / 12°</b><br>多云转晴"><b>20° / 12°</b><br>partly cloudy</div>
   </summary>
   <div class="donkibar" data-zh="🔴 <b>今天的 Donki：</b>温泉山谷里没有。明晚（筑波）才是第一个真正的机会。">🔴 <b>Donki today:</b> none in the onsen valley. Tomorrow night (Tsukuba) is your first real chance.</div>
   <div class="warnbar" data-zh="🟠 <b>今晚没有便利店可跑：</b>那須陽光酒店在那須高原上，最近的便利店约 <b>5.9 公里</b>外，走不到。<b>宵夜要在昨晚的岳温泉 FamilyMart 或今天的休息站先买好</b>（下面高亮那行）。">🟠 <b>No konbini run tonight:</b> Nasu Sunlight Hotel sits out on the Nasu plateau and the nearest store is about <b>5.9 km</b> away — a drive, not a walk. <b>Buy night snacks at last night’s Dake Onsen FamilyMart or at today’s rest stop</b> (highlighted below).</div>
@@ -1606,7 +1768,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <summary class="top">
     <div class="num"><small data-zh="第">DAY</small><span>5</span></div>
     <div><h3 data-zh="日光 → 栃木（筑波）">Nikkō → Tochigi (Tsukuba)</h3><div class="meta" data-zh="10月8日 周四 · 世界遗产神社 + 江户村 · 住：Hotel Nikko Tsukuba">Thu 8 Oct · UNESCO shrines + Edo Wonderland · stay: Hotel Nikko Tsukuba</div></div>
-    <div class="wx" data-zh="<b>24° / 19°</b><br>多云"><b>24° / 19°</b><br>cloudy</div>
+    <div class="wx" data-zh="<b>20° / 13°</b><br>多云转晴"><b>20° / 13°</b><br>partly cloudy</div>
   </summary>
   <div class="donkibar" data-zh="🔴 <b>今天的 Donki：Don Quijote 筑波店</b> <span class=&quot;dist&quot;>离酒店约 2 公里 · 打车 5–8 分钟 · 开到很晚</span> — 今晚是买 Seika ZEN 的提早机会，比东京早整整一天。<a href=&quot;https://www.google.com/maps/search/?api=1&amp;query=Don+Quijote+Tsukuba&quot;>地图</a>">🔴 <b>Donki today: Don Quijote Tsukuba</b> <span class="dist">~2km from hotel · 5–8 min taxi · open till late</span> — tonight is your EARLY chance at Seika ZEN, a full day before Tokyo. <a href="https://www.google.com/maps/search/?api=1&query=Don+Quijote+Tsukuba">Map</a></div>
   <div class="cpstrip" data-zh="<span class=&quot;lb&quot;>🎟 今日优惠券 — 点开显示：</span><button class=&quot;cpchip&quot; onclick=&quot;showCp('donki')&quot;>Donki 5–7%（打开官方页面）</button>"><span class="lb">🎟 Coupons for this day — tap to show:</span><button class="cpchip" onclick="showCp('donki')">Donki 5–7% (opens official page)</button></div>
@@ -1631,8 +1793,8 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 <details class="day" id="d6">
   <summary class="top">
     <div class="num"><small data-zh="第">DAY</small><span>6</span></div>
-    <div><h3 data-zh="栃木 → 茨城 → 东京">Tochigi → Ibaraki → Tokyo</h3><div class="meta" data-zh="10月9日 周五 · 住：新宿格兰贝尔酒店（歌舞伎町）">Fri 9 Oct · stay: Shinjuku Granbell Hotel (Kabukicho)</div></div>
-    <div class="wx" data-zh="<b>28° / 19°</b><br>多云"><b>28° / 19°</b><br>cloudy</div>
+    <div><h3 data-zh="茨城 → 东京">Ibaraki → Tokyo</h3><div class="meta" data-zh="10月9日 周五 · 住：新宿格兰贝尔酒店（歌舞伎町）">Fri 9 Oct · stay: Shinjuku Granbell Hotel (Kabukicho)</div></div>
+    <div class="wx" data-zh="<b>22° / 16°</b><br>多云转晴"><b>22° / 16°</b><br>partly cloudy</div>
   </summary>
   <div class="donkibar" data-zh="🔴 <b>今天有两家 Donki：</b><ul class=&quot;pts&quot;><li class=&quot;grp info&quot;><span>ℹ 要注意的</span></li><li>MEGA Donki 涩谷店 <span class=&quot;dist&quot;>十字路口往西 6 分钟 · 24 小时</span> — 自由时间只逛不买（<b>西路</b>顺路）</li><li>Don Quijote 歌舞伎町旗舰店 <span class=&quot;dist&quot;>500m · 离今晚酒店 7 分钟 · 24 小时</span> — <b>Seika ZEN 的主要战场</b>，19:15 才是重点</li><li class=&quot;tip&quot;>重瓶子都留到晚上在歌舞伎町买 — 别在涩谷就开始提重物</li></ul><a href=&quot;https://www.google.com/maps/search/?api=1&amp;query=Don+Quijote+Shinjuku+Kabukicho&quot;>歌舞伎町地图</a> · <a href=&quot;https://www.google.com/maps/search/?api=1&amp;query=MEGA+Don+Quijote+Shibuya&quot;>涩谷地图</a>">🔴 <b>Donki today — two of them:</b><ul class="pts"><li class="grp info"><span>ℹ GOOD TO KNOW</span></li><li>MEGA Donki Shibuya <span class="dist">6 min west of the Crossing · 24h</span> — browse only during the free hour (it’s on the <b>WEST lane</b>)</li><li>Don Quijote Kabukicho flagship <span class="dist">500m · 7 min from tonight’s hotel · 24h</span> — <b>the main Seika ZEN stop</b>, and the real one at 19:15</li><li class="tip">Save every heavy bottle for Kabukicho tonight — don’t start carrying weight in Shibuya</li></ul><a href="https://www.google.com/maps/search/?api=1&query=Don+Quijote+Shinjuku+Kabukicho">Kabukicho map</a> · <a href="https://www.google.com/maps/search/?api=1&query=MEGA+Don+Quijote+Shibuya">Shibuya map</a></div>
   <div class="cpstrip" data-zh="<span class=&quot;lb&quot;>🎟 今日优惠券 — 点开显示：</span><button class=&quot;cpchip&quot; onclick=&quot;showCp('donki')&quot;>Donki 5–7%（打开官方页面）</button><button class=&quot;cpchip&quot; onclick=&quot;showCp('bic')&quot;>Bic 7/5/3%</button><button class=&quot;cpchip&quot; onclick=&quot;showCp('sundrug')&quot;>Sun Drug 17%</button><button class=&quot;cpchip&quot; onclick=&quot;showCp('daikoku')&quot;>大国药妆 18% ⚠</button><button class=&quot;cpchip&quot; onclick=&quot;showCp('sugi')&quot;>SUGI 15%／分级</button><button class=&quot;cpchip&quot; onclick=&quot;showCp('alpen')&quot;>Alpen 5%</button><button class=&quot;cpchip&quot; onclick=&quot;showCp('murasaki')&quot;>Murasaki 10%</button><button class=&quot;cpchip&quot; onclick=&quot;showCp('keio')&quot;>京王 5%</button><button class=&quot;cpchip&quot; onclick=&quot;showCp('seibu')&quot;>西武 5%</button>"><span class="lb">🎟 Coupons for this day — tap to show:</span><button class="cpchip" onclick="showCp('donki')">Donki 5–7% (opens official page)</button><button class="cpchip" onclick="showCp('bic')">Bic 7/5/3%</button><button class="cpchip" onclick="showCp('sundrug')">Sun Drug 17%</button><button class="cpchip" onclick="showCp('daikoku')">Daikoku 18% ⚠</button><button class="cpchip" onclick="showCp('sugi')">SUGI 15%/tiers</button><button class="cpchip" onclick="showCp('alpen')">Alpen 5%</button><button class="cpchip" onclick="showCp('murasaki')">Murasaki 10%</button><button class="cpchip" onclick="showCp('keio')">Keio 5%</button><button class="cpchip" onclick="showCp('seibu')">Seibu 5%</button></div>
@@ -1708,8 +1870,8 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 <details class="day" id="d7">
   <summary class="top">
     <div class="num"><small data-zh="第">DAY</small><span>7</span></div>
-    <div><h3 data-zh="东京 → 成田">Tokyo → Narita / Haneda</h3><div class="meta" data-zh="10月10日 周六 · 住：国际观光酒店 有乐城（成田）">Sat 10 Oct · stay: International Resort Hotel Yurakujo (Narita)</div></div>
-    <div class="wx" data-zh="<b>23° / 17°</b><br>有雨 ☔"><b>23° / 17°</b><br>rain ☔</div>
+    <div><h3 data-zh="东京 → 成田">Tokyo → Narita</h3><div class="meta" data-zh="10月10日 周六 · 住：国际观光酒店 有乐城（成田）">Sat 10 Oct · stay: International Resort Hotel Yurakujo (Narita)</div></div>
+    <div class="wx" data-zh="<b>22° / 16°</b><br>多云转晴"><b>22° / 16°</b><br>partly cloudy</div>
   </summary>
   <div class="donkibar" data-zh="🔴 <b>今天的 Donki（只是紧急备用）：Don Quijote 银座本馆</b> <span class=&quot;dist&quot;>离筑地市场约 1.2 公里 · 步行 15 分钟／打车 5 分钟 · 24 小时</span><ul class=&quot;pts&quot;><li class=&quot;grp info&quot;><span>ℹ 要注意的</span></li><li>如果 Seika ZEN 在第 5、6 天都没买到，这里是<b>最后一次机会</b> — Donki 没有的话，<b>HANDS 银座</b>离 On 银座只有 3 分钟</li><li class=&quot;warn&quot;>今晚成田酒店附近没有 Donki — 过了这里就没有了</li><li class=&quot;warn&quot;>要挤进筑地那一小时，会吃掉吃东西的时间</li><li class=&quot;tip&quot;>同一区顺路：12 层的 <b>UNIQLO 银座旗舰店</b>（11:00 开）· <b>中村藤吉</b>（1854 年宇治老铺，GINZA SIX 4 楼，10:30 开）</li></ul><a href=&quot;https://www.google.com/maps/search/?api=1&amp;query=Don+Quijote+Ginza+Honkan&quot;>地图</a>">🔴 <b>Donki today (emergency backup only): Don Quijote Ginza Honkan</b> <span class="dist">~1.2km from Tsukiji market · 15 min walk / 5 min taxi · 24h</span><ul class="pts"><li class="grp info"><span>ℹ GOOD TO KNOW</span></li><li>If Seika ZEN was out of stock on D5 and D6, this is your <b>final shot</b> — and <b>HANDS Ginza</b> is 3 min from On Ginza if Donki fails you</li><li class="warn">No Donki near tonight’s Narita hotel — after this there are none</li><li class="warn">It has to be squeezed into the Tsukiji hour, so it trades away food time</li><li class="tip">Same block, if you’re already there: the 12-floor <b>UNIQLO Ginza flagship</b> (from 11am) · <b>Nakamura Tokichi</b>, the 1854 Uji house in GINZA SIX 4F (from 10:30am)</li></ul><a href="https://www.google.com/maps/search/?api=1&query=Don+Quijote+Ginza+Honkan">Map</a></div>
   <div class="warnbar" data-zh="🟠 <b>今晚的时间陷阱：</b>酒店自带的 7-Eleven 23:00 关门、早上 7:00 才开 — 而你 6:30 就吃早餐出发了。今晚的零食和明早飞机前的饮料都要<b>在 23:00 前买好</b>（下面高亮那行）。">🟠 <b>Timing trap tonight:</b> the hotel's own 7-Eleven closes 11pm and reopens 7am — <b>after</b> your 6:30am breakfast &amp; departure. Buy tonight's snacks AND tomorrow's flight-morning drinks <b>before 11pm</b> (row highlighted below).</div>
@@ -1886,12 +2048,12 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 </details>
 
 <!-- ============ SPLITWISE ============ -->
-<details class="ref"><summary class="sec" id="split" data-zh="<span class=&quot;g&quot;>💰</span>旅费分摊 — 谁付了、谁欠谁"><span class="g">💰</span>Trip Split — who paid, who owes</summary>
+<details class="ref"><summary class="sec" id="split" data-zh="<span class=&quot;g&quot;>💰</span>钱 — 分摊、公款、自己的账"><span class="g">💰</span>Money — split, pool, and your own</summary>
 <div class="info">
   <div class="icard full">
     <p style="font-size:12.5px;color:var(--mute);margin-bottom:10px" data-zh="只保存在<b>这台手机／浏览器</b>（localStorage）— 不会同步到别人的设备。适合由一个人记录全团开销。先把团里每个人加一次，之后每笔支出随手记。">Saved on <b>this phone/browser only</b> (localStorage) — it won't sync to anyone else's device. Good for one person tracking the group's spending. Add everyone on the trip once, then log each expense as it happens.</p>
 
-    <div class="sp-tabs"><button id="spTabSplit" class="on" data-spmode="split" data-zh="💸 谁欠谁">💸 Who owes who</button><button id="spTabTabung" data-spmode="tabung" data-zh="🏦 Tabung 公款">🏦 Tabung (pool)</button></div><div id="tbPane" style="display:none"><div id="tbSharedPanel"></div><p style="font-size:12.5px;color:var(--mute);margin-bottom:10px" data-zh="共同的钱箱：大家先把钱<b>放进去</b>，团体开销再从里面<b>拿出来</b>。适合你们有一笔共同基金，而不是各付各的再算谁欠谁。">A shared kitty: everyone pays money <b>in</b>, and group costs come <b>out</b> of it. Use this when you hold one common fund rather than tracking who owes whom.</p><div style="margin-bottom:10px"><div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="谁有份">Who is in the tabung</div><div id="tbMemberChips" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px"></div><div style="display:flex;gap:6px"><input id="tbNewMember" placeholder="Add name…" data-zh-ph="加名字…" style="flex:1;padding:7px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px"><button onclick="tbAddMember()" class="cpchip" style="cursor:pointer" data-zh="+ 新增">+ Add</button></div></div><div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap"><span style="font-size:11.5px;color:var(--mute)" data-zh="货币">Currency</span><select id="tbCur" style="padding:7px 8px;border:1px solid var(--line);border-radius:8px;font-size:13px;font-weight:700"><option value="JPY">¥ JPY</option><option value="MYR">RM MYR</option><option value="SGD">S$ SGD</option></select><span style="font-size:11px;color:var(--mute)" data-zh="用在下一笔">applies to the next entry</span></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px;color:var(--matcha)" data-zh="⬇ 存钱 — 有人出资">⬇ Money in — someone contributes</div><div class="tb-form"><select id="tbWho"></select><input id="tbInAmt" placeholder="Amount paid in" data-zh-ph="存入金额" type="number" step="0.01"><input id="tbInRemark" placeholder="Remark (optional)" data-zh-ph="备注（选填）"><button class="tb-go in" onclick="tbAddIn()" data-zh="记一笔存入">Add contribution</button></div></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px;color:var(--red)" data-zh="⬆ 花钱 — 从公款支出">⬆ Money out — paid from the pool</div><div class="tb-form"><label class="tb-sharelab" data-zh="谁一起分摊这笔？">Who shared this?</label><div id="tbShare" class="tb-whorow"></div><input id="tbOutDesc" placeholder="What was it for? (e.g. Day 3 taxi)" data-zh-ph="花在哪？（例：第3天打车）"><input id="tbOutAmt" placeholder="Amount spent" data-zh-ph="支出金额" type="number" step="0.01"><input id="tbOutRemark" placeholder="Remark (optional)" data-zh-ph="备注（选填）"><button class="tb-go out" onclick="tbAddOut()" data-zh="记一笔支出">Add spending</button></div></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="公款状况">The pool</div><div id="tbBalance"></div></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="公款记录">Tabung log</div><div id="tbLog" style="font-size:12.5px"></div></div><div style="margin-top:12px"><button onclick="tbReset()" style="background:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--mute);cursor:pointer" data-zh="清空 Tabung">Clear the tabung</button></div></div><div id="spPane"><div id="spMembersRow" style="margin-bottom:10px">
+    <div class="sp-tabs"><button id="spTabSplit" class="on" data-spmode="split" data-zh="💸 谁欠谁">💸 Who owes who</button><button id="spTabTabung" data-spmode="tabung" data-zh="🏦 Tabung 公款">🏦 Tabung (pool)</button><button id="spTabMine" data-spmode="mine" data-zh="🧾 我的账">🧾 My spending</button></div><div id="myPane" style="display:none"><p style="font-size:12.5px;color:var(--mute);margin-bottom:10px" data-zh="只存在<b>这台设备</b>上，不跟任何人分享，也不进共享档案。记你自己带了多少钱、花了多少、还剩多少，以及代购的账。">Stays on <b>this device only</b> — not shared with anyone and never written to the shared files. What you brought, what you’ve spent, what’s left, and your 代购 list.</p><div class="my-sec"><div class="my-h"><span data-zh="你自己的汇率">Your conversion rate</span></div><div class="my-rate"><span>100 JPY =</span><input id="myRate" type="number" step="0.0001" placeholder="2.6290" oninput="mySetRate()"><span>MYR</span></div><div class="my-note" data-zh="填你<b>实际换到的</b>汇率（例如 CIMB 的）— 下面所有换算都用它。">Use the rate you <b>actually got</b> (your CIMB slip, say) — everything below converts with it.</div></div><div class="my-sec"><div class="my-h"><span data-zh="快速换算 — 这个多少马币？">Quick check — what is this in ringgit?</span></div><div class="my-calc"><input id="myCalcAmt" type="number" placeholder="1980" oninput="myCalc()"><span>JPY</span></div><div id="myCalcOut" class="my-calcout"></div><div class="my-note" data-zh="在店里看到价钱时直接输进来 — 不会记进账里。">Type a price while you’re standing in the shop — this doesn’t record anything.</div></div><div class="my-sec"><div class="my-h">⬇ <span data-zh="带了多少钱">Money in — what you brought</span></div><div class="my-form"><select id="myFundPay"><option value="cash" data-zh="💴 现金">💴 Cash</option><option value="wise" data-zh="💳 Wise / 卡">💳 Wise / card</option></select><select id="myFundCur"><option value="JPY">¥ JPY</option><option value="MYR">RM MYR</option><option value="SGD">S$ SGD</option></select><input id="myFundAmt" placeholder="Amount" data-zh-ph="金额" type="number" step="0.01"><input id="myFundNote" placeholder="Note (optional)" data-zh-ph="备注（选填）"><button class="my-go in" onclick="myAddFund()" data-zh="记下带的钱">Add funds</button></div><div class="my-note" data-zh="现金和 Wise 分开记 — 这样才知道<b>钱包里</b>还剩多少，而不只是总数。">Log cash and Wise separately — that’s how you know what’s left <b>in your pocket</b>, not just in total.</div></div><div class="my-sec"><div class="my-h">⬆ <span data-zh="花了什么">Spending</span></div><div class="my-form"><input id="mySpDesc" placeholder="What was it for?" data-zh-ph="花在哪？"><div class="my-row2"><select id="mySpPay"><option value="cash" data-zh="💴 现金">💴 Cash</option><option value="wise" data-zh="💳 Wise / 卡">💳 Wise / card</option></select><select id="mySpCur"><option value="JPY">¥ JPY</option><option value="MYR">RM MYR</option><option value="SGD">S$ SGD</option></select></div><input id="mySpAmt" placeholder="Amount" data-zh-ph="金额" type="number" step="0.01"><select id="mySpCat" onchange="myToggleDG()"><option value="food" data-zh="吃的">Food</option><option value="shopping" data-zh="购物">Shopping</option><option value="transport" data-zh="交通">Transport</option><option value="daigou" data-zh="代购">代购</option><option value="other" data-zh="其他" selected>Other</option></select><div id="myDGFields" style="display:none"><input id="mySpWho" placeholder="Buying for whom?" data-zh-ph="帮谁买？"><input id="mySpBudget" placeholder="Their budget (optional)" data-zh-ph="他给的预算（选填）" type="number" step="0.01"></div><input id="mySpRemark" placeholder="Remark (optional)" data-zh-ph="备注（选填）"><button class="my-go out" onclick="myAddSpend()" data-zh="记一笔">Add spending</button></div></div><div class="my-sec"><div class="my-h"><span data-zh="还剩多少">Budget left</span></div><div id="myBudget"></div></div><div class="my-sec"><div class="my-h"><span data-zh="按类别">By category</span></div><div id="myCats"></div></div><div class="my-sec"><div class="my-h">代购 — <span data-zh="预算 vs 实付">budget vs paid</span></div><div id="myDaigou"></div></div><div class="my-sec"><div class="my-h"><span data-zh="全部记录">Everything logged</span></div><div id="myLog"></div></div><div style="margin-top:12px"><button onclick="myReset()" style="background:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--mute);cursor:pointer" data-zh="清空我的账">Clear My spending</button></div><div id="myBody"></div></div><div id="tbPane" style="display:none"><div id="tbSharedPanel"></div><p style="font-size:12.5px;color:var(--mute);margin-bottom:10px" data-zh="共同的钱箱：大家先把钱<b>放进去</b>，团体开销再从里面<b>拿出来</b>。适合你们有一笔共同基金，而不是各付各的再算谁欠谁。">A shared kitty: everyone pays money <b>in</b>, and group costs come <b>out</b> of it. Use this when you hold one common fund rather than tracking who owes whom.</p><div style="margin-bottom:10px"><div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="谁有份">Who is in the tabung</div><div id="tbMemberChips" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px"></div><div style="display:flex;gap:6px"><input id="tbNewMember" placeholder="Add name…" data-zh-ph="加名字…" style="flex:1;padding:7px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px"><button onclick="tbAddMember()" class="cpchip" style="cursor:pointer" data-zh="+ 新增">+ Add</button></div></div><div style="display:flex;gap:8px;align-items:center;margin-bottom:10px;flex-wrap:wrap"><span style="font-size:11.5px;color:var(--mute)" data-zh="货币">Currency</span><select id="tbCur" style="padding:7px 8px;border:1px solid var(--line);border-radius:8px;font-size:13px;font-weight:700"><option value="JPY">¥ JPY</option><option value="MYR">RM MYR</option><option value="SGD">S$ SGD</option></select><span style="font-size:11px;color:var(--mute)" data-zh="用在下一笔">applies to the next entry</span></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px;color:var(--matcha)" data-zh="⬇ 存钱 — 有人出资">⬇ Money in — someone contributes</div><div class="tb-form"><select id="tbWho"></select><input id="tbInAmt" placeholder="Amount paid in" data-zh-ph="存入金额" type="number" step="0.01"><input id="tbInRemark" placeholder="Remark (optional)" data-zh-ph="备注（选填）"><button class="tb-go in" onclick="tbAddIn()" data-zh="记一笔存入">Add contribution</button></div></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px;color:var(--red)" data-zh="⬆ 花钱 — 从公款支出">⬆ Money out — paid from the pool</div><div class="tb-form"><label class="tb-sharelab" data-zh="谁一起分摊这笔？">Who shared this?</label><div id="tbShare" class="tb-whorow"></div><input id="tbOutDesc" placeholder="What was it for? (e.g. Day 3 taxi)" data-zh-ph="花在哪？（例：第3天打车）"><input id="tbOutAmt" placeholder="Amount spent" data-zh-ph="支出金额" type="number" step="0.01"><input id="tbOutRemark" placeholder="Remark (optional)" data-zh-ph="备注（选填）"><button class="tb-go out" onclick="tbAddOut()" data-zh="记一笔支出">Add spending</button></div></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="公款状况">The pool</div><div id="tbBalance"></div></div><div style="border-top:1px dashed var(--line);margin:12px 0;padding-top:11px"><div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="公款记录">Tabung log</div><div id="tbLog" style="font-size:12.5px"></div></div><div style="margin-top:12px"><button onclick="tbReset()" style="background:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--mute);cursor:pointer" data-zh="清空 Tabung">Clear the tabung</button></div></div><div id="spPane"><div id="spMembersRow" style="margin-bottom:10px">
       <div style="font-weight:900;font-size:13px;margin-bottom:6px" data-zh="团队成员">Group members</div>
       <div id="spMemberChips" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px"></div>
       <div style="display:flex;gap:6px">
@@ -2059,6 +2221,47 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 </div>
 </details>
 
+<!-- ============ JAPANESE ============ -->
+<details class="ref"><summary class="sec" id="jp" data-zh="<span class=&quot;g&quot;>语</span>实用日语 — 照着念就行"><span class="g">语</span>Useful Japanese — just read it out</summary>
+<div class="info">
+  <div class="icard full">
+<p style="font-size:12.5px;color:var(--mute);margin-bottom:11px" data-zh="大字的是<b>拼音</b> — 直接照着念就行。<b>点任何一张卡</b>会全屏放大日文，直接给店员看。">The big line is the <b>pronunciation</b> — just read it aloud. <b>Tap any card</b> to blow the Japanese up full-screen and show it to staff.</p>
+<div class="ph-grp"><div class="ph-h"><span>🙇</span><b data-zh="四句走天下">The four that carry you</b></div><div class="ph-wrap"><div class="jph" data-jp="すみません" data-ro="sumimasen"><div class="ph-ro">sumimasen</div><div class="ph-jp">すみません</div><div class="ph-en" data-zh="不好意思／请问">Excuse me / sorry</div><span class="ph-n" data-zh="搭话、叫人、道歉都用它。">Use it to start any interaction.</span></div><div class="jph" data-jp="お願いします" data-ro="onegai shimasu"><div class="ph-ro">onegai shimasu</div><div class="ph-jp">お願いします</div><div class="ph-en" data-zh="麻烦了／就这样">Please / yes do that</div><span class="ph-n" data-zh="指着东西说这句就行。">Point at something and say this.</span></div><div class="jph" data-jp="大丈夫です" data-ro="daijoubu desu"><div class="ph-ro">daijoubu desu</div><div class="ph-jp">大丈夫です</div><div class="ph-en" data-zh="不用了／没事">No thanks / I’m fine</div><span class="ph-n" data-zh="婉拒用这句 — 袋子、积分卡、收据。">The polite no — bag, points card, receipt.</span></div><div class="jph" data-jp="ありがとうございます" data-ro="arigatou gozaimasu"><div class="ph-ro">arigatou gozaimasu</div><div class="ph-jp">ありがとうございます</div><div class="ph-en" data-zh="谢谢">Thank you</div></div></div></div><div class="ph-grp"><div class="ph-h"><span>💴</span><b data-zh="问价钱">Asking the price</b></div><div class="ph-wrap"><div class="jph" data-jp="いくらですか？" data-ro="ikura desu ka?"><div class="ph-ro">ikura desu ka?</div><div class="ph-jp">いくらですか？</div><div class="ph-en" data-zh="多少钱？">How much is it?</div></div><div class="jph" data-jp="これください" data-ro="kore kudasai"><div class="ph-ro">kore kudasai</div><div class="ph-jp">これください</div><div class="ph-en" data-zh="要这个">This one, please</div><span class="ph-n" data-zh="指一下 + 说这句，到哪都管用。">Point + say it. Works everywhere.</span></div><div class="jph" data-jp="カードで払えますか？" data-ro="kaado de haraemasu ka?"><div class="ph-ro">kaado de haraemasu ka?</div><div class="ph-jp">カードで払えますか？</div><div class="ph-en" data-zh="可以刷卡吗？">Can I pay by card?</div></div><div class="jph" data-jp="免税できますか？" data-ro="menzei dekimasu ka?"><div class="ph-ro">menzei dekimasu ka?</div><div class="ph-jp">免税できますか？</div><div class="ph-en" data-zh="可以退税吗？">Can I get tax-free?</div><span class="ph-n" data-zh="护照先拿好。">Have your passport out.</span></div><div class="jph" data-jp="袋は大丈夫です" data-ro="fukuro wa daijoubu desu"><div class="ph-ro">fukuro wa daijoubu desu</div><div class="ph-jp">袋は大丈夫です</div><div class="ph-en" data-zh="不用袋子">No bag needed</div><span class="ph-n" data-zh="现在袋子要钱。">Bags are charged now.</span></div></div></div><div class="ph-grp"><div class="ph-h"><span>1⃣</span><b data-zh="数东西 — つ">Counting things — つ</b></div><div class="ph-wrap"><div class="jph" data-jp="一つ" data-ro="hitotsu"><div class="ph-ro">hitotsu</div><div class="ph-jp">一つ</div><div class="ph-en" data-zh="1 个">1 piece</div></div><div class="jph" data-jp="二つ" data-ro="futatsu"><div class="ph-ro">futatsu</div><div class="ph-jp">二つ</div><div class="ph-en" data-zh="2 个">2 pieces</div></div><div class="jph" data-jp="三つ" data-ro="mittsu"><div class="ph-ro">mittsu</div><div class="ph-jp">三つ</div><div class="ph-en" data-zh="3 个">3 pieces</div></div><div class="jph" data-jp="四つ" data-ro="yottsu"><div class="ph-ro">yottsu</div><div class="ph-jp">四つ</div><div class="ph-en" data-zh="4 个">4 pieces</div></div><div class="jph" data-jp="五つ" data-ro="itsutsu"><div class="ph-ro">itsutsu</div><div class="ph-jp">五つ</div><div class="ph-en" data-zh="5 个">5 pieces</div></div></div></div><div class="ph-grp"><div class="ph-h"><span>👥</span><b data-zh="数人 — 人">Counting people — 人</b></div><div class="ph-wrap"><div class="jph" data-jp="一人" data-ro="hitori"><div class="ph-ro">hitori</div><div class="ph-jp">一人</div><div class="ph-en" data-zh="1 位">1 person</div></div><div class="jph" data-jp="二人" data-ro="futari"><div class="ph-ro">futari</div><div class="ph-jp">二人</div><div class="ph-en" data-zh="2 位">2 people</div><span class="ph-n" data-zh="注意：1 和 2 是不规则的。">Note: not “nininn”. 1 and 2 are irregular.</span></div><div class="jph" data-jp="三人" data-ro="san-nin"><div class="ph-ro">san-nin</div><div class="ph-jp">三人</div><div class="ph-en" data-zh="3 位">3 people</div></div><div class="jph" data-jp="四人" data-ro="yo-nin"><div class="ph-ro">yo-nin</div><div class="ph-jp">四人</div><div class="ph-en" data-zh="4 位">4 people</div><span class="ph-n" data-zh="是 yo，不是 shi。">“Yo”, not “shi”.</span></div><div class="jph" data-jp="五人" data-ro="go-nin"><div class="ph-ro">go-nin</div><div class="ph-jp">五人</div><div class="ph-en" data-zh="5 位">5 people</div></div></div></div><div class="ph-grp"><div class="ph-h"><span>🍺</span><b data-zh="瓶装、长条 — 本">Drinks & long things — 本</b></div><div class="ph-wrap"><div class="jph" data-jp="一本" data-ro="ippon"><div class="ph-ro">ippon</div><div class="ph-jp">一本</div><div class="ph-en" data-zh="1 瓶">1 bottle</div></div><div class="jph" data-jp="二本" data-ro="nihon"><div class="ph-ro">nihon</div><div class="ph-jp">二本</div><div class="ph-en" data-zh="2 瓶">2 bottles</div></div><div class="jph" data-jp="三本" data-ro="sanbon"><div class="ph-ro">sanbon</div><div class="ph-jp">三本</div><div class="ph-en" data-zh="3 瓶">3 bottles</div><span class="ph-n" data-zh="发音会变：ippon / nihon / sanbon。">Sound shifts: ippon / nihon / sanbon.</span></div><div class="jph" data-jp="四本" data-ro="yonhon"><div class="ph-ro">yonhon</div><div class="ph-jp">四本</div><div class="ph-en" data-zh="4 瓶">4 bottles</div></div></div></div><div class="ph-grp"><div class="ph-h"><span>🎫</span><b data-zh="扁平的 — 枚">Flat things — 枚</b></div><div class="ph-wrap"><div class="jph" data-jp="一枚" data-ro="ichimai"><div class="ph-ro">ichimai</div><div class="ph-jp">一枚</div><div class="ph-en" data-zh="1 张">1 ticket / sheet</div></div><div class="jph" data-jp="二枚" data-ro="nimai"><div class="ph-ro">nimai</div><div class="ph-jp">二枚</div><div class="ph-en" data-zh="2 张">2 tickets</div></div><div class="jph" data-jp="三枚" data-ro="sanmai"><div class="ph-ro">sanmai</div><div class="ph-jp">三枚</div><div class="ph-en" data-zh="3 张">3 tickets</div></div><div class="jph" data-jp="四枚" data-ro="yonmai"><div class="ph-ro">yonmai</div><div class="ph-jp">四枚</div><div class="ph-en" data-zh="4 张">4 tickets</div><span class="ph-n" data-zh="票、面膜、海苔都用枚。">Tickets, face masks, sheets of nori.</span></div></div></div><div class="ph-grp"><div class="ph-h"><span>🏪</span><b data-zh="便利店">At the konbini</b></div><div class="ph-wrap"><div class="jph" data-jp="温めますか？" data-ro="atatamemasu ka?"><div class="ph-ro">atatamemasu ka?</div><div class="ph-jp">温めますか？</div><div class="ph-en" data-zh="（店员问）要加热吗？">(they ask) Shall I heat it?</div><span class="ph-n" data-zh="回答 hai，或者 daijoubu desu。">Answer はい hai, or 大丈夫です.</span></div><div class="jph" data-jp="お箸いりますか？" data-ro="ohashi irimasu ka?"><div class="ph-ro">ohashi irimasu ka?</div><div class="ph-jp">お箸いりますか？</div><div class="ph-en" data-zh="（店员问）要筷子吗？">(they ask) Chopsticks?</div></div><div class="jph" data-jp="チャージお願いします" data-ro="chaaji onegai shimasu"><div class="ph-ro">chaaji onegai shimasu</div><div class="ph-jp">チャージお願いします</div><div class="ph-en" data-zh="请给 Suica 充值">Top up my Suica, please</div><span class="ph-n" data-zh="说的同时把卡递过去。">Hand the card over as you say it.</span></div><div class="jph" data-jp="レシートください" data-ro="reshiito kudasai"><div class="ph-ro">reshiito kudasai</div><div class="ph-jp">レシートください</div><div class="ph-en" data-zh="请给收据">Receipt, please</div><span class="ph-n" data-zh="记公款要用。">For the tabung.</span></div></div></div><div class="ph-grp"><div class="ph-h"><span>🍜</span><b data-zh="吃饭">At a restaurant</b></div><div class="ph-wrap"><div class="jph" data-jp="四人です" data-ro="yo-nin desu"><div class="ph-ro">yo-nin desu</div><div class="ph-jp">四人です</div><div class="ph-en" data-zh="我们四个人">Four of us</div><span class="ph-n" data-zh="进门说这句，或直接比手指。">Say it at the door, or just hold up fingers.</span></div><div class="jph" data-jp="英語のメニューありますか？" data-ro="eigo no menyuu arimasu ka?"><div class="ph-ro">eigo no menyuu arimasu ka?</div><div class="ph-jp">英語のメニューありますか？</div><div class="ph-en" data-zh="有英文菜单吗？">Do you have an English menu?</div></div><div class="jph" data-jp="お会計お願いします" data-ro="okaikei onegai shimasu"><div class="ph-ro">okaikei onegai shimasu</div><div class="ph-jp">お会計お願いします</div><div class="ph-en" data-zh="买单">The bill, please</div><span class="ph-n" data-zh="很多店是到前台付。">Often you pay at the front counter.</span></div><div class="jph" data-jp="ごちそうさまでした" data-ro="gochisousama deshita"><div class="ph-ro">gochisousama deshita</div><div class="ph-jp">ごちそうさまでした</div><div class="ph-en" data-zh="多谢款待">Thanks, that was good</div><span class="ph-n" data-zh="出门时说一句。">Say it on the way out.</span></div></div></div><div class="ph-grp"><div class="ph-h"><span>🗺</span><b data-zh="应急">Getting by</b></div><div class="ph-wrap"><div class="jph" data-jp="トイレはどこですか？" data-ro="toire wa doko desu ka?"><div class="ph-ro">toire wa doko desu ka?</div><div class="ph-jp">トイレはどこですか？</div><div class="ph-en" data-zh="厕所在哪？">Where is the toilet?</div></div><div class="jph" data-jp="写真を撮ってもらえますか？" data-ro="shashin wo totte moraemasu ka?"><div class="ph-ro">shashin wo totte moraemasu ka?</div><div class="ph-jp">写真を撮ってもらえますか？</div><div class="ph-en" data-zh="可以帮我们拍张照吗？">Could you take a photo of us?</div><span class="ph-n" data-zh="自拍杆不能用的地方用得上。">Useful where the selfie stick isn’t.</span></div><div class="jph" data-jp="あげたてですか？" data-ro="agetate desu ka?"><div class="ph-ro">agetate desu ka?</div><div class="ph-jp">あげたてですか？</div><div class="ph-en" data-zh="是刚炸的吗？">Is it freshly fried?</div><span class="ph-n" data-zh="第 3 天的咖喱面包用。">For the Day 3 curry bread.</span></div><div class="jph" data-jp="これは何ですか？" data-ro="kore wa nan desu ka?"><div class="ph-ro">kore wa nan desu ka?</div><div class="ph-jp">これは何ですか？</div><div class="ph-en" data-zh="这是什么？">What is this?</div></div></div></div><div class="note" style="margin-top:12px" data-zh="<b>为什么数字有好几套：</b>日语数东西要看是什么东西 — 一般物品用つ、人用人、瓶装用本、扁的用枚。实在想不起来就<b>比手指</b>，没人会介意。"><b>Why the numbers change:</b> Japanese counts different things with different words — つ for general items, 人 for people, 本 for bottles, 枚 for flat things. If you blank, <b>hold up fingers</b> — nobody minds.</div>
+  </div>
+</div>
+</details>
+
+<!-- ============ MY NOTES ============ -->
+<details class="ref"><summary class="sec" id="notes" data-zh="<span class=&quot;g&quot;>📝</span>我的笔记 — 想到什么写什么"><span class="g">📝</span>My notes — anything at all</summary>
+<div class="info">
+  <div class="icard full">
+    <p style="font-size:12.5px;color:var(--mute);margin-bottom:11px" data-zh="没有固定用途 — 想写什么写什么。只存在<b>这台设备</b>上。">
+    No fixed purpose — write whatever you want. Stays on <b>this device only</b>.</p>
+
+    <div class="nt-new">
+      <input id="ntTitle" placeholder="Title (optional)" data-zh-ph="标题（选填）">
+      <textarea id="ntBody" rows="3" placeholder="Write anything…" data-zh-ph="随便写…"></textarea>
+      <div class="nt-opts">
+        <div class="nt-dots" id="ntDots"></div>
+        <button class="nt-pin-toggle" id="ntPinNew" title="Pin this note" data-zh="置顶">📌</button>
+        <button class="nt-add" onclick="ntAdd()" data-zh="加一张">Add note</button>
+      </div>
+    </div>
+
+    <div class="nt-bar">
+      <input id="ntSearch" placeholder="Search notes…" data-zh-ph="搜笔记…" oninput="ntRenderAll()">
+      <span class="nt-count" id="ntCount"></span>
+    </div>
+
+    <div id="ntGrid" class="nt-grid"></div>
+
+    <div style="margin-top:12px"><button onclick="ntReset()"
+      style="background:none;border:1px solid var(--line);border-radius:8px;padding:6px 12px;
+      font-size:12px;color:var(--mute);cursor:pointer" data-zh="清空笔记">Clear all notes</button></div>
+  </div>
+</div>
+</details>
+
 <!-- ============ REFERENCES ============ -->
 <details class="ref"><summary class="sec" id="refs" data-zh="<span class=&quot;g&quot;>📚</span>参考资料 &amp; 链接"><span class="g">📚</span>References &amp; links</summary>
 <div class="info">
@@ -2088,7 +2291,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 </div>
 </details>
 
-<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v76</b> · 更新于 2026年9月14日</span>">Built for your 4–11 Oct 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v76</b> · updated 14 Sep 2026</span></footer>
+<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v82</b> · 更新于 2026年9月29日</span>">Built for your 4–11 Oct 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v82</b> · updated 29 Sep 2026</span></footer>
 
 <script>
 // ===== Trip Split (localStorage-backed, this device only) =====
@@ -6196,8 +6399,8 @@ document.addEventListener("click", function(){ if(slSkipOpen){ slSkipOpen = null
 /* Single source of truth for the version shown on the page. Bump these two and
    both the header chip and the footer line follow. The values are also written
    into the HTML above, so the version still shows if scripts don't run. */
-var GUIDE_VERSION = "v76";
-var GUIDE_UPDATED = {en: "17 Sep 2026", zh: "2026年9月17日"};
+var GUIDE_VERSION = "v82";
+var GUIDE_UPDATED = {en: "29 Sep 2026", zh: "2026年9月29日"};
 (function(){
   function paint(){
     var zh = (typeof LANG !== "undefined" && LANG === "zh");
@@ -6218,7 +6421,7 @@ var GUIDE_UPDATED = {en: "17 Sep 2026", zh: "2026年9月17日"};
 (function(){
   /* Every key this guide writes. Kept in one place so "Everything" can never
      silently miss a section that was added later. */
-  var ALL_KEYS = ["japanTripShop_v2","japanTripPack_v3","japanTripSplit_v2","japanTripTabung_v1",
+  var ALL_KEYS = ["japanTripShop_v2","japanTripPack_v3","japanTripSplit_v2","japanTripTabung_v1","japanTripMine_v1","japanTripNotes_v1",
                   "japanTripReels_v2","japanTripPlaces_v1","japanTripLang"];
   var LABEL = {
     japanTripShop_v2:  ["shopping list","购物清单"],
@@ -6757,12 +6960,16 @@ document.addEventListener("DOMContentLoaded", tbRenderAll);
     var sp = document.getElementById("spPane"), tb = document.getElementById("tbPane");
     var a = document.getElementById("spTabSplit"), b = document.getElementById("spTabTabung");
     if(!sp || !tb || !a || !b) return;
-    var t = (mode === "tabung");
-    sp.style.display = t ? "none" : "";
-    tb.style.display = t ? "" : "none";
-    a.classList.toggle("on", !t);
-    b.classList.toggle("on", t);
-    if(t && typeof tbRenderAll === "function") tbRenderAll();
+    var mine = document.getElementById("myPane");
+    var c = document.getElementById("spTabMine");
+    sp.style.display = (mode === "split")  ? "" : "none";
+    tb.style.display = (mode === "tabung") ? "" : "none";
+    if(mine) mine.style.display = (mode === "mine") ? "" : "none";
+    a.classList.toggle("on", mode === "split");
+    b.classList.toggle("on", mode === "tabung");
+    if(c) c.classList.toggle("on", mode === "mine");
+    if(mode === "tabung" && typeof tbRenderAll === "function") tbRenderAll();
+    if(mode === "mine"   && typeof myRenderAll === "function") myRenderAll();
   }
   document.addEventListener("click", function(e){
     var t = e.target && e.target.closest ? e.target.closest("[data-spmode]") : null;
@@ -6877,6 +7084,475 @@ document.addEventListener("DOMContentLoaded", tbRenderAll);
   var prev = window.applyLang;
   if(typeof prev === "function"){ window.applyLang = function(){ prev.apply(this, arguments); render(); }; }
   window.refRender = render;
+})();
+</script>
+<script>
+// ===== My spending (personal, this device only) =====
+var MY_KEY = "japanTripMine_v1";
+
+function myDefaults(){
+  return {
+    rate: "",            /* MYR per 100 JPY, typed by the user */
+    funds: [],           /* {id, pay:"cash"|"wise", cur, amount, note} */
+    spends: []           /* {id, desc, amount, cur, pay, cat, daigou, who, budget, remark} */
+  };
+}
+function myNormalise(d){
+  var out = myDefaults();
+  if(!d || typeof d !== "object") return out;
+  out.rate = (d.rate === undefined || d.rate === null) ? "" : String(d.rate);
+  function arr(v){ return Object.prototype.toString.call(v) === "[object Array]" ? v : []; }
+  arr(d.funds).forEach(function(f){
+    var a = parseFloat(f && f.amount);
+    if(!a || a <= 0) return;
+    out.funds.push({id: f.id || myId(), pay: f.pay === "wise" ? "wise" : "cash",
+                    cur: SP_CURS.indexOf(f.cur) > -1 ? f.cur : "JPY",
+                    amount: a, note: f.note || ""});
+  });
+  arr(d.spends).forEach(function(s){
+    var a = parseFloat(s && s.amount);
+    if(!a || a <= 0) return;
+    out.spends.push({id: s.id || myId(), desc: s.desc || "", amount: a,
+                     cur: SP_CURS.indexOf(s.cur) > -1 ? s.cur : "JPY",
+                     pay: s.pay === "wise" ? "wise" : "cash",
+                     cat: s.cat || "other",
+                     daigou: !!s.daigou, who: s.who || "",
+                     budget: (s.budget === undefined || s.budget === null) ? "" : String(s.budget),
+                     remark: s.remark || ""});
+  });
+  return out;
+}
+function myId(){ return "m" + Date.now() + Math.floor(Math.random()*1000); }
+function myLoad(){
+  try{
+    var raw = localStorage.getItem(MY_KEY);
+    return raw ? myNormalise(JSON.parse(raw)) : myDefaults();
+  }catch(e){ return myDefaults(); }
+}
+function mySave(){ try{ localStorage.setItem(MY_KEY, JSON.stringify(myData)); }catch(e){} }
+var myData = myLoad();
+
+var MY_CATS = ["food","shopping","transport","daigou","other"];
+function myCatLabel(c){
+  return T({food:"Food", shopping:"Shopping", transport:"Transport",
+            daigou:"\u4ee3\u8d2d", other:"Other"}[c] || "Other");
+}
+function myEsc(s){
+  return String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+/* The user's own rate, as MYR per 100 JPY. Everything converts through this. */
+function myRate(){
+  var r = parseFloat(myData.rate);
+  return (r && r > 0) ? r : 0;
+}
+function myToMYR(amount, cur){
+  if(cur === "MYR") return amount;
+  if(cur === "JPY"){ var r = myRate(); return r ? amount * r / 100 : null; }
+  return null;   /* SGD has no user rate; shown unconverted */
+}
+function myFmtMYR(v){
+  return (v === null) ? "\u2014" : "RM" + v.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+
+function myVal(id){ var e = document.getElementById(id); return e ? e.value.trim() : ""; }
+function mySetRate(){
+  myData.rate = myVal("myRate");
+  mySave(); myRenderAll();
+}
+function myAddFund(){
+  var a = parseFloat(myVal("myFundAmt"));
+  if(!a || a <= 0){ alert(T("Enter how much you brought.")); return; }
+  myData.funds.push({id: myId(), pay: myVal("myFundPay") || "cash",
+                     cur: myVal("myFundCur") || "JPY", amount: a, note: myVal("myFundNote")});
+  ["myFundAmt","myFundNote"].forEach(function(k){ var e=document.getElementById(k); if(e) e.value=""; });
+  mySave(); myRenderAll();
+}
+function myAddSpend(){
+  var desc = myVal("mySpDesc"), a = parseFloat(myVal("mySpAmt"));
+  if(!desc || !a || a <= 0){ alert(T("Say what it was for, and how much.")); return; }
+  var cat = myVal("mySpCat") || "other";
+  myData.spends.push({id: myId(), desc: desc, amount: a,
+                      cur: myVal("mySpCur") || "JPY", pay: myVal("mySpPay") || "cash",
+                      cat: cat, daigou: cat === "daigou",
+                      who: myVal("mySpWho"), budget: myVal("mySpBudget"), remark: myVal("mySpRemark")});
+  ["mySpDesc","mySpAmt","mySpWho","mySpBudget","mySpRemark"].forEach(function(k){
+    var e=document.getElementById(k); if(e) e.value="";
+  });
+  mySave(); myRenderAll();
+}
+function myDel(id){
+  var it = null;
+  myData.spends.forEach(function(s){ if(s.id === id) it = s; });
+  if(it && !confirm(T("Delete this?") + "\n\n" + it.desc + " \u00b7 " + spFmt(it.amount, it.cur))) return;
+  myData.spends = myData.spends.filter(function(s){ return s.id !== id; });
+  myData.funds  = myData.funds.filter(function(f){ return f.id !== id; });
+  mySave(); myRenderAll();
+}
+function myReset(){
+  if(!confirm(T("Clear everything in My spending on this device?"))) return;
+  myData = myDefaults(); mySave(); myRenderAll();
+}
+/* quick "what is this in ringgit" check at the till */
+function myCalc(){
+  var a = parseFloat(myVal("myCalcAmt"));
+  var out = document.getElementById("myCalcOut");
+  if(!out) return;
+  if(!a || a <= 0){ out.innerHTML = ""; return; }
+  var r = myRate();
+  if(!r){ out.innerHTML = '<span class="my-warn">' + T("Set your rate first.") + '</span>'; return; }
+  out.innerHTML = '<b>' + spFmt(a, "JPY") + '</b> = <b class="my-big">' + myFmtMYR(a * r / 100) + '</b>';
+}
+
+function myRenderAll(){
+  try{ myRenderInner(); }
+  catch(err){
+    var b = document.getElementById("myBody");
+    if(b) b.innerHTML = '<div style="color:var(--red)">' + T("Couldn\u2019t draw this:") + ' ' + myEsc(err.message) + '</div>';
+  }
+}
+function myRenderInner(){
+  var rl = document.getElementById("myRate");
+  if(rl && document.activeElement !== rl) rl.value = myData.rate;
+
+  /* totals per payment method, in their own currency */
+  var broughtBy = {cash:{}, wise:{}}, spentBy = {cash:{}, wise:{}};
+  SP_CURS.forEach(function(c){ broughtBy.cash[c]=0; broughtBy.wise[c]=0; spentBy.cash[c]=0; spentBy.wise[c]=0; });
+  myData.funds.forEach(function(f){ broughtBy[f.pay][f.cur] += f.amount; });
+  myData.spends.forEach(function(s){ spentBy[s.pay][s.cur] += s.amount; });
+
+  var box = document.getElementById("myBudget");
+  box.innerHTML = "";
+  ["cash","wise"].forEach(function(pay){
+    var used = SP_CURS.filter(function(c){ return broughtBy[pay][c] > 0 || spentBy[pay][c] > 0; });
+    if(!used.length) return;
+    var card = document.createElement("div");
+    card.className = "my-card";
+    var h = '<div class="my-h">' + (pay === "cash" ? "💴 " + T("Cash") : "💳 " + T("Wise / card")) + '</div>';
+    used.forEach(function(c){
+      var left = broughtBy[pay][c] - spentBy[pay][c];
+      h += '<div class="my-big ' + (left < 0 ? "neg" : "") + '">' + spFmt(left, c)
+        +  '<span>' + T("left") + ' \u00b7 ' + c + '</span></div>'
+        +  '<div class="my-sub"><span>' + T("brought") + '</span><span>' + spFmt(broughtBy[pay][c], c) + '</span></div>'
+        +  '<div class="my-sub"><span>' + T("spent") + '</span><span>\u2212' + spFmt(spentBy[pay][c], c) + '</span></div>';
+      var m = myToMYR(left, c);
+      if(m !== null && c !== "MYR"){
+        h += '<div class="my-note">\u2248 ' + myFmtMYR(m) + ' ' + T("at your rate") + '</div>';
+      }
+      if(left < 0){
+        h += '<div class="my-warn">\u26a0 ' + T("You\u2019ve spent more than you logged bringing \u2014 add the rest under Money in.") + '</div>';
+      }
+    });
+    card.innerHTML = h;
+    box.appendChild(card);
+  });
+  if(!box.innerHTML){
+    box.innerHTML = '<div style="color:var(--mute);font-size:12.5px">' + T("Add what you brought to see the budget.") + '</div>';
+  }
+
+  /* by category */
+  var cbox = document.getElementById("myCats");
+  var byCat = {}; MY_CATS.forEach(function(c){ byCat[c] = {}; });
+  myData.spends.forEach(function(s){
+    byCat[s.cat] = byCat[s.cat] || {};
+    byCat[s.cat][s.cur] = (byCat[s.cat][s.cur] || 0) + s.amount;
+  });
+  var rows = "";
+  MY_CATS.forEach(function(c){
+    var curs = Object.keys(byCat[c] || {}).filter(function(k){ return byCat[c][k] > 0; });
+    if(!curs.length) return;
+    rows += '<tr><td>' + myCatLabel(c) + '</td><td>'
+         +  curs.map(function(k){ return spFmt(byCat[c][k], k); }).join(" + ") + '</td></tr>';
+  });
+  cbox.innerHTML = rows
+    ? '<table class="my-tbl"><tr><th>' + T("Category") + '</th><th>' + T("Spent") + '</th></tr>' + rows + '</table>'
+    : '<div style="color:var(--mute);font-size:12.5px">' + T("Nothing logged yet.") + '</div>';
+
+  /* 代购 tracker: budget vs actual */
+  var dbox = document.getElementById("myDaigou");
+  var dg = myData.spends.filter(function(s){ return s.daigou; });
+  if(!dg.length){
+    dbox.innerHTML = '<div style="color:var(--mute);font-size:12.5px">' + T("No \u4ee3\u8d2d items yet.") + '</div>';
+  } else {
+    var h = '<table class="my-tbl"><tr><th>' + T("Item") + '</th><th>' + T("For") + '</th><th>'
+          + T("Budget") + '</th><th>' + T("Paid") + '</th></tr>';
+    dg.forEach(function(s){
+      var b = parseFloat(s.budget);
+      var over = (b && s.amount > b);
+      h += '<tr><td>' + myEsc(s.desc) + '</td><td>' + myEsc(s.who || "\u2014") + '</td><td>'
+        +  (b ? spFmt(b, s.cur) : "\u2014") + '</td><td class="' + (over ? "my-over" : "my-ok") + '">'
+        +  spFmt(s.amount, s.cur) + (over ? " \u26a0" : "") + '</td></tr>';
+    });
+    h += '</table>';
+    if(dg.some(function(s){ var b = parseFloat(s.budget); return b && s.amount > b; })){
+      h += '<div class="my-warn">\u26a0 ' + T("Marked items went over the budget you were given.") + '</div>';
+    }
+    dbox.innerHTML = h;
+  }
+
+  /* the log */
+  var log = document.getElementById("myLog");
+  log.innerHTML = "";
+  var all = myData.funds.map(function(f){ return {kind:"in", o:f}; })
+        .concat(myData.spends.map(function(s){ return {kind:"out", o:s}; }));
+  if(!all.length){
+    log.innerHTML = '<div style="color:var(--mute);font-size:12.5px">' + T("Nothing logged yet.") + '</div>';
+  } else {
+    all.reverse().forEach(function(e){
+      var o = e.o, row = document.createElement("div");
+      row.className = "my-row";
+      var tag = e.kind === "in"
+        ? '<span class="my-tag in">' + T("IN") + '</span>'
+        : '<span class="my-tag ' + o.pay + '">' + (o.pay === "cash" ? T("CASH") : T("WISE")) + '</span>';
+      var title = e.kind === "in"
+        ? ('<b>' + T("Money in") + '</b> ' + (o.note ? myEsc(o.note) : ""))
+        : ('<b>' + myEsc(o.desc) + '</b>' + (o.daigou ? ' <span class="my-dg">\u4ee3\u8d2d</span>' : ''));
+      var sub = "";
+      if(e.kind === "out"){
+        var bits = [myCatLabel(o.cat)];
+        if(o.who) bits.push(T("for") + " " + myEsc(o.who));
+        var m = myToMYR(o.amount, o.cur);
+        if(m !== null && o.cur !== "MYR") bits.push("\u2248 " + myFmtMYR(m));
+        sub = '<div class="my-sm">' + bits.join(" \u00b7 ") + '</div>'
+            + (o.remark ? '<div class="my-rem">\ud83d\udcac ' + myEsc(o.remark) + '</div>' : '');
+      }
+      row.innerHTML = '<div class="my-l">' + tag + '<div>' + title + sub + '</div></div>'
+        + '<div class="my-r"><span class="my-amt ' + e.kind + '">'
+        + (e.kind === "in" ? "+" : "\u2212") + spFmt(o.amount, o.cur) + '</span>'
+        + '<span class="my-x" data-mydel="' + o.id + '">\u00d7</span></div>';
+      log.appendChild(row);
+    });
+    log.querySelectorAll("[data-mydel]").forEach(function(x){
+      x.addEventListener("click", function(){ myDel(this.getAttribute("data-mydel")); });
+    });
+  }
+  myCalc();
+}
+document.addEventListener("DOMContentLoaded", myRenderAll);
+
+/* 代购 needs two extra fields; everything else doesn't. */
+function myToggleDG(){
+  var sel = document.getElementById("mySpCat");
+  var box = document.getElementById("myDGFields");
+  if(sel && box) box.style.display = (sel.value === "daigou") ? "" : "none";
+}
+</script>
+
+<script>
+/* ===== My notes ===== */
+var NT_KEY = "japanTripNotes_v1";
+/* light tint + a stronger edge, so a colour still reads on both themes */
+var NT_COLORS = [
+  {id:"y", bg:"#fdf6e4", dk:"#2d2717", edge:"#dcb254"},
+  {id:"g", bg:"#e9f3ec", dk:"#16291f", edge:"#4f9d72"},
+  {id:"b", bg:"#eaf1fb", dk:"#16233a", edge:"#5b8fd6"},
+  {id:"r", bg:"#fdf1ef", dk:"#331d1a", edge:"#d9584a"},
+  {id:"p", bg:"#f4ecfa", dk:"#271a33", edge:"#a97ec9"},
+  {id:"n", bg:"", dk:"", edge:"#9aa4b6"}
+];
+function ntColor(id){
+  for(var i=0;i<NT_COLORS.length;i++){ if(NT_COLORS[i].id === id) return NT_COLORS[i]; }
+  return NT_COLORS[NT_COLORS.length-1];
+}
+function ntDefaults(){ return {notes:[]}; }
+function ntNormalise(d){
+  var out = ntDefaults();
+  if(!d || Object.prototype.toString.call(d.notes) !== "[object Array]") return out;
+  d.notes.forEach(function(n){
+    if(!n || typeof n !== "object") return;
+    var title = String(n.title || ""), body = String(n.body || "");
+    if(!title.trim() && !body.trim()) return;
+    out.notes.push({id:n.id || ("n"+Date.now()+Math.floor(Math.random()*1000)),
+      title:title, body:body, color:ntColor(n.color).id,
+      pin:!!n.pin, ts:n.ts || Date.now(), edited:!!n.edited});
+  });
+  return out;
+}
+function ntLoad(){
+  try{ var raw = localStorage.getItem(NT_KEY); return raw ? ntNormalise(JSON.parse(raw)) : ntDefaults(); }
+  catch(e){ return ntDefaults(); }
+}
+function ntSave(){ try{ localStorage.setItem(NT_KEY, JSON.stringify(ntData)); }catch(e){} }
+var ntData = ntLoad();
+var ntPick = "y", ntPinNew = false, ntEditing = null;
+
+function ntEsc(s){
+  return String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+function ntWhen(ts){
+  var d0 = new Date(ts), now = new Date();
+  var sameDay = d0.toDateString() === now.toDateString();
+  var hh = ("0"+d0.getHours()).slice(-2) + ":" + ("0"+d0.getMinutes()).slice(-2);
+  if(sameDay) return T("today") + " " + hh;
+  return (d0.getMonth()+1) + "/" + d0.getDate() + " " + hh;
+}
+function ntAdd(){
+  var t = document.getElementById("ntTitle"), b = document.getElementById("ntBody");
+  if(!t.value.trim() && !b.value.trim()){ alert(T("Write something first.")); return; }
+  ntData.notes.push({id:"n"+Date.now()+Math.floor(Math.random()*1000),
+    title:t.value, body:b.value, color:ntPick, pin:ntPinNew, ts:Date.now(), edited:false});
+  t.value = ""; b.value = "";
+  ntPinNew = false;
+  var pb = document.getElementById("ntPinNew"); if(pb) pb.classList.remove("on");
+  ntSave(); ntRenderAll();
+}
+function ntFind(id){ var f=null; ntData.notes.forEach(function(n){ if(n.id===id) f=n; }); return f; }
+function ntTogglePin(id){
+  var n = ntFind(id); if(!n) return;
+  n.pin = !n.pin; ntSave(); ntRenderAll();
+}
+function ntCycle(id){
+  var n = ntFind(id); if(!n) return;
+  var i = 0;
+  NT_COLORS.forEach(function(c,k){ if(c.id === n.color) i = k; });
+  n.color = NT_COLORS[(i+1) % NT_COLORS.length].id;
+  ntSave(); ntRenderAll();
+}
+function ntEdit(id){ ntEditing = (ntEditing === id) ? null : id; ntRenderAll(); }
+function ntCommit(id){
+  var n = ntFind(id); if(!n) return;
+  var t = document.getElementById("ntET_"+id), b = document.getElementById("ntEB_"+id);
+  if(t) n.title = t.value;
+  if(b) n.body = b.value;
+  n.edited = true;
+  ntEditing = null; ntSave(); ntRenderAll();
+}
+function ntDel(id){
+  var n = ntFind(id);
+  var label = n ? (n.title || n.body).slice(0,40) : "";
+  if(!confirm(T("Delete this note?") + (label ? "\n\n" + label : ""))) return;
+  ntData.notes = ntData.notes.filter(function(x){ return x.id !== id; });
+  if(ntEditing === id) ntEditing = null;
+  ntSave(); ntRenderAll();
+}
+function ntReset(){
+  if(!confirm(T("Delete every note on this device?"))) return;
+  ntData = ntDefaults(); ntEditing = null; ntSave(); ntRenderAll();
+}
+function ntRenderDots(){
+  var box = document.getElementById("ntDots");
+  if(!box) return;
+  var dark = document.documentElement.getAttribute("data-theme") === "dark";
+  box.innerHTML = NT_COLORS.map(function(c){
+    var fill = c.id === "n" ? "transparent" : (dark ? c.dk : c.bg);
+    return '<span class="nt-dot' + (c.id === ntPick ? " on" : "") + '" data-ntc="' + c.id + '"'
+         + ' style="background:' + fill + ';box-shadow:inset 0 0 0 2px ' + c.edge + '"></span>';
+  }).join("");
+  box.querySelectorAll("[data-ntc]").forEach(function(el){
+    el.addEventListener("click", function(){ ntPick = el.getAttribute("data-ntc"); ntRenderDots(); });
+  });
+}
+function ntRenderAll(){
+  try{ ntRenderInner(); }
+  catch(err){
+    var g = document.getElementById("ntGrid");
+    if(g) g.innerHTML = '<div class="nt-empty" style="color:var(--red)">' + ntEsc(err.message) + '</div>';
+  }
+}
+function ntRenderInner(){
+  ntRenderDots();
+  var grid = document.getElementById("ntGrid");
+  if(!grid) return;
+  var q = (document.getElementById("ntSearch") || {value:""}).value.trim().toLowerCase();
+  var dark = document.documentElement.getAttribute("data-theme") === "dark";
+
+  var list = ntData.notes.filter(function(n){
+    if(!q) return true;
+    return (n.title + " " + n.body).toLowerCase().indexOf(q) > -1;
+  });
+  /* pinned first, then newest */
+  list.sort(function(a,b){
+    if(a.pin !== b.pin) return a.pin ? -1 : 1;
+    return b.ts - a.ts;
+  });
+
+  var cnt = document.getElementById("ntCount");
+  if(cnt){
+    cnt.textContent = ntData.notes.length
+      ? (q ? list.length + " / " + ntData.notes.length : ntData.notes.length + " " + T("notes"))
+      : "";
+  }
+
+  if(!list.length){
+    grid.innerHTML = '<div class="nt-empty">'
+      + (ntData.notes.length ? T("Nothing matches that.") : T("No notes yet \u2014 write the first one above."))
+      + '</div>';
+    return;
+  }
+
+  grid.innerHTML = list.map(function(n){
+    var c = ntColor(n.color);
+    var bg = c.id === "n" ? "var(--card)" : (dark ? c.dk : c.bg);
+    var editing = (ntEditing === n.id);
+    var inner;
+    if(editing){
+      inner = '<input class="nt-edit" id="ntET_' + n.id + '" value="' + ntEsc(n.title)
+            + '" placeholder="' + T("Title") + '" style="font-weight:900;margin-bottom:6px">'
+            + '<textarea class="nt-edit" id="ntEB_' + n.id + '" rows="4">' + ntEsc(n.body) + '</textarea>'
+            + '<div style="display:flex;gap:6px;margin-top:8px">'
+            + '<button class="nt-add" data-ntsave="' + n.id + '">' + T("Save") + '</button>'
+            + '<button class="nt-add" data-ntcancel="1" style="background:var(--paper);color:var(--mute)">'
+            + T("Cancel") + '</button></div>';
+    } else {
+      inner = (n.title.trim() ? '<div class="nt-t">' + ntEsc(n.title) + '</div>' : '')
+            + (n.body.trim() ? '<div class="nt-b">' + ntEsc(n.body) + '</div>' : '')
+            + '<div class="nt-meta"><span>' + ntWhen(n.ts)
+            + (n.edited ? ' \u00b7 ' + T("edited") : '') + '</span></div>';
+    }
+    return '<div class="nt-card' + (n.pin ? " pin" : "") + '" style="background:' + bg
+         + ';border-left-color:' + c.edge + '">'
+         + (editing ? '' :
+            '<div class="nt-acts">'
+            + '<button data-ntpin="' + n.id + '" class="' + (n.pin ? "on" : "") + '" title="' + T("Pin") + '">\ud83d\udccc</button>'
+            + '<button data-ntcol="' + n.id + '" title="' + T("Colour") + '">\ud83c\udfa8</button>'
+            + '<button data-ntedit="' + n.id + '" title="' + T("Edit") + '">\u270e</button>'
+            + '<button data-ntdel="' + n.id + '" title="' + T("Delete") + '">\u00d7</button></div>')
+         + inner + '</div>';
+  }).join("");
+
+  grid.querySelectorAll("[data-ntpin]").forEach(function(e){
+    e.addEventListener("click", function(){ ntTogglePin(e.getAttribute("data-ntpin")); }); });
+  grid.querySelectorAll("[data-ntcol]").forEach(function(e){
+    e.addEventListener("click", function(){ ntCycle(e.getAttribute("data-ntcol")); }); });
+  grid.querySelectorAll("[data-ntedit]").forEach(function(e){
+    e.addEventListener("click", function(){ ntEdit(e.getAttribute("data-ntedit")); }); });
+  grid.querySelectorAll("[data-ntdel]").forEach(function(e){
+    e.addEventListener("click", function(){ ntDel(e.getAttribute("data-ntdel")); }); });
+  grid.querySelectorAll("[data-ntsave]").forEach(function(e){
+    e.addEventListener("click", function(){ ntCommit(e.getAttribute("data-ntsave")); }); });
+  grid.querySelectorAll("[data-ntcancel]").forEach(function(e){
+    e.addEventListener("click", function(){ ntEditing = null; ntRenderAll(); }); });
+}
+document.addEventListener("DOMContentLoaded", function(){
+  var pb = document.getElementById("ntPinNew");
+  if(pb) pb.addEventListener("click", function(){
+    ntPinNew = !ntPinNew; pb.classList.toggle("on", ntPinNew);
+  });
+  ntRenderAll();
+});
+</script>
+
+<script>
+/* Tap a phrase to show it big — easier than trying to pronounce it under pressure. */
+(function(){
+  var ov = document.createElement("div");
+  ov.className = "ph-ov";
+  ov.innerHTML = '<div class="in"><div class="big" id="phBig"></div>'
+    + '<div class="sub" id="phSub"></div>'
+    + '<div class="hint" id="phHint"></div></div>';
+  document.addEventListener("DOMContentLoaded", function(){ document.body.appendChild(ov); });
+  function close(){ ov.classList.remove("on"); }
+  ov.addEventListener("click", close);
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape") close(); });
+  document.addEventListener("click", function(e){
+    var c = e.target && e.target.closest ? e.target.closest(".jph") : null;
+    if(!c) return;
+    document.getElementById("phBig").textContent = c.getAttribute("data-jp");
+    document.getElementById("phSub").textContent = c.getAttribute("data-ro");
+    document.getElementById("phHint").textContent = T("tap anywhere to close");
+    ov.classList.add("on");
+  });
 })();
 </script>
 </body>
