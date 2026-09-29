@@ -1,7 +1,7 @@
 {
   "_readme": "Japan Trip Guide — reference links. The guide reads this file from data/reference.json and falls back to the copy baked into the HTML when it can't be reached (opening the guide straight off your phone, or before this file exists). Add an entry by copying one of the objects below. 'url' can be an external link (https://...) or a file you put in the same data/ folder (data/whatever.html). 'kind' only changes the icon: pdf | page | sheet | map | link. Titles and descriptions take either a plain string or {\"en\": ..., \"zh\": ...}; a plain string is shown in both languages.",
-  "version": 4,
-  "updated": "2026-09-22",
+  "version": 6,
+  "updated": "2026-09-29",
   "groups": [
     {
       "id": "official",
@@ -10,6 +10,20 @@
         "zh": "官方行程文件"
       },
       "items": [
+        {
+          "id": "tour-pdf",
+          "kind": "pdf",
+          "title": {
+            "en": "Trip 23 · 8D7N Japan Tohoku — full tour PDF",
+            "zh": "Trip 23 · 8天7夜 日本东北 — 完整行程 PDF"
+          },
+          "desc": {
+            "en": "The tour operator’s own document for the 4 Oct 2026 departure.",
+            "zh": "旅行社自己的行程文件（2026 年10 月 4 日出发）。"
+          },
+          "url": "data/22. Trip 23 (4 OCT 2026)8D7N Japan Tohuku-compressed.pdf",
+          "local": true
+        },
         {
           "id": "briefing",
           "kind": "pdf",
@@ -96,6 +110,29 @@
             "zh": "共享的想试清单、Tabung 公款、行程数据这三个档案怎么运作，状态面板在说什么，以及范例档。"
           },
           "url": "data/Shared_Data_Guide.html",
+          "local": true
+        }
+      ]
+    },
+    {
+      "id": "gear",
+      "title": {
+        "en": "Gear",
+        "zh": "装备"
+      },
+      "items": [
+        {
+          "id": "selfie-stick",
+          "kind": "page",
+          "title": {
+            "en": "Miniso selfie stick — how to use it",
+            "zh": "Miniso 自拍杆 — 怎么用"
+          },
+          "desc": {
+            "en": "Opening it, pairing the remote, tripod mode, and where on this trip a selfie stick is allowed — platforms are a no. Still being filled in.",
+            "zh": "怎么开、遥控怎么配对、三脚架模式，以及这趟行程哪里能用 — 月台不行。内容还在补。"
+          },
+          "url": "data/Selfie_Stick_Guide.html",
           "local": true
         }
       ]
