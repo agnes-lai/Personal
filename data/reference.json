@@ -1,7 +1,7 @@
 {
   "_readme": "Japan Trip Guide — reference links. The guide reads this file from data/reference.json and falls back to the copy baked into the HTML when it can't be reached (opening the guide straight off your phone, or before this file exists). Add an entry by copying one of the objects below. 'url' can be an external link (https://...) or a file you put in the same data/ folder (data/whatever.html). 'kind' only changes the icon: pdf | page | sheet | map | link. Titles and descriptions take either a plain string or {\"en\": ..., \"zh\": ...}; a plain string is shown in both languages.",
-  "version": 6,
-  "updated": "2026-09-29",
+  "version": 7,
+  "updated": "2026-09-30",
   "groups": [
     {
       "id": "official",
@@ -73,6 +73,20 @@
             "zh": "图文分步：找红色 N’EX 标志、B 区售票机、乘车券+特急券的规则、票价和收据、Suica 要充多少，以及两家可能酒店的接驳巴士时刻表。"
           },
           "url": "data/Narita_Express_Guide.html",
+          "local": true
+        },
+        {
+          "id": "ginza-narita",
+          "kind": "page",
+          "title": {
+            "en": "Ginza → Narita Airport on your own (Day 7 alt plan)",
+            "zh": "自己从银座回成田机场（第7天替代方案）"
+          },
+          "desc": {
+            "en": "If you skip Shisui and stay in Ginza: which of the four routes is reimbursable, how to get the 領収書 at the ticket window, finding the Sōbu platform, and when to leave.",
+            "zh": "不去酒々井、留在银座的话：四条路哪一条能报销、怎么在窗口要領収書、总武线月台怎么找、几点要出发。"
+          },
+          "url": "data/Ginza_to_Narita_Guide.html",
           "local": true
         }
       ]
