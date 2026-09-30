@@ -1580,7 +1580,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <div class="hd">
     <div class="kanjirow">
       <div class="kanji">東北・東京　八日間</div>
-      <span class="verchip" id="verChip" data-zh="v82 <span class=&quot;vd&quot;>更新于 2026年9月29日</span>">v82 <span class="vd">updated 29 Sep 2026</span></span>
+      <span class="verchip" id="verChip" data-zh="v83 <span class=&quot;vd&quot;>更新于 2026年9月29日</span>">v83 <span class="vd">updated 29 Sep 2026</span></span>
     </div>
     <h1 data-zh="日本东北 + 东京 <span class=&quot;jp&quot;>每日行程指南</span>">Japan Tohoku + Tokyo <span class="jp">Day-by-Day Guide</span></h1>
     <p data-zh="2026年10月4–11日 · 槟城出发跟团游 · 每天一条时间线：团队行程 + 购物任务 + 便利店打卡，全部标好时间和距离">4 – 11 Oct 2026 · Group tour from Penang · one timeline per day: tour plan + shopping missions + konbini runs, all with times &amp; distances</p>
@@ -2291,7 +2291,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 </div>
 </details>
 
-<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v82</b> · 更新于 2026年9月29日</span>">Built for your 4–11 Oct 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v82</b> · updated 29 Sep 2026</span></footer>
+<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v83</b> · 更新于 2026年9月29日</span>">Built for your 4–11 Oct 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v83</b> · updated 29 Sep 2026</span></footer>
 
 <script>
 // ===== Trip Split (localStorage-backed, this device only) =====
@@ -2735,6 +2735,7 @@ function pkDefaultCats(){
 
 /* [text, zh, tag, tagZh] */
 var PK_PREP = [
+  ["Check your shoes — soles, laces, waterproofing","检查鞋子 — 鞋底、鞋带、防水","15–30 min walking most days","几乎每天走 15–30 分钟"],
   ["Buy Japan eSIM","买日本 eSIM","cheaper than roaming","比开漫游便宜"],
   ["Register Visit Japan Web","登记 Visit Japan Web","entry + customs QR","入境 + 海关 QR"],
   ["Add Suica to Apple/Google Wallet","把 Suica 加进手机钱包","tap-pay at konbini","便利店可直接刷"],
@@ -2752,6 +2753,7 @@ var PK_PREP = [
 
 /* [cat, text, zh, tag, tagZh] */
 var PK_ITEMS = [
+  ["cloth","Heattech / thermal base layer","发热衣（Heattech）","Zao morning is 7°","藏王早上只有 7°"],
   ["docs","Passport","护照","hand-carry · needed for tax-free","随身 · 退税要用"],
   ["docs","Cards & IC","银行卡 & 身份证","hand-carry","随身"],
   ["docs","Cash (yen)","日元现金","hand-carry · ¥30–50k","随身 · 3–5万日元"],
@@ -2829,7 +2831,8 @@ function pkDefaults(){
 
 function pkNormalise(d){
   var def = pkDefaults();
-  var out = {tab: (d && d.tab === "pack") ? "pack" : "prep", cats: [], prep: [], pack: []};
+  var out = {tab: (d && d.tab === "pack") ? "pack" : "prep", cats: [], prep: [], pack: [],
+             added: (d && Object.prototype.toString.call(d.added) === "[object Array]") ? d.added.slice() : []};
   if(d && Object.prototype.toString.call(d.cats) === "[object Array]"){
     d.cats.forEach(function(c){
       if(!c || typeof c !== "object" || !c.id || !c.label) return;
@@ -2891,10 +2894,49 @@ function pkMigrate(old){
   return def;
 }
 
+/* Items added after people already had a saved list. Each is applied once,
+   tracked in data.added, so deleting one keeps it deleted. Nothing else in
+   the saved list is read, reordered or changed. */
+var PK_ADDITIONS = [
+  {key:"heattech2026", where:"pack", cat:"cloth",
+   text:"Heattech / thermal base layer", textZh:"\u53d1\u70ed\u8863\uff08Heattech\uff09",
+   tag:"Zao morning is 7\u00b0", tagZh:"\u85cf\u738b\u65e9\u4e0a\u53ea\u6709 7\u00b0"},
+  {key:"shoecheck2026", where:"prep",
+   text:"Check your shoes \u2014 soles, laces, waterproofing",
+   textZh:"\u68c0\u67e5\u978b\u5b50 \u2014 \u978b\u5e95\u3001\u978b\u5e26\u3001\u9632\u6c34",
+   tag:"15\u201330 min walking most days", tagZh:"\u51e0\u4e4e\u6bcf\u5929\u8d70 15\u201330 \u5206\u949f"}
+];
+function pkTopUp(data){
+  if(!data) return data;
+  if(Object.prototype.toString.call(data.added) !== "[object Array]") data.added = [];
+  var changed = false;
+  PK_ADDITIONS.forEach(function(a){
+    if(data.added.indexOf(a.key) > -1) return;          /* already offered once */
+    var list = (a.where === "prep") ? data.prep : data.pack;
+    if(Object.prototype.toString.call(list) !== "[object Array]") return;
+    var dup = list.some(function(i){
+      return i && (i.text === a.text || (a.textZh && i.textZh === a.textZh));
+    });
+    if(!dup){
+      var row = {id: pkUid(), text: a.text, textZh: a.textZh,
+                 tag: a.tag, tagZh: a.tagZh, done: false, remark: ""};
+      if(a.where === "pack"){
+        var cats = (data.cats || []).map(function(c){ return c.id; });
+        row.cat = (cats.indexOf(a.cat) > -1) ? a.cat : (cats[0] || "misc");
+        row.qty = "";
+      }
+      list.push(row);
+    }
+    data.added.push(a.key);
+    changed = true;
+  });
+  if(changed){ try{ localStorage.setItem(PK_KEY, JSON.stringify(data)); }catch(e){} }
+  return data;
+}
 function pkLoad(){
   try{
     var raw = localStorage.getItem(PK_KEY);
-    if(raw) return pkNormalise(JSON.parse(raw));
+    if(raw) return pkTopUp(pkNormalise(JSON.parse(raw)));
     var v2 = localStorage.getItem("japanTripPack_v2") || localStorage.getItem("japanTripPack_v1");
     if(v2) return pkMigrate(JSON.parse(v2));
     return pkDefaults();
@@ -6399,7 +6441,7 @@ document.addEventListener("click", function(){ if(slSkipOpen){ slSkipOpen = null
 /* Single source of truth for the version shown on the page. Bump these two and
    both the header chip and the footer line follow. The values are also written
    into the HTML above, so the version still shows if scripts don't run. */
-var GUIDE_VERSION = "v82";
+var GUIDE_VERSION = "v83";
 var GUIDE_UPDATED = {en: "29 Sep 2026", zh: "2026年9月29日"};
 (function(){
   function paint(){
