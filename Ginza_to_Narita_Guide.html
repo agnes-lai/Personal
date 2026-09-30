@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#16233e">
+<title>Ginza → Narita by public transport</title>
+<style>
+:root{--ink:#1c2431;--paper:#f6f5f1;--card:#fff;--line:#e4e1d8;--night:#16233e;--red:#c93a2e;
+--matcha:#20603a;--gold:#b98a2f;--goldbg:#fdf6e4;--mute:#6b7180;--kon:#e9f3ec;--konline:#bcd8c4;--blue:#1a56a8}
+[data-theme="dark"]{--ink:#e6eaf2;--paper:#12161e;--card:#1b2130;--line:#2f374a;--night:#0e1523;
+--mute:#9aa4b6;--goldbg:#2d2717;--kon:#16291f;--konline:#2f5742;--gold:#dcb254;--matcha:#4f9d72;
+--red:#d9584a;--blue:#8fb8ff;color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Zen Kaku Gothic New',-apple-system,'Segoe UI',sans-serif;background:var(--paper);
+color:var(--ink);line-height:1.55;font-size:15px}
+.wrap{max-width:820px;margin:0 auto;padding:0 12px 70px}
+header{background:var(--night);color:#fff;padding:20px 14px 16px}
+header h1{font-size:19px;font-weight:900;line-height:1.3}
+header p{color:#aebbd8;font-size:12.5px;margin-top:6px;line-height:1.5}
+.hbtns{display:flex;gap:7px;margin-top:11px;flex-wrap:wrap}
+.hbtns button{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#dce7f6;
+  border-radius:20px;padding:5px 12px;font-family:inherit;font-size:11.5px;font-weight:700;cursor:pointer}
+nav.qn{position:sticky;top:0;z-index:20;background:var(--night);border-top:1px solid rgba(255,255,255,.12);
+  display:flex;gap:6px;overflow-x:auto;padding:8px 12px}
+nav.qn a{flex:0 0 auto;color:#c8d4ec;text-decoration:none;font-size:11.5px;font-weight:700;
+  background:rgba(255,255,255,.08);border-radius:20px;padding:5px 11px;white-space:nowrap}
+nav.qn a:hover,nav.qn a.on{background:#fff;color:var(--night)}
+h2.sec{font-size:15px;font-weight:900;margin:24px 0 9px;padding-left:9px;border-left:4px solid var(--red);scroll-margin-top:56px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:12px 13px;margin-bottom:11px}
+.note{background:#eaf1fb;border:1px solid #b9cdea;border-radius:9px;padding:10px 12px;font-size:12.5px;line-height:1.55;margin-top:10px}
+[data-theme="dark"] .note{background:#16233a;border-color:#2b3c60}
+.note b{color:var(--blue)}
+.warn{background:#fdf1ef;border:1px solid #f0c9c4;border-radius:9px;padding:10px 12px;font-size:12.5px;line-height:1.55;margin-top:10px}
+[data-theme="dark"] .warn{background:#331d1a;border-color:#5a2f29}
+.warn b{color:var(--red)}
+.good{background:var(--kon);border:1px solid var(--konline);border-radius:9px;padding:10px 12px;
+  font-size:12.5px;line-height:1.55;margin-top:10px;color:var(--matcha)}
+.todo{background:repeating-linear-gradient(45deg,var(--goldbg),var(--goldbg) 9px,transparent 9px,transparent 18px);
+  border:1px dashed var(--gold);border-radius:9px;padding:10px 12px;margin-top:9px}
+.todo b{display:inline-block;background:var(--gold);color:#fff;font-size:9.5px;font-weight:900;
+  letter-spacing:.08em;border-radius:4px;padding:1px 7px;margin-bottom:5px}
+.todo span{display:block;font-size:12.5px;line-height:1.55;color:var(--mute)}
+.step{border:1px solid var(--line);border-radius:11px;margin-bottom:9px;background:var(--card);overflow:hidden}
+.step>.sh{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;cursor:pointer;user-select:none}
+.step>.sh:hover{background:var(--goldbg)}
+.step .no{flex:0 0 auto;width:25px;height:25px;border-radius:50%;background:var(--night);color:#fff;
+  font-size:12.5px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.step .st{flex:1;min-width:0}
+.step .st b{display:block;font-size:13.5px;line-height:1.35}
+.step .st span{display:block;font-size:12px;color:var(--mute);margin-top:2px}
+.step .cv{flex:0 0 auto;color:var(--mute);font-size:12px;transition:transform .15s}
+.step.open .cv{transform:rotate(180deg)}
+.step>.sb{display:none;padding:0 12px 12px;border-top:1px dashed var(--line)}
+.step.open>.sb{display:block}
+.step .sb p{font-size:12.5px;line-height:1.6;margin-top:9px}
+ul.pts{list-style:none;margin:8px 0 0}
+ul.pts li{position:relative;padding-left:16px;margin:4px 0;font-size:12.5px;line-height:1.5}
+ul.pts li::before{content:"";position:absolute;left:4px;top:.62em;width:4px;height:4px;border-radius:50%;background:#c9ceda}
+ul.pts li.w{color:var(--red)} ul.pts li.w::before{content:"\26a0";left:0;top:0;width:auto;height:auto;background:none;font-size:11px}
+ul.pts li.t{color:var(--matcha)} ul.pts li.t::before{content:"\2192";left:0;top:0;width:auto;height:auto;background:none;font-size:11px}
+table.f{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:8px}
+table.f th,table.f td{padding:7px 5px;text-align:left;border-bottom:1px solid var(--line)}
+table.f th{font-size:10px;font-weight:900;letter-spacing:.05em;color:var(--mute);text-transform:uppercase}
+.yes{color:var(--matcha);font-weight:900;text-align:center}
+.no{color:var(--red);font-weight:900;text-align:center}
+.dia{margin:10px 0}
+.dia svg{width:100%;height:auto;border-radius:9px;display:block}
+footer{font-size:11.5px;color:var(--mute);line-height:1.55;margin-top:20px;padding-top:12px;border-top:1px solid var(--line)}
+</style></head><body>
+
+<header>
+  <h1 data-zh="银座 → 成田机场（自己坐车）">Ginza → Narita Airport, on your own</h1>
+  <p data-zh="第 7 天不去酒々井、留在银座的话，怎么自己回机场再坐酒店接驳巴士 — 以及怎么拿到能报销的收据。">
+  If you skip Shisui on Day 7 and stay in Ginza: how to get yourself to the airport for the hotel shuttle — and how to come back with a receipt you can claim.</p>
+  <div class="hbtns">
+    <button id="allOpen" data-zh="全部展开">Expand all</button>
+    <button id="allShut" data-zh="全部收起">Collapse all</button>
+    <button id="lang">中文</button>
+    <button id="theme">◐</button>
+  </div>
+</header>
+
+<nav class="qn">
+  <a href="#pick" data-zh="选哪条">Which route</a>
+  <a href="#steps" data-zh="分步走法">Step by step</a>
+  <a href="#time" data-zh="几点出发">When to leave</a>
+</nav>
+
+<div class="wrap">
+
+<h2 class="sec" id="pick" data-zh="三条路怎么选">Which route</h2>
+<div class="card"><div class="dia"><svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg" font-family="Zen Kaku Gothic New,sans-serif"><rect width="520" height="300" fill="#16233e" rx="8"/><text x="18" y="26" fill="#f0c86a" font-size="14" font-weight="900" data-zh="三条路 — 从银座到成田机场">Three ways out of Ginza</text><text x="18" y="44" fill="#8fa3c8" font-size="10.5" data-zh="只有 JR 那一条能报销">Only the JR one can be claimed back</text><circle cx="62" cy="96" r="15" fill="#e06055"/><text x="62" y="101" text-anchor="middle" font-size="12" font-weight="900" fill="#fff">★</text><text x="62" y="128" text-anchor="middle" fill="#ffb3ab" font-size="11" font-weight="900" data-zh="银座">GINZA</text><path d="M80,96 L200,70" stroke="#c9a2e8" stroke-width="3" stroke-dasharray="6 5" fill="none"/><circle cx="214" cy="67" r="12" fill="#c9a2e8"/><text x="214" y="71" text-anchor="middle" font-size="10" font-weight="900" fill="#16233e">5</text><text x="234" y="63" fill="#c9a2e8" font-size="11.5" font-weight="900">Higashi-Ginza</text><text x="234" y="78" fill="#8fa3c8" font-size="10" data-zh="直达，不用换车 · 约 ¥1,400">direct, no change · ~¥1,400</text><path d="M80,104 L200,150" stroke="#69d2a0" stroke-width="3" stroke-dasharray="6 5" fill="none"/><circle cx="214" cy="154" r="12" fill="#69d2a0"/><text x="214" y="158" text-anchor="middle" font-size="10" font-weight="900" fill="#16233e">17</text><text x="234" y="150" fill="#69d2a0" font-size="11.5" font-weight="900">Tokyo Station</text><text x="234" y="165" fill="#8fa3c8" font-size="10" data-zh="JR — 可以报销">JR — claimable</text><path d="M300,150 L380,124" stroke="#f0c86a" stroke-width="2.5" fill="none"/><text x="388" y="120" fill="#f0c86a" font-size="11" font-weight="900">N’EX</text><text x="388" y="134" fill="#8fa3c8" font-size="9.5" data-zh="60分 · 约 ¥3,100">60 min · ~¥3,100</text><path d="M300,158 L380,184" stroke="#69d2a0" stroke-width="2.5" fill="none"/><text x="388" y="180" fill="#69d2a0" font-size="11" font-weight="900" data-zh="总武快速">Sōbu Rapid</text><text x="388" y="194" fill="#8fa3c8" font-size="9.5" data-zh="80分 · 约 ¥1,340">80 min · ~¥1,340</text><path d="M80,112 L200,238" stroke="#8fb4ff" stroke-width="3" stroke-dasharray="3 6" fill="none"/><circle cx="214" cy="243" r="12" fill="#8fb4ff"/><text x="214" y="247" text-anchor="middle" font-size="10" font-weight="900" fill="#16233e">🚌</text><text x="234" y="239" fill="#bcd4ff" font-size="11.5" font-weight="900" data-zh="机场巴士">Airport bus</text><text x="234" y="254" fill="#8fa3c8" font-size="10" data-zh="70–80分 · ¥1,500 · 不能报销">70–80 min · ¥1,500 · not claimable</text><text x="18" y="288" fill="#8fa3c8" font-size="10" data-zh="圆圈里的数字 = 从银座走过去的分钟">Numbers in circles = minutes walking from Ginza</text></svg></div>
+<div class="warn" data-zh="<b>关键：</b>团费只报<b>JR</b> 的车票。从东银座直达的那班车便宜又不用换车，但它是<b>京成／都营</b>，不是 JR。">
+<b>The catch:</b> the tour reimburses a <b>JR</b> ticket. The direct train from Higashi-Ginza is cheap and needs no change, but it’s <b>Keisei/Toei</b> — not JR.</div></div>
+
+<h2 class="sec" id="steps" data-zh="分步走法">Step by step</h2>
+<div class="step" id="s1"><div class="sh"><span class="no">1</span><span class="st"><b data-zh="离开商店前先决定">Decide before you leave the shops</b><span data-zh="能报销的和方便的，不是同一条">Claimable or convenient — not both</span></span><span class="cv">▾</span></div><div class="sb"><p data-zh="团费包的是<b>一张 JR 车票</b>。从东银座直达的那班是<b>京成／都营</b>，不是 JR — 便宜、不用换车，但很可能报不了。">The tour covers <b>one JR ticket</b>. The direct train from Higashi-Ginza is <b>Keisei/Toei</b>, not JR — cheaper and no change, but probably not claimable.</p><table class="f"><tr><th data-zh="路线">Route</th><th data-zh="价钱">Cost</th><th data-zh="时间">Time</th><th data-zh="能报销？">Claim?</th></tr><tr><td data-zh="JR 总武快速（东京站）">JR Sōbu Rapid (Tokyo Stn)</td><td>~¥1,340</td><td>~80 min</td><td class="yes">✓</td></tr><tr><td data-zh="JR 成田特快 N’EX（东京站） — <a href=&quot;Narita_Express_Guide.html&quot;>完整指南</a>">JR N’EX (Tokyo Stn) — <a href="Narita_Express_Guide.html">full guide</a></td><td>~¥3,100</td><td>~60 min</td><td class="yes">✓</td></tr><tr><td data-zh="京成直达（东银座）">Access Express (Higashi-Ginza)</td><td>~¥1,400</td><td>~80 min</td><td class="no">✗</td></tr><tr><td data-zh="机场巴士（银座）">Airport bus (Ginza)</td><td>¥1,500</td><td>70–80 min</td><td class="no">✗</td></tr></table><div class="good" data-zh="<b>推荐：</b>走到东京站坐 <b>JR 总武快速</b> — 跟直达车差不多价钱和时间，但能报销。"><b>Pick:</b> walk to Tokyo Station and take the <b>JR Sōbu Rapid</b> — about the same money and time as the direct train, but it can be claimed back.</div><div class="warn" data-zh="❗ 先跟导游确认【酒店那个站】指的是<b>成田机场站</b>还是<b>成田站</b> — 两个不同，车票也不同。">❗ Confirm with the guide whether “the hotel station” means <b>Narita Airport station</b> or <b>Narita station</b> — they are different places and different tickets.</div></div></div><div class="step" id="s2"><div class="sh"><span class="no">2</span><span class="st"><b data-zh="银座 → 东京站">Ginza → Tokyo Station</b><span data-zh="走路 17 分钟，或丸之内线一站">17 min on foot, or one Marunouchi stop</span></span><span class="cv">▾</span></div><div class="sb"><p data-zh="从银座四丁目往北沿中央通り直走，约 <b>1.4 公里、17 分钟</b>，一路都是商店。带着购物袋嵌可以坐<b>丸之内线一站</b>，约 3 分钟、¥180。">Walk north up Chūō-dōri from Ginza 4-chome — about <b>1.4 km, 17 min</b>, shops the whole way. With bags, take the <b>Marunouchi line one stop</b>: ~3 min, ¥180.</p><ul class="pts"><li class="t" data-zh="东京站很大 — 跟着<b>绿色 JR</b> 标志和【総武地下】或【Narita】的指示走">Tokyo Station is huge — follow the <b>green JR</b> signs and “総武地下 / Narita”.</li><li class="t" data-zh="这段路跟 N’EX 完全一样 — <b>要坐 N’EX 就看<a href=&quot;Narita_Express_Guide.html&quot;>N’EX 那份指南</a></b>，里面有 B 区售票机和月台的照片。">This walk is identical for N’EX — <b>if you take N’EX instead, follow <a href="Narita_Express_Guide.html">the N’EX guide</a></b>, which has photos of the zone B machines and the platform.</li><li class="w" data-zh="总武线的月台在<b>地下第五层</b>，从闸口走过去还要 <b>8–10 分钟</b> — 把这段算进去">The Sōbu platforms are <b>five floors underground</b> and a further <b>8–10 min walk</b> from the gates — budget for it.</li></ul><div class="todo"><b data-zh="待补">TO FILL</b><span data-zh="如果当天走了这段，拍一张中央通り或丸之内线入口。">A photo of the Chūō-dōri walk or the Marunouchi entrance, if you do this on the day.</span></div></div></div><div class="step" id="s3"><div class="sh"><span class="no">3</span><span class="st"><b data-zh="到柜台买，不要用机器">Buy at the counter, not the machine</b><span data-zh="能不能报销就看这一步">This is the step the claim depends on</span></span><span class="cv">▾</span></div><div class="sb"><p data-zh="去 <b>みどりの窓口（JR 售票窗口）</b>或 <b>JR EAST Travel Service Center</b>，买到成田机场的票，然后<b>要領収書</b>。">Go to the <b>Midori-no-madoguchi (JR ticket window)</b> or the <b>JR EAST Travel Service Center</b>, buy a ticket to Narita Airport, and <b>ask for the ryōshūsho</b>.</p><div class="note"><b data-zh="照着说：">Say this:</b> <span data-zh="「成田空港まで、大人一枚。領収書をお願いします。」<br><i>Narita kūkō made, otona ichimai. Ryōshūsho o onegai shimasu.</i><br>（到成田机场，大人一张。请给收据。）">「成田空港まで、大人一枚。領収書をお願いします。」<br><i>Narita kūkō made, otona ichimai. Ryōshūsho o onegai shimasu.</i><br>(To Narita Airport, one adult. Receipt please.)</span></div><ul class="pts"><li class="w" data-zh="<b>票根不算收据</b>。領収書是另外一张，上面有金额和日期"><b>A ticket stub is not a receipt.</b> The ryōshūsho is a separate slip with the amount and date on it</li><li class="w" data-zh="自助机也能印，但要在<b>付款完成前</b>按屏幕上的【領収書】— 错过了就补不了">Machines can print one too, but you must press <b>領収書</b> on screen <b>before</b> the transaction ends — miss it and it’s gone</li><li class="t" data-zh="拿到就<b>先拍一张</b>，纸本收好交给负责报销的人"><b>Photograph it immediately</b>, then hand the paper to whoever is claiming</li><li class="t" data-zh="四个人一起买就说「大人四枚（otona yonmai）」— 但<b>收据要分开开</b>，否则只有一人能报">Buying for four? Say <i>otona yonmai</i> — but <b>ask for separate receipts</b>, or only one person can claim</li></ul><div class="todo"><b data-zh="待补">TO FILL</b><span data-zh="拍一张售票窗口，再拍一张領収書本身 — 大家就知道要找什么。">Photo of the ticket window, and of the ryōshūsho itself so everyone knows what they’re looking for.</span></div></div></div><div class="step" id="s4"><div class="sh"><span class="no">4</span><span class="st"><b data-zh="找总武快速的月台">Find the Sōbu Rapid platform</b><span data-zh="地下，1–4 号月台">Underground, platforms 1–4</span></span><span class="cv">▾</span></div><div class="sb"><p data-zh="跟着<b>総武線（地下）</b>的指示牌往下走。要坐的是往<b>成田空港</b>方向的<b>快速（Rapid）</b>，不是普通车。">Follow the <b>総武線（地下）</b> signs down. You want a <b>Rapid</b> bound for <b>Narita Airport</b> — not a local.</p><ul class="pts"><li class="w" data-zh="同一个月台也停往<b>成田（市区）</b>或往<b>横须贺</b>的车 — 上车前看清楚终点写的是不是<b>成田空港</b>">The same platform serves trains to <b>Narita (city)</b> and to <b>Yokosuka</b> — check the destination board says <b>Narita Airport</b> before boarding</li><li class="t" data-zh="有些班次中途在<b>佐仓</b>或<b>成田</b>分车 — 坐<b>前面几节车厢</b>才是去机场的">Some trains <b>split</b> at Sakura or Narita — sit in the <b>front carriages</b>, which are the airport portion</li><li data-zh="最后两站是<b>第2航厦（空港第2ビル）</b>，然后才是<b>第1航厦（成田空港）</b>">Last two stops are <b>Airport Terminal 2</b> then <b>Narita Airport (T1)</b></li></ul><div class="todo"><b data-zh="待补">TO FILL</b><span data-zh="拍总武线月台的指示牌和终点显示牌 — 跟 N’EX 那份指南一样。">Photo of the Sōbu platform sign and the destination board, the way the N’EX guide does it.</span></div></div></div><div class="step" id="s5"><div class="sh"><span class="no">5</span><span class="st"><b data-zh="在对的航厦下车，再坐接驳巴士">Get off at the right terminal, then the shuttle</b><span data-zh="下哪个航厦看你住哪家">Which terminal depends on your hotel</span></span><span class="cv">▾</span></div><div class="sb"><p data-zh="下车后往上到出境大厅层，酒店接驳巴士在航厦外的编号巴士站。">From the platform go up to the departures level; the hotel shuttles leave from numbered bays outside the terminal.</p><ul class="pts"><li class="w" data-zh="两家可能的酒店用<b>不同航厦、不同巴士站</b>：有楽城 T2-33 / T1-16；Marroad T1-16 / T2-27">The two possible hotels use <b>different terminals and bays</b>: Yurakujo T2-33 / T1-16; Marroad T1-16 / T2-27</li><li class="t" data-zh="完整班次表在参考资料的 <b>N’EX 指南</b>里">Full timetables for both are in the <b>N’EX guide</b> under References</li><li class="w" data-zh="错过最后一班就只能打车，约 ¥2,500–3,500">Miss the last bus and it’s a taxi, about ¥2,500–3,500</li></ul></div></div>
+
+<h2 class="sec" id="time" data-zh="几点从银座出发">When to leave Ginza</h2>
+<div class="card">
+  <p style="font-size:13px;line-height:1.6" data-zh="倒着算：想赶哪一班接驳巴士，就减掉下面这些。">
+  Work backwards from the shuttle you want:</p>
+  <table class="f">
+    <tr><th data-zh="一段">Leg</th><th data-zh="留多少时间">Allow</th></tr>
+    <tr><td data-zh="银座 → 东京站（走路）">Ginza → Tokyo Station (walk)</td><td>20 min</td></tr>
+    <tr><td data-zh="买票 + 要收据（可能要排队）">Buy ticket + receipt (may queue)</td><td>15 min</td></tr>
+    <tr><td data-zh="走到地下总武线月台">Down to the Sōbu platform</td><td>10 min</td></tr>
+    <tr><td data-zh="总武快速 → 成田机场">Sōbu Rapid → Narita Airport</td><td>80 min</td></tr>
+    <tr><td data-zh="下车 → 找到巴士站">Platform → the bus bay</td><td>15 min</td></tr>
+    <tr><td data-zh="<b>合计</b>"><b>Total</b></td><td><b>~2h 20m</b></td></tr>
+  </table>
+  <div class="good" data-zh="所以想赭 17:30 / 17:35 那班巴士，<b>15:10 左右就要离开银座</b>。想稳一点就拓 15:00。">
+  So for the 17:30 / 17:35 shuttle, <b>leave Ginza around 15:10</b> — 15:00 if you want slack.</div>
+  <div class="warn" data-zh="晚上尖峰时段的总武快速很挤，而且<b>行李架不多</b> — 带大行李的话 N’EX 值那个差价。">
+  Rush-hour Sōbu Rapids get crowded and have <b>limited luggage space</b> — with big bags, N’EX is worth the difference.</div>
+</div>
+
+<footer><span data-zh="路线和票价查于 2026 年9 月，以现场为准。带 TO FILL 的那几段等你当天的照片。">
+Routes and fares checked September 2026 — the window and the board are the final word. The TO FILL blocks are waiting on photos from the day.</span></footer>
+
+</div>
+
+<script>
+(function(){
+  var LANG = "en";
+  function applyLang(){
+    document.querySelectorAll("[data-zh]").forEach(function(el){
+      if(!el.hasAttribute("data-en")) el.setAttribute("data-en", el.innerHTML);
+      el.innerHTML = (LANG === "zh") ? el.getAttribute("data-zh") : el.getAttribute("data-en");
+    });
+    var b = document.getElementById("lang");
+    if(b) b.textContent = (LANG === "zh") ? "EN" : "\u4e2d\u6587";
+  }
+  document.getElementById("lang").addEventListener("click", function(){
+    LANG = (LANG === "zh") ? "en" : "zh"; applyLang();
+    try{ localStorage.setItem("nrtGuideLang", LANG); }catch(e){}
+  });
+  try{ if(localStorage.getItem("nrtGuideLang") === "zh") LANG = "zh"; }catch(e){}
+  applyLang();
+  document.querySelectorAll(".step .sh").forEach(function(h){
+    h.addEventListener("click", function(){ h.parentNode.classList.toggle("open"); });
+  });
+  document.getElementById("allOpen").addEventListener("click", function(){
+    document.querySelectorAll(".step").forEach(function(s){ s.classList.add("open"); }); });
+  document.getElementById("allShut").addEventListener("click", function(){
+    document.querySelectorAll(".step").forEach(function(s){ s.classList.remove("open"); }); });
+  var TK = "nrtGuideTheme";
+  function theme(t){
+    if(t === "dark") document.documentElement.setAttribute("data-theme","dark");
+    else document.documentElement.removeAttribute("data-theme");
+    var b = document.getElementById("theme");
+    if(b) b.textContent = (t === "dark") ? "\u25d1" : "\u25d0";
+  }
+  var saved = "light";
+  try{ if(localStorage.getItem(TK) === "dark") saved = "dark"; }catch(e){}
+  theme(saved);
+  document.getElementById("theme").addEventListener("click", function(){
+    var now = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    try{ localStorage.setItem(TK, now); }catch(e){}
+    theme(now); });
+  var links = [].slice.call(document.querySelectorAll("nav.qn a"));
+  var secs = links.map(function(a){ return document.getElementById(a.getAttribute("href").slice(1)); });
+  function spy(){
+    var best = 0;
+    secs.forEach(function(s, i){ if(s && s.getBoundingClientRect().top <= 90) best = i; });
+    links.forEach(function(a, i){ a.classList.toggle("on", i === best); });
+  }
+  window.addEventListener("scroll", spy, {passive:true}); spy();
+})();
+</script>
+</body></html>
