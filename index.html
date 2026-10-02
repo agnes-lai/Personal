@@ -1352,6 +1352,25 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 .ph-ov .sub{font-size:clamp(15px,4vw,22px);color:#aebbd8;margin-top:14px;font-weight:700}
 .ph-ov .hint{font-size:12px;color:#7c8ba8;margin-top:24px}
 
+/* ===== collapsible row detail ===== */
+.tl .row .d.fold{cursor:pointer;position:relative;padding-right:20px}
+.tl .row .d.fold:hover{background:rgba(185,138,47,.06);border-radius:6px}
+[data-theme="dark"] .tl .row .d.fold:hover{background:rgba(220,178,84,.08)}
+.rdet{display:none}
+.tl .row.ropen .rdet{display:block}
+.rtog{position:absolute;top:1px;right:0;font-size:10px;color:var(--mute);
+  transition:transform .15s;line-height:1;user-select:none}
+.tl .row.ropen .rtog{transform:rotate(180deg)}
+.rmore{display:inline-block;font-size:9.5px;font-weight:900;letter-spacing:.03em;
+  color:var(--mute);background:var(--paper);border:1px solid var(--line);
+  border-radius:20px;padding:0 7px;margin-left:6px;vertical-align:1px;white-space:nowrap}
+.tl .row.ropen .rmore{display:none}
+.tl .row .d.fold:hover .rmore{border-color:var(--gold);color:var(--gold)}
+.foldbar{display:flex;gap:6px;justify-content:flex-end;margin:0 0 6px}
+.foldbar button{background:var(--card);border:1px solid var(--line);border-radius:20px;
+  padding:3px 11px;font-family:inherit;font-size:10.5px;font-weight:700;color:var(--mute);cursor:pointer}
+.foldbar button:hover{border-color:var(--gold);color:var(--gold)}
+
 /* ===== theme palette (generated: light keeps the original colours) ===== */
 :root{
   --bd1:#b9c2cf;
@@ -1580,7 +1599,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <div class="hd">
     <div class="kanjirow">
       <div class="kanji">東北・東京　八日間</div>
-      <span class="verchip" id="verChip" data-zh="v86 <span class=&quot;vd&quot;>更新于 2026年9月30日</span>">v86 <span class="vd">updated 30 Sep 2026</span></span>
+      <span class="verchip" id="verChip" data-zh="v87 <span class=&quot;vd&quot;>更新于 2026年9月30日</span>">v87 <span class="vd">updated 30 Sep 2026</span></span>
     </div>
     <h1 data-zh="日本东北 + 东京 <span class=&quot;jp&quot;>每日行程指南</span>">Japan Tohoku + Tokyo <span class="jp">Day-by-Day Guide</span></h1>
     <p data-zh="2026年10月4–11日 · 槟城出发跟团游 · 每天一条时间线：团队行程 + 购物任务 + 便利店打卡，全部标好时间和距离">4 – 11 Oct 2026 · Group tour from Penang · one timeline per day: tour plan + shopping missions + konbini runs, all with times &amp; distances</p>
@@ -2296,7 +2315,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 </div>
 </details>
 
-<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v86</b> · 更新于 2026年9月30日</span>">Built for your 4–11 Oct 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v86</b> · updated 30 Sep 2026</span></footer>
+<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v87</b> · 更新于 2026年9月30日</span>">Built for your 4–11 Oct 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v87</b> · updated 30 Sep 2026</span></footer>
 
 <script>
 // ===== Trip Split (localStorage-backed, this device only) =====
@@ -6467,7 +6486,7 @@ document.addEventListener("click", function(){ if(slSkipOpen){ slSkipOpen = null
 /* Single source of truth for the version shown on the page. Bump these two and
    both the header chip and the footer line follow. The values are also written
    into the HTML above, so the version still shows if scripts don't run. */
-var GUIDE_VERSION = "v86";
+var GUIDE_VERSION = "v87";
 var GUIDE_UPDATED = {en: "30 Sep 2026", zh: "2026年9月30日"};
 (function(){
   function paint(){
@@ -7621,6 +7640,100 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("phHint").textContent = T("tap anywhere to close");
     ov.classList.add("on");
   });
+})();
+</script>
+
+<script>
+/* ===== Timeline rows: show time + place, hide the detail until asked =====
+   Rows got long as stops were added. The headline (badge, title, distance)
+   stays; everything from the first .geo/.verdict/ul.pts/.back onwards is
+   folded away. Rows with no detail are left alone. */
+(function(){
+  var DETAIL = ".geo, .verdict, ul.pts, .back, .warnin";
+  function isDetail(el){
+    if(el.nodeType !== 1) return false;
+    return el.matches && el.matches(DETAIL);
+  }
+  function foldOne(row){
+    var dv = row.querySelector(":scope > .d");
+    if(!dv || dv.classList.contains("fold") || dv.querySelector(":scope > .rdet")) return;
+    var kids = [].slice.call(dv.children);
+    var start = -1;
+    for(var i = 0; i < kids.length; i++){ if(isDetail(kids[i])){ start = i; break; } }
+    if(start < 0) return;                      /* nothing worth hiding */
+
+    var det = document.createElement("div");
+    det.className = "rdet";
+    while(dv.children[start]) det.appendChild(dv.children[start]);
+    dv.appendChild(det);
+
+    /* how much is hidden, so a collapsed row still signals there's more */
+    var n = det.querySelectorAll("li").length;
+    var tag = document.createElement("span");
+    tag.className = "rmore";
+    tag.textContent = n ? ("+" + n) : "\u22ef";
+    var title = dv.querySelector(":scope > b") || dv.querySelector(":scope > .dist");
+    if(title && title.parentNode === dv) title.insertAdjacentElement("afterend", tag);
+    else dv.insertBefore(tag, det);
+
+    var cv = document.createElement("span");
+    cv.className = "rtog";
+    cv.textContent = "\u25be";
+    dv.insertBefore(cv, det);
+    dv.classList.add("fold");
+  }
+  function foldAll(scope){
+    (scope || document).querySelectorAll(".tl > .row").forEach(foldOne);
+    addBars(scope);
+  }
+  /* per-day expand / collapse, because sometimes you do want the lot */
+  function addBars(scope){
+    (scope || document).querySelectorAll(".tl").forEach(function(tl){
+      if(tl.previousElementSibling && tl.previousElementSibling.classList &&
+         tl.previousElementSibling.classList.contains("foldbar")) return;
+      if(!tl.querySelector(".d.fold")) return;
+      var bar = document.createElement("div");
+      bar.className = "foldbar";
+      bar.innerHTML = '<button data-foldall="open" data-zh="\u5168\u90e8\u5c55\u5f00">expand all</button>'
+                    + '<button data-foldall="shut" data-zh="\u5168\u90e8\u6536\u8d77">collapse all</button>';
+      tl.parentNode.insertBefore(bar, tl);
+    });
+  }
+  /* a tap on the row opens it, but never when you meant to press something */
+  document.addEventListener("click", function(e){
+    var bar = e.target.closest ? e.target.closest("[data-foldall]") : null;
+    if(bar){
+      var tl = bar.closest(".foldbar").nextElementSibling;
+      var open = bar.getAttribute("data-foldall") === "open";
+      if(tl) tl.querySelectorAll(":scope > .row").forEach(function(r){
+        if(r.querySelector(".d.fold")) r.classList.toggle("ropen", open);
+      });
+      return;
+    }
+    var dv = e.target.closest ? e.target.closest(".tl > .row > .d.fold") : null;
+    if(!dv) return;
+    if(e.target.closest("a, button, input, select, textarea, label, .mealpic")) return;
+    dv.parentNode.classList.toggle("ropen");
+  });
+
+  function run(){ try{ foldAll(document); }catch(err){} }
+  document.addEventListener("DOMContentLoaded", function(){
+    run();
+    /* days redraw when the shared file loads, so fold whatever appears later */
+    var mo = new MutationObserver(function(muts){
+      var touched = false;
+      muts.forEach(function(m){
+        [].slice.call(m.addedNodes).forEach(function(n){
+          if(n.nodeType === 1 && (n.matches && (n.matches(".row") || n.querySelector(".row")))) touched = true;
+        });
+      });
+      if(touched) run();
+    });
+    mo.observe(document.body, {childList:true, subtree:true});
+  });
+  var prev = window.applyLang;
+  if(typeof prev === "function"){ window.applyLang = function(){ prev.apply(this, arguments); run(); }; }
+  window.foldRows = run;
 })();
 </script>
 </body>
