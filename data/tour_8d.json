@@ -1,6 +1,6 @@
 {
  "_readme": "Japan Trip Guide - 8-day tour rows. The guide reads this file from data/ and redraws Days 1-8 from it. Each day: title/meta/weather {en,zh}, then blocks (one per timeline column) of rows. A row = {time, class, en, zh, attrs?}. class: '' (tour), 'add' (ADD-ON, gold), 'kon' (konbini run, green), 'kon vital' (stock up). en/zh may be plain text or HTML. Items with only 'raw' are complex blocks copied verbatim - leave them unless you know HTML. Bump 'version' by 1 every time you save; devices ignore a copy with a lower version. Sample + guide: Shared_Data_Guide.html",
- "version": 12,
+ "version": 13,
  "updated": "2026-09-29",
  "days": [
   {
@@ -376,6 +376,12 @@
       "class": "kon",
       "en": "<span class=\"badge kon\">KONBINI RUN</span><span class=\"chain cfm\">FamilyMart — Tsukuba Q’t</span><span class=\"dist\">~280m · 4 min walk · 24h</span><span class=\"geo\"><span class=\"pin\">📍</span><b>On the way back from Donki / the mall</b> — no separate trip needed.</span><span class=\"verdict go\">FamilyMart dominates here; 7-Eleven and Lawson are a longer walk.</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 TO BUY</span></li><li>Ibaraki <b>hoshi-imo</b> — dried sweet potato, and Ibaraki is Japan’s #1 producer</li><li>Natto snacks, for the brave</li><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li>Backup: <span class=\"chain cfm\">FamilyMart TX Station</span> ~5 min, 6am–11pm</li><li class=\"tip\">Cheaper: <span class=\"chain csp\">Lopia supermarket</span> ~420m, 6 min, till 8pm — <span class=\"k\">cash only</span></li></ul><span class=\"back\">↩ <a href=\"https://www.google.com/maps/search/?api=1&query=FamilyMart+Tsukuba+Q%27t\">Map</a></span>",
       "zh": "<span class=\"badge kon\">便利店打卡</span><span class=\"chain cfm\">全家 FamilyMart — 筑波 Q’t 店</span><span class=\"dist\">约 280m · 步行 4 分钟 · 24 小时</span><span class=\"geo\"><span class=\"pin\">📍</span><b>从 Donki／商场回来的路上</b> — 不用另外跑一趟。</span><span class=\"verdict go\">这一带全家最多；7-11 和罗森都要走更远。</span><ul class=\"pts\"><li class=\"grp buy\"><span>🛍 要买的</span></li><li>茨城<b>干地瓜（hoshi-imo）</b> — 茨城是日本第一产地</li><li>纳豆零食，敢吃的话</li><li class=\"grp info\"><span>ℹ 要注意的</span></li><li>备选：<span class=\"chain cfm\">全家 TX 车站店</span> 约 5 分钟，6:00–23:00</li><li class=\"tip\">更便宜：<span class=\"chain csp\">Lopia 超市</span> 约 420m，6 分钟，开到 20:00 — <span class=\"k\">只收现金</span></li></ul><span class=\"back\">↩ <a href=\"https://www.google.com/maps/search/?api=1&query=FamilyMart+Tsukuba+Q%27t\">地图</a></span>"
+     },
+     {
+      "time": "21:30",
+      "class": "kon",
+      "en": "<span class=\"badge kon\">KONBINI RUN</span><b>Lawson — Azuma 1-8-10</b><span class=\"dist\">127m · <b>2 min walk</b> · 24h</span><span class=\"geo\"><span class=\"pin\">📍</span>Just below the hotel — <b>closer than the FamilyMart</b> (280m). If you only want a drink or breakfast for the coach, this is the short trip.</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ GOOD TO KNOW</span></li><li class=\"tip\">Two minutes each way — worth it for a late run when you can’t face the mall walk</li><li>Lawson for <b>Karaage-kun</b> and the Uchi Cafe sweets; FamilyMart for Famichiki</li><li class=\"warn\">Only 2.4★ — the complaints are about service, not stock. Fine for a grab-and-go</li></ul>",
+      "zh": "<span class=\"badge kon\">便利店</span><b>Lawson — 東 1-8-10</b><span class=\"dist\">127 米 · <b>步行 2 分钟</b> · 24 小时</span><span class=\"geo\"><span class=\"pin\">📍</span>就在酒店下面 — <b>比 FamilyMart 还近</b>（280 米）。只是买饮料或明早车上吃的，跑这间就行。</span><ul class=\"pts\"><li class=\"grp info\"><span>ℹ 要注意的</span></li><li class=\"tip\">来回四分钟 — 懒得走到商场那边时很好用</li><li>Lawson 买<b>炸鸡块 Karaage-kun</b> 和 Uchi Cafe 甜点；FamilyMart 买 Famichiki</li><li class=\"warn\">只有 2.4 分 — 投诉都是服务态度，不是货。买完就走没问题</li></ul>"
      }
     ]
    ]
