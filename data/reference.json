@@ -1,7 +1,7 @@
 {
   "_readme": "Japan Trip Guide — reference links. The guide reads this file from data/reference.json and falls back to the copy baked into the HTML when it can't be reached (opening the guide straight off your phone, or before this file exists). Add an entry by copying one of the objects below. 'url' can be an external link (https://...) or a file you put in the same data/ folder (data/whatever.html). 'kind' only changes the icon: pdf | page | sheet | map | link. Titles and descriptions take either a plain string or {\"en\": ..., \"zh\": ...}; a plain string is shown in both languages.",
-  "version": 7,
-  "updated": "2026-09-30",
+  "version": 8,
+  "updated": "2026-10-02",
   "groups": [
     {
       "id": "official",
@@ -87,6 +87,20 @@
             "zh": "不去酒々井、留在银座的话：四条路哪一条能报销、怎么在窗口要領収書、总武线月台怎么找、几点要出发。"
           },
           "url": "data/Ginza_to_Narita_Guide.html",
+          "local": true
+        },
+        {
+          "id": "shinjuku-ginza-plan",
+          "kind": "page",
+          "title": {
+            "en": "Shinjuku + Ginza — every place, hours and maps",
+            "zh": "新宿 + 银座 — 所有地点、营业时间和地图"
+          },
+          "desc": {
+            "en": "All the shops, cafes and sights you're interested in, sorted by closing time, with walking distances, two maps and a suggested order — so you can build your own route.",
+            "zh": "所有感兴趣的店、咖啡店和景点，按关门时间排序，附步行距离、两张地图和建议顺序 — 自己排路线用。"
+          },
+          "url": "data/Shinjuku_Ginza_Plan.html",
           "local": true
         }
       ]

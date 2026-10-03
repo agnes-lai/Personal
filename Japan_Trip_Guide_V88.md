@@ -1,11 +1,16 @@
-# Japan Tohoku + Tokyo — 8-Day Guide (V72)
+# Japan Tohoku + Tokyo — 8-Day Guide (V88)
 **4–11 Oct 2026 · Group tour from Penang · SQ via Singapore**
 Flights out: SQ131 PEN→SIN, SQ634 SIN→HND · Flights home: SQ637 NRT→SIN, SQ142 SIN→PEN
-Weather range 13–28°C · rain likely D2, D3, D4, D7
+Weather range 7–22°C · rain likely D1 & D3 · **Zao drops to 7° on D3**
 
 **Legend:** `[TOUR]` original itinerary · `[ADD-ON]` optional suggestion · `[KONBINI]` best time for a convenience-store run · `[COUPON]` a coupon applies (images are in the HTML version) · 🟠 `STOCK UP` = no/limited konbini that night, buy earlier in the day
 
 > **Photos:** each lunch/dinner row links to its photo in the `images/` folder — keep that folder next to this file (both are in the zip). Coupon images are embedded only in the HTML version, since they must display offline at a register.
+
+> **This file is the summary.** The HTML version carries the interactive parts and is
+> the source of truth: folding day rows, Money (split / tabung / my spending), My notes,
+> Useful Japanese, and the References section with the N’EX, CIMB, Tabung, selfie-stick
+> and Shinjuku + Ginza pages.
 
 ---
 
@@ -28,7 +33,11 @@ When a place is added to this guide, all of the following must happen:
 6. **Both languages** — the EN body and the `data-zh` attribute.
 7. If it sells something on the shopping list, add it to that item's `where` field
    and bump `SL_SEED`.
-8. Bump `GUIDE_VERSION` so the version badge reflects the change.
+8. **Bump the version AND the date — all five places**, or the header and footer
+   drift apart (they did, for several versions):
+   `GUIDE_VERSION` · `GUIDE_UPDATED` {en, zh} · the header chip text *and* its
+   `data-zh` · the footer EN *and* ZH. Then grep the file for stray date strings
+   and confirm only one date remains.
 
 ## Quick links
 - 📑 **Company trip briefing slides (official, PDF on Google Drive):** [\[Briefing\] 2026 ViTrox Company Incentive Trip](https://drive.google.com/file/d/1WzjxuV0ndQWSZODDwR7FDO2LnLeIAzK7/view?usp=sharing) — the 11 Aug 2026 briefing deck (itinerary, meals, activities, volunteer tasks, money changer). The `[TOUR]` rows follow it; also linked at the top of the HTML.
@@ -83,7 +92,7 @@ When a place is added to this guide, all of the following must happen:
 ---
 
 ## DAY 1 — Sun 4 Oct · Departure, Penang → Japan
-**Stay:** Hotel Metropolitan Tokyo Haneda · 25°/19° cloudy
+**Stay:** Hotel Metropolitan Tokyo Haneda · 21°/16° cloudy / rain
 
 | Time | Plan |
 |---|---|
@@ -99,7 +108,7 @@ When a place is added to this guide, all of the following must happen:
 ---
 
 ## DAY 2 — Mon 5 Oct · Haneda → Sendai, Miyagi
-**Stay:** Hotel Kameya (onsen) · 23°/14° rain
+**Stay:** Ōedo Onsen Monogatari Naruko Onsen Kōunkaku *(tour card: “Miyagi Onsen Hotel”)* · 20°/12° partly cloudy
 
 | Time | Plan |
 |---|---|
@@ -112,7 +121,7 @@ When a place is added to this guide, all of the following must happen:
 | 14:20 | `[TOUR]` Zuiganji Temple (1h) — **BUY:** omamori charms + start a **goshuinchō** stamp book (¥300–500), pair it at Tōshō-gū on Day 5 |
 | 15:22 | `[TOUR]` Godaido Temple (30m) · `[ADD-ON]` **Kanrantei** tea pavilion right beside it (8:30–16:30, small fee) — matcha + zunda mochi over the bay, 15–20 min squeeze only if timing allows |
 | 16:00 | `[TOUR]` Matsushima Bay Cruise (1h) — one of Japan's Three Great Views |
-| 18:30 | `[TOUR]` Check-in Hotel Kameya · 19:00 kaiseki dinner · [📷 photo](images/Day2Dinner.webp) |
+| 17:05 | `[TOUR]` Depart Matsushima → Naruko Onsen (~1h45m, 71km) · 18:40 check-in Kōunkaku · 19:15 buffet dinner · [📷 photo](images/Day2Dinner.webp) |
 | 20:30 | `[KONBINI]` FamilyMart Matsushima Kaigandori — seafront road, ~0.5–1km / 6–12 min walk, 24h. Eat-in corner, try famichiki. Cheaper A&COOP supermarket + Daiso ~10 min inland (till 9pm). Confirm direction at check-in. |
 | 21:30 | `[ADD-ON]` Second onsen soak when quiet, or bay-front stroll — Godaido is lit at night |
 
@@ -121,8 +130,8 @@ When a place is added to this guide, all of the following must happen:
 
 ---
 
-## DAY 3 — Tue 6 Oct · Miyagi → Ginzan Onsen → Zao → Fukushima
-**Stay:** Okuiizaka Aanabara Onsen Yoshikawa-ya · 25°/18° rain
+## DAY 3 — Tue 6 Oct · Miyagi → Ginzan Onsen → Zao → Dake Onsen
+**Stay:** Nagame no Yakata Kōunkaku, Dake Onsen *(tour card: “Fukushima Onsen Hotel”)* · 18°/7° rain — **coldest day**
 
 🟠 **No konbini tonight** — the ryokan is up the Anabara valley, nearest store is a 5-min taxi. Buy tonight's snacks at the 13:40 rest stop.
 
@@ -141,26 +150,31 @@ When a place is added to this guide, all of the following must happen:
 
 ---
 
-## DAY 4 — Wed 7 Oct · Fukushima → Nikkō / Kinugawa Onsen
-**Stay:** Oedo Onsen Monogatari Premium Kinugawa Kanko · 22°/13° rain
+## DAY 4 — Wed 7 Oct · Fukushima → Tochigi
+**Stay:** Nasu Sunlight Hotel *(tour card: “Tochigi Hotel”)* · 20°/12° partly cloudy
+Stops: Goshikinuma Ponds · Tsuruga Castle · Ouchi-juku
 
-🟠 **Limited konbini tonight** — Kinugawa town shuts by ~4–5pm and the only 24h Lawson is 10–15 min downhill. Buy night snacks at the daytime rest stop.
+🟠 **No konbini run tonight** — Nasu Sunlight Hotel is out on the plateau and the nearest store is ~5.9 km away, a drive not a walk. Buy night snacks at the Dake Onsen FamilyMart the previous evening, or at the daytime rest stop.
 
 | Time | Plan |
 |---|---|
-| AM–PM | `[TOUR]` Travel day south into the Kinugawa valley |
+| 8:00 | `[TOUR]` Breakfast · 9:00 depart (~1h, 41km) |
+| 10:00 | `[TOUR]` **Goshikinuma Ponds** (1h) — Aoike is the famously blue one; upland and cold |
+| 13:10 | `[TOUR]` **Tsuruga Castle** (1h30m) — Japan’s only red-tiled keep · **BUY:** akabeko |
+| 14:40 | `[TOUR]` **Ouchi-juku** (2h) — thatched post town · **EAT:** negi soba · last chance for Fukushima omiyage |
 | Rest stop | 🟠 `[KONBINI]` **STOCK UP** on the Fukushima→Tochigi leg. **BUY: Mamador** ("mama's chocolate") cakes — Fukushima's legendary omiyage since 1967, last chance before leaving the prefecture. Restock drinks too. |
 | Noon | `[TOUR]` Lunch: **Ceramic-plate (tōban-yaki) beef set** · [📷 photo](images/Day4Lunch.webp) |
 | Eve | `[TOUR]` Check-in Oedo Onsen Monogatari Premium · Dinner: **hotel grand buffet** (crab legs, sashimi boats, wagyu grill — pace yourself) · [📷 photo](images/Day4Dinner.webp) |
-| 20:00 | `[ADD-ON]` Resort evening circuit — rotate indoor + open-air baths in yukata, game corner, large in-hotel souvenir shop (till ~9:30pm, good for Tochigi omiyage). Lit river-gorge bridges if the rain pauses. **BUY:** Kinugawa onsen manju at the hotel shop |
-| 21:00 | `[KONBINI]` Lawson, Kinugawa Onsen Sakura Ave — ~0.7–1.2km, 10–15 min downhill walk / 3 min taxi, 24h. The town's ONLY night store. Go before your bath; after 10pm means a dark uphill walk back. |
+| 20:00 | `[ADD-ON]` Nasu Sunlight Hotel evening — golf-resort hotel on the Nasu plateau, sulphur onsen, mountain and fairway views. Nothing is walkable here, so make the hotel the evening. |
+| — | `[KONBINI]` **No konbini run tonight** — nearest store ~5.9 km, not walkable. Two chances earlier: FamilyMart Dake Onsen last night (8 min walk) and today’s rest stop. |
 
 **Donki today:** none in the valley.
 
 ---
 
-## DAY 5 — Thu 8 Oct · Nikkō → Tochigi (Tsukuba)
-**Stay:** Hotel Nikko Tsukuba · 24°/19° cloudy
+## DAY 5 — Thu 8 Oct · Tochigi → Nikkō → Ibaraki
+**Stay:** Hotel Nikko Tsukuba *(tour card: “Ibaraki Hotel”)* · 20°/13° partly cloudy
+Stops: Kegon Falls (108km, ~1h40m — longest first leg) · Tōshō-gū · Edo Wonderland
 
 | Time | Plan |
 |---|---|
@@ -179,8 +193,8 @@ When a place is added to this guide, all of the following must happen:
 
 ---
 
-## DAY 6 — Fri 9 Oct · Tochigi → Ibaraki → Tokyo
-**Stay:** Shinjuku Granbell Hotel (Kabukicho) · 28°/19° cloudy
+## DAY 6 — Fri 9 Oct · Ibaraki → Tokyo
+**Stay:** Shinjuku Granbell Hotel (Kabukicho) · 22°/16° partly cloudy
 
 **Donki today — two:** MEGA Donki Shibuya (6 min west of the Crossing, 24h) and **Don Quijote Kabukicho flagship** (500m / 7 min from tonight's hotel, 24h) — the main Seika ZEN stop.
 `[COUPON]` usable today: Donki, Bic Camera, Sun Drug, SUGI, Alpen, Murasaki, Keio, Seibu.
@@ -214,7 +228,7 @@ When a place is added to this guide, all of the following must happen:
 ---
 
 ## DAY 7 — Sat 10 Oct · Tokyo → Narita
-**Stay:** International Resort Hotel Yurakujo (Narita) · 23°/17° rain
+**Stay:** International Resort Hotel Yurakujo *(tour card: “Narita Hotel” — could also be Marroad; different terminals and bus bays, confirm with the guide)* · 22°/16° partly cloudy
 
 **Donki today (emergency backup only):** Don Quijote Ginza Honkan — ~1.2km / 15 min walk / 5 min taxi from Tsukiji, 24h. Final Seika ZEN shot if D5 + D6 both failed. Same Ginza block: **UNIQLO Ginza flagship** (11am), **GU Ginza** (5-7-7, 5 floors, tax-free 4F, 11am–9pm) and **Nakamura Tokichi** (1854 Uji matcha house, GINZA SIX 4F, 10:30am) — all trade away Tsukiji food time.
 
