@@ -3,7 +3,7 @@
 **4 – 8 Dec 2026 · independent · Agnes, Jovie**
 
 Flights: **KUL → HAN 06:10–08:25 (4 Dec)** · **HAN → KUL 14:50–19:15 (8 Dec)**
-Weather: **22°/15° in Hanoi, 15°/8° in Sapa** · one of the driest months · **sunset 17:20**
+Weather: **22°/15° in Hanoi** · **11–21° / 5–8° in Sapa** · dry month · **sunset 17:20**
 
 > This file is the summary. The HTML (`index.html`) is the source of truth and carries
 > the interactive parts: Money, Pack & Prepare, Shopping list, My notes, Reference links.
@@ -78,8 +78,13 @@ entered as **MYR per 10,000₫**, which is the unit people quote.
 
 ## Weather and packing
 
-Hanoi is 22°/15°, Sapa is **15°/8° with thick morning fog** in the valleys, usually
-clearing by late morning. It feels colder than the
+Hanoi is 22°/15°. **Sapa swings hard within a single day:** 6–8° foggy at dawn, up to
+21° once the fog thins in the afternoon, 5–7° at night. Fansipan summit is colder
+again, sometimes near freezing.
+
+Forecasts for Sapa disagree widely — daytime highs are quoted anywhere from 11° to
+21° depending on the source. **Pack for the cold end.** High humidity and mountain
+wind make it feel colder than the number either way. It feels colder than the
 numbers because of 70% humidity and wind, mornings especially.
 
 - **Layers** — 22° daytime is short sleeves, 15° after dark needs a jacket
