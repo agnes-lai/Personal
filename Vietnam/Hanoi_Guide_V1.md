@@ -51,6 +51,9 @@ three usable morning hours.
 
 **Shortcut:** drop four zeros, multiply by 1.7. So 50,000₫ → 5 × 1.7 ≈ RM8.50.
 
+The Money section works in **VND / MYR / SGD** (no yen). In *My spending* the rate is
+entered as **MYR per 10,000₫**, which is the unit people quote.
+
 - **20,000₫ and 500,000₫ are similar colours.** Handing over the wrong one is the
   classic mistake. Count the zeros before you pay.
 - Old Quarter small shops, street food and cyclos are **cash only**.
@@ -75,7 +78,8 @@ three usable morning hours.
 
 ## Weather and packing
 
-Hanoi is 22°/15°, Sapa is **15°/8° and often inside a cloud**. It feels colder than the
+Hanoi is 22°/15°, Sapa is **15°/8° with thick morning fog** in the valleys, usually
+clearing by late morning. It feels colder than the
 numbers because of 70% humidity and wind, mornings especially.
 
 - **Layers** — 22° daytime is short sleeves, 15° after dark needs a jacket
