@@ -1378,6 +1378,13 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   letter-spacing:.08em;border-radius:4px;padding:1px 7px;margin-bottom:5px}
 .todo span{display:block;font-size:12.5px;line-height:1.55;color:var(--mute)}
 
+/* ===== optional / alternatives cards ===== */
+.clus{display:grid;gap:9px;margin:10px 0}
+.clus>div{border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;
+  padding:10px 12px;background:var(--goldbg)}
+.clus>div>b{display:block;font-size:13.5px;line-height:1.35;margin-bottom:4px}
+.clus>div>span{display:block;font-size:12px;color:var(--mute);line-height:1.6}
+
 /* ===== theme palette (generated: light keeps the original colours) ===== */
 :root{
   --bd1:#b9c2cf;
@@ -1606,7 +1613,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <div class="hd">
     <div class="kanjirow">
       <div class="kanji">HÀ NỘI・SA PA　5 NGÀY</div>
-      <span class="verchip" id="verChip" data-zh="v4 <span class=&quot;vd&quot;>更新于 2026年10月31日</span>">v4 <span class="vd">updated 31 Oct 2026</span></span>
+      <span class="verchip" id="verChip" data-zh="v5 <span class=&quot;vd&quot;>更新于 2026年10月31日</span>">v5 <span class="vd">updated 31 Oct 2026</span></span>
     </div>
     <h1 data-zh="河内 + 沙巴 <span class=&quot;jp&quot;>每日行程指南</span>">Hanoi + Sapa <span class="jp">Day-by-Day Guide</span></h1>
     <p data-zh="2026年10月4–11日 · 槟城出发跟团游 · 每天一条时间线：团队行程 + 购物任务 + 便利店打卡，全部标好时间和距离">4 – 8 Dec 2026 · Independent · Hanoi + Sapa · one timeline per day · Hanoi, Sapa, and back · with walking times and distances</p>
@@ -1638,6 +1645,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
     <div class="nv-panel-in">
       <div class="nv-grp-label" data-zh="我的清单">My lists</div>
       <div class="nv-grid">
+        <a href="#opt" data-zh="<span>☕</span>可选"><span>☕</span>Optional</a>
         <a href="#split" data-zh="<span>💰</span>钱"><span>💰</span>Money</a>
         <a href="#notes" data-zh="<span>📝</span>我的笔记"><span>📝</span>My notes</a>
         <a href="#pack" data-zh="<span>🧳</span>行李 & 准备"><span>🧳</span>Pack &amp; prepare</a>
@@ -1692,7 +1700,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 <div class="row "><div class="t">20:00</div><div class="d" data-zh="Grab 回 Pullman · 拿行李">Grab back to Pullman · collect bags</div></div>
 <div class="row "><div class="t" data-zh="约21:00">~21:00</div><div class="d" data-zh="<b>HK 卧铺巴士 → 沙巴</b> · 订的时候确认上车地点 — 不一定是酒店"><b>HK sleeper bus → Sapa</b> · confirm the pick-up point when you book — it is not always the hotel</div></div>
 <div class="row add"><div class="t">—</div><div class="d" data-zh="<span class=&quot;badge add&quot;>赶不及的话</span><b>先砍这两个</b><span class=&quot;dist&quot;>这两个第 4 天都可以补</span><span class=&quot;geo&quot;><span class=&quot;pin&quot;>📍</span><b>Phở 10</b> 早上 6 点就开，可以当第 4 天早餐。<b>Uniqlo</b> 开到 22:00，第 4 天晚上去也行。</span><span class=&quot;verdict go&quot;>这天排得故意满 — 就是让你砍的。</span>"><span class="badge add">IF IT SLIPS</span><b>Two things to drop first</b><span class="dist">both fit Day 4 instead</span><span class="geo"><span class="pin">📍</span><b>Phở 10</b> opens 06:00, so it works as Day 4 breakfast. <b>Uniqlo</b> is open till 22:00, so it fits Day 4 evening.</span><span class="verdict go">This day is deliberately over-packed. Plan to cut.</span></div></div>
-<div class="row add"><div class="t">—</div><div class="d" data-zh="<span class=&quot;badge add&quot;>可选 · 随时塡</span><b>替代选择和咖啡店己己</b><span class=&quot;dist&quot;>不绑定时间 — 哪里有空就塡哪里</span><span class=&quot;geo&quot;><span class=&quot;pin&quot;>📍</span>都在老城区步行范围内，随时可以替掉或接在已排的行程后面。</span><ul class=&quot;pts&quot;><li class=&quot;grp eat&quot;><span>☕ 咖啡</span></li><li><b>C.O.C Legacy Specialty</b> · 行银街 84 号 · 08:30–19:30 · <b>4.9 分，2,106 条</b> — 蛋咖啡的替代，评论说<b>椰奶</b>那款更好。<i>适合：</i>第 1 天 12:45 左右（距 Bún Chả Ta 4 分钟），或第 5 天（距 Café Huệ 2 分钟）</li><li><b>Loading T</b> · Chân Cầm 8 号 · <b>08:00–18:00</b> · 4.7 分 — 肉桂蛋咖啡，开在老法式洋楼里。<b>距 Phở 10 只有 34 米。</b><i>适合：</i>第 1 天 15:45，或第 4 天看完教堂</li><li><b>Cộng Cà Phê</b> · Nhà Thờ 27 号 · 07:30–23:30 — 椰奶咖啡的替代，已排在第 1 天教堂那一站。Cầu Gỗ 分店看得到湖</li><li class=&quot;grp info&quot;><span>ℹ 要注意的</span></li><li class=&quot;warn&quot;>C.O.C 和 Loading T 都<b>真的很难找</b> — 穿巷、爬窄楼梯、没招牌。多留几分钟</li><li class=&quot;warn&quot;>Loading T <b>18:00 就关</b>，比其他都早</li><li class=&quot;tip&quot;>Loading T 有卖肉桂焙咖啡粉 — 除了 Huệ 和 Là Việt 又一个选择</li></ul>"><span class="badge add">OPTIONAL · SLOT IT ANYWHERE</span><b>Alternatives and café hopping</b><span class="dist">not fixed to a time — use them where a gap appears</span><span class="geo"><span class="pin">📍</span>All inside the Old Quarter walk, so any can replace or follow what is scheduled.</span><ul class="pts"><li class="grp eat"><span>☕ COFFEE</span></li><li><b>C.O.C Legacy Specialty</b> · 84 Hàng Bạc · 08:30–19:30 · <b>4.9★ from 2,106</b> — the alternative egg coffee, and reviewers rate its <b>coconut</b> one even higher. <i>Fits:</i> Day 1 ~12:45 (4 min from Bún Chả Ta), or Day 5 (2 min from Café Huệ)</li><li><b>Loading T</b> · 8 Chân Cầm · <b>08:00–18:00</b> · 4.7★ — cinnamon egg coffee in an old French villa. <b>34 m from Phở 10.</b> <i>Fits:</i> Day 1 at 15:45, or Day 4 after the cathedral</li><li><b>Cộng Cà Phê</b> · 27 Nhà Thờ · 07:30–23:30 — the alternative coconut coffee, already in Day 1 at the cathedral. The Cầu Gỗ branch overlooks the lake</li><li class="grp info"><span>ℹ GOOD TO KNOW</span></li><li class="warn">C.O.C and Loading T are <b>genuinely hard to find</b> — alleys, narrow stairs, no sign. Allow extra minutes</li><li class="warn">Loading T <b>shuts at 18:00</b>, earlier than the rest</li><li class="tip">Loading T sells cinnamon-roasted coffee powder — another bean option beside Huệ and Là Việt</li></ul></div></div>
+
 </div>
 
 </details>
@@ -1752,7 +1760,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 <div class="row add"><div class="t">16:30</div><div class="d" data-zh="<span class=&quot;badge add&quot;>一起去</span><b>Kem Caramen Dương Hoa + Là Việt Coffee</b><span class=&quot;dist&quot;>都在北边 · <b>相距 11 分钟</b> · Grab 过去</span><span class=&quot;geo&quot;><span class=&quot;pin&quot;>📍</span><b>Kem Caramen</b>，行炭街 29 号，09:00–22:00 — 焦糖布丁约 9,000₫ 起，小塩椅，出门时在门口付现金。<b>Là Việt</b>，珠龙街 26 号，07:30–22:00 — 大叭焙焙商，礼盒包装好看。</span><ul class=&quot;pts&quot;><li class=&quot;warn&quot;>Kem Caramen 没有英文菜单 — 评论说直接指 Google 地图上的照片</li><li class=&quot;tip&quot;>布丁要说加冰，否则是常温的</li></ul>"><span class="badge add">DO THEM TOGETHER</span><b>Kem Caramen Dương Hoa + Là Việt Coffee</b><span class="dist">both north · <b>11 min apart</b> · Grab up</span><span class="geo"><span class="pin">📍</span><b>Kem Caramen</b>, 29 Hàng Than, 09:00–22:00 — caramel flan from about 9,000₫, plastic stools, cash at the door on the way out. <b>Là Việt</b>, 26 Châu Long, 07:30–22:00 — Đà Lạt roaster, good gift packaging.</span><ul class="pts"><li class="warn">No English menu at Kem Caramen — reviewers point at photos in Google Maps</li><li class="tip">Ask for ice with the flan, or it comes at room temperature</li></ul></div></div>
 <div class="row "><div class="t">18:00</div><div class="d" data-zh="第 1 天没去的话现在去 <b>Uniqlo</b> · 开到 22:00"><b>Uniqlo</b> if you skipped it on Day 1 · open till 22:00</div></div>
 <div class="row add"><div class="t">18:30</div><div class="d" data-zh="<span class=&quot;badge add&quot;>只有周末</span><b>周末步行街 + 夜市</b><span class=&quot;dist&quot;>周五晚 → 周日晚 · 禁行车</span><span class=&quot;geo&quot;><span class=&quot;pin&quot;>📍</span>湖周围和老城区一部分封路：街头表演、摆摊、小孩玩的游戏。<b>你们在河内的晚上刚好是周日</b> — 赶上了。</span>"><span class="badge add">SUNDAY ONLY</span><b>Weekend walking streets + night market</b><span class="dist">Fri evening → Sun night · closed to traffic</span><span class="geo"><span class="pin">📍</span>The lake and part of the Old Quarter close to cars: street performers, stalls, kids’ games. <b>Your Hanoi evening falls on the Sunday</b> — it works out.</span></div></div>
-<div class="row add"><div class="t">—</div><div class="d" data-zh="<span class=&quot;badge add&quot;>可选 · 随时塡</span><b>替代选择和咖啡店己己</b><span class=&quot;dist&quot;>不绑定时间 — 哪里有空就塡哪里</span><span class=&quot;geo&quot;><span class=&quot;pin&quot;>📍</span>都在老城区步行范围内，随时可以替掉或接在已排的行程后面。</span><ul class=&quot;pts&quot;><li class=&quot;grp eat&quot;><span>☕ 咖啡</span></li><li><b>C.O.C Legacy Specialty</b> · 行银街 84 号 · 08:30–19:30 · <b>4.9 分，2,106 条</b> — 蛋咖啡的替代，评论说<b>椰奶</b>那款更好。<i>适合：</i>第 1 天 12:45 左右（距 Bún Chả Ta 4 分钟），或第 5 天（距 Café Huệ 2 分钟）</li><li><b>Loading T</b> · Chân Cầm 8 号 · <b>08:00–18:00</b> · 4.7 分 — 肉桂蛋咖啡，开在老法式洋楼里。<b>距 Phở 10 只有 34 米。</b><i>适合：</i>第 1 天 15:45，或第 4 天看完教堂</li><li><b>Cộng Cà Phê</b> · Nhà Thờ 27 号 · 07:30–23:30 — 椰奶咖啡的替代，已排在第 1 天教堂那一站。Cầu Gỗ 分店看得到湖</li><li class=&quot;grp info&quot;><span>ℹ 要注意的</span></li><li class=&quot;warn&quot;>C.O.C 和 Loading T 都<b>真的很难找</b> — 穿巷、爬窄楼梯、没招牌。多留几分钟</li><li class=&quot;warn&quot;>Loading T <b>18:00 就关</b>，比其他都早</li><li class=&quot;tip&quot;>Loading T 有卖肉桂焙咖啡粉 — 除了 Huệ 和 Là Việt 又一个选择</li></ul>"><span class="badge add">OPTIONAL · SLOT IT ANYWHERE</span><b>Alternatives and café hopping</b><span class="dist">not fixed to a time — use them where a gap appears</span><span class="geo"><span class="pin">📍</span>All inside the Old Quarter walk, so any can replace or follow what is scheduled.</span><ul class="pts"><li class="grp eat"><span>☕ COFFEE</span></li><li><b>C.O.C Legacy Specialty</b> · 84 Hàng Bạc · 08:30–19:30 · <b>4.9★ from 2,106</b> — the alternative egg coffee, and reviewers rate its <b>coconut</b> one even higher. <i>Fits:</i> Day 1 ~12:45 (4 min from Bún Chả Ta), or Day 5 (2 min from Café Huệ)</li><li><b>Loading T</b> · 8 Chân Cầm · <b>08:00–18:00</b> · 4.7★ — cinnamon egg coffee in an old French villa. <b>34 m from Phở 10.</b> <i>Fits:</i> Day 1 at 15:45, or Day 4 after the cathedral</li><li><b>Cộng Cà Phê</b> · 27 Nhà Thờ · 07:30–23:30 — the alternative coconut coffee, already in Day 1 at the cathedral. The Cầu Gỗ branch overlooks the lake</li><li class="grp info"><span>ℹ GOOD TO KNOW</span></li><li class="warn">C.O.C and Loading T are <b>genuinely hard to find</b> — alleys, narrow stairs, no sign. Allow extra minutes</li><li class="warn">Loading T <b>shuts at 18:00</b>, earlier than the rest</li><li class="tip">Loading T sells cinnamon-roasted coffee powder — another bean option beside Huệ and Là Việt</li></ul></div></div>
+
 </div>
 
 </details>
@@ -1851,6 +1859,44 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   </div>
 </div>
 </details>
+
+<!-- ============ OPTIONAL ============ -->
+<details class="ref"><summary class="sec" id="opt" data-zh="<span class=&quot;g&quot;>☕</span>可选 — 哪里有空塡哪里"><span class="g">☕</span>Optional — slot these in anywhere</summary>
+<div class="info">
+  <div class="icard full">
+    <p class="pk-intro" data-zh="这几家不绑定时间。都在老城区步行范围内，哪一天有空就塡进去，也可以替掉已排的。">
+    None of these is fixed to a time. They all sit inside the Old Quarter walk, so drop them into whichever day has a gap — or use them to replace something already scheduled.</p>
+
+    <div class="clus">
+      <div><b>☕ C.O.C Legacy Specialty Coffee</b>
+        <span>84 Hàng Bạc · 08:30–19:30 · <b>4.9★ from 2,106</b><br>
+        The alternative <b>egg coffee</b> — though reviewers rate its <b>coconut</b> one even higher, with a round ice globe and coconut crisps.<br>
+        <b>Fits:</b> Day 1 around 12:45 (4 min from Bún Chả Ta) · Day 4 morning · Day 5 (2 min from Café Huệ)</span></div>
+
+      <div><b>☕ Loading T</b>
+        <span>8 Chân Cầm · <b>08:00–18:00</b> · 4.7★ from 1,815<br>
+        Cinnamon egg coffee in an old French villa, up the stairs. <b>34 m from Phở 10</b>, so the two pair naturally. Sells its own cinnamon-roasted coffee powder.<br>
+        <b>Fits:</b> Day 1 at 15:45 with Phở 10 · Day 4 after the cathedral</span></div>
+
+      <div><b>🥥 Cộng Cà Phê</b>
+        <span>27 Nhà Thờ · 07:30–23:30 · the alternative <b>coconut coffee</b><br>
+        Already in Day 1 at the cathedral stop. The <b>Cầu Gỗ</b> branch overlooks Hoàn Kiếm if you’d rather have it on Day 4.<br>
+        <b>Fits:</b> anywhere — it’s open till 23:30</span></div>
+    </div>
+
+    <div class="warn" data-zh="<b>两家都真的很难找。</b>C.O.C 要穿巷子、爬两段窄楼梯；Loading T 在老洋楼二楼且没有明显招牌。评论里很多人说找了半天 — 多留几分钟。">
+    <b>Both are genuinely hard to find.</b> C.O.C is up an alley and two narrow staircases; Loading T is upstairs in an old villa with no real sign. Reviewers describe hunting for both — allow extra minutes.</div>
+
+    <div class="note" data-zh="<b>Loading T 18:00 就关</b>，比这表上其他都早 — 想去就别排在晚上。">
+    <b>Loading T shuts at 18:00</b>, earlier than everything else here — so it can’t be an evening plan.</div>
+
+    <div class="good" data-zh="<b>买咖啡豆的三个选择：</b>Café Huệ（行鞋街 26 号，可以先尝）、Là Việt（珠龙街 26 号，礼盒好看）、Loading T（肉桂焙咖啡粉）。">
+    <b>Three places to buy beans:</b> Café Huệ (26 Hàng Giầy — the one that brews, so you can taste), Là Việt (26 Châu Long — best gift packaging), Loading T (cinnamon-roasted powder).</div>
+  </div>
+</div>
+</details>
+
+
 
 <!-- ============ PACKING ============ -->
 <details class="ref"><summary class="sec" id="pack" data-zh="<span class=&quot;g&quot;>🧳</span>行李 &amp; 准备 — 我自己的清单"><span class="g">🧳</span>Pack &amp; Prepare — my own checklist</summary>
@@ -1952,7 +1998,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 
 
 
-<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v4</b> · 更新于 2026年10月31日</span>">Built for your 4–8 Dec 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v4</b> · updated 31 Oct 2026</span></footer>
+<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v5</b> · 更新于 2026年10月31日</span>">Built for your 4–8 Dec 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v5</b> · updated 31 Oct 2026</span></footer>
 
 <script>
 // ===== Trip Split (localStorage-backed, this device only) =====
@@ -4737,7 +4783,7 @@ document.addEventListener("click", function(){ if(slSkipOpen){ slSkipOpen = null
 /* Single source of truth for the version shown on the page. Bump these two and
    both the header chip and the footer line follow. The values are also written
    into the HTML above, so the version still shows if scripts don't run. */
-var GUIDE_VERSION = "v4";
+var GUIDE_VERSION = "v5";
 var GUIDE_UPDATED = {en: "31 Oct 2026", zh: "2026年10月31日"};
 (function(){
   function paint(){
