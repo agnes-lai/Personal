@@ -58,6 +58,13 @@ var ZH = {
   "Everyone's square.":"大家都结清了。",
   "Each currency is settled separately — no exchange rate is applied.":"每种货币分开结算 — 不换算汇率。",
   "tap anywhere to close":"点任意处关闭",
+  "Who\u2019s on this trip:":"\u8c01\u5728\u8fd9\u8d9f\u884c\u7a0b\uff1a",
+  "add a name":"\u52a0\u4e2a\u540d\u5b57",
+  "Add":"\u52a0",
+  "Twelve is plenty.":"\u5341\u4e8c\u4e2a\u591f\u591a\u4e86\u3002",
+  "That name is already on the list.":"\u8fd9\u4e2a\u540d\u5b57\u5df2\u7ecf\u5728\u5355\u4e0a\u4e86\u3002",
+  "Remove":"\u79fb\u9664",
+  "item(s) still mark them as skipping \u2014 those marks go too.":"\u9879\u8fd8\u6807\u7740 TA \u4e0d\u5403 \u2014 \u90a3\u4e9b\u6807\u8bb0\u4e5f\u4f1a\u4e00\u5e76\u5220\u6389\u3002",
   "My notes":"我的笔记",
   "notes":"张笔记",
   "today":"今天",
@@ -1385,6 +1392,22 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 .clus>div>b{display:block;font-size:13.5px;line-height:1.35;margin-bottom:4px}
 .clus>div>span{display:block;font-size:12px;color:var(--mute);line-height:1.6}
 
+/* ===== trip roster editor ===== */
+.pp-bar{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 10px;
+  padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.pp-lab{font-size:11.5px;font-weight:900;color:var(--mute);margin-right:2px}
+.pp-chip{display:inline-flex;align-items:center;gap:4px;background:var(--goldbg);
+  border:1px solid var(--line);border-radius:20px;padding:3px 5px 3px 10px;font-size:12.5px;font-weight:700}
+.pp-chip button{border:none;background:none;color:#c2c7d2;font-size:14px;line-height:1;
+  cursor:pointer;padding:0 3px;font-family:inherit}
+.pp-chip button:hover{color:var(--red)}
+.pp-add{display:inline-flex;gap:5px;align-items:center}
+.pp-add input{width:104px;border:1px solid var(--line);border-radius:7px;padding:4px 8px;
+  font-family:inherit;font-size:12.5px;background:var(--paper);color:var(--ink)}
+.pp-add input:focus{outline:none;border-color:var(--gold)}
+.pp-add button{border:none;border-radius:7px;padding:5px 11px;background:var(--night);color:#fff;
+  font-family:inherit;font-weight:900;font-size:12px;cursor:pointer}
+
 /* ===== theme palette (generated: light keeps the original colours) ===== */
 :root{
   --bd1:#b9c2cf;
@@ -1613,7 +1636,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <div class="hd">
     <div class="kanjirow">
       <div class="kanji">HÀ NỘI・SA PA　5 NGÀY</div>
-      <span class="verchip" id="verChip" data-zh="v6 <span class=&quot;vd&quot;>更新于 2026年10月31日</span>">v6 <span class="vd">updated 31 Oct 2026</span></span>
+      <span class="verchip" id="verChip" data-zh="v7 <span class=&quot;vd&quot;>更新于 2026年10月31日</span>">v7 <span class="vd">updated 31 Oct 2026</span></span>
     </div>
     <h1 data-zh="河内 + 沙巴 <span class=&quot;jp&quot;>每日行程指南</span>">Hanoi + Sapa <span class="jp">Day-by-Day Guide</span></h1>
     <p data-zh="2026年10月4–11日 · 槟城出发跟团游 · 每天一条时间线：团队行程 + 购物任务 + 便利店打卡，全部标好时间和距离">4 – 8 Dec 2026 · Independent · Hanoi + Sapa · one timeline per day · Hanoi, Sapa, and back · with walking times and distances</p>
@@ -1998,7 +2021,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 
 
 
-<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v6</b> · 更新于 2026年10月31日</span>">Built for your 4–8 Dec 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v6</b> · updated 31 Oct 2026</span></footer>
+<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v7</b> · 更新于 2026年10月31日</span>">Built for your 4–8 Dec 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v7</b> · updated 31 Oct 2026</span></footer>
 
 <script>
 // ===== Trip Split (localStorage-backed, this device only) =====
@@ -4042,8 +4065,75 @@ var SL_MODES = ["souv","daily"];
 /* Two lists live in one array, told apart by item.list:
      souv  = carry it home      daily = eat / use / do it there           */
 function slModeOf(v){ return SL_MODES.indexOf(v) > -1 ? v : "souv"; }
-/* People on the trip. A To-try item can mark who is NOT having it (item.excl). */
-var SL_PEOPLE = ["Agnes","WK","ALH","Jolynn"];
+/* People on the trip. A To-try item can mark who is NOT having it (item.excl).
+   Editable from the To-try tab; kept in its own key so it survives list resets. */
+var SL_PEOPLE_KEY = "hanoiTripPeople_v1";
+var SL_PEOPLE_DEFAULT = ["Agnes","Jovie"];
+var SL_PEOPLE = (function(){
+  try{
+    var raw = localStorage.getItem(SL_PEOPLE_KEY);
+    if(raw){
+      var a = JSON.parse(raw);
+      if(Object.prototype.toString.call(a) === "[object Array]"){
+        a = a.map(function(x){ return String(x || "").trim(); }).filter(Boolean);
+        if(a.length) return a;
+      }
+    }
+  }catch(e){}
+  return SL_PEOPLE_DEFAULT.slice();
+})();
+function slPeopleSave(){
+  try{ localStorage.setItem(SL_PEOPLE_KEY, JSON.stringify(SL_PEOPLE)); }catch(e){}
+}
+function slPeopleAdd(){
+  var el = document.getElementById("slNewPerson");
+  if(!el) return;
+  var v = (el.value || "").trim();
+  if(!v) return;
+  if(SL_PEOPLE.length >= 12){ alert(T("Twelve is plenty.")); return; }
+  if(SL_PEOPLE.some(function(x){ return x.toLowerCase() === v.toLowerCase(); })){
+    alert(T("That name is already on the list.")); el.value = ""; return;
+  }
+  SL_PEOPLE.push(v); slPeopleSave(); el.value = ""; slRenderAll();
+}
+function slPeopleRemove(name){
+  /* who has this person marked as skipping something? */
+  var used = 0;
+  try{
+    (slData().items || []).forEach(function(i){
+      if((i.excl || []).indexOf(name) > -1) used++;
+    });
+  }catch(e){}
+  var msg = used
+    ? T("Remove") + " " + name + "? " + used + " " + T("item(s) still mark them as skipping \u2014 those marks go too.")
+    : T("Remove") + " " + name + "?";
+  if(!confirm(msg)) return;
+  SL_PEOPLE = SL_PEOPLE.filter(function(x){ return x !== name; });
+  slPeopleSave();
+  /* drop them from every item so no orphan chips remain */
+  try{
+    var dd = slData();
+    (dd.items || []).forEach(function(i){
+      if(i.excl && i.excl.indexOf(name) > -1){
+        i.excl = i.excl.filter(function(x){ return x !== name; });
+      }
+    });
+    slSave();
+  }catch(e){}
+  slRenderAll();
+}
+function slPeopleBar(){
+  var chips = SL_PEOPLE.map(function(p){
+    return '<span class="pp-chip">' + slEsc(p) +
+           '<button data-pprm="' + slEsc(p) + '" title="remove">\u00d7</button></span>';
+  }).join("");
+  return '<div class="pp-bar">'
+    + '<span class="pp-lab">' + T("Who\u2019s on this trip:") + '</span>'
+    + chips
+    + '<span class="pp-add"><input id="slNewPerson" placeholder="' + T("add a name") + '" maxlength="18">'
+    + '<button onclick="slPeopleAdd()">' + T("Add") + '</button></span>'
+    + '</div>';
+}
 var SL_FIELDS = ["name","photo","desc","where","links","qty","price","remark","excl"];
 /* ---- v71: the To-try list has two sources ----
      local  = "Customise": this device only (as before)
@@ -4368,6 +4458,10 @@ function slToggleExcl(id, who){
   slRenderAll();
 }
 var slSkipOpen = null;   /* which card has its "Skipping" dropdown open */
+document.addEventListener("click", function(e){
+  var b = e.target.closest ? e.target.closest("[data-pprm]") : null;
+  if(b) slPeopleRemove(b.getAttribute("data-pprm"));
+});
 /* Dropdown beside the tick button: a checkbox per person. Ticking saves at once. */
 function slSkipDropdown(it){
   var ex = it.excl || [], open = slSkipOpen === it.id;
@@ -4390,6 +4484,7 @@ function slSkipLine(it){
        + ex.map(function(p){ return '<span class="sl-chip excl">' + slEsc(p) + '</span>'; }).join("") + '</div>';
 }
 /* Bottom of the To-try list: how much has been tried, and who skips the most. */
+function slPeopleBarIfTry(){ return (slMode() === "daily") ? slPeopleBar() : ""; }
 function slSkipStats(items){
   var tried = items.filter(function(i){ return i.done; }).length;
   var counts = SL_PEOPLE.map(function(p){
@@ -4598,7 +4693,7 @@ function slRenderAll(){
   html = '<div class="sl-topadd"><button id="slNewTop">\uff0b ' + (slMode() === "daily" ? T("New thing to try") : T("New item")) + '</button></div>' + html;
   if(slShared()) html = '<div id="slSharedPanel">' + slSharedPanelHTML() + '</div>' + html;
   else if(slMode() === "souv" && vis.length > 1) html = '<div class="sl-sorthint">\u22ee\u22ee ' + T("Drag the handle to put items in your own order.") + '</div>' + html;
-  body.innerHTML = html;
+  body.innerHTML = slPeopleBarIfTry() + html;
   body.classList.toggle("sl-locked", slLocked());
   if(slLocked()){
     body.querySelectorAll("[data-sl]").forEach(function(el){
@@ -4665,6 +4760,8 @@ function slRenderAll(){
   });
   var ab = document.getElementById("slAddBtn");
   if(ab) ab.addEventListener("click", slAdd);
+  var np = document.getElementById("slNewPerson");
+  if(np) np.addEventListener("keydown", function(e){ if(e.key === "Enter"){ e.preventDefault(); slPeopleAdd(); } });
   var ai = document.getElementById("slNew");
   if(ai) ai.addEventListener("keydown", function(e){ if(e.key === "Enter"){ e.preventDefault(); slAdd(); } });
   window.scrollTo(0, keepY);
@@ -4783,7 +4880,7 @@ document.addEventListener("click", function(){ if(slSkipOpen){ slSkipOpen = null
 /* Single source of truth for the version shown on the page. Bump these two and
    both the header chip and the footer line follow. The values are also written
    into the HTML above, so the version still shows if scripts don't run. */
-var GUIDE_VERSION = "v6";
+var GUIDE_VERSION = "v7";
 var GUIDE_UPDATED = {en: "31 Oct 2026", zh: "2026年10月31日"};
 (function(){
   function paint(){
@@ -4805,7 +4902,7 @@ var GUIDE_UPDATED = {en: "31 Oct 2026", zh: "2026年10月31日"};
 (function(){
   /* Every key this guide writes. Kept in one place so "Everything" can never
      silently miss a section that was added later. */
-  var ALL_KEYS = ["hanoiTripShop_v2","hanoiTripPack_v3","hanoiTripSplit_v2","hanoiTripTabung_v1","hanoiTripMine_v1","hanoiTripNotes_v1",
+  var ALL_KEYS = ["hanoiTripPeople_v1", "hanoiTripShop_v2","hanoiTripPack_v3","hanoiTripSplit_v2","hanoiTripTabung_v1","hanoiTripMine_v1","hanoiTripNotes_v1",
                   "hanoiTripReels_v2","hanoiTripPlaces_v1","hanoiTripLang"];
   var LABEL = {
     hanoiTripShop_v2:  ["shopping list","购物清单"],
