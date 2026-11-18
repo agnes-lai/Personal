@@ -60,6 +60,12 @@ var ZH = {
   "tap anywhere to close":"点任意处关闭",
   "Who\u2019s on this trip:":"\u8c01\u5728\u8fd9\u8d9f\u884c\u7a0b\uff1a",
   "Map":"地图",
+  "Photo":"图片",
+  "https://... or paste a screenshot here":"https://... 或直接粘贴截图",
+  "pasted image":"已粘贴的图",
+  "working\u2026":"处理中…",
+  "That image is too big even after shrinking. Try a smaller crop.":"这张图压缩后还是太大。裁小一点再试。",
+  "Remove photo":"删掉图片",
   "Opening hours":"营业时间",
   "e.g. 06:00\u201314:00, closed Mon":"例如 06:00–14:00，周一休",
   "Google Maps link":"谷歌地图链接",
@@ -1423,6 +1429,10 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 .sl-chip-hrs{color:var(--matcha);border-color:var(--konline);background:var(--kon)}
 [data-theme="dark"] .sl-chip-hrs{color:#7fd0a3}
 
+.sl-f-photo span{display:flex;align-items:center;gap:8px}
+.sl-photo-tag{font-size:10.5px;font-weight:900;color:var(--matcha);
+  border:1px solid var(--konline);background:var(--kon);border-radius:20px;padding:1px 8px;white-space:nowrap}
+
 /* ===== theme palette (generated: light keeps the original colours) ===== */
 :root{
   --bd1:#b9c2cf;
@@ -1651,7 +1661,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <div class="hd">
     <div class="kanjirow">
       <div class="kanji">HÀ NỘI・SA PA　5 NGÀY</div>
-      <span class="verchip" id="verChip" data-zh="v10 <span class=&quot;vd&quot;>更新于 2026年10月31日</span>">v10 <span class="vd">updated 31 Oct 2026</span></span>
+      <span class="verchip" id="verChip" data-zh="v11 <span class=&quot;vd&quot;>更新于 2026年10月31日</span>">v11 <span class="vd">updated 31 Oct 2026</span></span>
     </div>
     <h1 data-zh="河内 + 沙巴 <span class=&quot;jp&quot;>每日行程指南</span>">Hanoi + Sapa <span class="jp">Day-by-Day Guide</span></h1>
     <p data-zh="2026年10月4–11日 · 槟城出发跟团游 · 每天一条时间线：团队行程 + 购物任务 + 便利店打卡，全部标好时间和距离">4 – 8 Dec 2026 · Independent · Hanoi + Sapa · one timeline per day · Hanoi, Sapa, and back · with walking times and distances</p>
@@ -2036,7 +2046,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 
 
 
-<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v10</b> · 更新于 2026年10月31日</span>">Built for your 4–8 Dec 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v10</b> · updated 31 Oct 2026</span></footer>
+<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v11</b> · 更新于 2026年10月31日</span>">Built for your 4–8 Dec 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v11</b> · updated 31 Oct 2026</span></footer>
 
 <script>
 // ===== Trip Split (localStorage-backed, this device only) =====
@@ -4482,6 +4492,88 @@ document.addEventListener("click", function(e){
 /* Dropdown beside the tick button: a checkbox per person. Ticking saves at once. */
 /* Google Maps link for a To-try place. Shows an Open button once there is
    something in it, so you can jump straight to the pin from the card. */
+/* Photo: a URL, or paste a screenshot straight in.
+   A pasted image is resized and re-encoded before it is stored, because the
+   raw clipboard bitmap is megabytes and this has to fit in localStorage and
+   in the shared spreadsheet. */
+/* An image has to survive a round trip through a spreadsheet cell, and Excel
+   caps a cell at 32,767 characters. So the ceiling here is on the length of
+   the data URL, not on pixels, and we step down both size and quality until
+   it fits. A flat UI screenshot lands around 4 kB; a detailed photo needs
+   the smaller sizes. */
+var SL_PHOTO_SIZES = [620, 520, 440, 360, 280];
+var SL_PHOTO_QS    = [0.72, 0.6, 0.5, 0.4];
+var SL_PHOTO_CAP   = 30000;          /* chars, safely under Excel's 32,767 */
+
+function slPhotoField(it){
+  var v = it.photo || "";
+  var isData = /^data:image\//i.test(v);
+  var note = isData
+    ? '<span class="sl-photo-tag">\ud83d\uddbc ' + T("pasted image") + ' \u00b7 ' + Math.round(v.length/1024) + ' kB</span>'
+    : '';
+  return '<label class="sl-f sl-f-photo"><span>' + T("Photo") + note + '</span>'
+    + '<input data-sl="' + it.id + '" data-f="photo" data-photopaste="1" '
+    + 'placeholder="' + T("https://... or paste a screenshot here") + '" '
+    + 'value="' + slEsc(isData ? "" : v) + '"></label>';
+}
+
+function slShrinkImage(file, cb){
+  var fr = new FileReader();
+  fr.onload = function(){
+    var img = new Image();
+    img.onload = function(){
+      var best = null;
+      for(var s = 0; s < SL_PHOTO_SIZES.length && !best; s++){
+        var px = SL_PHOTO_SIZES[s];
+        var scale = Math.min(1, px / Math.max(img.width, img.height));
+        var cw = Math.max(1, Math.round(img.width * scale));
+        var ch = Math.max(1, Math.round(img.height * scale));
+        var c = document.createElement("canvas");
+        c.width = cw; c.height = ch;
+        var ctx = c.getContext("2d");
+        ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, cw, ch);   /* flatten transparency */
+        ctx.drawImage(img, 0, 0, cw, ch);
+        for(var q = 0; q < SL_PHOTO_QS.length; q++){
+          var out = c.toDataURL("image/jpeg", SL_PHOTO_QS[q]);
+          if(out.length <= SL_PHOTO_CAP){ best = {url:out, w:cw, h:ch}; break; }
+        }
+      }
+      cb(best ? best.url : null, best ? best.w : 0, best ? best.h : 0);
+    };
+    img.onerror = function(){ cb(null); };
+    img.src = fr.result;
+  };
+  fr.onerror = function(){ cb(null); };
+  fr.readAsDataURL(file);
+}
+
+document.addEventListener("paste", function(e){
+  var el = e.target;
+  if(!el || !el.getAttribute || el.getAttribute("data-photopaste") !== "1") return;
+  var cd = e.clipboardData || window.clipboardData;
+  if(!cd || !cd.items) return;
+  var file = null;
+  for(var i = 0; i < cd.items.length; i++){
+    var it2 = cd.items[i];
+    if(it2.kind === "file" && /^image\//.test(it2.type)){ file = it2.getAsFile(); break; }
+  }
+  if(!file) return;                       /* plain text paste: leave it alone */
+  e.preventDefault();
+  var id = el.getAttribute("data-sl");
+  el.value = T("working\u2026");
+  slShrinkImage(file, function(dataUrl, w, h){
+    if(!dataUrl){
+      el.value = "";
+      alert(T("That image is too big even after shrinking. Try a smaller crop."));
+      return;
+    }
+    var item = slItems().filter(function(x){ return x.id === id; })[0];
+    if(!item){ el.value = ""; return; }
+    item.photo = dataUrl;
+    slSave();
+    slRenderAll();
+  });
+});
 function slMapField(it){
   var v = (it.maplink || "").trim();
   /* the Open link is always in the DOM and toggled as you type, so it appears
@@ -4724,7 +4816,7 @@ function slRenderAll(){
           + slField(it.id, "links", it.links, T("Reference links"), T("paste links, comma separated"))
           + slField(it.id, "qty", it.qty, T("Quantity"), T("-1 = as many as possible"))
           + slField(it.id, "price", it.price, T("Price"), T("e.g. \u00a51,200 / box"))
-          + slField(it.id, "photo", it.photo, T("Photo URL"), "https://...")
+          + slPhotoField(it)
           + '<label class="sl-f wide"><span>' + T("Remark") + '</span>'
             + '<input type="text" value="' + slEsc(it.remark) + '" data-sl="' + it.id + '" data-f="remark" placeholder="' + T("note") + '"></label>'
           + '<div class="sl-danger"><button class="sl-del" data-sldel="' + it.id + '">\ud83d\uddd1 ' + T("Delete this item") + '</button></div>'
@@ -4938,7 +5030,7 @@ document.addEventListener("click", function(){ if(slSkipOpen){ slSkipOpen = null
 /* Single source of truth for the version shown on the page. Bump these two and
    both the header chip and the footer line follow. The values are also written
    into the HTML above, so the version still shows if scripts don't run. */
-var GUIDE_VERSION = "v10";
+var GUIDE_VERSION = "v11";
 var GUIDE_UPDATED = {en: "31 Oct 2026", zh: "2026年10月31日"};
 (function(){
   function paint(){
