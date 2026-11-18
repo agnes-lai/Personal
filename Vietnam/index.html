@@ -59,6 +59,8 @@ var ZH = {
   "Each currency is settled separately — no exchange rate is applied.":"每种货币分开结算 — 不换算汇率。",
   "tap anywhere to close":"点任意处关闭",
   "Who\u2019s on this trip:":"\u8c01\u5728\u8fd9\u8d9f\u884c\u7a0b\uff1a",
+  "Opening hours":"营业时间",
+  "e.g. 06:00\u201314:00, closed Mon":"例如 06:00–14:00，周一休",
   "Google Maps link":"谷歌地图链接",
   "paste the Google Maps link":"贴谷歌地图链接",
   "Open":"打开",
@@ -1645,7 +1647,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <div class="hd">
     <div class="kanjirow">
       <div class="kanji">HÀ NỘI・SA PA　5 NGÀY</div>
-      <span class="verchip" id="verChip" data-zh="v8 <span class=&quot;vd&quot;>更新于 2026年10月31日</span>">v8 <span class="vd">updated 31 Oct 2026</span></span>
+      <span class="verchip" id="verChip" data-zh="v9 <span class=&quot;vd&quot;>更新于 2026年10月31日</span>">v9 <span class="vd">updated 31 Oct 2026</span></span>
     </div>
     <h1 data-zh="河内 + 沙巴 <span class=&quot;jp&quot;>每日行程指南</span>">Hanoi + Sapa <span class="jp">Day-by-Day Guide</span></h1>
     <p data-zh="2026年10月4–11日 · 槟城出发跟团游 · 每天一条时间线：团队行程 + 购物任务 + 便利店打卡，全部标好时间和距离">4 – 8 Dec 2026 · Independent · Hanoi + Sapa · one timeline per day · Hanoi, Sapa, and back · with walking times and distances</p>
@@ -2030,7 +2032,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 
 
 
-<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v8</b> · 更新于 2026年10月31日</span>">Built for your 4–8 Dec 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v8</b> · updated 31 Oct 2026</span></footer>
+<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v9</b> · 更新于 2026年10月31日</span>">Built for your 4–8 Dec 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v9</b> · updated 31 Oct 2026</span></footer>
 
 <script>
 // ===== Trip Split (localStorage-backed, this device only) =====
@@ -3957,7 +3959,7 @@ var SF = (function(){
 })();
 
 /* ---- To-try list: Excel <-> items ---- */
-SF.TRY_COLS = ["id","name","tried","skipping","desc","where","maplink","links","qty","price","photo","remark"];
+SF.TRY_COLS = ["id","name","tried","skipping","desc","where","hours","maplink","links","qty","price","photo","remark"];
 SF.parsers.trylist = function(wb){
   var items = [];
   SF.sheetRows(wb, "TryList").forEach(function(r, i){
@@ -3967,7 +3969,7 @@ SF.parsers.trylist = function(wb){
     items.push({
       id: id || ("sx" + (i + 1)), done: /^(y|yes|true|1|✓|✔|tried|done)$/.test(tried),
       list:"daily", name:name, photo:String(r.photo || "").trim(), desc:String(r.desc || r.description || ""),
-      where:String(r.where || ""), maplink:String(r.maplink || r.map || ""), links:String(r.links || ""), qty:String(r.qty || ""), price:String(r.price || ""),
+      where:String(r.where || ""), hours:String(r.hours || ""), maplink:String(r.maplink || r.map || ""), links:String(r.links || ""), qty:String(r.qty || ""), price:String(r.price || ""),
       remark:String(r.remark || ""),
       excl:String(r.skipping || "").split(/[,;、，]/).map(function(x){ return x.trim(); }).filter(Boolean),
       edited:[]
@@ -3979,14 +3981,14 @@ SF.parsers.trylist = function(wb){
 SF.toSheets.trylist = function(data){
   var rows = [SF.TRY_COLS.slice()];
   (data.items || []).forEach(function(it){
-    rows.push([it.id, it.name, it.done ? "Y" : "", (it.excl || []).join(", "), it.desc, it.where, it.maplink || "", it.links, it.qty, it.price, it.photo, it.remark]);
+    rows.push([it.id, it.name, it.done ? "Y" : "", (it.excl || []).join(", "), it.desc, it.where, it.hours || "", it.maplink || "", it.links, it.qty, it.price, it.photo, it.remark]);
   });
   return {TryList: rows};
 };
 SF.serializers.trylist = function(data, meta){
   var wb = XLSX.utils.book_new();
   var ws = XLSX.utils.aoa_to_sheet(SF.toSheets.trylist(data).TryList);
-  ws["!cols"] = [{wch:8},{wch:44},{wch:6},{wch:22},{wch:60},{wch:40},{wch:46},{wch:30},{wch:6},{wch:14},{wch:24},{wch:40}];
+  ws["!cols"] = [{wch:8},{wch:44},{wch:6},{wch:22},{wch:60},{wch:40},{wch:24},{wch:46},{wch:30},{wch:6},{wch:14},{wch:24},{wch:40}];
   XLSX.utils.book_append_sheet(wb, ws, "TryList");
   SF.appendMeta(wb, meta, "TryList");
   return wb;
@@ -4143,7 +4145,7 @@ function slPeopleBar(){
     + '<button onclick="slPeopleAdd()">' + T("Add") + '</button></span>'
     + '</div>';
 }
-var SL_FIELDS = ["name","photo","desc","where","maplink","links","qty","price","remark","excl"];
+var SL_FIELDS = ["name","photo","desc","where","hours","maplink","links","qty","price","remark","excl"];
 /* ---- v71: the To-try list has two sources ----
      local  = "Customise": this device only (as before)
      shared = "From Excel": data/trylist.xlsx, one copy for the whole group, password to edit */
@@ -4208,6 +4210,7 @@ function slNormalise(d){
         photo: i.photo || "",
         desc: i.desc || "",
         where: i.where || "",
+        hours: i.hours || "",
         maplink: i.maplink || "",
         links: i.links || "",
         qty: i.qty === undefined ? "" : String(i.qty),
@@ -4418,7 +4421,7 @@ function slAdd(){
 function slNewId(){ return "sl" + Date.now().toString(36) + Math.random().toString(36).slice(2,5); }
 function slBlank(id, name){
   return {id:id, done:false, name:name || "", list:slMode(),
-          photo:"", desc:"", where:"", maplink:"", links:"", qty:"", price:"", remark:"", excl:[],
+          photo:"", desc:"", where:"", hours:"", maplink:"", links:"", qty:"", price:"", remark:"", excl:[],
           edited:SL_FIELDS.slice()};
 }
 var slFocus = null;   /* card to scroll to + highlight after the next redraw */
@@ -4446,7 +4449,7 @@ function slCopy(id){
   var nid = slNewId();
   var dup = {id:nid, done:false, list:slModeOf(src.list),
              name:(src.name || "") + " " + T("(copy)"),
-             photo:src.photo || "", desc:src.desc || "", where:src.where || "", maplink:src.maplink || "", links:src.links || "",
+             photo:src.photo || "", desc:src.desc || "", where:src.where || "", hours:src.hours || "", maplink:src.maplink || "", links:src.links || "",
              qty:src.qty === undefined ? "" : String(src.qty), price:src.price === undefined ? "" : String(src.price),
              remark:src.remark || "", excl:(src.excl || []).slice(),
              edited:SL_FIELDS.slice()};
@@ -4697,6 +4700,7 @@ function slRenderAll(){
           + '<label class="sl-f wide"><span>' + T("Description") + '</span>'
             + '<textarea rows="2" data-sl="' + it.id + '" data-f="desc" placeholder="' + T("What is it, why this one") + '">' + slEsc(it.desc) + '</textarea></label>'
           + slField(it.id, "where", it.where, slWord("where"), slWord("wherep"))
+          + slField(it.id, "hours", it.hours, T("Opening hours"), T("e.g. 06:00\u201314:00, closed Mon"))
           + slMapField(it)
           + slField(it.id, "links", it.links, T("Reference links"), T("paste links, comma separated"))
           + slField(it.id, "qty", it.qty, T("Quantity"), T("-1 = as many as possible"))
@@ -4915,7 +4919,7 @@ document.addEventListener("click", function(){ if(slSkipOpen){ slSkipOpen = null
 /* Single source of truth for the version shown on the page. Bump these two and
    both the header chip and the footer line follow. The values are also written
    into the HTML above, so the version still shows if scripts don't run. */
-var GUIDE_VERSION = "v8";
+var GUIDE_VERSION = "v9";
 var GUIDE_UPDATED = {en: "31 Oct 2026", zh: "2026年10月31日"};
 (function(){
   function paint(){
