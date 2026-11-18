@@ -59,6 +59,7 @@ var ZH = {
   "Each currency is settled separately — no exchange rate is applied.":"每种货币分开结算 — 不换算汇率。",
   "tap anywhere to close":"点任意处关闭",
   "Who\u2019s on this trip:":"\u8c01\u5728\u8fd9\u8d9f\u884c\u7a0b\uff1a",
+  "Map":"地图",
   "Opening hours":"营业时间",
   "e.g. 06:00\u201314:00, closed Mon":"例如 06:00–14:00，周一休",
   "Google Maps link":"谷歌地图链接",
@@ -1419,6 +1420,9 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 .sl-mapgo:hover{border-color:var(--blue);background:#eaf1fb}
 [data-theme="dark"] .sl-mapgo:hover{background:#16233a}
 
+.sl-chip-hrs{color:var(--matcha);border-color:var(--konline);background:var(--kon)}
+[data-theme="dark"] .sl-chip-hrs{color:#7fd0a3}
+
 /* ===== theme palette (generated: light keeps the original colours) ===== */
 :root{
   --bd1:#b9c2cf;
@@ -1647,7 +1651,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <div class="hd">
     <div class="kanjirow">
       <div class="kanji">HÀ NỘI・SA PA　5 NGÀY</div>
-      <span class="verchip" id="verChip" data-zh="v9 <span class=&quot;vd&quot;>更新于 2026年10月31日</span>">v9 <span class="vd">updated 31 Oct 2026</span></span>
+      <span class="verchip" id="verChip" data-zh="v10 <span class=&quot;vd&quot;>更新于 2026年10月31日</span>">v10 <span class="vd">updated 31 Oct 2026</span></span>
     </div>
     <h1 data-zh="河内 + 沙巴 <span class=&quot;jp&quot;>每日行程指南</span>">Hanoi + Sapa <span class="jp">Day-by-Day Guide</span></h1>
     <p data-zh="2026年10月4–11日 · 槟城出发跟团游 · 每天一条时间线：团队行程 + 购物任务 + 便利店打卡，全部标好时间和距离">4 – 8 Dec 2026 · Independent · Hanoi + Sapa · one timeline per day · Hanoi, Sapa, and back · with walking times and distances</p>
@@ -2032,7 +2036,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 
 
 
-<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v9</b> · 更新于 2026年10月31日</span>">Built for your 4–8 Dec 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v9</b> · updated 31 Oct 2026</span></footer>
+<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v10</b> · 更新于 2026年10月31日</span>">Built for your 4–8 Dec 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v10</b> · updated 31 Oct 2026</span></footer>
 
 <script>
 // ===== Trip Split (localStorage-backed, this device only) =====
@@ -4550,6 +4554,21 @@ function slSkipStats(items){
 }
 
 /* comma-separated text -> chips */
+/* Collapsed-card chips: where it is, when it opens, and a jump to the pin.
+   Hours sit beside the location so you can scan the list without opening cards. */
+function slPlaceChips(it){
+  var out = slSplitWhere(it.where).map(function(t){
+    return '<span class="sl-chip">\ud83d\udccd ' + slEsc(t) + '</span>';
+  });
+  var h = String(it.hours == null ? "" : it.hours).trim();
+  if(h) out.push('<span class="sl-chip sl-chip-hrs">\ud83d\udd52 ' + slEsc(h) + '</span>');
+  var m = String(it.maplink == null ? "" : it.maplink).trim();
+  if(/^https?:\/\//i.test(m)){
+    out.push('<a class="sl-chip link" href="' + slEsc(m) + '" target="_blank" rel="noopener noreferrer">'
+      + '\ud83d\uddfa ' + T("Map") + '</a>');
+  }
+  return out.length ? '<div class="sl-chips">' + out.join("") + '</div>' : "";
+}
 function slChips(raw, isLink){
   var parts = isLink
     ? String(raw||"").split(",").map(function(s){ return s.trim(); }).filter(Boolean)
@@ -4684,7 +4703,7 @@ function slRenderAll(){
           + (String(it.price == null ? "" : it.price).trim()
                ? '<span class="sl-price-chip">' + slEsc(it.price) + '</span>' : '')
         + '</div>'
-        + slChips(it.where, false)
+        + slPlaceChips(it)
         + slChips(it.links, true)
         + (daily ? slSkipLine(it) : '')
         + (it.desc ? '<div class="sl-desc">' + slEsc(it.desc) + '</div>' : '')
@@ -4919,7 +4938,7 @@ document.addEventListener("click", function(){ if(slSkipOpen){ slSkipOpen = null
 /* Single source of truth for the version shown on the page. Bump these two and
    both the header chip and the footer line follow. The values are also written
    into the HTML above, so the version still shows if scripts don't run. */
-var GUIDE_VERSION = "v9";
+var GUIDE_VERSION = "v10";
 var GUIDE_UPDATED = {en: "31 Oct 2026", zh: "2026年10月31日"};
 (function(){
   function paint(){
