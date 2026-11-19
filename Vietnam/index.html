@@ -60,6 +60,9 @@ var ZH = {
   "tap anywhere to close":"点任意处关闭",
   "Who\u2019s on this trip:":"\u8c01\u5728\u8fd9\u8d9f\u884c\u7a0b\uff1a",
   "Map":"地图",
+  "Total spent":"总支出",
+  "reimbursed":"别人会还",
+  "actually yours":"自己花的",
   "Photo":"图片",
   "https://... or paste a screenshot here":"https://... 或直接粘贴截图",
   "pasted image":"已粘贴的图",
@@ -1433,6 +1436,12 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 .sl-photo-tag{font-size:10.5px;font-weight:900;color:var(--matcha);
   border:1px solid var(--konline);background:var(--kon);border-radius:20px;padding:1px 8px;white-space:nowrap}
 
+.my-tbl tr.my-tot td{border-top:2px solid var(--line);font-weight:900;padding-top:8px}
+.my-tbl tr.my-sub td{font-size:11.5px;color:var(--mute);padding-top:2px;padding-bottom:2px}
+.my-tbl tr.my-sub td:last-child,.my-tbl tr.my-tot td:last-child{white-space:nowrap}
+.my-tbl tr.my-sub td:first-child{padding-left:10px}
+.my-eq{display:block;font-size:11px;color:var(--mute);font-weight:400;margin-top:1px}
+
 /* ===== theme palette (generated: light keeps the original colours) ===== */
 :root{
   --bd1:#b9c2cf;
@@ -1661,7 +1670,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
   <div class="hd">
     <div class="kanjirow">
       <div class="kanji">HÀ NỘI・SA PA　5 NGÀY</div>
-      <span class="verchip" id="verChip" data-zh="v11 <span class=&quot;vd&quot;>更新于 2026年10月31日</span>">v11 <span class="vd">updated 31 Oct 2026</span></span>
+      <span class="verchip" id="verChip" data-zh="v12 <span class=&quot;vd&quot;>更新于 2026年10月31日</span>">v12 <span class="vd">updated 31 Oct 2026</span></span>
     </div>
     <h1 data-zh="河内 + 沙巴 <span class=&quot;jp&quot;>每日行程指南</span>">Hanoi + Sapa <span class="jp">Day-by-Day Guide</span></h1>
     <p data-zh="2026年10月4–11日 · 槟城出发跟团游 · 每天一条时间线：团队行程 + 购物任务 + 便利店打卡，全部标好时间和距离">4 – 8 Dec 2026 · Independent · Hanoi + Sapa · one timeline per day · Hanoi, Sapa, and back · with walking times and distances</p>
@@ -2046,7 +2055,7 @@ footer .verfoot{display:block;margin-top:7px;font-weight:700;color:var(--ink);op
 
 
 
-<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v11</b> · 更新于 2026年10月31日</span>">Built for your 4–8 Dec 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v11</b> · updated 31 Oct 2026</span></footer>
+<footer data-zh="为你 2026年10月4–11日的东北 + 东京跟团游而做 · 店名、距离和营业时间于 2026年9月核实 — 乡下的步行时间要看你被分到哪家「同级」酒店，每次入住时再确认；海关额度只是摘要，最终以海关人员为准。<span class=&quot;verfoot&quot; id=&quot;verFoot&quot;>指南版本 <b>v12</b> · 更新于 2026年10月31日</span>">Built for your 4–8 Dec 2026 Tohoku + Tokyo group tour · store names, distances and hours checked Sep 2026 — rural walk times vary by which “similar class” hotel you're assigned, so confirm at each check-in; customs allowances are summaries, final say belongs to customs officers.<span class="verfoot" id="verFoot">Guide version <b>v12</b> · updated 31 Oct 2026</span></footer>
 
 <script>
 // ===== Trip Split (localStorage-backed, this device only) =====
@@ -5030,7 +5039,7 @@ document.addEventListener("click", function(){ if(slSkipOpen){ slSkipOpen = null
 /* Single source of truth for the version shown on the page. Bump these two and
    both the header chip and the footer line follow. The values are also written
    into the HTML above, so the version still shows if scripts don't run. */
-var GUIDE_VERSION = "v11";
+var GUIDE_VERSION = "v12";
 var GUIDE_UPDATED = {en: "31 Oct 2026", zh: "2026年10月31日"};
 (function(){
   function paint(){
@@ -5816,8 +5825,36 @@ function myRenderInner(){
     rows += '<tr><td>' + myCatLabel(c) + '</td><td>'
          +  curs.map(function(k){ return spFmt(byCat[c][k], k); }).join(" + ") + '</td></tr>';
   });
+  /* Totals. 代购 is money fronted for someone else, so it is also shown
+     separately — the "yours" line is what the trip actually cost you. */
+  var totAll = {}, totDg = {};
+  myData.spends.forEach(function(s){
+    totAll[s.cur] = (totAll[s.cur] || 0) + s.amount;
+    if(s.daigou) totDg[s.cur] = (totDg[s.cur] || 0) + s.amount;
+  });
+  function myTotCell(bag){
+    var curs = Object.keys(bag).filter(function(k){ return bag[k] > 0; });
+    if(!curs.length) return "";
+    var txt = curs.map(function(k){ return spFmt(bag[k], k); }).join(" + ");
+    var myr = 0, all = true;
+    curs.forEach(function(k){
+      var v = myToMYR(bag[k], k);
+      if(v === null) all = false; else myr += v;
+    });
+    return txt + (all ? '<span class="my-eq">\u2248 ' + myFmtMYR(myr) + '</span>' : '');
+  }
+  var totRows = "";
+  if(rows){
+    totRows = '<tr class="my-tot"><td>' + T("Total spent") + '</td><td>' + myTotCell(totAll) + '</td></tr>';
+    if(Object.keys(totDg).length){
+      var yours = {};
+      Object.keys(totAll).forEach(function(k){ yours[k] = totAll[k] - (totDg[k] || 0); });
+      totRows += '<tr class="my-sub"><td>\u2014 \u4ee3\u8d2d, ' + T("reimbursed") + '</td><td>' + myTotCell(totDg) + '</td></tr>'
+               + '<tr class="my-sub"><td>\u2014 ' + T("actually yours") + '</td><td>' + myTotCell(yours) + '</td></tr>';
+    }
+  }
   cbox.innerHTML = rows
-    ? '<table class="my-tbl"><tr><th>' + T("Category") + '</th><th>' + T("Spent") + '</th></tr>' + rows + '</table>'
+    ? '<table class="my-tbl"><tr><th>' + T("Category") + '</th><th>' + T("Spent") + '</th></tr>' + rows + totRows + '</table>'
     : '<div style="color:var(--mute);font-size:12.5px">' + T("Nothing logged yet.") + '</div>';
 
   /* 代购 tracker: budget vs actual */
